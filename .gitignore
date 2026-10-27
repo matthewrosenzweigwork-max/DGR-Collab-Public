@@ -1,0 +1,15 @@
+# Lean build artifacts
+.lake/
+build/
+*.olean
+*.ilean
+
+# Local settings and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.vscode/
+.idea/
+.DS_Store
