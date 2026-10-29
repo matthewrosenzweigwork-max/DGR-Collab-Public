@@ -1,0 +1,28 @@
+name = "SharpSymmetricLSI"
+version = "0.1.0"
+defaultTargets = ["SharpSymmetricLSI", "FullLabeledLSI", "FullLabeledLSIVerified"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "mathlib"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "ec6a61cec0d8f9fda04453e9bb5761a79aa43a70"
+
+[[lean_lib]]
+name = "SharpSymmetricLSI"
+
+[[lean_lib]]
+name = "FullLabeledLSI"
+
+# Modules that the protected Comparator + Nanoda replays built but that no library root imports:
+# Section 9 (sec9-main-1: Examples/E02_Final and its proof closure), Proposition 8.2 non-vacuity
+# (prop82-main-2: Nonvacuity/Prop82/Final and its closure) and the two Paper files outside the
+# FullLabeledLSI root closure that fl-main-1 also built. The Section 9 closure imports
+# Examples/E01_AttractiveStatements and E01a_Common, which still contain the frozen `sorry` statements
+# (the proving theorems are in the E01b..E01h9 / E02_Final chain); see README, section "Reproducing".
+[[lean_lib]]
+name = "FullLabeledLSIVerified"
+roots = ["FullLabeledLSI.Examples.E02_Final", "FullLabeledLSI.Nonvacuity.Prop82.Final", "FullLabeledLSI.Paper.Prop23Ns", "FullLabeledLSI.Paper.Sec6MomentsZ2"]

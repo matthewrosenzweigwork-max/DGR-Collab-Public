@@ -1,0 +1,33 @@
+/- Source-bound elaborated type diagnostics for the frozen kernel support. -/
+import DGRHS.Kernel.Imported.BasisCountability
+import DGRHS.Kernel.Spectrum
+import DGRHS.Kernel.HilbertSchmidt
+import DGRHS.Kernel.SpectralHilbertSchmidt
+import DGRHS.Kernel.SymmetricMultiplicity
+import DGRHS.Kernel.RegularizedDeterminant
+import DGRHS.Kernel.SpectralBounds
+import DGRHS.Kernel.RegularizedDeterminantBounds
+import DGRHS.Kernel.RegularizedDeterminantNonzero
+import DGRHS.Kernel.SpectralExpansion
+
+#check DGRHS.Kernel.countable_of_separable_index
+#check DGRHS.Kernel.integralOperator_isSelfAdjoint
+#check DGRHS.Kernel.exists_integralOperator_eigenbasis
+#check DGRHS.Kernel.separable_euclidean_L2
+#check DGRHS.Kernel.integral_eigenfunction_eq_zero
+#check DGRHS.Kernel.sum_norm_kernelOp_sq_le
+#check DGRHS.Kernel.summable_norm_kernelOp_sq
+#check DGRHS.Kernel.tsum_norm_kernelOp_sq
+#check DGRHS.Kernel.exists_integralOperator_HS_eigenbasis
+#check DGRHS.Kernel.summable_scaled_eigenvalue_sq
+#check DGRHS.Kernel.symmetric_maxGenEigenspace_eq
+#check DGRHS.Kernel.summable_regularizedLog
+#check DGRHS.Kernel.hasProd_regularizedDet
+#check DGRHS.Kernel.regularizedDet_pos
+#check DGRHS.Kernel.log_regularizedDet
+#check DGRHS.Kernel.integralOperator_eigenvalue_nonneg
+#check DGRHS.Kernel.attractive_eigenvalue_factor_pos
+#check DGRHS.Kernel.regularizedDet_bounds
+#check DGRHS.Kernel.regularizedDet_restrict_nonzero
+#check DGRHS.Kernel.norm_kernel_spectral_remainder_sq
+#check DGRHS.Kernel.hasSum_kernel_diagonal_spectral

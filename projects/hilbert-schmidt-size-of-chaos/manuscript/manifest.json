@@ -1,0 +1,18 @@
+{
+  "presentation_revision": "2026-10-28",
+  "pages": 83,
+  "files": {
+    "paper.pdf": {
+      "sha256": "7bbb8f7033489afb23caf7201cf99ec04860f1cf8760ca8b8a8018d6c5806e7c",
+      "bytes": 994166
+    },
+    "source/main.tex": {
+      "sha256": "63c085be9638a7224427b59035489ec0efd06f3cb80d15d188bf40187cdc67ed",
+      "bytes": 325068
+    },
+    "source/sharp_chaos_references.bib": {
+      "sha256": "dcac38b5ca5461be4efce65f93c18b3ef0506310255c724b0adddf907be31c03",
+      "bytes": 17163
+    }
+  }
+}

@@ -1,0 +1,1806 @@
+% Public-opening revision for author review; not a canonical promotion.
+% Replaces the rejected September 17 opening and corrects companion notation.
+\documentclass[11pt,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,mathrsfs}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{enumitem,aliascnt}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=magenta,urlcolor=magenta]{hyperref}
+\usepackage[capitalize,nameinlink]{cleveref}
+\hypersetup{pdftitle={The attractive logarithmic gas II: mean-field dynamics}}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{definition}{Definition}{Definitions}
+\crefname{remark}{Remark}{Remarks}
+\newcommand{\R}{\mathbb R}
+\newcommand{\T}{\mathbb T}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\E}{\mathbb E}
+\newcommand{\N}{\mathbb N}
+\newcommand{\g}{\mathsf g}
+% Companion notation: Part I (20260910) and DGR (20260831).
+\renewcommand{\d}{\mathsf d}
+\newcommand{\HN}{\mathcal H_N}
+\newcommand{\Hr}{\mathsf H}
+\newcommand{\Fr}{\mathsf F}
+\newcommand{\Er}{\mathsf E}
+\newcommand{\K}{\mathsf K}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Pb}{\mathbb P}
+\newcommand{\G}{\mathsf G}
+\newcommand{\Ec}{\mathcal E}
+\renewcommand{\u}{\mathsf u}
+\newcommand{\muunif}{\mu_{\mathrm{unif}}}
+
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\Ent}{\operatorname{Ent}}
+\newcommand{\diver}{\operatorname{div}}
+\newcommand{\Lip}{\operatorname{Lip}}
+\newcommand{\esssup}{\operatorname*{ess\,sup}}
+\newcommand{\dd}{\mathop{}\!\mathrm d}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\ip}[2]{\left\langle#1,#2\right\rangle}
+\newcommand{\parhead}[1]{\par\medskip\noindent\textbf{#1.}\ }
+% This round is red in the marked build; the canonical build is clean.
+\newcommand{\revision}[1]{{\ifdefined\MarkedRevision\color{red}\fi#1}}
+\allowdisplaybreaks[2]
+\emergencystretch=2em
+\raggedbottom
+\title[The attractive logarithmic gas II]{The attractive logarithmic gas II: mean-field dynamics}
+\author[M. G. Delgadino]{Matias G. Delgadino}
+\address{Matias Delgadino, Department of Mathematics, The University of Texas at Austin, PMA 8.100, 2515 Speedway, Austin, TX 78712, USA}
+\email{matias.delgadino@math.utexas.edu}
+\urladdr{https://math.utexas.edu/directory/matias-delgadino}
+\author[R. Gvalani]{Rishabh Gvalani}
+\address{Rishabh Gvalani, School of Mathematics, University of Edinburgh, James Clerk Maxwell Building, Peter Guthrie Tait Road, Edinburgh EH9 3FD, United Kingdom}
+\email{rishabh.gvalani@ed.ac.uk}
+\urladdr{https://webhomes.maths.ed.ac.uk/~rgvalani/}
+\author[M. Rosenzweig]{Matthew Rosenzweig}
+\address{Matthew Rosenzweig, Department of Mathematical Sciences, Carnegie Mellon University, 7127 Wean Hall, 5000 Forbes Avenue, Pittsburgh, PA 15213, USA}
+\email{mrosenz2@andrew.cmu.edu}
+\hypersetup{pdfauthor={Matias G. Delgadino, Rishabh Gvalani, Matthew Rosenzweig}}
+\date{}
+% Public working-draft presentation (2026-10-28).
+\usepackage{draftwatermark}
+\SetWatermarkText{DRAFT}
+\SetWatermarkAngle{45}
+\SetWatermarkScale{0.8}
+\SetWatermarkColor[gray]{0.92}
+
+\begin{document}
+\begin{abstract}
+{\ifdefined\MarkedRevision\color{red}\fi
+We prove quantitative mean-field estimates for the attractive logarithmic gas on the torus and in the plane under quadratic confinement. On a finite time interval, a bound for the modulated partition function, uniform in the particle number and along the mean-field evolution at a strictly larger inverse temperature, yields control of the modulated free energy and normalized relative entropy with an additive error of order $N^{-1}$. Near equilibrium, we verify the hypotheses needed to make these estimates uniform in time. The periodic result holds below the global-minimization threshold of the uniform measure, and the confined planar result holds for every fixed $0<\beta<4$. In the plane, the initial logarithmic density ratio is small in $L^\infty$ and has a prescribed finite H\"older norm in thermal coordinates. The proof combines the partition-function estimates of Part~I with the modulated-free-energy method and relaxation estimates for the mean-field equation. The particle estimates apply to weighted entropy solutions of the forward equation; in particular, product initial data give normalized relative entropy of order $N^{-1}$ uniformly in time under the near-equilibrium assumptions.
+}
+\end{abstract}
+\maketitle
+
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\section{Introduction and main results}\label{sec:introduction}
+
+Consider $N$ particles with positions $X_N=(x_1,\ldots,x_N)$, interacting through an attractive logarithmic potential and subject to independent Brownian noise. We study their mean-field limit on the flat torus and in the whole space with quadratic confinement. In both settings, the interaction and the external potential enter the Hamiltonian
+\begin{equation}\label{eq:physical-potential}
+ \HN(X_N)
+ =-\frac1{2N}\sum_{1\leq i\ne j\leq N}\g(x_i-x_j)
+   +\sum_{i=1}^N V(x_i).
+\end{equation}
+The factor $1/N$ makes the interaction force on each particle an average over the other particles. The inverse temperature $\beta>0$ is independent of $N$, so the diffusion and this average force both contribute to the limiting equation.
+
+Fix an integer $\d\geq2$. On $\T^\d=\R^\d/\Z^\d$, we take $V=0$ and write $\muunif$ for normalized Lebesgue measure. The interaction kernel $\g$ is the mean-zero periodic logarithmic kernel. In the whole space, we take
+\begin{equation}\label{eq:whole-kernel}
+ \g(x)=-\log|x|,\qquad
+ V(x)=\frac\kappa2|x|^2,\qquad \kappa>0.
+\end{equation}
+The minus sign before the pair interaction in \eqref{eq:physical-potential} makes the force attractive: in the whole space, $\nabla\g(x)=-x/|x|^2$ points toward the origin. We use $\Omega$ for either space and $\dd x$ for its Lebesgue measure, normalized in the periodic case. An absolutely continuous probability measure and its density are denoted by the same symbol.
+
+The overdamped Langevin dynamics associated with \eqref{eq:physical-potential} are formally
+\begin{equation}\label{eq:drift}
+ \dd x_i^t
+ =\left(-\nabla V(x_i^t)
+       +\frac1N\sum_{j\ne i}\nabla\g(x_i^t-x_j^t)\right)\dd t
+       +\sqrt{\frac2\beta}\,\dd B_i^t,
+ \qquad i\in[N]:=\{1,\ldots,N\},
+\end{equation}
+where the $B_i$ are independent standard Brownian motions. The corresponding canonical Gibbs measure is
+\begin{equation}\label{eq:physical-gibbs}
+ \dd\Pb_{N,\beta}(X_N)
+ =\frac{1}{Z_{N,\beta}}\G_{N,\beta}(X_N)\dd X_N,
+ \qquad
+ \G_{N,\beta}=e^{-\beta\HN},\qquad
+ Z_{N,\beta}=\int_{\Omega^N}e^{-\beta\HN}\dd X_N.
+\end{equation}
+For $0<\beta<2\d$, this normalization is finite in both geometries; see \cref{lem:normalization}. The singular attractive force requires care at particle collisions. We therefore formulate our results for the particle density $f_N^t$ through the weighted forward equation
+\begin{equation}\label{eq:particle}
+ \partial_t f_N
+ =\frac1\beta\diver\!\left(\G_{N,\beta}\nabla\frac{f_N}{\G_{N,\beta}}\right),
+\end{equation}
+with configuration-space derivatives acting on all coordinates. The entropy-solution formulation of Bresch, Jabin, and Wang \cite{BJW}, specified in \cref{def:entropy-solution}, makes this equation meaningful without requiring separate integrability of every singular force in \eqref{eq:drift}.
+
+The mean-field approximation replaces the empirical interaction force by its average against a probability density $\mu^t$. It leads to
+\begin{equation}\label{eq:mean-field}
+ \partial_t\mu
+ =\frac1\beta\Delta\mu
+  +\diver\bigl(\mu(\nabla V-\nabla\g*\mu)\bigr)
+ =\diver(\mu\u),
+ \qquad
+ \u=\frac1\beta\nabla\log\mu+\nabla V-\nabla\g*\mu.
+\end{equation}
+Thus $-\u$ is the velocity in the continuity equation. In dimension two, \eqref{eq:mean-field} is a parabolic--elliptic Patlak--Keller--Segel equation, with periodic boundary conditions or an additional confining drift. Its two competing effects are visible in the equation: diffusion spreads mass, while the logarithmic force brings particles together; see \cite{BJW,CdCRS}.
+
+The mean-field question is whether a solution of \eqref{eq:mean-field} describes the particle system as $N\to\infty$. At the level of the empirical measure
+\begin{equation}\label{eq:intro-empirical-measure}
+ \mu_N^t=\frac1N\sum_{i=1}^N\delta_{x_i^t},
+\end{equation}
+one seeks convergence to $\mu^t$. At the level of the particle law, one asks whether initially weak correlations remain small, so that any fixed number of particles become asymptotically independent with common law $\mu^t$. Even when $f_N^0=(\mu^0)^{\otimes N}$, the interaction creates correlations at positive times. Quantitative propagation of chaos measures their effect and gives an error bound for replacing the interacting system by the mean-field equation. Our aim is to obtain such bounds on a prescribed finite interval and, under additional assumptions on the mean-field evolution, uniformly for all time.
+
+Attraction makes the comparison sensitive to concentration. Bringing particles close together lowers the interaction energy, while concentrating their law increases its entropy. For the logarithmic potential, both contributions have the same logarithmic dependence on the concentration scale. Their balance is consequently a temperature-dependent question \cite{CdCRS}. With the normalization of Part~I, the macroscopic free energy is
+\begin{equation}\label{eq:intro-macroscopic-free-energy}
+ \Ec_{\beta,V}(\mu)
+ =\int_\Omega\log\mu\,\dd\mu
+  +\beta\int_\Omega V\,\dd\mu
+  -\frac\beta2\iint_{\Omega^2}\g(x-y)\,\dd\mu(x)\dd\mu(y).
+\end{equation}
+We use this expression when its terms are finite. On the torus, the entropy term is $\Hr(\mu\mid\muunif)$. The physical free energy is $\beta^{-1}\Ec_{\beta,V}$; a smooth positive thermal equilibrium satisfies
+$\beta^{-1}\log\mu+V-\g*\mu=\mathrm{constant}$ and hence has $\u=0$. Decay toward such an equilibrium will allow us to control the accumulated error in the particle approximation on the whole half-line.
+
+\subsection{Modulated free energy and the comparison with the mean-field equation}
+\label{subsec:intro-modulated-free-energy}
+
+For probability measures $P,Q$, we write
+\begin{equation}\label{eq:intro-relative-entropy}
+ \Hr(P\mid Q)=\int\log\!\left(\frac{\dd P}{\dd Q}\right)\dd P
+ \quad\text{if }P\ll Q,
+ \qquad
+ \Hr(P\mid Q)=+\infty\quad\text{otherwise}.
+\end{equation}
+Its normalization per particle is
+$\Hr_N(f_N\mid\mu^{\otimes N})=N^{-1}\Hr(f_N\mid\mu^{\otimes N})$.
+By superadditivity of relative entropy, convergence of this normalized entropy to zero for symmetric particle laws implies convergence of every fixed marginal to the corresponding product law. Relative entropy therefore gives a way to quantify propagation of chaos. For a singular interaction, however, differentiating it also produces a discrepancy between the empirical and mean-field forces.
+
+The modulated-free-energy method of Bresch, Jabin, and Wang \cite{BJW} combines relative entropy with the interaction energy of that discrepancy. In our attractive convention $W=-\g$, the modulated energy is
+\begin{equation}\label{eq:modulated-energy}
+ \Fr_N(X_N,\mu)
+ =-\frac12\iint_{x\ne y}\g(x-y)
+                    \,\dd(\mu_N-\mu)^{\otimes2}(x,y),
+ \qquad \mu_N=\frac1N\sum_{i=1}^N\delta_{x_i}.
+\end{equation}
+Only the empirical self-interaction is removed at the diagonal; the mixed and continuous terms remain. Following Part~I, we define the modulated free energy by
+\begin{equation}\label{eq:modulated-free-energy}
+ \Er_N(f_N,\mu)
+ =\frac1\beta\Hr_N(f_N\mid\mu^{\otimes N})
+       +\E_{X_N\sim f_N}\bigl[\Fr_N(X_N,\mu)\bigr].
+\end{equation}
+The estimates below are stated in a class where the entropy and expected modulated energy are finite. The relevant finiteness and approximation arguments are given in \cref{sec:finite}.
+
+Differentiating the interaction term in \eqref{eq:modulated-free-energy} cancels the most singular force terms in the entropy evolution. The resulting differential inequality is therefore better suited to estimating the particle approximation than the entropy evolution alone. Chodron de Courcel, Rosenzweig, and Serfaty \cite{CdCRS} used this method for the full periodic logarithmic interaction, obtaining uniform-in-time propagation of chaos in a high-temperature range. A central step is to bound the attractive interaction term by the entropy through a modulated logarithmic Hardy--Littlewood--Sobolev inequality. Such a bound is needed because \eqref{eq:modulated-free-energy} does not control relative entropy merely by its definition.
+
+The connection with the partition functions studied in Part~I can be seen directly. For a prescribed reference $\mu$ and a coupling $b>0$, set
+\begin{align}
+ \K_{N,b}(\mu)
+ &\coloneqq\int_{\Omega^N}e^{-bN\Fr_N(X_N,\mu)}\,\dd\mu^{\otimes N}(X_N),
+ \label{eq:modulated-partition}\\
+ \dd\Q_{N,b}(\mu)(X_N)
+ &\coloneqq\frac{e^{-bN\Fr_N(X_N,\mu)}}{\K_{N,b}(\mu)}
+              \,\dd\mu^{\otimes N}(X_N).
+ \label{eq:intro-modulated-gibbs}
+\end{align}
+These are the modulated partition function and the modulated Gibbs measure. The latter incorporates the interaction into the product reference. At a thermal equilibrium for the physical inverse temperature, the splitting formula gives $\Q_{N,\beta}(\mu)=\Pb_{N,\beta}$; see \cite[Remark~2.1]{PartI}. More generally, taking the logarithm of the density ratio in \eqref{eq:intro-modulated-gibbs} gives
+\begin{equation}\label{eq:intro-free-energy-rewriting}
+ \Er_N(f_N,\mu)
+ =\frac1{\beta N}\left(
+   \Hr(f_N\mid\Q_{N,\beta}(\mu))
+      -\log\K_{N,\beta}(\mu)\right).
+\end{equation}
+Thus the normalization of the modulated Gibbs measure determines the lower bound for the modulated free energy.
+
+To control relative entropy as well, we use a coupling $b>\beta$. The same density-ratio calculation yields
+\begin{align}
+ \Er_N(f_N,\mu)
+ &=\left(\frac1\beta-\frac1b\right)\Hr_N(f_N\mid\mu^{\otimes N})
+   +\frac{\Hr(f_N\mid\Q_{N,b}(\mu))-\log\K_{N,b}(\mu)}{bN}
+   \notag\\
+ &\geq\left(\frac1\beta-\frac1b\right)\Hr_N(f_N\mid\mu^{\otimes N})
+   -\frac{\log\K_{N,b}(\mu)}{bN}.
+ \label{eq:intro-coercivity}
+\end{align}
+A bound $\K_{N,b}(\mu)\leq C$ with $C\geq1$ independent of $N$ therefore gives an error at most $(\log C)/(bN)$ in this inequality. This is the precise use of the partition-function estimates: they control the amount by which the attractive interaction can offset the entropy, with an error of order $N^{-1}$.
+
+In the evolution problem, \eqref{eq:intro-coercivity} is applied with $\mu=\mu^t$, where $\mu^t$ solves \eqref{eq:mean-field} at inverse temperature $\beta$. The larger coupling $b$ is used only in the partition function; its reference remains $\mu^t$. Our finite-time theorems assume that $\K_{N,b}(\mu^t)$ is bounded uniformly in $N$ and $t\in[0,T]$. Combining \eqref{eq:intro-coercivity} with the modulated-free-energy evolution then gives a bound with additive error of order $N^{-1}$, whose time dependence is controlled by
+\begin{equation}\label{eq:intro-lipschitz-integral}
+ \int_0^T\|\nabla\u^t\|_{L^\infty}\,\dd t.
+\end{equation}
+This formulation allows mean-field evolutions that are not close to equilibrium, provided the stated regularity and partition bound hold on the chosen interval.
+
+For uniform-in-time control, we verify both requirements on the whole half-line for initial mean-field densities sufficiently close to equilibrium. In the periodic setting, Part~I proves the required partition estimate near the uniform measure below its global-minimization threshold; we combine it with decay of the periodic mean-field equation \cite[Propositions~4.6 and~5.8]{PartI}. In the confined plane, Part~I proves the corresponding estimates near thermal equilibrium for every fixed $0<\beta<4$ \cite[Theorem~9.1 and Appendix~G]{PartI}. We prove relaxation from a logarithmic density ratio that is small in $L^\infty$ and has a prescribed finite H\"older norm in thermal coordinates. This gives the principal whole-space application: uniform-in-time propagation of chaos throughout the planar subcritical range, under that near-equilibrium hypothesis. For product initial data, the normalized relative entropy is bounded by $C/N$, uniformly in time. The physical-coordinate energy estimate includes the explicit dilation correction stated in \cref{thm:planar-uniform}.
+
+\subsection{Periodic normalization}
+\label{subsec:intro-periodic-normalization}
+
+For the precise statements, we fix the Fourier convention
+\begin{equation}\label{eq:fourier}
+ \widehat f(k)=\int_{\T^\d}f(x)e^{-2\pi i k\cdot x}\dd x,
+ \qquad \widehat{|\nabla|^s f}(k)=(2\pi|k|)^s\widehat f(k).
+\end{equation}
+The mean-zero periodic kernel used in \eqref{eq:physical-potential} is characterized by
+\begin{equation}\label{eq:periodic-kernel}
+ c_\d=2^{\d-1}\pi^{\d/2}\Gamma(\d/2),\qquad
+ |\nabla|^\d\g=c_\d(\delta_0-1),\qquad
+ \widehat\g(k)=\frac{c_\d}{(2\pi|k|)^\d}\quad(k\ne0).
+\end{equation}
+In particular, $\g(x)=-\log|x|+O_\d(1)$ near the origin. This is the normalization of Part~I and \cite{CdCRS}. All the estimates below use the Hamiltonian, entropy, and modulated quantities defined above in the same conventions.
+\endgroup
+
+\subsection{Finite-time periodic dynamics}
+\begin{theorem}[Finite-time periodic control]\label{thm:periodic-finite}
+Let $\d\geq2$, $T<\infty$, and $0<\beta<b<2\d$. Let $\mu$ be a positive probability-density solution of \eqref{eq:mean-field} on $[0,T]\times\T^\d$ with
+\begin{equation}\label{eq:periodic-regularity}
+ \mu\in C([0,T];C^2(\T^\d))\cap C^1([0,T];C(\T^\d)),\qquad
+ \inf_{[0,T]\times\T^\d}\mu>0.
+\end{equation}
+Suppose that, for some $L\in\R$,
+\begin{equation}\label{eq:trajectory-buffer}
+ \sup_{N\geq2}\sup_{0\leq t\leq T}\log \K_{N,b}(\mu^t)\leq L.
+\end{equation}
+Set $C_0=1+L/b$. If $f_N$ is an entropy solution of \eqref{eq:particle}, then, for almost every $t\in[0,T]$,
+\begin{align}
+ \Er_N(f_N^t,\mu^t)+\frac{C_0}{N}
+ &\geq\left(\frac1\beta-\frac1b\right)
+ \Hr_N(f_N^t\mid(\mu^t)^{\otimes N})+\frac1N,
+ \label{eq:coercivity-main}\\
+ \Er_N(f_N^t,\mu^t)+\frac{C_0}{N}
+ &\leq\left(\Er_N(f_N^0,\mu^0)+\frac{C_0}{N}\right)
+ \exp\!\left[C_\d\max\!\left\{1,\frac{\beta b}{b-\beta}\right\}
+          \int_0^t\norm{\nabla \u^s}_{L^\infty}\dd s\right].
+ \label{eq:finite-main}
+\end{align}
+The matrix norm in $\norm{\nabla \u}_{L^\infty}$ is the Euclidean operator norm. The constant $C_\d$ depends only on the normalized periodic kernel and the dimension. In particular,
+\begin{equation}\label{eq:entropy-main}
+ \Hr_N(f_N^t\mid(\mu^t)^{\otimes N})
+ \leq\frac{\beta b}{b-\beta}
+          \left(\Er_N(f_N^t,\mu^t)+\frac{C_0}{N}\right).
+\end{equation}
+\end{theorem}
+
+The hypothesis \eqref{eq:trajectory-buffer} is uniform in the particle number and along the trajectory. Finiteness for each fixed $N$, or a bound whose constant depends on $t$ without uniform control, does not give \eqref{eq:finite-main}. Nor does an equilibrium bound at $\mu_b$ imply \eqref{eq:trajectory-buffer} for a trajectory selected at inverse temperature $\beta$. The density in $\K_{N,b}(\mu^t)$ is always the same $\mu^t$ as in \eqref{eq:mean-field}.
+
+\subsection{The isotropically confined gas}
+\begin{theorem}[Finite-time control for the confined planar gas]\label{thm:planar-finite}
+Let $\Omega=\R^2$, let $\g,V$ be given by \eqref{eq:whole-kernel}, and let $T<\infty$ and $0<\beta<b<4$. Let $\mu$ be a positive classical probability-density solution of \eqref{eq:mean-field}, locally $C^2$ in space and $C^1$ in time, satisfying
+\begin{equation}\label{eq:whole-regularity}
+ \sup_{0\leq t\leq T}\left(
+ \norm{\mu^t}_{W^{1,\infty}(\R^2)}+
+ \norm{\nabla^2\log\mu^t}_{L^\infty(\R^2)}+
+ \int_{\R^2}|x|^2\mu^t(x)\dd x\right)<\infty.
+\end{equation}
+Assume \eqref{eq:trajectory-buffer}. Then every entropy solution of \eqref{eq:particle} satisfies \eqref{eq:coercivity-main}--\eqref{eq:entropy-main}, with an absolute constant in place of $C_\d$. The explicit exponential factor has no additional dependence on $\kappa$; confinement enters through the actual field $\u$, the reference trajectory, and its partition bound.
+\end{theorem}
+
+The full interval $0<\beta<4$ is available to this implication: for each such $\beta$, the required coupling $b$ may be chosen strictly between $\beta$ and $4$, provided \eqref{eq:trajectory-buffer} holds. The theorem does not assert that every smooth trajectory has such a partition bound. The same proof gives a confined whole-space theorem in every $\d\geq2$, with $0<\beta<b<2\d$ and \eqref{eq:whole-regularity} on $\R^\d$. This extension uses no stationary uniqueness or global relaxation theorem in higher dimensions.
+
+\begin{corollary}[Product initial data]\label{cor:product}
+Under either finite-time theorem, suppose $f_N^0=(\mu^0)^{\otimes N}$. Then, with a constant independent of $N$,
+\begin{equation}\label{eq:product-conclusion}
+ \esssup_{0\leq t\leq T}
+ \left(\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})+
+ |\Er_N(f_N^t,\mu^t)|+
+ \abs{\E_{f_N^t}[\Fr_N(X_N,\mu^t)]}\right)\leq\frac{C_T}{N}.
+\end{equation}
+For symmetric $f_N$, its $k$-coordinate marginal satisfies
+\begin{equation}\label{eq:product-marginal}
+ \esssup_{0\leq t\leq T}\Hr(f_{N,k}^t\mid(\mu^t)^{\otimes k})
+ \leq C_T\frac{k}{N},\qquad 1\leq k\leq N.
+\end{equation}
+The constant may depend on $\beta,b,L$, the integrated Lipschitz seminorm, and the initial reference energy. The assertion of sharpness concerns the additive $N^{-1}$ modulated-free-energy error; no optimality assertion for \eqref{eq:product-marginal} is made.
+\end{corollary}
+
+\subsection{Uniform-in-time periodic dynamics}
+The periodic global-minimization threshold $\beta_{\rm gm}$ is the supremum of the couplings $b\geq0$ for which
+\begin{equation}\label{eq:beta-gm}
+ \Hr(\rho\mid\muunif)-\frac b2\iint\g(x-y)(\rho(x)-1)(\rho(y)-1)\dd x\dd y\geq0
+\end{equation}
+holds for every probability density with finite entropy and finite interaction integral. Concentrating smooth densities and perturbations on the first Fourier shell give
+\begin{equation}\label{eq:thresholds}
+ 0<\beta_{\rm gm}\leq\min\{2\d,\beta_s\},\qquad
+ \beta_s=\frac{(2\pi)^\d}{c_\d}.
+\end{equation}
+The positivity in \eqref{eq:thresholds} and the following homogeneous estimate are static inputs from the companion paper:
+\begin{equation}\label{eq:homogeneous-input}
+ \sup_{N\geq2}\K_{N,a}(\muunif)<\infty\qquad\text{for every }0\leq a<\beta_{\rm gm}.
+\end{equation}
+\revision{We apply the partition bound uniformly over a neighborhood of $\muunif$.} We use \revision{\cite[Proposition~4.6, pp.~29--30]{PartI}} for \eqref{eq:homogeneous-input} and \revision{\cite[Proposition~5.8, pp.~34--35]{PartI}} for its family-uniform near-uniform consequence, recalled in Section~\ref{sec:near-equilibrium}.
+
+\begin{theorem}[Uniform periodic control near the uniform density]\label{thm:periodic-uniform}
+Assume \eqref{eq:homogeneous-input}. Let $\ell>\d/2+2$ be an integer and let $0<\beta_0<\beta_{\rm gm}$. There is $\varepsilon_{\d,\ell}>0$ such that, if $\mu^0$ is a probability density and
+\begin{equation}\label{eq:periodic-radius}
+ \norm{\mu^0-1}_{H^\ell}
+ \leq\varepsilon_{\d,\ell}
+       \frac{\beta_{\rm gm}-\beta_0}
+       {\beta_{\rm gm}(\beta_{\rm gm}+\beta_0)},
+\end{equation}
+then, for each $0<\beta\leq\beta_0$, \eqref{eq:mean-field} has a unique global solution in $C([0,\infty);H^\ell)$, with $1/2\leq\mu^t\leq3/2$. There are constants $C_0,C$, depending only on $\d,\ell,\beta_0$ and the static input, such that every entropy solution of the particle equation satisfies
+\begin{align}
+ \esssup_{t\geq0}\left(\Er_N(f_N^t,\mu^t)+\frac{C_0}{N}\right)
+ &\leq C\left(\Er_N(f_N^0,\mu^0)+\frac{C_0}{N}\right),
+ \label{eq:periodic-uniform-energy}\\
+ \esssup_{t\geq0}\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})
+ &\leq C\beta\left(\Er_N(f_N^0,\mu^0)+\frac{C_0}{N}\right).
+ \label{eq:periodic-uniform-entropy}
+\end{align}
+The constants are uniform for $0<\beta\leq\beta_0$. For product initial data, the normalized entropy is at most $C\beta/N$, and both the absolute modulated free energy and the absolute expected modulated energy are at most $C/N$, uniformly in time.
+\end{theorem}
+
+
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\subsection{The principal confined application}
+
+Let $m_\beta$ denote the planar thermal equilibrium measure characterized by \eqref{eq:scaled-equilibrium}. Part~I proves the uniform equilibrium entropy--energy margin and prescribed-reference larger-coupling moment bound on every fixed interval $[0,\beta_0]$ with $\beta_0<4$; see \cite[Theorem~9.1 and Appendix~G]{PartI}. The precise static estimates are recalled in Section~\ref{subsec:confined-static-package} and give the uniform-in-time dynamical theorem below.
+
+For the physical confined equation, define the temperature-dependent corrected modulated free energy by
+\begin{equation}\label{eq:corrected-physical-energy}
+ \Er_{N,\kappa}^{\sharp}(f_N,\mu)
+ :=\Er_N(f_N,\mu)-\frac{\log(\beta\kappa/2)}{4N}.
+\end{equation}
+The correction is forced by dilation and cannot be omitted from a statement uniform as $\beta\downarrow0$; see \cref{lem:thermal-normalization}.
+
+\begin{theorem}[Uniform dynamics for the confined planar gas]\label{thm:planar-uniform}
+Let $\d=2$, $\kappa>0$, and $0<\beta_0<4$. Fix $0<\alpha<1$ and $L_0<\infty$. There is $\varepsilon_*>0$, depending only on $\beta_0$ and the constants furnished by \cref{prop:planar-confined-static-package}, such that the following holds simultaneously for every $0<\beta\leq\beta_0$.
+
+Set
+\begin{equation}\label{eq:planar-thermal-scale}
+ a=(\beta\kappa/2)^{-1/2},\qquad
+ \nu^0(y)=a^2\mu^0(ay),\qquad
+ p_0=\log(\nu^0/m_\beta).
+\end{equation}
+Suppose that $\mu^0$ is a probability density and
+\begin{equation}\label{eq:planar-log-ratio-smallness}
+ p_0\in C_b^\alpha(\R^2),
+ \qquad \norm{p_0}_{C_b^\alpha}\leq L_0,
+ \qquad \norm{p_0}_{L^\infty}\leq\varepsilon_*.
+\end{equation}
+No smallness is imposed on the prescribed finite bound $L_0$. Then the physical mean-field equation \eqref{eq:mean-field} has a unique global solution in the bounded-ratio mild class of \cref{prop:confined-relaxation}. Its thermal rescaling remains in the tube \eqref{eq:confined-ratio-tube} and satisfies
+\begin{equation}\label{eq:planar-integrated-field}
+ \int_0^\infty\left(
+ \norm{\u^t}_{L^\infty}^2+\norm{\nabla \u^t}_{L^\infty}\right)\dd t<\infty.
+\end{equation}
+The first integral is finite for every positive $\beta$ but is not asserted to be uniform as $\beta\downarrow0$.
+
+There are constants $C_0,C<\infty$, independent of $N\geq2$ and $0<\beta\leq\beta_0$, with $C$ allowed to depend on $\alpha$ and $L_0$, such that every physical entropy solution of \eqref{eq:particle} satisfies
+\begin{align}
+ \esssup_{t\geq0}\left(\Er_{N,\kappa}^{\sharp}(f_N^t,\mu^t)+\frac{C_0}{N}\right)
+ &\leq C\left(\Er_{N,\kappa}^{\sharp}(f_N^0,\mu^0)+\frac{C_0}{N}\right),
+ \label{eq:planar-uniform-energy}\\
+ \esssup_{t\geq0}\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})
+ &\leq C\beta\left(\Er_{N,\kappa}^{\sharp}(f_N^0,\mu^0)+\frac{C_0}{N}\right).
+ \label{eq:planar-uniform-entropy}
+\end{align}
+The same right side controls the time-integrated relative Fisher information appearing in \eqref{eq:full-dissipation}.
+
+For product initial data,
+\begin{equation}\label{eq:planar-product-corrected-energies}
+ \esssup_{t\geq0}
+ \left(
+  \abs{\Er_{N,\kappa}^{\sharp}(f_N^t,\mu^t)}+
+  \abs{\E_{f_N^t}[\Fr_N(X_N,\mu^t)]-
+        \frac{\log(\beta\kappa/2)}{4N}}
+ \right)\leq\frac{C}{N},
+\end{equation}
+while
+\begin{equation}\label{eq:planar-product-entropy}
+ \esssup_{t\geq0}\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})\leq\frac{C\beta}{N}.
+\end{equation}
+If the solution is symmetric, then
+\begin{equation}\label{eq:planar-marginal-entropy}
+ \esssup_{t\geq0}
+ \Hr(f_{N,k}^t\mid(\mu^t)^{\otimes k})\leq C\beta\frac{k}{N},
+ \qquad 1\leq k\leq N.
+\end{equation}
+\end{theorem}
+
+The static input in the theorem is furnished by \cref{prop:planar-confined-static-package}. The mean-field relaxation, the passage through the nonsmooth initial time, and the particle closure are proved in this paper. The whole-space moment bound is supplied by the planar static theorem in Part~I, rather than by its periodic theorem.
+
+\begin{remark}[Four dimensions]\label{rem:four-dimensional-confined}
+The dynamical proof of \cref{thm:planar-uniform} is dimension-independent for $\d\geq2$. Consequently, if the confined static package is available on $[0,\beta_0]$ in dimension four, with $\beta_0<8$, the same conclusion holds with $a^4\mu^0(a\,\cdot)$ in \eqref{eq:planar-thermal-scale}. We do not assert here an unconditional four-dimensional static package, stationary uniqueness, or global relaxation outside this small bounded-ratio class. The planar theorem is the principal whole-space application.
+\end{remark}
+\endgroup
+
+\subsection{The additional hypotheses for uniform time}
+The finite-time and uniform-in-time estimates use the same differential inequality. On a finite interval, it is enough to have the same-reference bound \eqref{eq:trajectory-buffer} and a finite integral of $\norm{\nabla \u}_{L^\infty}$. Uniform time requires these bounds on the entire half-line. Near the uniform periodic state, \cref{thm:periodic-uniform} supplies both from the initial datum. For the confined planar gas, \cref{thm:planar-uniform} verifies these requirements from the bounded-ratio relaxation argument and the static package furnished by \cref{prop:planar-confined-static-package}. \revision{The partition bound is evaluated at the actual evolving reference.} A bound at a Gaussian reference or at an equilibrium chosen for a different coupling does not supply this condition.
+
+\begin{proposition}[Uniform time under global trajectory bounds]\label{prop:uniform-criterion}
+In either geometry, fix $0<\beta<b<2\d$ and suppose the regularity hypotheses of the corresponding finite-time theorem hold on every finite interval. If, for some fixed $L\in\R$,
+\begin{equation}\label{eq:global-conditions}
+ \sup_{N\geq2}\sup_{t\geq0}\log \K_{N,b}(\mu^t)\leq L,
+ \qquad \int_0^\infty\norm{\nabla \u^t}_{L^\infty}\dd t<\infty,
+\end{equation}
+then \eqref{eq:finite-main}, with the upper limit of the integral replaced by $\infty$, holds uniformly for almost every $t\geq0$. The product conclusions hold uniformly in time as well. For a thermal equilibrium satisfying
+\begin{equation}\label{eq:thermal-equilibrium}
+ \frac1\beta\log\mu_\beta+V-\g*\mu_\beta=\text{constant},
+\end{equation}
+we have $\u=0$, and the shifted modulated free energy is bounded above by its initial value, provided the same-reference partition bound at $b>\beta$ holds.
+\end{proposition}
+
+This proposition is a trajectory criterion. By itself, it does not prove a confined small-data theorem, the existence of an equilibrium partition buffer at a larger coupling, or the weighted relaxation estimate needed to verify \eqref{eq:global-conditions}.
+
+\parhead{Organization}
+Section~\ref{sec:finite} proves the common finite-time estimate, including the weighted entropy formulation, the logarithmic commutator bound, the singular diagonal, and the physical-to-thermal normalization. Section~\ref{sec:relaxation} establishes relaxation of the periodic and confined mean-field equations in the neighborhoods used later. Section~\ref{sec:near-equilibrium} records the periodic and planar static inputs from Part~I and the raw partition consequence of the confined centered moment bound. \revision{Section~\ref{sec:uniform-proofs} proves the global trajectory criterion, the periodic uniform-in-time theorem, and the confined theorem with its H\"older initial layer, and concludes with the scaled independent-heat endpoint.}
+
+\subsection*{Statement on AI use}
+
+This working manuscript was generated with the assistance of generative AI tools for literature identification, the development and testing of mathematical arguments, exposition, and consistency checks. The authors have not yet reviewed and independently verified all AI-generated content. They are in the process of formalizing the results in Lean and revising the natural-language presentation. The manuscript is therefore being shared as a draft, and its statements, proofs, references, and exposition remain subject to correction. Any completed formal verification applies only to the statements and versions explicitly identified in the accompanying verification records.
+
+\section{Sharp finite-time control}\label{sec:finite}
+
+The proof in this section is common to both geometries. We first specify the physical entropy class, then prove coercivity and the commutator estimate. Finally, we derive the full-potential dissipation inequality directly from the weighted forward equation. The argument follows the modulated-free-energy method of \cite[Proposition~2.3 and (2.25)]{BJW}. We include the details needed at spatial infinity and at the collision diagonal.
+
+\subsection{The particle entropy formulation and functional domains}
+\begin{lemma}[Normalizability and confinement moments]\label{lem:normalization}
+For $\d\geq2$ and $0<\beta<2\d$, the Gibbs weight in \eqref{eq:physical-gibbs} has a finite positive integral in both geometries. In the confined case, its normalized law $\Pb_{N,\beta}$ satisfies
+\begin{equation}\label{eq:gibbs-exponential-moment}
+ \int e^{a\sum_i|x_i|^2}\dd\Pb_{N,\beta}(X_N)<\infty
+ \qquad\text{whenever }0<a<\beta\kappa/2.
+\end{equation}
+These are fixed-$N$ integrability statements, not order-one modulated partition bounds.
+\end{lemma}
+\begin{proof}
+Average over all spanning trees on the $N$ labeled vertices. By permutation symmetry and the fact that each tree has $N-1$ edges, every edge belongs to a proportion $2/N$ of these trees. Consequently,
+\begin{equation}\label{eq:tree-factorization}
+ e^{\frac\beta N\sum_{i<j}\g(x_i-x_j)}
+ =\prod_{\mathcal T}
+ \left(e^{\frac\beta2\sum_{\{i,j\}\in\mathcal T}\g(x_i-x_j)}\right)^{1/\#\{\mathcal T\}}.
+\end{equation}
+Apply H\"older under $\muunif^{\otimes N}$ in the periodic case, or under the product of the normalized Gaussian with density proportional to $e^{-\beta\kappa|x|^2/2}$ in the confined case. For either prior $\nu$,
+\begin{equation}\label{eq:tree-row}
+ A:=\sup_x\int e^{\beta\g(x-y)/2}\dd\nu(y)<\infty.
+\end{equation}
+On the torus, this follows from the logarithmic singularity and $\beta/2<\d$. On the whole space, split $|x-y|\leq1$ and its complement; the first integral is at most $\norm{\nu}_{L^\infty}|S^{\d-1}|/(\d-\beta/2)$, and the second is at most one. Integrating leaves successively bounds every tree integral by $A^{N-1}$. H\"older and \eqref{eq:tree-factorization} prove finiteness. Positivity follows because the integrand is positive off the diagonal. Multiplication by $e^{a\sum_i|x_i|^2}$ merely replaces $\kappa$ by $\kappa-2a/\beta>0$, proving \eqref{eq:gibbs-exponential-moment}.
+\end{proof}
+
+We use the canonical Gibbs measure $\Pb_{N,\beta}$ and its normalization $Z_{N,\beta}$ from \eqref{eq:physical-gibbs}, and identify $\Pb_{N,\beta}$ with its density when convenient.
+
+\begin{definition}[Physical entropy solutions]\label{def:entropy-solution}
+On each finite interval, $f_N$ is a probability-density solution with initial trace $f_N^0$ of the following weighted weak equation:
+\begin{equation}\label{eq:weighted-weak}
+ \partial_t f_N=\frac1\beta\diver(f_N p_N),\qquad
+ p_N=\nabla\log\frac{f_N}{\G_{N,\beta}}.
+\end{equation}
+The score is understood on the collision complement through the weak gradient of $\sqrt{f_N/\G_{N,\beta}}$, with
+\begin{equation}\label{eq:physical-fisher}
+ \int f_N|p_N|^2
+ :=4\int \G_{N,\beta}\abs{\nabla\sqrt{f_N/\G_{N,\beta}}}^{\,2}.
+\end{equation}
+At zero density, the flux is defined by the square-root expression. The flux belongs to $L^1$ in space and time, \eqref{eq:weighted-weak} holds against smooth compactly supported space-time tests, including the prescribed initial term, and
+\begin{equation}\label{eq:physical-entropy}
+ \Hr(f_N^t\mid\Pb_{N,\beta})+\frac1\beta
+ \int_0^t\int f_N^s|p_N^s|^2\dd X_N\dd s
+ \leq \Hr(f_N^0\mid\Pb_{N,\beta})<\infty
+\end{equation}
+for almost every $t$. We require symmetry only when asserting marginal estimates.
+\end{definition}
+
+This is the weighted formulation of the physical entropy inequality used in \cite[Definition~2.1 and Section~2.5]{BJW}. Normalizing the physical Gibbs weight changes its entropy by a constant and leaves its score unchanged. We have explicitly required the whole-space weak formulation; it is not inferred from a torus existence theorem.
+
+For later use, the entropy inequality and \eqref{eq:gibbs-exponential-moment} imply, for fixed $N,T$, that
+\begin{equation}\label{eq:particle-moments}
+ \esssup_{0\leq t\leq T}\int\sum_i|x_i|^2 f_N^t\dd X_N<\infty
+\end{equation}
+in the confined case. Indeed, entropy duality gives, for $0<a<\beta\kappa/2$,
+\begin{equation}\label{eq:moment-entropy}
+ a\int\sum_i|x_i|^2 f_N^t\dd X_N
+ \leq \Hr(f_N^0\mid\Pb_{N,\beta})+
+       \log\int e^{a\sum_i|x_i|^2}\dd\Pb_{N,\beta}.
+\end{equation}
+No uniformity in $N$ of this auxiliary moment bound is needed below.
+
+We use the companion paper's energy notation
+\begin{equation}\label{eq:h-I}
+ W(x,y)=-\g(x-y),\qquad
+ h_\mu=W*\mu=-\g*\mu,\qquad
+ I_\mu=\frac12\iint W(x,y)\mu(x)\mu(y)\dd x\dd y.
+\end{equation}
+These quantities give the exact splitting
+\begin{equation}\label{eq:exact-splitting}
+ \HN=NF_N+\sum_i(V+h_\mu)(x_i)-NI_\mu.
+\end{equation}
+
+\begin{lemma}[Reference bounds and finite modulated quantities]\label{lem:domains}
+Under either finite-time theorem's reference assumptions, $I_{\mu^t}$ is finite and continuous. In the confined case, uniformly on a finite interval,
+\begin{align}
+ |\log\mu^t(x)|+|a^t(x)|+|\partial_ta^t(x)|
+ &\leq C_T(1+|x|^2),\label{eq:reference-quadratic}\\
+ |\u^t(x)|&\leq C_T(1+|x|),\label{eq:reference-linear}\\
+ a^t&:=\beta^{-1}\log\mu^t+V+h_{\mu^t},\qquad \u^t=\nabla a^t.
+ \label{eq:chemical-potential}
+\end{align}
+The corresponding functions are bounded on finite periodic cylinders. If \eqref{eq:trajectory-buffer} holds and $f_N$ is an entropy solution, then $\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})$ and $\E_{f_N^t}[|\Fr_N|]$ are finite for almost every $t$, and at the initial time. Moreover,
+\begin{equation}\label{eq:energy-physical-identity}
+ \Er_N(f_N^t,\mu^t)
+ =\frac1{\beta N}\int f_N^t\log\frac{f_N^t}{\G_{N,\beta}}\dd X_N
+       -\E_{f_N^t}\!\left[\frac1N\sum_i a^t(x_i)\right]+I_{\mu^t}.
+\end{equation}
+\end{lemma}
+\begin{proof}
+We give the whole-space details. The bounds on $\mu$, its second moment, and the locally integrable logarithm imply
+\begin{equation}\label{eq:potential-growth}
+ |h_\mu(x)|\leq C_T(1+\log(2+|x|)),\quad
+ \norm{\nabla h_\mu}_{L^\infty}\leq C_T,\quad
+ \norm{\nabla^2h_\mu}_{L^\infty}\leq C_T.
+\end{equation}
+For the first estimate, integrate $|\log|x-y||$ on $|x-y|\leq1$ using $\norm{\mu}_\infty$, and use
+$\log(2+|x-y|)\leq\log(2+|x|)+\log(2+|y|)$ outside that ball. The gradient estimate follows by the same split with $|x-y|^{-1}$. For the Hessian, split $\nabla W$ with a smooth cutoff supported in $|x-y|\leq2$. Differentiate the compactly supported part by moving the derivative to $\mu$, and differentiate the complementary kernel directly. The first term is bounded by the local $L^1$ norm of $\nabla W$ times $\norm{\nabla\mu}_\infty$, and the second kernel has bounded derivative. This also justifies the distributional Hessian in dimension two.
+
+The bound on $\nabla^2\log\mu$, together with the values of $\log\mu$ and its gradient at the origin, gives quadratic and linear growth by integration on line segments. Those values remain bounded on a compact time interval by positivity and local classical regularity. Consequently, $\u$ has linear growth and is spatially Lipschitz. The mean-field equation and integration by parts give
+\begin{align}
+ \partial_t a&=\beta^{-1}\diver \u+
+         \beta^{-1}\u\cdot\nabla\log\mu+\partial_t h_\mu,
+ \label{eq:a-time}\\
+ \partial_t h_\mu(x)&=\int\nabla W(x-y)\cdot \u(y)\mu(y)\dd y,
+ \label{eq:h-time}\\
+ \frac{\dd}{\dd t}I_\mu&=-\int \u\cdot\nabla h_\mu\,\mu\dd x.
+ \label{eq:I-time}
+\end{align}
+The integral in \eqref{eq:h-time} is absolutely convergent: on the unit ball around $x$, use $|\u(y)|\leq C_T(1+|x|)$ and the bounded density; on its complement, use the first moment of $|\u|\mu$. It grows at most linearly in $x$. To justify integration by parts, use cutoffs at infinity and at $y=x$. The former error is bounded by a constant times $\log R$ times the mass of an annulus of radius $R$, and tends to zero by the second moment. The latter is bounded by $C_{T,x}\varepsilon^{\d-1}|\log\varepsilon|$, and tends to zero since $\d\geq2$. Formula \eqref{eq:I-time} follows by the same argument and the boundedness of $\nabla h_\mu$. These formulas prove \eqref{eq:reference-quadratic}--\eqref{eq:reference-linear} and the asserted continuity.
+
+It remains to exclude undefined entropy--energy differences. H\"older gives $\K_{N,\beta}(\mu)\leq \K_{N,b}(\mu)^{\beta/b}<\infty$, and it is strictly positive. The exact identity
+\begin{equation}\label{eq:reference-factorization}
+ e^{-\beta NF_N}\mu^{\otimes N}
+ =\G_{N,\beta}\exp\!\left(\beta\sum_i a(x_i)-\beta NI_\mu\right)
+\end{equation}
+shows that $\log(\Q_{N,\beta}(\mu)/\Pb_{N,\beta})$ has at most quadratic growth. Hence \eqref{eq:particle-moments} and finite physical relative entropy give $\Hr(f_N\mid \Q_{N,\beta}(\mu))<\infty$.
+
+Put $\Lambda=\log(\Q_{N,\beta}(\mu)/\mu^{\otimes N})$ and $r=(b-\beta)/\beta>0$. Direct calculation gives
+\begin{equation}\label{eq:reference-renyi}
+ \int e^{r\Lambda}\dd \Q_{N,\beta}(\mu)
+ =\frac{\K_{N,b}(\mu)}{\K_{N,\beta}(\mu)^{b/\beta}}<\infty.
+\end{equation}
+Since $e^{r\Lambda_+}\leq1+e^{r\Lambda}$, entropy duality, first applied to truncated $\Lambda_+$, gives $\int\Lambda_+ f_N<\infty$. Expanding \eqref{eq:modulated-energy}, using the upper bound on $\log|x-y|$ by a quadratic function and the upper bound on $\g*\mu$, gives
+\begin{equation}\label{eq:positive-energy-bound}
+ \Fr_N(X_N,\mu)^+\leq C_T\left(1+\frac1N\sum_i|x_i|^2\right).
+\end{equation}
+Thus $\Lambda_-\leq\beta NF_N^++|\log \K_{N,\beta}|$ is integrable. It follows that $\E_{f_N}[|\Fr_N|]$ and $\Hr(f_N\mid\mu^{\otimes N})$ are finite. The entropy chain rule and \eqref{eq:exact-splitting} now prove \eqref{eq:energy-physical-identity} as an equality of finite quantities. The periodic proof is the same, with bounded functions replacing the growth estimates.
+\end{proof}
+
+\subsection{Entropy duality and a bounded canonical kernel}
+We recall the elementary entropy inequality in the form
+\begin{equation}\label{eq:entropy-duality}
+ \int A\dd P\leq \Hr(P\mid R)+\log\int e^A\dd R.
+\end{equation}
+For bounded $A$, this follows from the nonnegativity of the relative entropy with respect to $e^AR/\int e^A\dd R$. Truncation gives the same inequality whenever the right side and the required negative part are finite. In particular, \eqref{eq:trajectory-buffer}, applied with $A=-bNF_N$ and $R=\mu^{\otimes N}$, gives
+\begin{equation}\label{eq:duality-coercivity}
+ \Er_N(f_N,\mu)\geq\left(\frac1\beta-\frac1b\right)\Hr_N(f_N\mid\mu^{\otimes N})-\frac{L}{bN}.
+\end{equation}
+This is the modulated logarithmic Hardy--Littlewood--Sobolev inequality used here. It is a direct static consequence of the partition estimate and is retained as a result of Part~I; the short derivation fixes its normalization.
+
+The next estimate is the bounded canonical-kernel exponential estimate underlying the Jabin--Wang commutator method; see \cite[Theorem~2.2]{BJW} and \cite[Lemma~9.1]{CdCRS}. We include an elementary moment-counting proof so that the same assertion applies on both spaces without a geometric restriction on the probability measure.
+
+\begin{lemma}[Bounded canonical exponential estimate]\label{lem:canonical}
+Let $q$ be a real symmetric kernel on a probability space $(X,\mu)$, with $|q|\leq M$ and $\int q(x,y)\dd\mu(y)=0$ for almost every $x$. For independent $X_1,\ldots,X_N$ of law $\mu$, set
+\begin{equation}\label{eq:canonical-statistic}
+ S_N=\frac1N\sum_{i\ne j}q(X_i,X_j).
+\end{equation}
+If $M>0$ and $|t|\leq(8e^2M)^{-1}$, then
+\begin{equation}\label{eq:canonical-exponential}
+ \E[e^{tS_N}]\leq\frac32.
+\end{equation}
+For $M=0$, the expectation is one for every $t$.
+\end{lemma}
+\begin{proof}
+We have $\E[S_N]=0$. For an integer $m\geq2$, expand $\E[S_N^m]$ into ordered $m$-tuples of ordered pairs. A term vanishes whenever some particle index appears at exactly one endpoint: integrate that variable and use canonicality. Every surviving term is bounded in absolute value by $M^m$.
+
+A surviving identification of the $2m$ endpoints is a set partition into blocks of size at least two. For a partition with $j$ blocks, the number of distinct index assignments is at most $N^j$. The exponential generating function for these weighted partitions is $\exp[N(e^z-1-z)]$. Allowing identifications forbidden by $i\ne j$ only increases the count. Consequently,
+\begin{equation}\label{eq:canonical-count}
+ |\E[S_N^m]|\leq M^mN^{-m}(2m)![z^{2m}]
+                          \exp[N(e^z-1-z)].
+\end{equation}
+If $N\geq m$, take $z=\sqrt{m/N}\leq1$. The coefficients are nonnegative, and $e^z-1-z\leq z^2$ on $[0,1]$. Thus,
+\begin{align}
+ |\E[S_N^m]|&\leq M^mN^{-m}(2m)!e^m(N/m)^m\notag\\
+ &\leq(4emM)^m.
+ \label{eq:canonical-moments}
+\end{align}
+If $N<m$, the deterministic bound $|S_N|\leq NM\leq mM$ proves the same estimate. Since $m!\geq(m/e)^m$, expansion of the exponential yields
+\begin{equation}\label{eq:canonical-series}
+ \E[e^{tS_N}]
+ \leq1+\sum_{m=2}^{\infty}(4e^2M|t|)^m
+ \leq1+\sum_{m=2}^{\infty}2^{-m}=\frac32.
+\end{equation}
+For each fixed $N$, $S_N$ is bounded, which justifies exchanging its exponential series and expectation before using the uniform estimates.
+\end{proof}
+
+\begin{lemma}[The logarithmic commutator]\label{lem:commutator}
+Let $\mu$ be an absolutely continuous probability measure and let $v$ be a globally Lipschitz vector field on the selected space. Then, for every $f_N$ of finite relative entropy with respect to $\mu^{\otimes N}$,
+\begin{equation}\label{eq:commutator-estimate}
+ \abs{\E_{f_N}\!\left[\iint_{x\ne y}
+ (v(x)-v(y))\cdot\nabla\g(x-y)\dd(\mu_N-\mu)^{\otimes2}\right]}
+ \leq C_\d\Lip(v)\left(\Hr_N(f_N\mid\mu^{\otimes N})+\frac1N\right).
+\end{equation}
+In the whole space, the constant can be chosen independently of $\d$.
+\end{lemma}
+\begin{proof}
+Set $q(x,y)=(v(x)-v(y))\cdot\nabla\g(x-y)$ off the diagonal, assigning any value on the diagonal. This is a symmetric bounded kernel. On $\R^\d$, $|q|\leq\Lip(v)$ because $|\nabla\g(z)|=|z|^{-1}$. On the torus, $|q|\leq C_\d\Lip(v)$ by the normalized kernel's local gradient bound and smoothness away from zero.
+
+Write $q_\mu(x)=\int q(x,y)\dd\mu(y)$, $\bar q=\int q_\mu\dd\mu$, and $\widetilde q(x,y)=q(x,y)-q_\mu(x)-q_\mu(y)+\bar q$. The centered kernel is canonical and satisfies $\norm{\widetilde q}_\infty\leq4\norm q_\infty$. Exact expansion, retaining the deleted empirical diagonal, gives
+\begin{equation}\label{eq:commutator-centering}
+ \iint_{x\ne y}q(x,y)\dd(\mu_N-\mu)^{\otimes2}
+ =\frac1{N^2}\sum_{i\ne j}\widetilde q(x_i,x_j)
+       -\frac2{N^2}\sum_i q_\mu(x_i)+\frac{\bar q}{N}.
+\end{equation}
+The last two terms have absolute value at most $3\norm q_\infty/N$. Apply \eqref{eq:entropy-duality} with both signs of $tS_N$, where $S_N$ is constructed from $\widetilde q$ and $t=(8e^2\norm{\widetilde q}_\infty)^{-1}$. Lemma~\ref{lem:canonical} gives
+\begin{equation}\label{eq:entropic-canonical}
+ \frac1N|\E_{f_N}[S_N]|
+ \leq8e^2\norm{\widetilde q}_\infty
+          \left(\Hr_N(f_N\mid\mu^{\otimes N})+\frac{\log(3/2)}N\right).
+\end{equation}
+The zero-kernel case is immediate. Combining the two bounds proves \eqref{eq:commutator-estimate}; $(32e^2+3)\norm q_\infty/\Lip(v)$ is a valid constant. The diagonal assignment never changes \eqref{eq:commutator-centering}, since $\mu$ is nonatomic and the empirical sum uses $i\ne j$.
+\end{proof}
+
+\subsection{The full-potential dissipation inequality}
+\begin{proposition}[Modulated dissipation]\label{prop:dissipation}
+Under the assumptions of either finite-time theorem, for almost every $t\in[0,T]$,
+\begin{align}
+ \Er_N(f_N^t,\mu^t)
+ &+\frac1{\beta^2N}\int_0^t\int f_N^s
+ \abs{p_N^s-\beta(\u^s(x_1),\ldots,\u^s(x_N))}^{\,2}\dd X_N\dd s\notag\\
+ &\leq \Er_N(f_N^0,\mu^0)+\frac12\int_0^t
+ \E_{f_N^s}\!\left[\iint_{x\ne y}(\u^s(x)-\u^s(y))\cdot\nabla\g(x-y)
+                 \dd(\mu_N-\mu^s)^{\otimes2}\right]\dd s.
+ \label{eq:full-dissipation}
+\end{align}
+The squared quantity is the logarithmic-score version of the relative Fisher information with respect to $\Q_{N,\beta}(\mu^s)$.
+\end{proposition}
+\begin{proof}
+For brevity within the proof, put $\u^N(X_N)=(\u(x_1),\ldots,\u(x_N))$ and $A^t(X_N)=N^{-1}\sum_i a^t(x_i)$. Testing the weighted equation gives
+\begin{equation}\label{eq:test-chemical}
+ \frac{\dd}{\dd t}\E_{f_N^t}[A^t]
+ =\E_{f_N^t}[\partial_t A^t]
+      -\frac1{\beta N}\int f_N^t p_N^t\cdot \u^{N,t}\dd X_N.
+\end{equation}
+We first justify this test in the whole space. Cut $A$ off by a smooth function of $|X_N|/R$ equal to one on $|X_N|\leq R$ and zero on $|X_N|\geq2R$. By \cref{lem:domains}, the gradient of the removed part is bounded by $C_{N,T}(1+|X_N|)$ on $|X_N|>R$, and its time derivative by $C_{N,T}(1+|X_N|^2)$ there. Cauchy--Schwarz in space-time, \eqref{eq:physical-entropy}, and \eqref{eq:particle-moments} show that the flux error tends to zero. Dominated convergence treats the time derivative and the initial and final expectations. This proves \eqref{eq:test-chemical} in the distributional-in-time sense, with its absolutely continuous representative. Local classical regularity permits ordinary smooth approximation of the compactly supported tests. The periodic test is immediate by the same approximation.
+
+The other integration by parts needed below is
+\begin{equation}\label{eq:score-ibp}
+ \int f_N p_N\cdot \u^N\dd X_N
+ =-\int f_N\diver \u^N\dd X_N
+       +\beta\int f_N\nabla \HN\cdot \u^N\dd X_N,
+\end{equation}
+where the final term is interpreted after pairwise symmetrization:
+\begin{equation}\label{eq:symmetrized-force}
+ \nabla \HN\cdot \u^N
+ =\sum_i\nabla V(x_i)\cdot \u(x_i)
+       +\frac1{2N}\sum_{i\ne j}
+                  (\u(x_i)-\u(x_j))\cdot\nabla W(x_i-x_j).
+\end{equation}
+Here and below, $W(x-y)$ abbreviates the translation-invariant pair potential in \eqref{eq:h-I}.
+
+To prove \eqref{eq:score-ibp}, first work on a compact subset of the collision complement. The weighted Sobolev definition gives $\nabla f_N=f_Np_N-\beta f_N\nabla \HN$ locally in $L^1$, so integration by parts is valid there. Insert the collision cutoff
+\begin{equation}\label{eq:collision-cutoff}
+ \chi_\varepsilon(X_N)=\prod_{i<j}\eta\bigl(|x_i-x_j|/\varepsilon\bigr),
+\end{equation}
+where $\eta$ vanishes on $[0,1]$ and equals one on $[2,\infty)$. On the torus, use a smooth local representative of distance on the support of each cutoff derivative. Since differentiation in coordinates $i,j$ produces their difference,
+\begin{equation}\label{eq:collision-error}
+ |\u^N\cdot\nabla\chi_\varepsilon|
+ \leq C_N\Lip(\u)\,\boldsymbol 1_{\{\min_{i<j}|x_i-x_j|\leq2\varepsilon\}}.
+\end{equation}
+The integral of this error against $f_N$ tends to zero, since $f_N$ is a density and the collision set is Lebesgue-null. After symmetrization, the interaction term in \eqref{eq:symmetrized-force} is bounded, and the confinement term is bounded by $C_{N,T}(1+|X_N|^2)$. The left side of \eqref{eq:score-ibp} is integrable by Cauchy--Schwarz. Thus the collision cutoff may be removed by dominated convergence. In the whole space, also use the outer cutoff above. Its additional error $\u^N\cdot\nabla\chi_R$ is bounded on its annulus by $C_{N,T}$, and therefore tends to zero in $L^1(f_N)$. The other terms pass by the moment bound. This proves \eqref{eq:score-ibp} for almost every time; the same estimates are integrable in time. In particular, no unpaired force has been passed to a limit.
+
+Combine the physical entropy inequality, \eqref{eq:energy-physical-identity}, and \eqref{eq:test-chemical}. The resulting integrand, apart from the initial energy, is
+\begin{equation}\label{eq:before-square}
+ -\frac1{\beta^2N}\int f_N|p_N|^2
+ +\frac1{\beta N}\int f_Np_N\cdot \u^N
+       -\E_{f_N}[\partial_t A]+I_\mu'.
+\end{equation}
+Complete the square by using
+\begin{equation}\label{eq:complete-square}
+ -\beta^{-2}|p|^2+\beta^{-1}p\cdot v
+ =-\beta^{-2}|p-\beta v|^2-\beta^{-1}p\cdot v+|v|^2.
+\end{equation}
+Apply \eqref{eq:score-ibp} to the remaining score term. The divergence contribution cancels the term $\beta^{-1}\diver \u$ in \eqref{eq:a-time}. Moreover,
+\begin{equation}\label{eq:confinement-cancel}
+ |\u|^2-\beta^{-1}\u\cdot\nabla\log\mu
+ =\u\cdot(\nabla V+\nabla h_\mu).
+\end{equation}
+Thus the confinement cancels exactly against its term in \eqref{eq:symmetrized-force}. After removing the negative square, the remaining expression is
+\begin{equation}\label{eq:remaining-terms}
+ -\frac1{2N^2}\E_{f_N}\!\left[\sum_{i\ne j}
+        (\u(x_i)-\u(x_j))\cdot\nabla W(x_i-x_j)\right]
+ +\frac1N\E_{f_N}\!\left[\sum_i\bigl(\u\cdot\nabla h_\mu-\partial_t h_\mu\bigr)(x_i)\right]
+ +I_\mu'.
+\end{equation}
+By \eqref{eq:h-time},
+\begin{equation}\label{eq:cross-cancel}
+ (\u\cdot\nabla h_\mu-\partial_t h_\mu)(x)
+ =\int(\u(x)-\u(y))\cdot\nabla W(x-y)\mu(y)\dd y.
+\end{equation}
+Symmetry in \eqref{eq:I-time} gives
+\begin{equation}\label{eq:continuum-cancel}
+ I_\mu'=-\frac12\iint(\u(x)-\u(y))\cdot\nabla W(x-y)
+                     \mu(x)\mu(y)\dd x\dd y.
+\end{equation}
+Expanding $(\mu_N-\mu)^{\otimes2}$ shows that \eqref{eq:remaining-terms} is minus one half of its $W$-commutator. Since $W=-\g$, this is the positive one-half $\g$-commutator on the right side of \eqref{eq:full-dissipation}. All terms are integrable by the bounds already proved. This proves the inequality.
+
+Finally, differentiation of \eqref{eq:reference-factorization} gives
+\begin{equation}\label{eq:modulated-score}
+ \nabla\log\frac{f_N}{\Q_{N,\beta}(\mu)}=p_N-\beta \u^N
+\end{equation}
+on the collision complement, in the weighted square-root sense at zeros. This identifies the dissipative term.
+\end{proof}
+
+\begin{remark}[The Fisher coefficient]\label{rem:fisher-factor}
+Our logarithmic-score coefficient is $1/(\beta^2N)$. Equivalently, the square-root coefficient is $4/(\beta^2N)$, since
+\begin{equation}\label{eq:fisher-factor-four}
+ \int f_N\abs{\nabla\log(f_N/Q)}^2
+ =4\int Q\abs{\nabla\sqrt{f_N/Q}}^2.
+\end{equation}
+For comparison with \cite[Proposition~2.3]{BJW}, their diffusion parameter is $\sigma=\beta^{-1}$, their pair potential is $W=-\g$, their modulated free energy is $\beta \Er_N$, and their reference field is $\beta \u$. These substitutions recover exactly \eqref{eq:full-dissipation}. We retain the explicit score definition rather than infer a coefficient from a different convention for Fisher information.
+\end{remark}
+
+\subsection{Proofs of the finite-time statements}
+\begin{proof}[Common proof of \cref{thm:periodic-finite,thm:planar-finite}]
+Lemma~\ref{lem:domains} first ensures that every modulated quantity is finite. Equation~\eqref{eq:duality-coercivity}, with $C_0=1+L/b$, gives \eqref{eq:coercivity-main}. Define, only within this proof,
+\begin{equation}\label{eq:shifted-energy}
+ D_N(t)=\Er_N(f_N^t,\mu^t)+\frac{C_0}{N}.
+\end{equation}
+Then $D_N(t)\geq N^{-1}$ and
+\begin{equation}\label{eq:entropy-to-shift}
+ \Hr_N(f_N^t\mid(\mu^t)^{\otimes N})+\frac1N
+ \leq\max\!\left\{1,\frac{\beta b}{b-\beta}\right\}D_N(t).
+\end{equation}
+Indeed, multiply \eqref{eq:coercivity-main} by the displayed maximum. Discarding the nonnegative Fisher term in \eqref{eq:full-dissipation}, and using \cref{lem:commutator}, gives
+\begin{equation}\label{eq:integral-gronwall}
+ D_N(t)\leq D_N(0)+C_\d\max\!\left\{1,\frac{\beta b}{b-\beta}\right\}
+      \int_0^t\norm{\nabla \u^s}_{L^\infty}D_N(s)\dd s.
+\end{equation}
+The function $D_N$ is locally essentially bounded by \eqref{eq:energy-physical-identity}, the physical entropy inequality, and the reference and moment bounds. Integral Gr\"onwall therefore proves \eqref{eq:finite-main}; coercivity also gives \eqref{eq:entropy-main}. All estimates are uniform in $N$. The bound on the whole-space commutator uses $|\nabla\g(z)|=|z|^{-1}$ and has an absolute constant, proving the asserted dependence.
+\end{proof}
+
+\begin{proof}[Proof of \cref{cor:product}]
+Independence and the deleted diagonal give the exact initial value
+\begin{equation}\label{eq:product-expectation}
+ \Er_N((\mu^0)^{\otimes N},\mu^0)
+ =\E_{(\mu^0)^{\otimes N}}[\Fr_N(X_N,\mu^0)]
+ =-\frac{I_{\mu^0}}{N}.
+\end{equation}
+Consequently, the right side of \eqref{eq:finite-main} is of order $N^{-1}$. In the whole space, $I_{\mu^0}$ need not have either sign. Coercivity at time zero guarantees $C_0-I_{\mu^0}\geq1$ without any sign assertion. The upper energy bound and \eqref{eq:duality-coercivity} give $|\Er_N|\leq C_T/N$. Equation~\eqref{eq:entropy-main} gives the entropy estimate, and
+\begin{equation}\label{eq:mean-energy-absolute}
+ |\E_{f_N^t}[\Fr_N]|\leq |\Er_N(f_N^t,\mu^t)|+
+                  \beta^{-1}\Hr_N(f_N^t\mid(\mu^t)^{\otimes N})
+\end{equation}
+gives the remaining assertion.
+
+For the marginal bound, partition the first $k\lfloor N/k\rfloor$ coordinates into disjoint blocks of size $k$. The entropy chain rule and convexity of conditional relative entropy show that the entropy of the full law relative to a product reference is at least the sum of the block entropies. Symmetry therefore gives
+\begin{equation}\label{eq:marginal-entropy-blocks}
+ \Hr(f_N\mid\mu^{\otimes N})\geq\lfloor N/k\rfloor
+                         \Hr(f_{N,k}\mid\mu^{\otimes k}).
+\end{equation}
+For completeness, for two coordinate groups the difference between the left side and the two marginal entropies is the relative entropy of their joint law with respect to the product of its marginals, hence is nonnegative. Iterate this identity and discard the final block. Since $\lfloor N/k\rfloor\geq N/(2k)$, \eqref{eq:product-marginal} follows from the normalized entropy bound. No equilibrium local-chaos theorem is used.
+\end{proof}
+
+
+% BEGIN SOURCE-RECONCILIATION ADDITION: thermal normalization.
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\subsection{Physical and thermal coordinates}\label{subsec:thermal-coordinates}
+
+A fixed dilation removes the inverse temperature from the diffusion coefficient and normalizes the confinement. It preserves relative entropy, but the deleted self-interaction leaves a scalar correction in the modulated energy. The corresponding change-of-variables calculation for the repulsive sign appears in Rosenzweig and Serfaty \cite[Lemmas~2.2--2.3]{RSselfsimilar}; we record the attractive sign and the normalization \eqref{eq:whole-kernel} explicitly.
+
+\begin{lemma}[Dilation and thermal normalization]\label{lem:thermal-normalization}
+Let $\Omega=\R^\d$, $\g(x)=-\log|x|$, and $D_a(x)=ax$ for $a>0$. For a probability density $\mu$ and a collision-free configuration $X_N$, whenever the defining logarithmic integrals are finite,
+\begin{equation}\label{eq:dilation-energy}
+ \Fr_N(aX_N,(D_a)_\#\mu)=\Fr_N(X_N,\mu)-\frac{\log a}{2N}.
+\end{equation}
+Consequently, for every $b>0$,
+\begin{equation}\label{eq:dilation-partition}
+ \K_{N,b}((D_a)_\#\mu)=a^{b/2}\K_{N,b}(\mu),
+\end{equation}
+where equality is also valid for an infinite partition function. Whenever $\Q_{N,b}(\mu)$ is defined, its pushforward under dilation of all coordinates is $\Q_{N,b}((D_a)_\#\mu)$. If $f_N$ has finite relative entropy and integrable modulated energy, then
+\begin{align}
+ \Hr_N((D_a^{\otimes N})_\# f_N\mid((D_a)_\#\mu)^{\otimes N})
+ &=\Hr_N(f_N\mid\mu^{\otimes N}),\label{eq:dilation-entropy}\\
+ \Er_N((D_a^{\otimes N})_\# f_N,(D_a)_\#\mu)
+ &=\Er_N(f_N,\mu)-\frac{\log a}{2N}.\label{eq:dilation-free-energy}
+\end{align}
+
+For the physical equation \eqref{eq:mean-field} with $V(x)=\kappa|x|^2/2$ and $\beta>0$, set
+\begin{equation}\label{eq:thermal-coordinates}
+ a=\left(\frac{\beta\kappa}{2}\right)^{-1/2},\qquad
+ y=x/a,\qquad \tau=\frac\kappa2t,\qquad
+ \nu^\tau(y)=a^\d\mu^{2\tau/\kappa}(ay).
+\end{equation}
+Then $\nu$ solves
+\begin{equation}\label{eq:thermal-equation}
+ \partial_\tau\nu=\Delta\nu+
+ \diver\bigl(\nu(2y-\beta\nabla\g*\nu)\bigr)=\diver(\nu v),
+ \qquad v=\nabla\log\nu+2y-\beta\nabla\g*\nu.
+\end{equation}
+Write $\widetilde f_N^\tau(Y_N)=a^{dN}f_N^{2\tau/\kappa}(aY_N)$. In these coordinates, the exact physical modulated free energy is
+\begin{equation}\label{eq:physical-thermal-energy}
+ \Er_N(f_N^t,\mu^t)
+ =\Er_N(\widetilde f_N^{\kappa t/2},\nu^{\kappa t/2})
+   +\frac{\log(\beta\kappa/2)}{4N}.
+\end{equation}
+The functional on the right retains the definition \eqref{eq:modulated-free-energy}, including the factor $\beta^{-1}$ in front of the entropy.
+\end{lemma}
+\begin{proof}
+Use $\g(az)=\g(z)-\log a$ separately in the pair term, the particle--background term, and the background term in \eqref{eq:modulated-energy}. Their scalar contributions are
+\begin{equation}\label{eq:dilation-scalar-count}
+ \left(\frac{N-1}{2N}-1+\frac12\right)\log a
+ =-\frac{\log a}{2N}.
+\end{equation}
+This proves \eqref{eq:dilation-energy}. A change of variables under the product measure proves \eqref{eq:dilation-partition}; the same scalar cancels in the normalized tilted law. The Jacobians cancel in the density ratio in relative entropy, which proves \eqref{eq:dilation-entropy} and then \eqref{eq:dilation-free-energy}. These arguments use finite logarithmic terms before subtracting them.
+
+In \eqref{eq:thermal-coordinates}, the diffusion, confinement, and interaction coefficients after dividing by the time factor $\kappa/2$ are, respectively,
+\begin{equation}\label{eq:thermal-coefficient-check}
+ \frac{2}{\beta\kappa a^2}=1,\qquad
+ \frac{2\kappa}{\kappa}=2,\qquad
+ \frac{2}{\kappa a^2}=\beta.
+\end{equation}
+Here $\nabla\g(az)=a^{-1}\nabla\g(z)$. Substitution gives \eqref{eq:thermal-equation}; equivalently, make the same change in compactly supported weak tests. Finally, apply \eqref{eq:dilation-free-energy} with the value of $a$ in \eqref{eq:thermal-coordinates}. This proves \eqref{eq:physical-thermal-energy}.
+\end{proof}
+
+The full fields and their spatial derivatives satisfy
+\begin{equation}\label{eq:thermal-field-scaling}
+ \u^t(x)=\sqrt{\frac{\kappa}{2\beta}}\,
+       v^{\kappa t/2}(x/a),\qquad
+ \nabla_xu^t(x)=\frac\kappa2\nabla_yv^{\kappa t/2}(x/a).
+\end{equation}
+Thus, with equality in the extended nonnegative sense,
+\begin{align}
+ \int_0^\infty\norm{\nabla_xu^t}_{L^\infty}\dd t
+ &=\int_0^\infty\norm{\nabla_yv^\tau}_{L^\infty}\dd\tau,
+ \label{eq:thermal-integrated-lipschitz}\\
+ \int_0^\infty\norm{\u^t}_{L^\infty}^2\dd t
+ &=\frac1\beta\int_0^\infty\norm{v^\tau}_{L^\infty}^2\dd\tau.
+ \label{eq:thermal-integrated-field}
+\end{align}
+In particular, transfer of a temperature-uniform thermal coercivity estimate requires the physical correction
+$\Er_N(f_N^t,\mu^t)-\log(\beta\kappa/2)/(4N)$. Moreover, an initial logarithmic ratio $p$ has thermal H\"older seminorm $[p(a\,\cdot)]_{C^\alpha}=a^\alpha[p]_{C^\alpha}$. Uniformity of this norm as $\beta\downarrow0$ is an additional hypothesis; it does not follow from a uniform physical-coordinate H\"older bound. The change of variables is made only for $\beta>0$.
+\endgroup
+% END SOURCE-RECONCILIATION ADDITION.
+
+\section{Relaxation of the mean-field dynamics}\label{sec:relaxation}
+
+\subsection{\texorpdfstring{\revision{Periodic relaxation near the uniform density}}{Periodic relaxation near the uniform density}}\label{subsec:periodic-relaxation}
+
+We establish the periodic estimates needed to verify the global trajectory conditions. Their dependence on the actual inverse temperature is important for uniformity as $\beta$ approaches zero through positive values.
+
+\begin{proposition}[Periodic small-data relaxation]\label{prop:periodic-relaxation}
+Let $\ell>\d/2+2$ be an integer and $0<\beta<\beta_s$. If $\norm{\mu^0-1}_{H^\ell}$ is sufficiently small compared with both $1$ and $\beta^{-1}-\beta_s^{-1}$, the mean-field equation has a unique global solution with $1/2\leq\mu^t\leq3/2$ and
+\begin{align}
+ \norm{\mu^t-1}_{H^\ell}
+ &\leq e^{-2\pi^2(\beta^{-1}-\beta_s^{-1})t}
+                    \norm{\mu^0-1}_{H^\ell},\label{eq:periodic-decay}\\
+ \int_0^\infty\norm{\nabla \u^t}_{L^\infty}\dd t
+ &\leq C_{\d,\ell}\frac{\beta_s(1+\beta)}{\beta_s-\beta}
+                        \norm{\mu^0-1}_{H^\ell}.
+ \label{eq:periodic-integrated-velocity}
+\end{align}
+A sufficiently small choice of $\varepsilon_{\d,\ell}$ in \eqref{eq:periodic-radius} makes these hypotheses valid simultaneously for $0<\beta\leq\beta_0$.
+\end{proposition}
+\begin{proof}
+Write $h=\mu-1$. It has zero spatial mean and solves
+\begin{equation}\label{eq:h-equation}
+ \partial_t h=\beta^{-1}\Delta h-\Delta\g*h-
+                         \diver(h\nabla\g*h).
+\end{equation}
+On nonzero Fourier modes, $\widehat\g(k)=\beta_s^{-1}|k|^{-\d}\leq\beta_s^{-1}$. Taking the $H^\ell$ inner product with $h$ gives
+\begin{equation}\label{eq:sobolev-energy}
+ \frac12\frac{\dd}{\dd t}\norm h_{H^\ell}^2+
+ (\beta^{-1}-\beta_s^{-1})\norm{\nabla h}_{H^\ell}^2
+ \leq C_{\d,\ell}\norm h_{H^\ell}\norm{\nabla h}_{H^\ell}^2.
+\end{equation}
+To verify the nonlinear bound, $H^\ell$ is an algebra, and the Fourier multiplier $\nabla\g*$ is bounded on $H^\ell$. Thus $\norm{h\nabla\g*h}_{H^\ell}\leq C\norm h_{H^\ell}^2$. Move the divergence to $h$ in the inner product and use the zero-mean Poincar\'e inequality $\norm h_{H^\ell}\leq(2\pi)^{-1}\norm{\nabla h}_{H^\ell}$.
+
+If the initial norm is at most $(\beta^{-1}-\beta_s^{-1})/(2C_{\d,\ell})$, continuity and \eqref{eq:sobolev-energy} imply that it never exceeds that value. Absorb the right side and use Poincar\'e again. The resulting differential inequality for $\norm h_{H^\ell}^2$ proves \eqref{eq:periodic-decay}. A further absolute smallness condition gives $\norm h_\infty\leq1/2$.
+
+Here are the existence and continuation details. For $\d\geq2$, the linear operator $-\Delta\g*$ is bounded on $H^\ell$ and commutes with the heat semigroup. Its combined semigroup maps $H^{\ell-1}$ to $H^\ell$ with norm at most $C_{\beta,T}(1+t^{-1/2})$ on $0<t\leq T$. The nonlinearity in \eqref{eq:h-equation} is locally Lipschitz from $H^\ell$ to $H^{\ell-1}$ by the product estimate above. The Duhamel map is a contraction in a closed ball of $C([0,T];H^\ell)$ when $T$ is small, because the integral of $1+t^{-1/2}$ tends to zero with $T$. This proves local existence, uniqueness, and the continuation criterion that a finite maximal time requires an unbounded $H^\ell$ norm. Fourier Galerkin approximation justifies \eqref{eq:sobolev-energy}; it also gives \revision{$h\in L^2_{\rm loc}([0,\infty);H^{\ell+1})$}. The uniform bound precludes finite-time failure of continuation. The equation implies $\partial_t\mu\in C([0,T];H^{\ell-2})$, and ordinary heat smoothing gives positive-time smoothness. Since $H^\ell\hookrightarrow C^2$ and $H^{\ell-2}\hookrightarrow C^0$, the finite-time reference class is satisfied, including at the initial time.
+
+Finally,
+\begin{equation}\label{eq:log-hessian}
+ \nabla^2\log(1+h)=\frac{\nabla^2 h}{1+h}
+                        -\frac{\nabla h\otimes\nabla h}{(1+h)^2}.
+\end{equation}
+Sobolev embedding and the bounded multiplier $\nabla^2\g*$ give
+\begin{equation}\label{eq:velocity-h-bound}
+ \norm{\nabla \u^t}_{L^\infty}\leq C_{\d,\ell}(\beta^{-1}+1)
+                                           \norm{h^t}_{H^\ell}.
+\end{equation}
+Integrating \eqref{eq:periodic-decay} proves \eqref{eq:periodic-integrated-velocity}, because
+\begin{equation}\label{eq:temperature-cancellation}
+ \frac{\beta^{-1}+1}{\beta^{-1}-\beta_s^{-1}}
+ =\frac{\beta_s(1+\beta)}{\beta_s-\beta}.
+\end{equation}
+For the last assertion, $\beta_{\rm gm}\leq\beta_s$ and
+\begin{equation}\label{eq:radius-versus-gap}
+ \frac{\beta_{\rm gm}-\beta_0}{\beta_{\rm gm}(\beta_{\rm gm}+\beta_0)}
+ \leq \frac12(\beta_0^{-1}-\beta_{\rm gm}^{-1})
+ \leq \frac12(\beta^{-1}-\beta_s^{-1}).
+\end{equation}
+The same fraction is at most $\beta_{\rm gm}^{-1}$. A fixed sufficiently small $\varepsilon_{\d,\ell}$ therefore enforces both required smallness conditions, since $\beta_{\rm gm}$ is fixed by the dimension.
+\end{proof}
+
+
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\subsection{Confined relaxation in thermal coordinates}
+
+We now verify the trajectory bounds needed for the confined application. Throughout this subsection, assume the equilibrium part of the confined static package in \cref{def:confined-static-package}, fix $0<\beta\leq\beta_0$, and write $m=m_\beta$. \revision{The full static hypotheses are recalled in Section~\ref{subsec:confined-static-package}; in the plane, \cref{prop:planar-confined-static-package} supplies them.} The thermal equation is
+\begin{equation}\label{eq:confined-thermal-equation}
+ \partial_t\nu=\Delta\nu+\diver\bigl(\nu(2x-\beta\nabla\g*\nu)\bigr).
+\end{equation}
+Set
+\begin{equation}\label{eq:confined-ratio-notation}
+ h=\frac\nu m-1,\qquad q_h=\g*(mh),\qquad
+ b_m=-2x+\beta\nabla\g*m,
+ \qquad L_m=\Delta+b_m\cdot\nabla.
+\end{equation}
+The equilibrium identity \eqref{eq:scaled-equilibrium} gives $b_m=\nabla\log m$, so $L_m$ is symmetric and nonpositive on $L^2(m)$.
+
+For centered $h\in L^2(m)$, define
+\begin{equation}\label{eq:confined-response-operators}
+ T_mh=q_h-\int q_h\dd m,\qquad A_m=\Id-\beta T_m.
+\end{equation}
+Only the gradient of $T_mh$ occurs below, so the centering constant has no effect on the equation.
+
+\begin{lemma}[Uniform one-body coercivity]\label{lem:confined-linear-coercivity}
+There are constants $\lambda,G>0$, depending only on the equilibrium package, such that
+\begin{align}
+ \int\left|\varphi-\int\varphi\dd m\right|^2\dd m
+ &\leq\frac1\lambda\int|\nabla\varphi|^2\dd m,
+ \label{eq:confined-poincare}\\
+ \norm{\nabla\g*(mh)}_{L^2(m)}&\leq G\norm h_{L^2(m)}.
+ \label{eq:confined-schur}
+\end{align}
+Moreover, on the centered space,
+\begin{equation}\label{eq:confined-A-gap}
+ 0\leq T_m\leq\frac1{\beta+\eta_{\rm eq}}\Id,
+ \qquad a\Id\leq A_m\leq\Id,
+ \qquad a:=\frac{\eta_{\rm eq}}{\beta_0+\eta_{\rm eq}}>0.
+\end{equation}
+\end{lemma}
+\begin{proof}
+The comparison density $n_\beta$ in \eqref{eq:comparison-profile} has potential
+\begin{equation}\label{eq:comparison-potential}
+ \Phi_\beta(x)=|x|^2+\frac\beta2\log(R^2+|x|^2).
+\end{equation}
+After increasing the fixed $R$ if necessary, $D^2\Phi_\beta\geq\Id$ uniformly for $0\leq\beta\leq\beta_0$. The Bakry--\'Emery inequality for $n_\beta$ and the two-sided comparison \eqref{eq:equilibrium-envelope} give \eqref{eq:confined-poincare}, with a common constant.
+
+For \eqref{eq:confined-schur}, use $|\nabla\g(z)|=|z|^{-1}$ and split at $|z|=1$. The local singularity is integrable in every $\d\geq2$, while the Gaussian-polynomial envelope controls the far part. Thus
+\begin{equation}\label{eq:schur-kernel-bound}
+ \sup_x\int\frac{m(y)}{|x-y|}\dd y+
+ \sup_y\int\frac{m(x)}{|x-y|}\dd x<\infty
+\end{equation}
+with a common bound, and Schur's test proves the assertion.
+
+If $\sigma$ is a finite signed measure of total mass zero for which the logarithmic energy is defined, the Frullani representation
+\begin{equation}\label{eq:frullani-log}
+ -\log r=\frac12\int_0^\infty\frac{e^{-sr^2}-e^{-s}}s\dd s
+\end{equation}
+shows that $\iint\g(x-y)\dd\sigma(x)\dd\sigma(y)\geq0$: the constant term drops, and every Gaussian kernel is positive definite. Apply this to $\sigma=hm$. To obtain the upper bound, substitute $\rho_\varepsilon=m(1+\varepsilon h)$ in \eqref{eq:equilibrium-margin}, divide by $\varepsilon^2/2$, and let $\varepsilon\to0$ through values for which $\rho_\varepsilon\geq0$. Truncation and density extend the result to all centered $h\in L^2(m)$. Hence
+\begin{equation}\label{eq:response-form-bound}
+ 0\leq\ip{h}{T_mh}_{L^2(m)}
+ \leq\frac1{\beta+\eta_{\rm eq}}\norm h_{L^2(m)}^2.
+\end{equation}
+The spectral theorem gives \eqref{eq:confined-A-gap}.
+\end{proof}
+
+Let $P_t=e^{tL_m}$. The following estimates are the only semigroup facts used in the nonlinear argument.
+
+\begin{lemma}[Uniform derivative bounds for the equilibrium semigroup]\label{lem:confined-semigroup}
+There are $c,C>0$ such that, uniformly for $0<\beta\leq\beta_0$,
+\begin{align}
+ \norm{DP_t\phi}_{L^\infty}&\leq Ct^{-1/2}\norm\phi_{L^\infty},
+ \label{eq:semigroup-gradient}\\
+ \norm{D^2P_t\phi}_{L^\infty}&\leq Ct^{-1}\norm\phi_{L^\infty},
+ \label{eq:semigroup-hessian}\\
+ \norm{D^jP_t\phi}_{L^\infty}&\leq C_\alpha t^{-(j-\alpha)/2}
+           \norm\phi_{C_b^\alpha},\qquad j=1,2,
+ \label{eq:semigroup-holder}
+\end{align}
+for $0<t\leq1$ and $0<\alpha<1$. For $\psi\in C_b^1$,
+\begin{align}
+ \norm{DP_t\psi}_{C_b^1}&\leq J(t)\norm\psi_{C_b^1},
+ \qquad
+ J(t)=\begin{cases}Ct^{-1/2},&0<t\leq1,\\ Ce^{-ct},&t>1,
+ \end{cases}
+ \label{eq:semigroup-long-time}\\
+ \norm{P_t\psi}_{C_b^2}&\leq C(1+t^{-1/2})\norm\psi_{C_b^1},
+ \qquad t>0.
+ \label{eq:semigroup-full-C2}
+\end{align}
+Moreover, for $\psi\in C_b^2$ and $0<t\leq1$,
+\begin{equation}\label{eq:semigroup-right-upper}
+ \norm{P_t\psi}_{C_b^2}\leq(1+Ct)\norm\psi_{C_b^2}.
+\end{equation}
+No decay of $\norm{P_t\psi}_{L^\infty}$ is asserted.
+\end{lemma}
+\begin{proof}
+The drift $b_m=-2x+\beta\nabla\g*m$ has linear growth, a globally bounded first derivative, and the bounded higher derivatives needed below, uniformly in the temperature window. These facts follow from \eqref{eq:equilibrium-envelope} by splitting the logarithmic kernel at unit distance and moving derivatives to $m$ on the singular part. Hence the diffusion
+\begin{equation}\label{eq:equilibrium-diffusion}
+ \dd X_t=b_m(X_t)\dd t+\sqrt2\dd B_t
+\end{equation}
+is nonexplosive and generates a twice differentiable stochastic flow. Its first and second variations $J_t$ and $K_t$ satisfy
+\begin{equation}\label{eq:flow-variation-bounds}
+ \norm{J_t}\leq e^{Ct},\qquad \norm{K_t}\leq Cte^{Ct},
+ \qquad 0\leq t\leq1.
+\end{equation}
+The Elworthy--Li formula \cite[Theorem~2.1, equation~(6)]{ElworthyLi}, with diffusion right inverse $\Id/\sqrt2$, reads
+\begin{equation}\label{eq:EL-formula}
+ DP_t\phi(x)\u=\frac1{\sqrt2\,t}
+ \E\left[\phi(X_t^x)\int_0^tJ_su\cdot\dd B_s\right].
+\end{equation}
+It\^o isometry and \eqref{eq:flow-variation-bounds} give \eqref{eq:semigroup-gradient}. Approximation extends the estimate from bounded differentiable functions to bounded measurable functions.
+
+Differentiate \eqref{eq:EL-formula} once more. The term in which the derivative falls on $\phi(X_t^x)$ is bounded by $Ct^{-1/2}\norm{D\phi}_\infty$. The remaining term is
+\begin{equation}\label{eq:EL-second-term}
+ \frac1{\sqrt2\,t}\E\left[
+ \phi(X_t^x)\int_0^tK_s(\u,w)\cdot\dd B_s\right].
+\end{equation}
+The stochastic integral has mean zero. Subtracting from $\phi(X_t^x)$ its value along the deterministic drift trajectory, the two factors in Cauchy--Schwarz have $L^2$ norms at most $C\sqrt t\norm{D\phi}_\infty$ and $Ct^{3/2}$, respectively. Thus \eqref{eq:EL-second-term} is bounded by $Ct\norm{D\phi}_\infty$, and
+\begin{equation}\label{eq:semigroup-C1-C2-short}
+ \norm{D^2P_t\phi}_\infty\leq Ct^{-1/2}\norm{D\phi}_\infty,
+ \qquad 0<t\leq1.
+\end{equation}
+Applying \eqref{eq:semigroup-C1-C2-short} to $P_{t/2}\phi$ and then using \eqref{eq:semigroup-gradient} proves \eqref{eq:semigroup-hessian}. Mollify $\phi\in C_b^\alpha$ at scale $\sqrt t$, apply the bounded-data estimates to the remainder and the differentiable estimates to the mollified part, and optimize at that scale. This gives \eqref{eq:semigroup-holder}. Direct differentiation of the stochastic flow gives \eqref{eq:semigroup-right-upper}; the same argument with one fewer derivative gives the corresponding $C_b^1$ bound.
+
+For long times, write $b_m(x)=-2x+r_m(x)$, where $r_m$ and $Dr_m$ are uniformly bounded. Consequently,
+\begin{equation}\label{eq:drift-dissipativity}
+ \ip{b_m(x)-b_m(y)}{x-y}\leq-2|x-y|^2+C|x-y|.
+\end{equation}
+The curvature function in Eberle's reflection-coupling criterion has bounded negative part near the origin and a common strictly positive lower bound at large separation. Theorem~1 and Corollary~2 of \cite{Eberle} therefore give
+\begin{equation}\label{eq:semigroup-Lipschitz-contraction}
+ \norm{DP_t\psi}_{L^\infty}\leq Ce^{-ct}\norm{D\psi}_{L^\infty},
+ \qquad t\geq1.
+\end{equation}
+Apply \eqref{eq:semigroup-C1-C2-short} on the final half-unit interval to obtain the same decay for the Hessian. This proves \eqref{eq:semigroup-long-time}. Combining the $L^\infty$ contraction of the Markov semigroup with the short-time $C_b^1$-to-$C_b^2$ estimate proves \eqref{eq:semigroup-full-C2}.
+\end{proof}
+
+Put
+\begin{equation}\label{eq:confined-B-operator}
+ B_mh=L_mq_h.
+\end{equation}
+
+\begin{lemma}[Logarithmic potential estimates]\label{lem:confined-potential}
+There is $C<\infty$ such that, if $\int h\dd m=0$, $r=\norm h_\infty$, $X=\norm{Dh}_\infty$, and $r\leq1/2$, then
+\begin{align}
+ \norm{q_h}_\infty+\norm{\nabla q_h}_\infty+\norm{B_mh}_\infty&\leq Cr,
+ \label{eq:potential-zero}\\
+ \norm{\nabla q_h}_{C_b^1}+\norm{B_mh}_{C_b^1}&\leq C(r+X).
+ \label{eq:potential-one}
+\end{align}
+If $Y=\norm{D^2h}_\infty$ and
+\begin{equation}\label{eq:confined-nonlinearity}
+ \mathcal R(h)=-\beta\left(\nabla q_h\cdot\nabla h+(1+h)B_mh\right),
+\end{equation}
+then
+\begin{align}
+ \norm{\mathcal R(h)}_\infty&\leq Cr(1+X),
+ \label{eq:R-zero}\\
+ \norm{\mathcal R(h)}_{C_b^1}&\leq C(r+X+X^2+rY).
+ \label{eq:R-one}
+\end{align}
+The constants are uniform over the temperature window.
+\end{lemma}
+\begin{proof}
+The distributional Laplacian of the logarithm is
+\begin{equation}\label{eq:laplacian-log-dimension}
+ \Delta\g=-2\pi\delta_0\quad(\d=2),
+ \qquad
+ \Delta\g=-(\d-2)|x|^{-2}\quad(\d>2).
+\end{equation}
+For $\d>2$, the flux through a sphere of radius $\varepsilon$ is $O(\varepsilon^{\d-2})$, so no Dirac mass is present. The displayed singularity is locally integrable. The centering $\int h\dd m=0$ removes the logarithmic growth at infinity: for $|x|\geq2$ one may subtract $\g(x)$ inside the convolution and estimate $\g(x-y)-\g(x)$ by the mean-value theorem on $|y|\leq|x|/2$, while the Gaussian tail controls the complement. Split the remaining convolutions into $|x-y|<1$ and its complement, use \eqref{eq:equilibrium-envelope}, and differentiate $mh$ rather than the singular kernel whenever one derivative would otherwise be lost. The linearly growing part of $b_m$ is controlled by
+\begin{equation}\label{eq:x-over-distance}
+ |x|\,|\nabla\g(x-y)|=\frac{|x|}{|x-y|}
+ \leq1+\frac{|y|}{|x-y|}.
+\end{equation}
+These estimates give \eqref{eq:potential-zero}--\eqref{eq:potential-one}. Differentiating \eqref{eq:confined-nonlinearity} and applying those two bounds gives \eqref{eq:R-zero}--\eqref{eq:R-one}.
+\end{proof}
+
+The next proposition contains the complete mean-field input for the confined uniform theorem. The solution class is stated explicitly because the initial logarithmic ratio need not be differentiable. With the constants of \cref{lem:confined-linear-coercivity}, set
+\begin{equation}\label{eq:confined-dynamical-radius}
+ r_{\rm dyn}=\min\left\{r_*,\frac{a\sqrt\lambda}{4\beta_0G}\right\}.
+\end{equation}
+
+\begin{proposition}[Small-amplitude confined relaxation]\label{prop:confined-relaxation}
+Assume the equilibrium part of \cref{def:confined-static-package}. For every $0<\alpha<1$, there is $\varepsilon_*>0$, independent of $\alpha$ and of the finite value of the H\"older seminorm below, such that the following holds. If
+\begin{equation}\label{eq:confined-initial-log-ratio}
+ p_0=\log(\nu^0/m)\in C_b^\alpha(\R^\d),
+ \qquad \norm{p_0}_\infty\leq\varepsilon_*,
+\end{equation}
+then \eqref{eq:confined-thermal-equation} has a unique global solution of the form $\nu^t=m(1+h_t)$ satisfying
+\begin{equation}\label{eq:confined-Duhamel}
+ h_t=P_th_0+\int_0^tP_{t-s}\mathcal R(h_s)\dd s,
+ \qquad h_0=e^{p_0}-1,
+\end{equation}
+where the integral converges pointwise and locally uniformly. The solution is locally time-continuous in $C_{\rm loc}(\R^\d)$, converges to $h_0$ locally uniformly and in $L^2(m)$ as $t\downarrow0$, and is smooth for $t>0$. It preserves mass and positivity and obeys
+\begin{align}
+ \sup_{t\geq0}\norm{h_t}_\infty&\leq r_{\rm dyn},
+ \label{eq:confined-amplitude-tube}\\
+ \norm{h_t}_{L^2(m)}&\leq Ce^{-ct}\norm{h_0}_{L^2(m)},
+ \label{eq:confined-L2-decay}\\
+ \int_0^\infty\left(
+ \norm{v_t}_\infty^2+
+ \norm{Dv_t}_\infty\right)\dd t&<\infty,
+ \qquad v_t=\nabla\log(1+h_t)-\beta\nabla q_{h_t}.
+ \label{eq:confined-thermal-field-integrability}
+\end{align}
+The value of the last integral may depend on $\alpha$ and $\norm{p_0}_{C_b^\alpha}$, but the admissible amplitude $\varepsilon_*$ does not.
+\end{proposition}
+\begin{proof}
+Substitution of $\nu=m(1+h)$ in \eqref{eq:confined-thermal-equation}, using \eqref{eq:scaled-equilibrium}, gives
+\begin{align}
+ \partial_th
+ &=L_mh-\beta\left(\nabla q_h\cdot\nabla h+(1+h)B_mh\right),
+ \label{eq:confined-ratio-equation}\\
+ &=L_mA_mh-\frac\beta m\diver(mh\nabla q_h).
+ \label{eq:confined-ratio-divergence}
+\end{align}
+The two forms fix both signs used below.
+
+\emph{Local construction and the initial layer.}
+On $0<t\leq T$, use the norm
+\begin{equation}\label{eq:confined-local-norm}
+ \norm h_{\mathcal X_T}=\sup_{0<t\leq T}
+ \left(\norm{h_t}_\infty+\sqrt t\norm{Dh_t}_\infty\right).
+\end{equation}
+By \cref{lem:confined-semigroup,lem:confined-potential}, the difference of the Duhamel maps on a fixed small ball is bounded by $C(T+r\sqrt T)$ times the difference in this norm; the differentiated integral uses
+\begin{equation}\label{eq:beta-integral-half}
+ \int_0^t(t-s)^{-1/2}s^{-1/2}\dd s=\pi.
+\end{equation}
+Choosing first the amplitude radius and then $T$ gives a contraction. Pointwise integration and local uniform convergence avoid any separability issue for global bounded-function spaces.
+
+The divergence form
+\begin{equation}\label{eq:confined-mass-form}
+ m\partial_th=\diver\left(m\nabla h-\beta m(1+h)\nabla q_h\right)
+\end{equation}
+shows, after Gaussian cutoff approximation, that $\int h_t\dd m=0$. At a spatial extremum, the transport part of the nonlinearity vanishes and the remaining reaction is bounded by $Cr(t)(1+r(t))$. Quadratic barriers at infinity, compatible with the at-most-linear drift, yield
+\begin{equation}\label{eq:confined-short-amplitude}
+ \sup_{0\leq t\leq1}\norm{h_t}_\infty\leq C\norm{h_0}_\infty.
+\end{equation}
+For a sufficiently small initial amplitude, this keeps $1+h$ positive and lies strictly inside the tube \eqref{eq:confined-ratio-tube}.
+
+Let $r_0=\norm{h_0}_\infty$ and $L_0=\norm{h_0}_{C_b^\alpha}$. Differentiating \eqref{eq:confined-Duhamel} gives
+\begin{equation}\label{eq:confined-X-Volterra}
+ X(t)\leq Cr_0t^{-1/2}+Cr_0\int_0^t(t-s)^{-1/2}(1+X(s))\dd s.
+\end{equation}
+Multiplication by $\sqrt t$ and absorption give
+\begin{equation}\label{eq:confined-gradient-two-bounds}
+ X(t)\leq Cr_0t^{-1/2},
+ \qquad X(t)\leq C_\alpha L_0t^{-(1-\alpha)/2},
+ \qquad0<t\leq1.
+\end{equation}
+For the Hessian, restart the equation at $t/2$:
+\begin{equation}\label{eq:confined-Y-Volterra}
+ \begin{split}
+ Y(t)\leq{}&Ct^{-1/2}X(t/2)\\
+ &+C\int_{t/2}^t(t-s)^{-1/2}
+ \left(r_0+X(s)+X(s)^2+r_0Y(s)\right)\dd s.
+ \end{split}
+\end{equation}
+The product of the two bounds in \eqref{eq:confined-gradient-two-bounds} gives
+$X(s)^2\leq C_\alpha r_0L_0s^{-1+\alpha/2}$. Absorption therefore yields
+\begin{equation}\label{eq:confined-hessian-two-bounds}
+ Y(t)\leq Cr_0t^{-1},
+ \qquad Y(t)\leq C_\alpha L_0t^{-1+\alpha/2},
+ \qquad0<t\leq1.
+\end{equation}
+The coefficient absorbed in both estimates is $Cr_0$; hence the permissible amplitude is independent of $\alpha$ and $L_0$. Since
+\begin{equation}\label{eq:confined-v-estimate}
+ \norm{v_t}_\infty\leq C(X(t)+r_0),
+ \qquad
+ \norm{Dv_t}_\infty\leq C(Y(t)+X(t)^2+X(t)+r_0),
+\end{equation}
+the H\"older-refined estimates imply
+\begin{equation}\label{eq:confined-initial-integrability}
+ \int_0^1\left(\norm{v_t}_\infty^2+\norm{Dv_t}_\infty\right)\dd t<\infty.
+\end{equation}
+Smooth approximation with uniform amplitude and H\"older bounds, followed by local compactness, proves positive-time smoothness and the stated initial traces. The same local estimates give uniqueness in the bounded-ratio mild class.
+
+\emph{Quadratic decay.}
+Set
+\begin{equation}\label{eq:confined-quadratic-energy}
+ \mathcal H(t)=\frac12\ip{h_t}{A_mh_t}_{L^2(m)},
+ \qquad
+ \mathcal D(t)=\int|\nabla A_mh_t|^2\dd m.
+\end{equation}
+Testing \eqref{eq:confined-ratio-divergence} by $A_mh$ gives the exact identity
+\begin{equation}\label{eq:confined-H-identity}
+ \mathcal H'(t)=-\mathcal D(t)
+ +\beta\int mh_t\nabla A_mh_t\cdot\nabla q_{h_t}\dd x.
+\end{equation}
+By \cref{eq:confined-poincare,eq:confined-A-gap},
+\begin{equation}\label{eq:confined-D-controls}
+ \mathcal D\geq\lambda a^2\norm h_{L^2(m)}^2,
+ \qquad \mathcal D\geq2\lambda a\mathcal H.
+\end{equation}
+Using \eqref{eq:confined-schur}, the nonlinear term is at most
+\begin{equation}\label{eq:confined-H-cross}
+ \frac{\beta r_{\rm dyn}G}{a\sqrt\lambda}\mathcal D.
+\end{equation}
+By \eqref{eq:confined-dynamical-radius}, the coefficient is at most $1/4$. Then
+\begin{equation}\label{eq:confined-H-decay}
+ \mathcal H'(t)\leq-\frac12\mathcal D(t)
+ \leq-\lambda a\mathcal H(t),
+\end{equation}
+which proves \eqref{eq:confined-L2-decay} as long as the amplitude tube persists.
+
+\emph{Global $C_b^2$ bootstrap.}
+At time one, the amplitude-only parts of \cref{eq:confined-gradient-two-bounds,eq:confined-hessian-two-bounds} give
+\begin{equation}\label{eq:confined-time-one-C2}
+ s:=\norm{h_1}_{C_b^2}\leq C_s r_0.
+\end{equation}
+We first record the weighted interpolation which prevents a false passage from weighted $L^2(m)$ decay to global uniform decay. Put $P=\d+4$ and
+\begin{equation}\label{eq:confined-localized-density}
+ w=(1+|x|^2)^Pmh.
+\end{equation}
+If $\norm h_{C_b^2}\leq R\leq1$ and $E=\norm h_{L^2(m)}\leq R$, then $\norm w_{C_b^2}\leq CR$ and $\norm w_{L^2(\dd x)}\leq CE$. Mollification at scale
+$\ell=(E/R)^{1/(2+\d/2)}$ gives, for $j=0,1$,
+\begin{equation}\label{eq:confined-weighted-interpolation}
+ \norm{D^jw}_\infty\leq
+ C\left(R\ell^{2-j}+E\ell^{-j-\d/2}\right)
+ \leq CR^{1-\theta}E^\theta,
+ \qquad \theta=\frac2{\d+4}.
+\end{equation}
+For $j=0$ the optimized exponent is in fact stronger; the displayed common bound follows from $E\leq R$. The equilibrium derivative estimates permit division by the polynomial weight and give the corresponding weighted $L^1$ estimates for $mh$ and $D(mh)$. Repeating the kernel splitting from \cref{lem:confined-potential}, and transferring the derivative of $\Delta\g$ to $mh$ when $\d>2$, yields
+\begin{equation}\label{eq:confined-localized-potential}
+ \norm{\nabla q_h}_{C_b^1}+\norm{B_mh}_{C_b^1}
+ +\norm{\mathcal R(h)}_{C_b^1}
+ \leq CR^{1-\theta}E^\theta.
+\end{equation}
+
+Restart \eqref{eq:confined-Duhamel} at time one. Let $K>2$ and consider a maximal interval $[1,T_*)$ on which
+\begin{equation}\label{eq:confined-bootstrap-hypothesis}
+ \norm{h_t}_{C_b^2}\leq R:=Ks\leq\min\{1,r_{\rm dyn}\}.
+\end{equation}
+The decay \eqref{eq:confined-L2-decay} and \eqref{eq:confined-time-one-C2} imply
+\begin{equation}\label{eq:confined-E-decay-from-one}
+ E(t):=\norm{h_t}_{L^2(m)}\leq Cs e^{-\gamma(t-1)},
+ \qquad t\geq1,
+\end{equation}
+for a uniform $\gamma>0$. Hence \eqref{eq:confined-localized-potential} gives
+\begin{equation}\label{eq:confined-R-decay-bootstrap}
+ \norm{\mathcal R(h_t)}_{C_b^1}
+ \leq C K^{1-\theta}s e^{-\theta\gamma(t-1)}.
+\end{equation}
+The direct flow estimate in \eqref{eq:semigroup-right-upper}, the long-time derivative estimate, and the Markov $L^\infty$ contraction give
+\begin{equation}\label{eq:confined-initial-semigroup-C2}
+ \sup_{r\geq0}\norm{P_rh_1}_{C_b^2}\leq C_1s.
+\end{equation}
+Moreover, \eqref{eq:semigroup-full-C2} and the exponential factor in \eqref{eq:confined-R-decay-bootstrap} imply
+\begin{equation}\label{eq:confined-forcing-convolution}
+ \sup_{1\leq t<T_*}
+ \int_1^t\norm{P_{t-r}\mathcal R(h_r)}_{C_b^2}\dd r
+ \leq C_2K^{1-\theta}s.
+\end{equation}
+Indeed, the singularity $(t-r)^{-1/2}$ is locally integrable, while the zeroth-order part is bounded by the Markov contraction and the forcing is exponentially integrable in $r$.
+
+Choose $K$ first so that
+\begin{equation}\label{eq:confined-K-choice}
+ K\geq4C_1,\qquad K^\theta\geq4C_2.
+\end{equation}
+Then decrease $\varepsilon_*$, and hence $s$, so that $Ks\leq\min\{1,r_{\rm dyn}\}$. Equations \eqref{eq:confined-initial-semigroup-C2}--\eqref{eq:confined-forcing-convolution} improve \eqref{eq:confined-bootstrap-hypothesis} to
+\begin{equation}\label{eq:confined-bootstrap-improvement}
+ \sup_{1\leq t<T_*}\norm{h_t}_{C_b^2}\leq\frac{Ks}{2}.
+\end{equation}
+There is therefore no first exit. More explicitly, \eqref{eq:semigroup-right-upper} gives a right-upper $C_b^2$ bound for the homogeneous evolution, while \eqref{eq:semigroup-full-C2} makes the Duhamel increment $O(\sqrt\tau)$ in $C_b^2$ over an interval of length $\tau$. The strict improvement in \eqref{eq:confined-bootstrap-improvement} permits a positive-time restart past any putative endpoint. Thus $T_*=\infty$, the amplitude tube persists, and the quadratic decay estimate is global.
+
+Finally, differentiate Duhamel's formula restarted at time one. The derivative kernel $J$ in \eqref{eq:semigroup-long-time} is integrable, and \eqref{eq:confined-R-decay-bootstrap} is exponentially decaying. Their convolution yields
+\begin{equation}\label{eq:confined-global-derivative-decay}
+ \norm{Dh_t}_\infty+\norm{D^2h_t}_\infty\leq Ce^{-c't},
+ \qquad t\geq1,
+\end{equation}
+for some $c'>0$. This conclusion concerns the derivatives; no decay of $\norm{h_t}_\infty$ is used or asserted.
+
+Equation \eqref{eq:confined-initial-integrability} handles $0<t\leq1$. For $t\geq1$, \eqref{eq:confined-localized-potential} and \eqref{eq:confined-E-decay-from-one} give exponential decay of $\norm{\nabla q_{h_t}}_{C_b^1}$; together with \eqref{eq:confined-global-derivative-decay}, the tube bound \eqref{eq:confined-amplitude-tube}, and $v_t=\nabla\log(1+h_t)-\beta\nabla q_{h_t}$, this yields exponential decay of $\norm{v_t}_\infty+\norm{Dv_t}_\infty$, proving \eqref{eq:confined-thermal-field-integrability}. The relation $r_0\leq e^{\varepsilon_*}\norm{p_0}_\infty$ completes the choice of the amplitude threshold.
+\end{proof}
+\endgroup
+
+\section{Uniform control near equilibrium}\label{sec:near-equilibrium}
+
+\subsection{\texorpdfstring{\revision{Periodic references near the uniform density}}{Periodic references near the uniform density}}
+
+The dynamical argument requires a partition bound uniform over an entire neighborhood of reference densities. We use the corresponding result of Part~I \revision{\cite[Proposition~5.8, pp.~34--35]{PartI}}, with its strict larger-coupling choice and common constants. We record the precise consequence here; its static proof remains in the companion paper.
+
+\begin{proposition}[A common partition bound; Part~I]\label{prop:uniform-partition}
+Assume \eqref{eq:homogeneous-input}, and set
+\begin{equation}\label{eq:chosen-buffer}
+ b=\frac{\beta_{\rm gm}+\beta_0}{2}.
+\end{equation}
+For sufficiently small $\varepsilon_{\d,\ell}$ in \eqref{eq:periodic-radius}, there is $C_{\rm pf}\geq1$, depending only on $\d,\ell,\beta_0$ and the static input, such that
+\begin{equation}\label{eq:neighborhood-partition}
+ \sup_{N\geq2}\sup_{\mu\text{ satisfying }\eqref{eq:periodic-radius}}
+                              \K_{N,b}(\mu)\leq C_{\rm pf}.
+\end{equation}
+In the second supremum, \eqref{eq:periodic-radius} is imposed on $\mu$ in place of $\mu^0$.
+\end{proposition}
+
+The constant is common to the entire neighborhood. In particular, once the mean-field flow preserves that neighborhood, \eqref{eq:neighborhood-partition} applies simultaneously at every time. No continuity of an unspecified reference-dependent partition constant is being assumed. The bound is at the density $\mu$ itself, with coupling $b$, rather than at a density selected by an equilibrium problem at $b$.
+
+
+% BEGIN SOURCE-RECONCILIATION ADDITION: confined static transfer.
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\subsection{\texorpdfstring{\revision{The confined static package from Part I}}{The confined static package from Part I}}\label{subsec:confined-static-package}
+
+We recall the equilibrium hypotheses used in the confined relaxation argument and the centered moment bound used in the raw partition estimate. The general-dimensional definition also specifies the static hypothesis in \cref{rem:four-dimensional-confined}.
+
+For a probability density $\nu$ on $\R^\d$, write
+\begin{equation}\label{eq:whole-energy-notation}
+ U_\nu=\g*\nu,\qquad
+ \mathcal G(\nu)=\iint_{\R^\d\times\R^\d}\g(x-y)\nu(x)\nu(y)\dd x\dd y.
+\end{equation}
+For a fixed equilibrium $m_\beta$, let
+\begin{equation}\label{eq:centered-response}
+ \widetilde\g_\nu(x,y)=\g(x-y)-U_\nu(x)-U_\nu(y)+\mathcal G(\nu).
+\end{equation}
+
+\begin{definition}[Confined static package]\label{def:confined-static-package}
+Fix $\d\geq2$ and $0<\beta_0<2\d$. We say that the confined static package holds on $[0,\beta_0]$ if there are $R\geq1$, $\eta_{\rm eq}\in(0,2\d-\beta_0)$, $\delta\in(0,2\d-\beta_0)$, $C_{\rm eq}\geq1$, and $C_{\rm buf}\geq1$ with the following properties.
+
+For every $0\leq\beta\leq\beta_0$, there is a smooth positive probability density $m_\beta$ satisfying
+\begin{equation}\label{eq:scaled-equilibrium}
+ \log m_\beta+|x|^2-\beta U_{m_\beta}=c_\beta
+\end{equation}
+for some constant $c_\beta$. If
+\begin{equation}\label{eq:comparison-profile}
+ n_\beta(x)=Z_\beta^{-1}e^{-|x|^2}(R^2+|x|^2)^{-\beta/2},
+\end{equation}
+then
+\begin{equation}\label{eq:equilibrium-envelope}
+ C_{\rm eq}^{-1}n_\beta\leq m_\beta\leq C_{\rm eq}n_\beta,
+ \qquad |D^jm_\beta(x)|\leq C_j(1+|x|)^jm_\beta(x),\quad j=1,2,3,
+\end{equation}
+with constants common to the temperature window. The equilibrium has the uniform entropy--energy margin
+\begin{equation}\label{eq:equilibrium-margin}
+ \Hr(\rho\mid m_\beta)
+ -\frac{\beta+\eta_{\rm eq}}2
+  \iint\g(x-y)(\rho-m_\beta)(x)(\rho-m_\beta)(y)\dd x\dd y\geq0
+\end{equation}
+for every probability density for which the two terms are finite.
+
+Set
+\begin{equation}\label{eq:confined-tube-radius}
+ r_*=\min\left\{\frac14,\frac{\eta_{\rm eq}}{4(\eta_{\rm eq}+\beta_0)}\right\},
+ \qquad M_*=(1-r_*)^{-1}.
+\end{equation}
+For every probability density $\nu$ with
+\begin{equation}\label{eq:confined-ratio-tube}
+ \norm{\nu/m_\beta-1}_{L^\infty}\leq r_*,
+\end{equation}
+one has the prescribed-reference centered moment bound
+\begin{equation}\label{eq:confined-package-buffer}
+ \sup_{N\geq2}
+ \E_{\nu^{\otimes N}}\left[
+  \exp\left\{\frac{\beta+\delta}{N}
+       \sum_{i<j}\widetilde\g_\nu(x_i,x_j)\right\}\right]
+ \leq C_{\rm buf}.
+\end{equation}
+All constants in this definition are independent of $\beta\in[0,\beta_0]$ and of the reference $\nu$ in the displayed tube.
+\end{definition}
+
+\begin{proposition}[Planar confined static package]\label{prop:planar-confined-static-package}
+Let $\d=2$ and $0<\beta_0<4$. Then the confined static package of \cref{def:confined-static-package} holds on $[0,\beta_0]$.
+\end{proposition}
+\begin{proof}
+This is \cite[Theorem~9.1 and Appendix~G]{PartI}. That result establishes the global entropy--energy margin, the equilibrium-centered order-one moment estimate at a larger coupling, and the exact Bernoulli replacement transfer to every reference in the tube \eqref{eq:confined-ratio-tube}; its normalization crosswalk agrees with \eqref{eq:centered-response} and \eqref{eq:confined-package-buffer}.
+\end{proof}
+
+The static package includes precisely the two load-bearing whole-space inputs: a uniform global entropy--energy margin and a prescribed-reference moment buffer at a strictly larger coupling. It is stronger than local Hessian stability of the equilibrium. In particular, \eqref{eq:equilibrium-margin} rules out a competing phase with lower macroscopic free energy throughout the stated window.
+
+\subsection{Confined references and a centered moment bound}\label{subsec:confined-static-transfer}
+
+For confined planar references, the required centered moment estimate is supplied by \cref{prop:planar-confined-static-package}. The following proposition gives its precise implication for the raw partition function. It uses the convention $W=-\g$ and the potentials $h_\nu,I_\nu$ from \eqref{eq:h-I}; no reference density is changed when the coupling is increased.
+
+\begin{proposition}[From a centered moment to the raw partition bound]\label{prop:confined-buffer-transfer}
+Fix $\d\geq2$, $0<\beta_0<2\d$, and $0<\delta<2\d-\beta_0$. For each $0<\beta\leq\beta_0$, let $\mathcal A_\beta$ be a family of probability densities on $\R^\d$ satisfying a common Gaussian upper bound
+\begin{equation}\label{eq:confined-gaussian-envelope}
+ 0\leq\nu(x)\leq A e^{-\lambda|x|^2},\qquad A,\lambda>0.
+\end{equation}
+Define the canonical centered kernel by
+\begin{equation}\label{eq:confined-centered-W}
+ \widetilde W_\nu(x,y)=W(x,y)-h_\nu(x)-h_\nu(y)+2I_\nu.
+\end{equation}
+Suppose that $C_{\rm buf}\geq1$ is independent of $\beta,\nu,N$ and
+\begin{equation}\label{eq:confined-centered-buffer}
+ \sup_{0<\beta\leq\beta_0}\sup_{\nu\in\mathcal A_\beta}\sup_{N\geq2}
+ \E_{\nu^{\otimes N}}\left[
+ \exp\left\{-\frac{\beta+\delta}{N}
+                    \sum_{i<j}\widetilde W_\nu(x_i,x_j)\right\}\right]
+ \leq C_{\rm buf}.
+\end{equation}
+Then there is $C_{\rm pf}\geq1$, depending only on $\d,A,\lambda,\beta_0,\delta,C_{\rm buf}$, such that
+\begin{equation}\label{eq:confined-raw-buffer}
+ \sup_{0<\beta\leq\beta_0}\sup_{\nu\in\mathcal A_\beta}\sup_{N\geq2}
+ \K_{N,\beta+\delta/4}(\nu)\leq C_{\rm pf}.
+\end{equation}
+For every such reference and every law with finite $\Hr_N(f_N\mid\nu^{\otimes N})$, the modulated energy is integrable and
+\begin{equation}\label{eq:confined-uniform-coercivity}
+ \Er_N(f_N,\nu)+\frac{C_0}{N}
+ \geq\frac{\delta}{4\beta(\beta_0+\delta/4)}\Hr_N(f_N\mid\nu^{\otimes N})
+       +\frac1N,
+ \qquad C_0=1+\frac{4\log C_{\rm pf}}{\delta}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The logarithmic singularity is locally integrable. On $|x-y|<1$, use the density bound in \eqref{eq:confined-gaussian-envelope}; on its complement, use
+$\log|x-y|\leq\log(1+|x|)+\log(1+|y|)$.
+The Gaussian moment bound therefore gives, with common constants,
+\begin{equation}\label{eq:confined-potential-growth}
+ -C\leq h_\nu(x)\leq C+\log(1+|x|),\qquad |I_\nu|\leq C.
+\end{equation}
+Also $\int(h_\nu-2I_\nu)\dd\nu=0$. For each finite $S$, the envelope and \eqref{eq:confined-potential-growth} uniformly bound
+$\int(h_\nu-2I_\nu)^2e^{S|h_\nu-2I_\nu|}\dd\nu$.
+The inequality $e^z\leq1+z+z^2e^{|z|}/2$, followed by $1+r\leq e^r$, proves
+\begin{equation}\label{eq:confined-onebody-mgf}
+ \int e^{s(h_\nu-2I_\nu)}\dd\nu\leq e^{C_Ss^2}
+ \qquad (|s|\leq S).
+\end{equation}
+
+Each $h_\nu(x_i)$ appears $N-1$ times in the unordered pair sum. Consequently,
+\begin{equation}\label{eq:confined-raw-centered-splitting}
+ \Fr_N(X_N,\nu)=\frac1{N^2}\sum_{i<j}\widetilde W_\nu(x_i,x_j)
+ -\frac1{N^2}\sum_i(h_\nu(x_i)-2I_\nu)-\frac{I_\nu}{N}.
+\end{equation}
+In particular,
+\begin{equation}\label{eq:confined-raw-centered-partition}
+ \K_{N,b}(\nu)=e^{bI_\nu}\E_{\nu^{\otimes N}}\left[
+ e^{-(b/N)\sum_{i<j}\widetilde W_\nu(x_i,x_j)}
+ e^{(b/N)\sum_i(h_\nu(x_i)-2I_\nu)}\right].
+\end{equation}
+Choose
+\begin{equation}\label{eq:confined-holder-parameters}
+ b=\beta+\frac\delta4,\qquad
+ p=1+\frac{\delta}{4(\beta_0+\delta)},\qquad q=\frac p{p-1}.
+\end{equation}
+These exponents do not depend on $\beta$ or $\nu$, and
+\begin{equation}\label{eq:confined-holder-margin}
+ pb\leq\beta+\frac\delta2<\beta+\delta<2\d.
+\end{equation}
+For the first H\"older factor in \eqref{eq:confined-raw-centered-partition}, probability-space moment monotonicity and \eqref{eq:confined-centered-buffer} give the bound $C_{\rm buf}^{1/p}$. For the second factor, apply \eqref{eq:confined-onebody-mgf} with $s=qb/N$ and $S=q(\beta_0+\delta/4)/2$. Independence gives
+\begin{equation}\label{eq:confined-holder-estimate}
+ \K_{N,b}(\nu)
+ \leq e^{b|I_\nu|}C_{\rm buf}^{1/p}
+       \left(\int e^{(qb/N)(h_\nu-2I_\nu)}\dd\nu\right)^{N/q}
+ \leq C_{\rm buf}^{1/p}\exp\left(Cb+\frac{C_Sqb^2}{N}\right).
+\end{equation}
+This proves \eqref{eq:confined-raw-buffer} uniformly in all the displayed parameters. Both the scalar $e^{bI_\nu}$ and the one-body correction have been retained.
+
+We verify the entropy--energy domain before using duality. Finite entropy relative to $\nu^{\otimes N}$ and the Gaussian envelope imply a finite second moment, by applying entropy duality to bounded truncations of a sufficiently small positive multiple of $\sum_i|x_i|^2$. From the raw expression for $\Fr_N$ and \eqref{eq:confined-potential-growth},
+\begin{equation}\label{eq:confined-positive-energy}
+ \Fr_N^+\leq C+\frac1N\sum_i\log(1+|x_i|).
+\end{equation}
+For the negative part, $e^{bNF_N^-}\leq1+e^{-bNF_N}$. The partition bound and entropy duality applied to bounded truncations of $bNF_N^-$ give its integrability by monotone convergence. Thus, both parts are finite. Applying entropy duality to $-bNF_N$ now gives
+\begin{equation}\label{eq:confined-raw-coercivity}
+ \Er_N(f_N,\nu)\geq
+ \left(\frac1\beta-\frac1b\right)\Hr_N(f_N\mid\nu^{\otimes N})
+ -\frac{\log C_{\rm pf}}{bN}.
+\end{equation}
+Finally, $b\leq\beta_0+\delta/4$ and $b\geq\delta/4$ give \eqref{eq:confined-uniform-coercivity}.
+\end{proof}
+
+
+\begin{corollary}[Uniform partition and coercivity in the confined tube]\label{cor:confined-tube-partition}
+Assume the confined static package of \cref{def:confined-static-package}. For $0<\beta\leq\beta_0$, let
+\begin{equation}\label{eq:confined-larger-coupling}
+ b_\beta=\beta+\frac\delta4.
+\end{equation}
+There is $C_{\rm pf}\geq1$, independent of $\beta$, $N$, and the probability density $\nu$ satisfying \eqref{eq:confined-ratio-tube}, such that
+\begin{equation}\label{eq:confined-tube-raw-partition}
+ \K_{N,b_\beta}(\nu)\leq C_{\rm pf}.
+\end{equation}
+Moreover, with
+\begin{equation}\label{eq:confined-coercivity-constants}
+ C_0=1+\frac{4\log C_{\rm pf}}\delta,
+ \qquad c_{\rm ent}=\frac\delta{4(\beta_0+\delta/4)},
+\end{equation}
+one has
+\begin{equation}\label{eq:confined-tube-coercivity}
+ \Er_N(f_N,\nu)+\frac{C_0}{N}
+ \geq\frac{c_{\rm ent}}\beta \Hr_N(f_N\mid\nu^{\otimes N})+\frac1N
+\end{equation}
+for every law of finite relative entropy.
+\end{corollary}
+\begin{proof}
+If \eqref{eq:confined-ratio-tube} holds, then \eqref{eq:equilibrium-envelope} supplies a Gaussian upper envelope common to the entire family. With $W=-\g$ and the notation of \eqref{eq:h-I}, the kernel in \eqref{eq:confined-centered-W} equals $-\widetilde\g_\nu$. Hence \eqref{eq:confined-package-buffer} is exactly \eqref{eq:confined-centered-buffer}. Apply \cref{prop:confined-buffer-transfer} and simplify its entropy coefficient.
+\end{proof}
+
+Proposition~\ref{prop:confined-buffer-transfer} remains an abstract static implication in general dimension. In the plane, \cref{prop:planar-confined-static-package} supplies its global entropy--energy margin and centered moment hypothesis uniformly on every fixed interval $[0,\beta_0]$ with $\beta_0<4$. The periodic theorem does not provide these inputs; the distinction is also made in \cite[Section~10.6]{PartI}. In physical coordinates, the partition constant additionally transforms by \eqref{eq:dilation-partition}. None of these static conclusions removes the separate trajectory hypothesis in \cref{thm:planar-finite}.
+\endgroup
+% END SOURCE-RECONCILIATION ADDITION.
+
+\section{Proof of the uniform-in-time theorems}\label{sec:uniform-proofs}
+
+\revision{We first prove the global trajectory criterion and apply it to periodic data. The confined proof then treats the H\"older initial layer before closing the planar estimate. The final subsection gives the independent-heat endpoint.}
+
+\subsection{\texorpdfstring{\revision{The global trajectory criterion}}{The global trajectory criterion}}\label{subsec:global-criterion-proof}
+
+\begin{proof}[Proof of \cref{prop:uniform-criterion}]
+Apply the appropriate finite-time theorem on every interval $[0,j]$, $j\in\N$, using the same $b,L,C_0$. The exponential factor is bounded by the integral over $[0,\infty)$ in \eqref{eq:global-conditions}. The union of the exceptional null sets over the countable family of intervals is null, so the estimate holds for almost every time on the half-line. The product conclusions follow by the same argument. For \eqref{eq:thermal-equilibrium}, $\u=0$, so \eqref{eq:full-dissipation} gives the asserted estimate directly.
+\end{proof}
+
+\subsection{\texorpdfstring{\revision{Periodic uniform control}}{Periodic uniform control}}\label{subsec:periodic-uniform-proof}
+
+\begin{proof}[Proof of \cref{thm:periodic-uniform}]
+Choose $\varepsilon_{\d,\ell}$ small enough for both \cref{prop:periodic-relaxation,prop:uniform-partition}. These are finitely many restrictions depending only on $\d,\ell$, since $\beta_{\rm gm}$ and $\beta_s$ are fixed by the dimension. Relaxation keeps $\mu^t$ in the same neighborhood for all time. Hence \eqref{eq:neighborhood-partition} holds along the entire trajectory, with $b$ as in \eqref{eq:chosen-buffer} and $L=\log C_{\rm pf}$. Take
+\begin{equation}\label{eq:uniform-shift}
+ C_0=1+\frac{\log C_{\rm pf}}b.
+\end{equation}
+For $0<\beta\leq\beta_0$, the factor in \eqref{eq:finite-main} is bounded using
+\begin{equation}\label{eq:uniform-buffer-factor}
+ \frac{\beta b}{b-\beta}\leq
+ \frac{\beta_0(\beta_{\rm gm}+\beta_0)}{\beta_{\rm gm}-\beta_0}.
+\end{equation}
+The integrated field in \eqref{eq:periodic-integrated-velocity} is bounded uniformly over the same interval of inverse temperatures. Thus \cref{prop:uniform-criterion} gives \eqref{eq:periodic-uniform-energy}. Retaining the actual $\beta$ in the entropy prefactor gives
+\begin{equation}\label{eq:retain-beta}
+ \frac{\beta b}{b-\beta}\leq\beta\frac{b}{b-\beta_0},
+\end{equation}
+which proves \eqref{eq:periodic-uniform-entropy}.
+
+For product data, \eqref{eq:product-expectation} and the Fourier coefficients give
+\begin{equation}\label{eq:periodic-product-initial}
+ 0\leq-I_{\mu^0}
+ =\frac1{2\beta_s}\sum_{k\ne0}|k|^{-\d}|\widehat{\mu^0-1}(k)|^2
+ \leq\frac1{2\beta_s}\norm{\mu^0-1}_{L^2}^2.
+\end{equation}
+This is uniformly bounded on the chosen neighborhood. The product assertions follow as in \cref{cor:product}, retaining the factor $\beta$ in the entropy estimate. In particular, the factor $\beta^{-1}$ in \eqref{eq:mean-energy-absolute} cancels it, so the energy bound remains uniform as $\beta\downarrow0$ through positive values.
+\end{proof}
+
+\begingroup\ifdefined\MarkedRevision\color{red}\fi
+\subsection{The confined initial layer and planar closure}\label{subsec:confined-uniform-proof}
+
+The reference furnished by \cref{prop:confined-relaxation} is smooth for positive time, but its initial logarithmic ratio is only H\"older continuous. We therefore record the passage to time zero in the modulated dissipation inequality.
+
+\begin{proposition}[Dissipation through a H\"older initial layer]\label{prop:confined-initial-layer}
+Let $\nu^t=m_\beta(1+h_t)$ be the solution of \cref{prop:confined-relaxation}, and let $\bar f_N^t$ be the thermal rescaling of a physical entropy solution. Set
+\begin{equation}\label{eq:thermal-modulated-free-energy}
+ \overline \Er_N(t)=\frac1\beta \Hr_N(\bar f_N^t\mid(\nu^t)^{\otimes N})
+       +\E_{\bar f_N^t}[\Fr_N(Y_N,\nu^t)].
+\end{equation}
+Then, for every $T<\infty$ and almost every $t\in[0,T]$, the scaled version of \eqref{eq:full-dissipation} holds with initial time zero:
+\begin{equation}\label{eq:thermal-dissipation-zero}
+ \overline \Er_N(t)+\frac1{\beta N}\int_0^t
+  \int \bar f_N^s\left|\nabla\log\frac{\bar f_N^s}
+  {e^{-\beta NF_N(Y_N,\nu^s)}(\nu^s)^{\otimes N}}\right|^2\dd Y_N\dd s
+ \leq \overline \Er_N(0)+\frac12\int_0^t\E_{\bar f_N^s}[\mathcal C_N(v_s)]\dd s,
+\end{equation}
+where $\mathcal C_N(v)$ denotes the commutator inside the expectation in \eqref{eq:commutator-estimate}. All terms in \eqref{eq:thermal-dissipation-zero} are finite before the inequality is used.
+\end{proposition}
+\begin{proof}
+For $\varepsilon>0$, the reference is smooth on $[\varepsilon,T]$, and the proof of \cref{prop:dissipation} applies after the thermal change of variables. It remains to pass $\varepsilon\downarrow0$ without assuming initial derivatives.
+
+Use the unnormalized moving density
+\begin{equation}\label{eq:thermal-moving-density}
+ R_N^t=e^{-\beta NF_N(Y_N,\nu^t)}(\nu^t)^{\otimes N}.
+\end{equation}
+Let
+\begin{equation}\label{eq:thermal-moving-potential}
+ a^t=\log\nu^t+|x|^2-\beta U_{\nu^t},
+ \qquad
+ \mathcal A^t(Y_N)=\sum_{i=1}^Na^t(y_i)+\frac{\beta N}{2}\mathcal G(\nu^t).
+\end{equation}
+Exact expansion gives
+\begin{equation}\label{eq:thermal-moving-factorization}
+ R_N^t=\G_{N,\beta}^{\rm th}e^{\mathcal A^t},
+\end{equation}
+where $\G_{N,\beta}^{\rm th}$ is the fixed thermal Gibbs weight. By the equilibrium equation,
+\begin{equation}\label{eq:thermal-a-ratio}
+ a^t=c_\beta+\log(1+h_t)-\beta q_{h_t}.
+\end{equation}
+The amplitude tube and \cref{lem:confined-potential} therefore make $\mathcal A^t$ bounded for fixed $N$, uniformly in time.
+
+For positive time, differentiation along \eqref{eq:confined-thermal-equation} yields
+\begin{align}
+ \partial_ta^t&=\diver v_t+\nabla\log\nu^t\cdot v_t-
+          \beta\partial_tU_{\nu^t},
+ \label{eq:thermal-a-time}\\
+ \partial_tU_{\nu^t}(x)&=\int\nabla\g(x-y)\cdot v_t(y)\nu^t(y)\dd y.
+ \label{eq:thermal-U-time}
+\end{align}
+The sign in \eqref{eq:thermal-U-time} follows from
+$\nabla_y\g(x-y)=-\nabla\g(x-y)$. The equilibrium envelope and the kernel splitting imply
+\begin{equation}\label{eq:thermal-moving-growth}
+ |\partial_ta^t(x)|\leq C(1+|x|)
+ \left(\norm{Dv_t}_\infty+\norm{v_t}_\infty+\norm{v_t}_\infty^2\right).
+\end{equation}
+The coefficient is integrable on $[0,T]$ by \eqref{eq:confined-thermal-field-integrability}; the first power of $\norm{v_t}_\infty$ follows from Cauchy--Schwarz on finite intervals. The derivative of $\mathcal G(\nu^t)$ is integrable by the same estimate.
+
+We first establish the entropy--energy domain without using the desired Gronwall estimate. The physical entropy inequality, transported to thermal variables, gives finite relative entropy with respect to the normalized fixed thermal Gibbs law, the time-integrated square-root Fisher information, and a fixed-$N$ second-moment bound. Let
+\begin{equation}\label{eq:thermal-normalized-moving-law}
+ \Q_N^t=\K_{N,\beta}(\nu^t)^{-1}R_N^t.
+\end{equation}
+Since \eqref{eq:thermal-a-ratio} makes $\mathcal A^t$ bounded for fixed $N$, the factorization \eqref{eq:thermal-moving-factorization} implies
+$\Hr(\bar f_N^t\mid \Q_N^t)<\infty$. The positive part of $\Fr_N$ is integrable by the second-moment bound and \eqref{eq:confined-positive-energy}. For the negative part, put $b=\beta+\delta/4$. The tube partition bound gives the exact identity
+\begin{equation}\label{eq:thermal-negative-moment}
+ \int e^{-(b-\beta)NF_N(Y_N,\nu^t)}\dd \Q_N^t
+ =\frac{\K_{N,b}(\nu^t)}{\K_{N,\beta}(\nu^t)}.
+\end{equation}
+The numerator is bounded by \eqref{eq:confined-tube-raw-partition}. Jensen's inequality and the product expectation \eqref{eq:planar-product-identity} give
+\begin{equation}\label{eq:thermal-partition-lower}
+ \K_{N,\beta}(\nu^t)
+ \geq\exp\left[-\frac\beta2\mathcal G(\nu^t)\right]\geq e^{-C},
+\end{equation}
+where the final constant follows from the equilibrium envelope and the ratio tube. Since $e^{(b-\beta)NF_N^-}\leq1+e^{-(b-\beta)NF_N}$, entropy duality with respect to $\Q_N^t$, applied to bounded truncations of $(b-\beta)NF_N^-$ and followed by monotone convergence, therefore gives $\E_{\bar f_N^t}[\Fr_N^-]<\infty$. The identity relating entropy with respect to $\Q_N^t$ and to $(\nu^t)^{\otimes N}$ then yields finite product-relative entropy. The same argument applies at $t=0$. This order proves finiteness of all terms before the modulated inequality is invoked.
+
+Spatial cutoffs and time regularization now permit $\mathcal A^t$ as a moving weak test. The spatial cutoff error is controlled by Cauchy--Schwarz and the Fisher information; the time-derivative tail is controlled by \eqref{eq:thermal-moving-growth} and the second moment.
+
+Finally, $h_t\to h_0$ locally uniformly and in $L^2(m)$, while the centered potentials converge locally uniformly by the kernel splitting. Boundedness of \eqref{eq:thermal-a-ratio}, the weak initial trace of the entropy solution, and moment tightness give
+\begin{equation}\label{eq:thermal-initial-pairing}
+ \int\bar f_N^t\mathcal A^t\dd Y_N\longrightarrow
+ \int\bar f_N^0\mathcal A^0\dd Y_N.
+\end{equation}
+The static coercivity argument of \cref{cor:confined-tube-partition} establishes both signs of the initial modulated energy before this limit. Passing $\varepsilon\downarrow0$ in the integrated positive-time inequality proves \eqref{eq:thermal-dissipation-zero}.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:planar-uniform}]
+By \cref{prop:planar-confined-static-package}, the confined static package holds on $[0,\beta_0]$. Fix a bound $L_0\geq\norm{p_0}_{C_b^\alpha}$. Apply \cref{prop:confined-relaxation}. The admissible amplitude depends only on the equilibrium package, while the resulting value of the integral in \eqref{eq:confined-thermal-field-integrability} may depend on $\alpha$ and $L_0$. By \eqref{eq:confined-amplitude-tube}, the entire thermal trajectory satisfies \eqref{eq:confined-ratio-tube}. Hence \cref{cor:confined-tube-partition} applies at every time with
+\begin{equation}\label{eq:planar-b-choice}
+ b_\beta=\beta+\frac\delta4
+\end{equation}
+and with constants independent of $\beta$ and $N$.
+
+Set
+\begin{equation}\label{eq:planar-Y-def}
+ Y_N(t)=\overline \Er_N(t)+\frac{C_0}{N},
+\end{equation}
+where $C_0$ is given by \eqref{eq:confined-coercivity-constants}. Coercivity gives
+\begin{equation}\label{eq:planar-Y-controls}
+ Y_N(t)\geq\frac{c_{\rm ent}}\beta
+ \Hr_N(\bar f_N^t\mid(\nu^t)^{\otimes N})+\frac1N.
+\end{equation}
+Combine \cref{prop:confined-initial-layer} with \cref{lem:commutator}. Since $\Lip(v_t)=\norm{Dv_t}_\infty$, \eqref{eq:planar-Y-controls} gives
+\begin{equation}\label{eq:planar-Gronwall-input}
+ Y_N(t)\leq Y_N(0)+C\int_0^t\norm{Dv_s}_\infty Y_N(s)\dd s,
+\end{equation}
+where $C$ depends only on the static constants and $\beta_0$. Gronwall's inequality and \eqref{eq:confined-thermal-field-integrability} yield
+\begin{equation}\label{eq:planar-Gronwall-output}
+ \sup_{t\geq0}Y_N(t)\leq CY_N(0).
+\end{equation}
+Keeping the nonnegative Fisher term in \eqref{eq:thermal-dissipation-zero} and using the same estimate also bounds its full time integral by $CY_N(0)$. Equation \eqref{eq:planar-Y-controls} then proves the entropy estimate with the factor $\beta$ retained.
+
+Return to physical variables using \cref{lem:thermal-normalization}. Relative entropy is invariant, and
+\begin{equation}\label{eq:planar-corrected-equality}
+ \Er_{N,\kappa}^{\sharp}(f_N^t,\mu^t)=\overline \Er_N(\kappa t/2).
+\end{equation}
+The integrated Lipschitz seminorm is invariant by \eqref{eq:thermal-integrated-lipschitz}; \eqref{eq:thermal-integrated-field} gives the finiteness of the physical $L_t^2L_x^\infty$ field norm for each $\beta>0$. Thus \eqref{eq:planar-Gronwall-output} becomes \eqref{eq:planar-uniform-energy}--\eqref{eq:planar-uniform-entropy}.
+
+For product initial data, direct expectation of \eqref{eq:modulated-energy} in thermal variables gives
+\begin{equation}\label{eq:planar-product-identity}
+ \E_{(\nu^0)^{\otimes N}}[\Fr_N(Y_N,\nu^0)]
+ =\frac{\mathcal G(\nu^0)}{2N}.
+\end{equation}
+The ratio tube and the equilibrium envelope bound $|\mathcal G(\nu^0)|$ uniformly. Hence $Y_N(0)\leq C/N$. The upper bound on $Y_N(t)$ and the lower bound in \eqref{eq:planar-Y-controls} give the asserted absolute corrected-energy and entropy bounds. Since
+\begin{equation}\label{eq:planar-expected-energy-split}
+ \E_{\bar f_N^t}[\Fr_N]=\overline \Er_N(t)-\frac1\beta
+ \Hr_N(\bar f_N^t\mid(\nu^t)^{\otimes N}),
+\end{equation}
+the thermal expected modulated energy is $O(N^{-1})$. The dilation identity gives, with $\tau=\kappa t/2$,
+\begin{equation}\label{eq:planar-corrected-expected-equality}
+ \E_{f_N^t}[\Fr_N(X_N,\mu^t)]-
+ \frac{\log(\beta\kappa/2)}{4N}
+ =\E_{\bar f_N^\tau}[\Fr_N(Y_N,\nu^\tau)].
+\end{equation}
+This proves the second term in \eqref{eq:planar-product-corrected-energies}.
+
+For a symmetric law, write the full relative entropy by the chain rule as the sum of its conditional entropy increments. Exchangeability and nonnegativity of conditional mutual information make these increments nondecreasing. Consequently,
+\begin{equation}\label{eq:planar-entropy-projection}
+ \frac1kH(f_{N,k}^t\mid(\mu^t)^{\otimes k})
+ \leq\frac1NH(f_N^t\mid(\mu^t)^{\otimes N})
+ =\Hr_N(f_N^t\mid(\mu^t)^{\otimes N}).
+\end{equation}
+Together with \eqref{eq:planar-product-entropy}, this proves \eqref{eq:planar-marginal-entropy}.
+\end{proof}
+\endgroup
+
+\subsection{\texorpdfstring{\revision{The independent-heat endpoint}}{The independent-heat endpoint}}\label{subsec:heat-endpoint}
+
+\begin{proposition}[Independent-heat endpoint and the scaled uniform estimate]\label{prop:heat-endpoint}
+Assume the periodic hypotheses of \cref{thm:periodic-uniform}, and use the constants $C_0$ and $C$ in \eqref{eq:periodic-uniform-energy}. For $0<\beta\leq\beta_0$, put
+\begin{equation}\label{eq:diffusive-trajectories}
+ \overline\mu_\beta^\tau=\mu^{\beta\tau},
+ \qquad
+ \overline f_{N,\beta}^\tau=f_N^{\beta\tau}.
+\end{equation}
+These trajectories solve, in diffusive time,
+\begin{equation}\label{eq:diffusive-time}
+ \partial_\tau\overline\mu_\beta
+ =\Delta\overline\mu_\beta
+ -\beta\diver(\overline\mu_\beta\nabla\g*\overline\mu_\beta),
+ \qquad
+ \partial_\tau\overline f_{N,\beta}
+ =\sum_i\Delta_{x_i}\overline f_{N,\beta}
+ -\frac\beta N\sum_i\diver_{x_i}\!\left(
+  \overline f_{N,\beta}\sum_{j\ne i}\nabla\g(x_i-x_j)
+ \right).
+\end{equation}
+At $\beta=0$, let $\overline\mu_0^0$ be a probability density and let $\overline f_{N,0}^0$ be a probability law with finite $\Hr_N(\overline f_{N,0}^0\mid(\overline\mu_0^0)^{\otimes N})$. Let $\overline\mu_0^\tau$ solve the one-particle heat equation and let $\overline f_{N,0}^\tau$ solve its $N$-fold independent counterpart. Then
+\begin{equation}\label{eq:heat-endpoint-entropy}
+ \Hr_N\!\left(\overline f_{N,0}^\tau\mid(\overline\mu_0^\tau)^{\otimes N}\right)
+ \leq
+ \Hr_N\!\left(\overline f_{N,0}^0\mid(\overline\mu_0^0)^{\otimes N}\right),
+ \qquad \tau\geq0.
+\end{equation}
+In particular, product initial data remain exactly product. Define the scaled modulated free energy by
+\begin{equation}\label{eq:scaled-energy-endpoint}
+ \mathscr E_{N,\beta}(\tau)
+ =
+ \begin{cases}
+  \beta \Er_N\!\left(\overline f_{N,\beta}^\tau,\overline\mu_\beta^\tau\right),&0<\beta\leq\beta_0,\\
+  \Hr_N\!\left(\overline f_{N,0}^\tau\mid(\overline\mu_0^\tau)^{\otimes N}\right),&\beta=0.
+ \end{cases}
+\end{equation}
+Then the scaled version of \eqref{eq:periodic-uniform-energy} extends to the closed interval $0\leq\beta\leq\beta_0$:
+\begin{equation}\label{eq:scaled-uniform-closed-window}
+ \esssup_{\tau\geq0}
+ \left(\mathscr E_{N,\beta}(\tau)+\frac{\beta C_0}{N}\right)
+ \leq
+ C\left(\mathscr E_{N,\beta}(0)+\frac{\beta C_0}{N}\right).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For $\beta=0$, let $P_\tau$ be the heat Markov kernel and apply its product kernel to both initial laws. If $F=\dd\overline f_{N,0}^0/\dd(\overline\mu_0^0)^{\otimes N}$, then the final density ratio is the conditional expectation of $F$ given the final coordinates under the product-reference coupling of the initial and final positions. Conditional Jensen for $z\log z$ gives \eqref{eq:heat-endpoint-entropy}; approximation handles a merely finite-entropy initial ratio. The product kernel sends $(\overline\mu_0^0)^{\otimes N}$ to $(\overline\mu_0^\tau)^{\otimes N}$, so product initial data remain product. For $\beta>0$, \eqref{eq:scaled-uniform-closed-window} is exactly \eqref{eq:periodic-uniform-energy} multiplied by $\beta$ and written in diffusive time. At $\beta=0$, it follows from \eqref{eq:heat-endpoint-entropy} and $C\geq1$. This endpoint statement identifies the independent heat equations and their entropy estimate; it does not assert convergence of a selected family of singular interacting solutions as $\beta\downarrow0$.
+\end{proof}
+
+\begin{thebibliography}{99}
+\bibitem{Eberle}
+A. Eberle,
+\emph{Reflection couplings and contraction rates for diffusions},
+\href{https://arxiv.org/abs/1305.1233}{arXiv:1305.1233v4} (2015),
+Theorem~1 and Corollary~2, pp.~5--6.
+
+\bibitem{ElworthyLi}
+K. D. Elworthy and X.-M. Li,
+\emph{Formulae for the derivatives of heat semigroups},
+\href{https://arxiv.org/abs/1911.10971}{arXiv:1911.10971v1} (2019),
+Theorem~2.1, equation~(6), p.~3.
+
+\bibitem{BJW}
+D. Bresch, P.-E. Jabin, and Z. Wang,
+\emph{Mean-field limit and quantitative estimates with singular attractive kernels},
+Duke Math. J. \textbf{172} (2023), no.~13, 2591--2641.
+\href{https://doi.org/10.1215/00127094-2022-0088}{doi:10.1215/00127094-2022-0088}.
+Proof locators used here refer to the checked preprint
+\href{https://arxiv.org/abs/2011.08022}{arXiv:2011.08022}: Definition~2.1, Theorem~2.2, Proposition~2.3, and equation~(2.25).
+
+\bibitem{CdCRS}
+A. Chodron de Courcel, M. Rosenzweig, and S. Serfaty,
+\emph{The attractive log gas: stability, uniqueness, and propagation of chaos},
+Commun. Amer. Math. Soc. \textbf{5} (2025), 695--773.
+\href{https://doi.org/10.1090/cams/55}{doi:10.1090/cams/55}.
+\href{https://arxiv.org/abs/2311.14560}{arXiv:2311.14560}.
+Lemma~9.1 is the bounded logarithmic commutator estimate.
+
+\bibitem{PartI}
+M. G. Delgadino, R. Gvalani, and M. Rosenzweig,
+\emph{Attractive log gas I: partition functions and equilibrium fluctuations},
+companion manuscript.
+
+
+\bibitem{RSselfsimilar}
+\revision{M. Rosenzweig and S. Serfaty,
+\emph{Relative entropy and modulated free energy without confinement via self-similar transformation},
+\href{https://arxiv.org/abs/2402.13977}{arXiv:2402.13977v1} (2024), Lemmas~2.2--2.3, pp.~11--12.}
+
+\end{thebibliography}
+\end{document}

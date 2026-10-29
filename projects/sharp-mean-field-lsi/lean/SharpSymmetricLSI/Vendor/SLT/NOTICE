@@ -1,0 +1,51 @@
+Vendored from lean-stat-learning-theory
+=======================================
+
+Upstream repository: https://github.com/YuanheZ/lean-stat-learning-theory
+Upstream commit:     d0f506f0a695018265dccb33bcb05e2f5ca1c876 (2026-07-15)
+Upstream toolchain:  leanprover/lean4:v4.32.0
+Authors:             Yuanhe Zhang, Jason D. Lee, Fanghui Liu
+License:             Apache License 2.0 (see LICENSE in this directory, copied verbatim from
+                     the upstream LICENSE file). Copyright 2026 lean-stat-learning-theory
+                     contributors; per-file headers: Copyright (c) 2026 Yuanhe Zhang.
+
+Selection
+---------
+Only the transitive SLT import closure of
+  SLT.GaussianLSI.OneDimGLSICompSmo
+(theorem `GaussianLSI.gaussian_logSobolev_CompSmo`: for f ∈ C_c^∞(ℝ) and the standard Gaussian,
+`Ent(f²) ≤ 2 ∫ f'²`, proved from the Bernoulli LSI and the central limit theorem).
+The n-dimensional tensorization and the W^{1,2} density chain are NOT vendored.
+
+Files (relative to upstream SLT/), 10 modules, ~8.1k lines:
+  GaussianPoincare/RademacherApprox.lean
+  EfronStein.lean
+  GaussianPoincare/EfronSteinApp.lean
+  GaussianPoincare/TaylorBound.lean
+  GaussianPoincare/LevyContinuity.lean
+  GaussianLSI/Entropy.lean
+  GaussianPoincare/Limit.lean
+  GaussianLSI/TwoPoint.lean
+  GaussianLSI/BernoulliLSI.lean
+  GaussianLSI/OneDimGLSICompSmo.lean
+
+Modifications (port to Lean v4.35.0-rc3 / Mathlib ec6a61cec0d8f9fda04453e9bb5761a79aa43a70)
+--------------------------------------------------------------------------------------------
+Declaration names, namespaces and statements are unchanged. Changes:
+1. Every import `SLT.X` was rewritten to `SharpSymmetricLSI.Vendor.SLT.X`; files placed at the
+   corresponding paths under this directory.
+2. EfronStein.lean, `condExpExceptCoord_stronglyMeasurable`: `measurable_pi_lambda _ (fun j => …)`
+   replaced by `measurable_pi_iff.2 (fun j => …)` (Mathlib signature change).
+3. GaussianPoincare/EfronSteinApp.lean, `rademacher_values_ae`: `AEMeasurable.of_map_ne_zero` no
+   longer exists, and `Measure.map` of a non-a.e.-measurable function is now a Dirac mass (for a
+   nonzero measure) rather than `0`. The a.e.-measurability of `ε` is re-proved: the zero
+   measure case contradicts `IsProbabilityMeasure rademacherMeasure`; otherwise a Dirac mass
+   would equal `rademacherMeasure`, contradicted by evaluating on `{1}` and `{-1}`.
+4. GaussianPoincare/Limit.lean, `rademacherLaw`: `Measure.isProbabilityMeasure_map …` replaced by
+   `inferInstance` (push-forwards of probability measures are now probability measures by
+   instance).
+5. GaussianLSI/BernoulliLSI.lean, `bernoulli_flip_invariance`: `Measure.map_smul` now takes an
+   `AEMeasurable` argument; supplied as `(measurable_of_finite (flipCoord j)).aemeasurable`.
+
+No `sorry`, `admit`, `native_decide` or `axiom` declarations; the main theorem depends only on
+`propext`, `Classical.choice`, `Quot.sound`.

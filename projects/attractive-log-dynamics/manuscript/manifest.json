@@ -1,0 +1,14 @@
+{
+  "presentation_revision": "2026-10-28",
+  "pages": 30,
+  "files": {
+    "paper.pdf": {
+      "sha256": "ae33ee59eaa1921f1cfa28025884fcd5db2963ede39517e99bff3434db6df6e0",
+      "bytes": 642870
+    },
+    "source/main.tex": {
+      "sha256": "85de9735cc89899dfdb4d355760b2d54e94bd10d11a2febe969404bfa016207c",
+      "bytes": 122286
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "manifest_files_checked": 407,
+  "local_proof_modules": 402,
+  "errors": [],
+  "lean_compilation_performed": false,
+  "scope": "Exact hashes and local import closure only; not kernel replay."
+}

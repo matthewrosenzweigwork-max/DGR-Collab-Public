@@ -1,0 +1,324 @@
+{
+  "all_required_export_and_axiom_targets": [
+    "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.poincare",
+    "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.defective_entropy",
+    "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.sobolev",
+    "PeriodicAttractiveLogGas.SobolevEntropy.defective",
+    "PeriodicAttractiveLogGas.BoundedPerturbation.entropy_comparison",
+    "PeriodicAttractiveLogGas.BoundedPerturbation.poincare_comparison",
+    "PeriodicAttractiveLogGas.BoundedPerturbation.defective_comparison",
+    "PeriodicAttractiveLogGas.Theorem11.theorem11",
+    "PeriodicAttractiveLogGas.Theorem11.uniform_ambient_lsi",
+    "PeriodicAttractiveLogGas.Theorem11.theorem11_with_normalization",
+    "PeriodicAttractiveLogGas.UniformSmoothBounds.exists_uniform_smooth_bounds",
+    "PeriodicAttractiveLogGas.FixedParticleBounds.exists_fixed_particle_bounds",
+    "PeriodicAttractiveLogGas.FixedGibbsDensityComparison.comparison_factors",
+    "PeriodicAttractiveLogGas.Theorem11.smooth_tightening",
+    "PeriodicAttractiveLogGas.green_ambientValue_injective",
+    "PeriodicAttractiveLogGas.green_ambient_nonconstant",
+    "PeriodicAttractiveLogGas.constant_mem_closedGradientGraph",
+    "PeriodicAttractiveLogGas.green_smoothGradient_closable",
+    "PeriodicAttractiveLogGas.green_smooth_core_dense",
+    "PeriodicAttractiveLogGas.green_ambient_energy_eq_integral",
+    "PeriodicAttractiveLogGas.ambient_entropy_le_of_smooth_bound",
+    "PeriodicAttractiveLogGas.isProbabilityMeasure_greenGibbs"
+  ],
+  "allowed_transitive_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "primary_comparison_targets": [
+    "PeriodicAttractiveLogGas.Theorem11.theorem11",
+    "PeriodicAttractiveLogGas.Theorem11.uniform_ambient_lsi",
+    "PeriodicAttractiveLogGas.Theorem11.theorem11_with_normalization"
+  ],
+  "targets": [
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.poincare",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.defective_entropy",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.FixedWeightFunctionalInequalities.sobolev",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.SobolevEntropy.defective",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.BoundedPerturbation.entropy_comparison",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.BoundedPerturbation.poincare_comparison",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "fixed-weight-axioms-001",
+      "name": "PeriodicAttractiveLogGas.BoundedPerturbation.defective_comparison",
+      "reason": "Appendix A fixed-weight Poincare, Sobolev, entropy and bounded-density comparison dependencies",
+      "required": true
+    },
+    {
+      "comparison": "frozen theorem type and its complete non-hole definition dependencies",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.Theorem11.theorem11",
+      "reason": "Exact reviewed main theorem",
+      "required": true
+    },
+    {
+      "comparison": "frozen theorem type and its complete non-hole definition dependencies",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.Theorem11.uniform_ambient_lsi",
+      "reason": "Stronger endpoint with explicitly nonnegative constant",
+      "required": true
+    },
+    {
+      "comparison": "frozen theorem type and its complete non-hole definition dependencies",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.Theorem11.theorem11_with_normalization",
+      "reason": "Mandatory normalizer finiteness; prevents zero-measure vacuity",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.UniformSmoothBounds.exists_uniform_smooth_bounds",
+      "reason": "Fixed/large-particle constants and smooth Rothaus assembly supporting the full target",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.FixedParticleBounds.exists_fixed_particle_bounds",
+      "reason": "Fixed/large-particle constants and smooth Rothaus assembly supporting the full target",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.FixedGibbsDensityComparison.comparison_factors",
+      "reason": "Fixed/large-particle constants and smooth Rothaus assembly supporting the full target",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-types-axioms-002",
+      "name": "PeriodicAttractiveLogGas.Theorem11.smooth_tightening",
+      "reason": "Fixed/large-particle constants and smooth Rothaus assembly supporting the full target",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.green_ambientValue_injective",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.green_ambient_nonconstant",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.constant_mem_closedGradientGraph",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.green_smoothGradient_closable",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.green_smooth_core_dense",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.green_ambient_energy_eq_integral",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.ambient_entropy_le_of_smooth_bound",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    },
+    {
+      "comparison": "source-bound full elaborated type record; transitive axiom audit and both kernels on exported proof",
+      "fresh_successor_status": "NOT_RUN",
+      "historical_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "historical_query": "theorem11-nonvacuity-001",
+      "name": "PeriodicAttractiveLogGas.isProbabilityMeasure_greenGibbs",
+      "reason": "Probability, genuine ambient domain, closability, dense smooth core, physical energy, and nonconstant domain witness",
+      "required": true
+    }
+  ]
+}

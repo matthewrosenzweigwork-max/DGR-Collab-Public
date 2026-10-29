@@ -1,0 +1,113 @@
+Vendored from Tau Ceti
+======================
+
+Upstream repository: https://github.com/TauCetiProject/TauCeti
+Upstream commit:     b6d1ecaf5bf5781b2852ea17e3e2b00f4416afae
+                     ("feat: prove the Jordan–Brouwer separation theorem (#11843)")
+                     This is the latest upstream commit pinning Mathlib
+                     ec6a61cec0d8f9fda04453e9bb5761a79aa43a70, the same Mathlib revision as
+                     this project, so no porting was required.
+License:             Apache License 2.0 (see LICENSE in this directory, copied verbatim
+                     from upstream). Copyright (c) 2026 The Tau Ceti contributors.
+
+Modifications
+-------------
+The only modification is mechanical: every import of an upstream module `TauCeti.X` was
+rewritten to `SharpSymmetricLSI.Vendor.TauCeti.X`, and the files were placed at the
+corresponding paths under this directory. File contents are otherwise byte-identical to
+upstream; declaration names and namespaces are unchanged.
+
+Selection
+---------
+The vendored files are exactly the transitive TauCeti import closure of
+  TauCeti.AlgebraicTopology.Singular.Excision
+  TauCeti.AlgebraicTopology.Singular.Triple
+  TauCeti.AlgebraicTopology.Singular.DiskSphere
+  TauCeti.AlgebraicTopology.Singular.DirectedUnion
+(relative singular homology, long exact sequences of pairs and triples, excision, Mayer–Vietoris,
+contractible vanishing, homology of spheres and disk/boundary pairs, compact supports).
+
+Files (relative to upstream TauCeti/):
+  Algebra/Homology/HomologicalComplex.lean
+  Algebra/Homology/Homotopy.lean
+  Algebra/Homology/ShortComplex/Colimit.lean
+  AlgebraicTopology/Disk.lean
+  AlgebraicTopology/SimplicialSet/Homology/Coproduct.lean
+  AlgebraicTopology/SimplicialSet/Homology/Excision.lean
+  AlgebraicTopology/SimplicialSet/Homology/MayerVietoris.lean
+  AlgebraicTopology/SimplicialSet/Homology/Relative.lean
+  AlgebraicTopology/SimplicialSet/Homology/Restrict.lean
+  AlgebraicTopology/SimplicialSet/Homology/Zero.lean
+  AlgebraicTopology/SimplicialSet/Restrict.lean
+  AlgebraicTopology/SimplicialSet/TopAdj.lean
+  AlgebraicTopology/Singular/Basic.lean
+  AlgebraicTopology/Singular/Contractible.lean
+  AlgebraicTopology/Singular/DirectedUnion.lean
+  AlgebraicTopology/Singular/DiskSphere.lean
+  AlgebraicTopology/Singular/Empty.lean
+  AlgebraicTopology/Singular/Excision.lean
+  AlgebraicTopology/Singular/MayerVietoris/Basic.lean
+  AlgebraicTopology/Singular/MayerVietoris/Reduced.lean
+  AlgebraicTopology/Singular/Reduced.lean
+  AlgebraicTopology/Singular/ReducedRelative.lean
+  AlgebraicTopology/Singular/Relative.lean
+  AlgebraicTopology/Singular/Sphere.lean
+  AlgebraicTopology/Singular/Subdivision/AffineChain.lean
+  AlgebraicTopology/Singular/Subdivision/Basic.lean
+  AlgebraicTopology/Singular/Subdivision/Homotopy.lean
+  AlgebraicTopology/Singular/Subdivision/Small/Basic.lean
+  AlgebraicTopology/Singular/Subdivision/Small/Chains.lean
+  AlgebraicTopology/Singular/Subdivision/Small/Equiv.lean
+  AlgebraicTopology/Singular/Subdivision/Small/Homotopy.lean
+  AlgebraicTopology/Singular/Subdivision/Small/Relative.lean
+  AlgebraicTopology/Singular/Subspace.lean
+  AlgebraicTopology/Singular/Triple.lean
+  AlgebraicTopology/Sphere/Equator.lean
+  AlgebraicTopology/Sphere/Puncture.lean
+  AlgebraicTopology/Sphere/Zero.lean
+  Analysis/Normed/Affine/Centroid.lean
+  Analysis/Normed/Module/Ball.lean
+  Analysis/Normed/Module/Ball/Homeomorph.lean
+  Analysis/Normed/Module/Normalize.lean
+  CategoryTheory/Abelian/DiagramLemmas/CokernelComp.lean
+  CategoryTheory/Limits/Shapes/Products.lean
+  CategoryTheory/Limits/Shapes/ZeroMorphisms.lean
+  Geometry/Convex/ConvexSpace/Barycenter.lean
+  Geometry/Convex/ConvexSpace/Dist.lean
+  Geometry/Convex/ConvexSpace/Topology.lean
+  Topology/Category/TopCat/Subspace.lean
+  Topology/Category/TopPair.lean
+  Topology/Category/TopTriple.lean
+  Topology/Homotopy/Path.lean
+  Topology/PathComponent.lean
+  Topology/UnitInterval.lean
+
+Addendum (lane r32, milestone F)
+--------------------------------
+Added from the same upstream commit b6d1ecaf5bf5781b2852ea17e3e2b00f4416afae, with the same
+mechanical import rewrite and no other modification: the transitive TauCeti import closure of
+  TauCeti.Analysis.InnerProductSpace.Spectrum
+(`ContinuousLinearMap.exists_hilbertBasis_forall_hasEigenvector`: a compact symmetric operator
+has a Hilbert basis of eigenvectors).
+Files:
+  Analysis/InnerProductSpace/HilbertBasis/Basic.lean
+  Analysis/InnerProductSpace/Spectrum.lean
+
+Addendum 2 (lane r32, milestone F)
+----------------------------------
+Added from the same upstream commit b6d1ecaf5bf5781b2852ea17e3e2b00f4416afae, with the same
+mechanical import rewrite and no other modification, at the paths mirroring upstream: the
+transitive TauCeti import closure of
+  TauCeti.Analysis.InnerProductSpace.Variational.Rayleigh
+(Lax–Milgram solution operator of a coercive variational problem, its compactness and symmetry,
+a Hilbert basis of variational eigenfunctions, and the Rayleigh principle).
+Files (in addition to Addendum 1):
+  Analysis/InnerProductSpace/LaxMilgram.lean
+  Analysis/Normed/Operator/Compact/Basic.lean
+  Analysis/Normed/Operator/Compact/Eigenspace.lean
+  Analysis/Normed/Module/RieszLemma.lean
+  LinearAlgebra/End/RangePow.lean
+  Analysis/Normed/Operator/Compact/RieszTheory.lean
+  Analysis/InnerProductSpace/Variational/Fredholm.lean
+  Analysis/InnerProductSpace/Variational/Spectrum.lean
+  Analysis/InnerProductSpace/Variational/Rayleigh.lean

@@ -1,0 +1,21 @@
+# DGPS-LSI T01-T14 formalization campaign: nested Lake package.
+# It requires the legacy package (repository root, unchanged) by path, so the legacy
+# libraries are imported in place and Mathlib/its dependencies are inherited from the root
+# lake-manifest.json (pinned ec6a61c). Do not add a direct Mathlib requirement here.
+# Verified with a core-only toy on v4.35.0-rc3 (2026-10-21): path-to-parent resolves, inherited
+# revisions follow the parent manifest (also under `lake update`), legacy outputs land in
+# ../.lake/build, campaign outputs in Campaign/.lake/build. Not yet verified at Mathlib scale.
+name = "DGPSCampaign"
+version = "0.1.0"
+defaultTargets = ["DGPS"]
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+
+[[require]]
+name = "SharpSymmetricLSI"
+path = ".."
+
+[[lean_lib]]
+name = "DGPS"

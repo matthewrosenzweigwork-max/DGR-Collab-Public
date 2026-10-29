@@ -1,0 +1,53 @@
+{
+  "accepted_candidate_archive_sha256": "00e0d7612ceb1e6f19c184fdd3b87c068e5fae29531cedc72bfe9823db6b88f3",
+  "candidate_modules": 402,
+  "completion_language": "THEOREM 1.1 FULLY FORMALIZED \u2014 STATEMENT AND PROOF",
+  "created_utc": "2026-10-02T00:01:59.387351+00:00",
+  "frozen_definition_modules": 23,
+  "mathematical_verification": "PASS_PROTECTED_COMPARATOR_NANODA_LEAN_KERNEL",
+  "original_acceptance_archive_sha256": "448a33968bd07619ad867a76232f12f710fbace43bb72d7c9b8a085db973422a",
+  "original_report_sha256": "a4b9baad1e2fa5d5dab743b810f57abd40da5e79f528ccb0fa8e2b7473ae66f2",
+  "owner_acceptance_table": {
+    "AXIOM_POLICY": "PASS: propext, Classical.choice, Quot.sound only",
+    "CLEAN_REPLAY": "PASS: source-only candidate and challenge rebuild; pinned official dependency artifacts reused",
+    "COMPARATOR": "PASS: initial, post-negative and clean protected replays",
+    "DEPENDENCY_CLOSURE": "PASS: source closure rebuilt; protected dependency baseline checked",
+    "FORMAL_STATEMENT": "PASS: theorem11, uniform_ambient_lsi and theorem11_with_normalization",
+    "FULL_FORM_DOMAIN_PROOF": "PASS: full reviewed ambient smooth-form closure",
+    "NANODA": "PASS: initial, post-negative and clean protected replays",
+    "PROOF_CORRESPONDENCE": "PASS with recorded adaptations and separate original-argument validation",
+    "SOURCE_ALIGNMENT": "PASS: independent final statement and definition review",
+    "SOURCE_IDENTITY": "PASS: unchanged 402-module candidate and canonical manuscript",
+    "SPECIFICATION": "PASS: exact frozen statement and 23-module definition closure",
+    "TARGET": "Theorem 1.1 / thm:main; attractive periodic logarithmic gas"
+  },
+  "permitted_transitive_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "primary_declarations": [
+    "PeriodicAttractiveLogGas.Theorem11.theorem11",
+    "PeriodicAttractiveLogGas.Theorem11.uniform_ambient_lsi",
+    "PeriodicAttractiveLogGas.Theorem11.theorem11_with_normalization"
+  ],
+  "public_summary_note": "Selected fields from the original acceptance record. Operational host details and internal workflow records are omitted. This is not a new proof replay.",
+  "qualifications": [
+    "Supplied-proof correspondence is accepted with validated larger nonsharp fixed-particle constants. The manuscript smaller displayed constants are not certified.",
+    "The formal geometry uses coordinate cuts, signed-boundary cancellation and Brunn-Minkowski/coarea. The original geometric argument was validated separately; it was not formalized verbatim and was not waived.",
+    "The Hilbert-space substitution was reviewed at the local and material exact-pin scope; no whole-Mathlib audit is claimed.",
+    "Stage05 is an independent AI semantic/evidence review with reported role separation. It is not human certification, a new kernel run, or independent OS administration.",
+    "Candidate and challenge modules were rebuilt from source for each required replay. Existing protected official dependency artifacts were reused after 144206 manifest entries, 15 tools and 11 native-boundary inputs were checked.",
+    "No VM reboot or whole dependency rebuild was performed. Stage06 performs identity checks and archival, not a new protected theorem replay.",
+    "Twenty-seven solution .olean files varied with embedded build paths; source and proof-export hashes matched. General build-byte determinism is not claimed.",
+    "Two UTC-versus-monotonic timing discrepancies remain documented. Resource enforcement and runtime-limit conclusions use the retained monotonic evidence; the cause of clock drift is not certified.",
+    "Two intentional missing-target exports emitted PANIC while returning zero. Mandatory-target Comparator rejection and the surrounding negative-control evidence, rather than exporter status alone, established rejection.",
+    "The global scheduler daemon-failure/orphan-pruner combination was not newly certified. Existing locks, routing and campaign ownership were preserved.",
+    "An isolation errno of ENOENT records a hidden path, not a permissions-visible EACCES. Both observed mechanisms deny the tested writes; actual errno records are retained.",
+    "A phase-helper exception may skip that phase immediate post-baseline check. The reviewed failure boundary and final full protected readback are retained.",
+    "The protected manifest retains its registration-time historical eligibility labels. Final acceptance is a separate owner metadata record bound to the unchanged manifest.",
+    "Nine complete disposable build/cache archives remain local with exact current hashes. The cloud set includes all reproducible source, all reviews, commands, receipts, build manifests and every unique raw proof export; no full VM/dependency binary image is claimed."
+  ],
+  "source_and_proof_correspondence_acceptance": "PASS_WITH_RECORDED_ADAPTATIONS_AND_SEPARATE_ORIGINAL_VALIDATION",
+  "status": "PASS_FINAL_MATHEMATICAL_AND_SOURCE_PROOF_ACCEPTANCE"
+}

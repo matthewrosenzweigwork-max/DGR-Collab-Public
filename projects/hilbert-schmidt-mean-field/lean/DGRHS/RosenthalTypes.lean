@@ -1,0 +1,12 @@
+import DGRHS.Concentration.Rosenthal
+#check DGRHS.Concentration.sum_absolute_even_power_integrable
+#check DGRHS.Concentration.scalar_even_rosenthal_of_even
+#check DGRHS.Concentration.scalar_even_moment_fin_zero
+#check DGRHS.Concentration.normalization_scales
+#check DGRHS.Concentration.scalar_even_rosenthal_integrable
+#check DGRHS.Concentration.scalar_even_rosenthal
+#check DGRHS.Concentration.independent_mixed_product_integrable
+#check DGRHS.Concentration.moment_div_factorial_eq_coefficient
+#check DGRHS.Concentration.even_moment_polynomial_majorant
+#check DGRHS.Concentration.normalized_even_moment_bound
+#check DGRHS.Concentration.sum_power_div_factorial_eq_coeff_prod

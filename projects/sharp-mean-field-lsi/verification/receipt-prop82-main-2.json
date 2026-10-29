@@ -1,0 +1,42 @@
+{
+  "challenge_export_bytes": 185483024,
+  "challenge_export_sha256": "7a1b9f8440659da87b713bd1de27ea7556c35aae18aa9fe1b8fe0fc934597d2b",
+  "challenge_ir_bytes_removed": 5719126789,
+  "compare_exit": 0,
+  "compare_memory_cap": "7G",
+  "compare_memory_estimate_bytes": 5350350532,
+  "exporter": {
+    "built_sha256": "13e0625be7b80e323e3d2307f454227f455c88301a4224b1e89098b26632e080",
+    "installed_sha256": "13e0625be7b80e323e3d2307f454227f455c88301a4224b1e89098b26632e080",
+    "rev": "66f1fb4bc256072069767fce52d39480e4524869",
+    "toolchain": "leanprover/lean4:v4.35.0-rc3",
+    "url": "https://github.com/leanprover/lean4export",
+    "utc": "2026-10-08T13:13:14.574788+00:00"
+  },
+  "finished_utc": "2026-10-09T02:29:01.570954+00:00",
+  "markers": {
+    "Lean default kernel accepts the solution": true,
+    "STAGE02_EXPORT_REPLAY_ACCEPTED": true,
+    "nanoda kernel accepts the solution": true
+  },
+  "pins_checked": {
+    "challenge_tree_sha256": "01a772daa76c293c584a5a7e58d4ec562d6d429582618906bc682ad49709f8b0",
+    "solution_tree_sha256": "4ae1b9384f52e91eb71d6a05246fe4a22dbc1ac95e30b52086c9a90b0ced5b35",
+    "theorem_count": 94,
+    "theorems_file_sha256": "fa52176aad0fbaa7f205f7781fc8f07eff84f449538351f4a752a9a265c6741e"
+  },
+  "run": "prop82-main-2",
+  "runner_sha256": "6800c1166b2568319791fc865e4ef7b558fee8e1c653accc745b3f75e164d03c",
+  "solution_export_bytes": 1152104609,
+  "solution_export_sha256": "8c7ca836c8a9bee6f814729fc7f4314800150309d21c46558e74a95e7e920e33",
+  "solution_ir_bytes_removed": 5986719853,
+  "source_tree_sha256": {
+    "challenge": "01a772daa76c293c584a5a7e58d4ec562d6d429582618906bc682ad49709f8b0",
+    "solution": "4ae1b9384f52e91eb71d6a05246fe4a22dbc1ac95e30b52086c9a90b0ced5b35"
+  },
+  "started_utc": "2026-10-08T23:59:20.634584+00:00",
+  "status": "ACCEPTED",
+  "strict_nanoda_boundary": true,
+  "theorem_count": 94,
+  "theorems_file_sha256": "fa52176aad0fbaa7f205f7781fc8f07eff84f449538351f4a752a9a265c6741e"
+}
