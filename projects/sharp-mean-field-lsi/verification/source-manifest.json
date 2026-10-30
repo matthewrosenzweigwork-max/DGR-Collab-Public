@@ -1,12 +1,12 @@
 {
   "source_repository": "matthewrosenzweigwork-max/DGPS-LSI-",
-  "source_commit": "9285e3b551e9b6377021e75d0d11c56e4b87feb5",
+  "source_commit": "40f266f117e2ac74b447f5fa7372ba2d0355b327",
   "files": [
     {
       "path": "Campaign/DGPS.lean",
-      "git_blob_sha1": "f6e55efcf1aa7408c6c8757f8a0680fdeba674a6",
-      "size": 27184,
-      "sha256": "a328c7ada4e9462e9030bf33dbe129a8f17ea301614badde70987da494be5d14"
+      "git_blob_sha1": "243759caf1b3a09564af543ddf8b37792b417415",
+      "size": 27532,
+      "sha256": "fb01d6992af32ea96e4905319310335ab6a3f9de7c4a9b65a0a765a7ed6e6d25"
     },
     {
       "path": "Campaign/DGPS/Analysis/BoundedPerturbation.lean",
@@ -471,6 +471,12 @@
       "sha256": "73bc753716a77ca47c7c53d53511b9952108d4c0ccb9e9c50fb71c83bf4cd5f0"
     },
     {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneAsymptotics.lean",
+      "git_blob_sha1": "fc626d64d9ff05c7eb31297626c21e3d76f86e06",
+      "size": 9608,
+      "sha256": "c0940d98967cfa9f3b18eabacde7b8924adfe4a4b7cade3d0ab122c46fa5bcba"
+    },
+    {
       "path": "Campaign/DGPS/Examples/EngineeredRankOneDrift.lean",
       "git_blob_sha1": "107f5ac8d80bf81abf4fb9314f49de03082f63f4",
       "size": 10458,
@@ -525,6 +531,12 @@
       "sha256": "85401b338152ca43c251a13cd5aea43f83e939dfdf5919599c2838af24322317"
     },
     {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneGauge.lean",
+      "git_blob_sha1": "3af1300709789b77ca0679b50326a81761445332",
+      "size": 11441,
+      "sha256": "1621077baf4c8d0aa478a0c7188652fee0797094defa95761e9a25723410a80e"
+    },
+    {
       "path": "Campaign/DGPS/Examples/EngineeredRankOneNormalization.lean",
       "git_blob_sha1": "248da107e952425e8f09de32969391fbffa6104b",
       "size": 19681,
@@ -541,6 +553,42 @@
       "git_blob_sha1": "e303af766d9d3c86fbe341c0659edff2b1caa0f2",
       "size": 37775,
       "sha256": "333f266017a9af3bad1c8c7c36f7483284dd877d1d1b30a644b44c62aac956f5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneScalarScale.lean",
+      "git_blob_sha1": "e597b6e3ce448be303f90ce06b0b1774f743ab26",
+      "size": 1897,
+      "sha256": "10adafcc76de25675a5546e28637571d94e38839b0e22ee39ee9f3e891b66046"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneSharpLSI.lean",
+      "git_blob_sha1": "c560098c7a4d97250de01b1516664cd73f4448f2",
+      "size": 14660,
+      "sha256": "43f34ce099b35362c837cfbc81236c39c27361c1a41d62281151331dcb28b9b8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneSharpSeparation.lean",
+      "git_blob_sha1": "00f528914693031adca900e1c3590bbcb2d4c7bd",
+      "size": 7211,
+      "sha256": "20436e0fa6122e999f65c05d1b5d4849f97d549207008411639b5defa05a1802"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneSineMoment.lean",
+      "git_blob_sha1": "65fd0834bc1cedad1363e0543de92f292d04597e",
+      "size": 4394,
+      "sha256": "8a8facac0c3fe6372b645895fc5c2c4be3211316a1ce0456aa19ec54a1a01239"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneSineTrial.lean",
+      "git_blob_sha1": "4907f199f3d53a7ac3fdb42b789066f2024d29fc",
+      "size": 7873,
+      "sha256": "a58d68a02737cf0348bfcd4ce156eb36dc9677e2ea9438467f9b3f0256a92f95"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/EngineeredRankOneSpeciesLimit.lean",
+      "git_blob_sha1": "2a3b81703a3218d58f7e9fd25253c5b322de7915",
+      "size": 1777,
+      "sha256": "fa0c4c9493fb6afb36dca13cb31e10d5b1b056e91c4c2585bca09993825d93bc"
     },
     {
       "path": "Campaign/DGPS/Examples/EngineeredRankOneTiltedMeasure.lean",
@@ -591,10 +639,28 @@
       "sha256": "48cd47b08d889efa47aacc22f62a731bb9a7bdd824dd779f485c4bb64952511d"
     },
     {
+      "path": "Campaign/DGPS/Examples/PolynomialChartCriticality.lean",
+      "git_blob_sha1": "da94de739b33650f5b34ec9d8e0d028da556c7ae",
+      "size": 3927,
+      "sha256": "ba9171aed68e4a06cf5f96e604ad8d9545464751ef25c239919ef10d0a0c59a7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialDeficitVariation.lean",
+      "git_blob_sha1": "2c3a0e7126b24985ed8cc93ee9409e112f9ed1c5",
+      "size": 6263,
+      "sha256": "998e8b341d218e07b1c642c97478bd5d405fef373b3147beff8b12ca4e5def79"
+    },
+    {
       "path": "Campaign/DGPS/Examples/PolynomialEquilibrium.lean",
       "git_blob_sha1": "ae65f5b4d3cdeffa33116ae315cf84629d592886",
       "size": 50727,
       "sha256": "8b2c80c59bc235ae500d29f233b96e335903f4822c42bb6e79434fbbf45a2d9e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialEulerCorrectionLimits.lean",
+      "git_blob_sha1": "e728611baad48c38ea300eee404bc0565fca1455",
+      "size": 9355,
+      "sha256": "6e1bca49a998878e7140d624fc91306c171401ee82f73720e9e116dfbd3afa9f"
     },
     {
       "path": "Campaign/DGPS/Examples/PolynomialExactGap.lean",
@@ -603,16 +669,988 @@
       "sha256": "985ec4c0646f9f6a182a052aec9c14d7b6d759904f66df7787a94f5408fc024d"
     },
     {
+      "path": "Campaign/DGPS/Examples/PolynomialFeatureDerivativeBounds.lean",
+      "git_blob_sha1": "d6a164cb859efa8c29a09b91287422a5d0fe6d59",
+      "size": 5035,
+      "sha256": "7d515b21c4615b6b5aa29a83de73aa615bd8acb2f369448f88b98f4656c71775"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialFiniteProfileCoefficients.lean",
+      "git_blob_sha1": "4efbfdcadc5a569f9da7ed62f522742ce762f471",
+      "size": 12472,
+      "sha256": "eb4888119477b2759d62352e11f862fc54f34faa86f44686532ffdc7d0bc83c7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialFiniteProfileIH.lean",
+      "git_blob_sha1": "36915eb54ff59b0d21cdcb63e132c16c0a484fea",
+      "size": 12273,
+      "sha256": "1178204506d261089bc2335d771f4f306a9e1837f057a7bee21c1b4f644f5abb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialFullChartHessianControl.lean",
+      "git_blob_sha1": "b094550e0839b3d912ed0ffb2cb1ce2c75539ab7",
+      "size": 3988,
+      "sha256": "9b9495f42775515aacbe6bc2e3396d475a45927e90f24c233a0e091888ad597a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialGaussianEndpoint.lean",
+      "git_blob_sha1": "40dcf918329d5ea67b6934d025a58ec08a731f0c",
+      "size": 8899,
+      "sha256": "2251bdda5fc69c6a062bdc531e74da6302d3fc47bab3301bcbbf350549122092"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialGaussianPoincare.lean",
+      "git_blob_sha1": "d63456f2ff5d69003502a018be7e1590b2ff3af3",
+      "size": 3479,
+      "sha256": "e35c37e9ecf3bbf27310080b51d1883fe2ca2486d41e1a2bf716a215e9c0dcf1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialGeneratorDerivativeBounds.lean",
+      "git_blob_sha1": "2c0903beef6e9c22006a0a8e9d00dd2e5b7283eb",
+      "size": 4631,
+      "sha256": "2d83b96a932e3c2807c3c0f5f8aed886bed29c96ad39b3738b7e6fbfb6689297"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialHaarTrial.lean",
+      "git_blob_sha1": "adae16467901b6d7d85b990f7357d78c6d4efd3d",
+      "size": 13381,
+      "sha256": "a96b53d086f476fe0fae0f88f8f675c5532e7bd75b26a3d015b45d837b3ab20a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialHaarTrialBounds.lean",
+      "git_blob_sha1": "968c2cafbfb45ffaa95088c4b2aa304e2241cb63",
+      "size": 9062,
+      "sha256": "ab40220ca08acd0258faed5d60b4899fc707a758a2285ea8c28512cdb3a875fb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialLogCalculus.lean",
+      "git_blob_sha1": "cd4f8cdd0ebef77984898fa9ededf2f7bd9c9d50",
+      "size": 5082,
+      "sha256": "1d5e12dde0272a6f8cc9fac88ca6a9b2da9649231308fcb5f5e79b2a7edd50c9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialLogChart.lean",
+      "git_blob_sha1": "18f781fdc2f5dc87bd87c916d769a08c73211105",
+      "size": 7597,
+      "sha256": "497cab557501d4b2c52cd94265199729f9605660de254755c7ff38da2edb319f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialLogDerivativeBounds.lean",
+      "git_blob_sha1": "e5f0591b912c06cd18298b93e28f730d62956f45",
+      "size": 6533,
+      "sha256": "f05356c1122b75ec3872b29a6c4adc152794c43631eb8d38c68418a4d0e598f3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialLogProfileSmallness.lean",
+      "git_blob_sha1": "d900bc041cf8b8dbc6704e4a20249fdda73db2b6",
+      "size": 14189,
+      "sha256": "af4d7bdde9c27e9ff972824dd0854836f75ad2121ee2b5f21e9e2527f9c860f2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialMinimizerCapture.lean",
+      "git_blob_sha1": "3a75b5ba410ea637c8cefaac5acf2441135b57fd",
+      "size": 3059,
+      "sha256": "7dcabb363f6bbdff499fd4d12f3756450da0f6f8bb1fea03705aa5eebfe3564c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialMinimizerDeficit.lean",
+      "git_blob_sha1": "59dd65bbdae37937ef62d76c98fe77e49ca8af5a",
+      "size": 3212,
+      "sha256": "f8b4a56a6752ba9bfff9bb6303457389559fe4f7d90d949ecd98024868c669c4"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialMinimizerGraphEntry.lean",
+      "git_blob_sha1": "de26674f1b0bd178aafd09dc3c41977a637a94fc",
+      "size": 9655,
+      "sha256": "6c35667f8d5334f8e10fb2871a26a289bc7abfb5c4c8f250b56ef650c1b167d3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialMinimizerPositivity.lean",
+      "git_blob_sha1": "f2e1b694f5e7bb8e578c5870e6493d9912d2e9e8",
+      "size": 2813,
+      "sha256": "06d3c039b867908f305c8714ffc554c036119c3d43c35854590e5a2729e60d4f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialNativeH1SplitDescent.lean",
+      "git_blob_sha1": "dc68d1d613e0f58a761fedf2c56c99276c873cdb",
+      "size": 15638,
+      "sha256": "a00f1407442bb10892dfe2e695c418d72e511e1c3d6d6b6e41961830a52517aa"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialNativeRayleighWitness.lean",
+      "git_blob_sha1": "df3e92d20c88a1981ac194a2ba38300491975858",
+      "size": 4034,
+      "sha256": "52feeafa476ac4f9ef89f72da433a5677cc58956d74feb88582f00ccf2e74038"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialNearOriginMoments.lean",
+      "git_blob_sha1": "cef479e3712ae328fc7324281282a26dddab700c",
+      "size": 5979,
+      "sha256": "b78e531bdac446dd7544a817fd242b46e125e1ff42713c061daaeee85c3022d2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialOriginCapture.lean",
+      "git_blob_sha1": "3f28f1388a948909c4748492af9778414276b893",
+      "size": 16623,
+      "sha256": "8ade09167d8409bbd5b3316a9aa4292cd9f1397795d08eb89662687e6d195a20"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialPositiveCapture.lean",
+      "git_blob_sha1": "c677dd8d79b4c06ed034227d0aed4e01e9a222a6",
+      "size": 3650,
+      "sha256": "f5d78bb93eb0bd1097e4682b42a39b3d5e27849bf7035d550273afe2a8f27630"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialProfilePoincareUpper.lean",
+      "git_blob_sha1": "080ef9b16dbad4eee55bf8557d00b9a52bcfc2ac",
+      "size": 3112,
+      "sha256": "0ead82f1d00343243eb571b6172c5caa305fe13c92c1110dc1ddcf190749c985"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialProjectedCriticality.lean",
+      "git_blob_sha1": "6cbdb8da01300b34d47697c04fbcc30b64d11a1a",
+      "size": 8168,
+      "sha256": "2d7f4143783140562c65233c2569204b4cc37d14a3e37ff1415ef22eb06ae483"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialProviderIndependence.lean",
+      "git_blob_sha1": "889af823ada2b869986d37f05e753987604f3bfd",
+      "size": 3468,
+      "sha256": "40c5633ca94d0cdb46e38c780bd01162efcc8a3e7a06764e4d41d2f00056df9c"
+    },
+    {
       "path": "Campaign/DGPS/Examples/PolynomialRates.lean",
       "git_blob_sha1": "e9d3276d0261bf678563c9c25bd43757e621145c",
       "size": 23625,
       "sha256": "0b7b421e8725950c22e3e418e60d550ccb228d42c14198fba62ab85354db6841"
     },
     {
+      "path": "Campaign/DGPS/Examples/PolynomialRatesOrigin.lean",
+      "git_blob_sha1": "9e05d5bd7c61afb84a97c6e1cf3d07e6f9783786",
+      "size": 5506,
+      "sha256": "b90c31f33e187f8f1241d6864334a1e2fe10ad443672dcc15b7e93fb8fe574b6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialReferencePoincare.lean",
+      "git_blob_sha1": "9ebc19ef0ace2ca0da68848ce3c4534476b401c4",
+      "size": 7475,
+      "sha256": "8f797b4cc11061e17010b5bad43709f9b7fa13e5047c490e40bea4691edfdd90"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialResidualNormalization.lean",
+      "git_blob_sha1": "de4b4c5642f2f2a825580bdc6a13cc7b8f0b04da",
+      "size": 5108,
+      "sha256": "a69e7d3869716ae61cbedbe5f8baa3338946e684554fb9e251c6cc30adcaafc0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialRootVariations.lean",
+      "git_blob_sha1": "32f4e2104e1f2124895b760da6e77c8b56dcf92f",
+      "size": 11212,
+      "sha256": "8381a9a8e590ffd63607784fd330d1ba83ee3a2029abc03c2c823d12e148b4df"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScalarAttainment.lean",
+      "git_blob_sha1": "78721d8db29aa8a54f7c088fca677ca0dde28748",
+      "size": 6503,
+      "sha256": "94d7a79540306fa49fb26d5ef995a0541a429b89822ae62a1ac7cf8cda248807"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScalarAttainmentFactory.lean",
+      "git_blob_sha1": "1c8f53496533046fce2123bb807877b54387236e",
+      "size": 3431,
+      "sha256": "3e960bd373a1d4548f85fb6c1afb8364e60cb99f38886b7522a31f3aa21949c2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScalarCompactness.lean",
+      "git_blob_sha1": "c3f9d28a8433b0fe4b41c6c0a81f53b80d4e6430",
+      "size": 24525,
+      "sha256": "382a3e1a6be055494b1bed6a70788311aff0219e07b652b4b326ec61ebc781c7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScalarSineUpper.lean",
+      "git_blob_sha1": "f208c8e5a0298f79e92ba0d50b9f41601389b567",
+      "size": 16128,
+      "sha256": "b4509133287c3c0617b5834405bafd03476078a1836e153ff40c92151eec9c4e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScore.lean",
+      "git_blob_sha1": "3d8c3e5f26c901acdf4d691f7d1ce36538dc37c9",
+      "size": 12083,
+      "sha256": "586ceaac937ed9852aa7646109a47629ca7914fc6cf5f502ae61a4c12458db6e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialScoreUniformCapture.lean",
+      "git_blob_sha1": "3bc1782755a7bec61212ea38acba6f98d09eaf5b",
+      "size": 14124,
+      "sha256": "d7f4a358ce0ac46b9e71b478b61f8b2a21930dabacbedfb16a4d06ad00dea605"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSmooth.lean",
+      "git_blob_sha1": "81424c6c24316de9c4cf072a7a5eac232da7f8ea",
+      "size": 6846,
+      "sha256": "069e67ff7a47ad8db2162fa30b2a0bab7320e856a127c2762bef46051334bccd"
+    },
+    {
       "path": "Campaign/DGPS/Examples/PolynomialSpecies.lean",
       "git_blob_sha1": "fdcee96daecf1bdf696bcd9ee9443011a6864de1",
       "size": 19126,
       "sha256": "cdf06e823e4fb6115facad8681d80d6c93aa6f975b375b9599e263acdb2b0455"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesAbsoluteProfileJet.lean",
+      "git_blob_sha1": "6f71a469e7142ff1f9749d43fdc9ec807308b2dd",
+      "size": 6000,
+      "sha256": "e151268f9826c2fbd640343c6c71bf94e657546c7e592f4243407e90d8e68537"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesActualAtMostTwo.lean",
+      "git_blob_sha1": "4e951f1e03b13b6cd5d91fdd803c5e748bf82bb0",
+      "size": 7137,
+      "sha256": "d70122ab9681c8d1ccf9be00deafcc32ed013bd4e4ae9e7af1dc7bfbc0c0b5c2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesActualNativeDescent.lean",
+      "git_blob_sha1": "fb66a5481ff48cceadc39cac2358f3d57b6d42bc",
+      "size": 6291,
+      "sha256": "abbfc575407915eab99c825b27149da62cc9dbf9d7f8195691abcd5603f80557"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesActualOriginInputs.lean",
+      "git_blob_sha1": "42c628fd45ddfd4ea51eea86541b4cc2a83dd445",
+      "size": 4425,
+      "sha256": "ca8fa85f0a4a2ddf5c6cff78711c03048bc8960aa26608e922c4dca4da5f3413"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesActualPoincareMargin.lean",
+      "git_blob_sha1": "9e7fff2947ab77414d7be5e32d53849eb64e3ec4",
+      "size": 7543,
+      "sha256": "d69115bf0b5ce1d27584f6735ff4a390b91808d2fa4efd2f3c40e1d97496dd47"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesActualUniformCapture.lean",
+      "git_blob_sha1": "a6e8fec5f6ed6a990ebe9624a76ad9792e9b76b1",
+      "size": 4465,
+      "sha256": "7b5978c52fa3556feb4698dbfe19e7621331af472da75ed764e83fc15f610488"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesCanonicalAssembly.lean",
+      "git_blob_sha1": "fe65d2b440fa8cd0e4f46e85e14372e2bca2b4fe",
+      "size": 6810,
+      "sha256": "982260923be1a3e264264cfbac4611432b65b713ffd78b1ebd3dc1c8fbdb63f6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesChartInjectivity.lean",
+      "git_blob_sha1": "bb290c8a74791e0a4d4dffcbc809777ece6d0412",
+      "size": 7335,
+      "sha256": "593cb037d40b78d659374f8cd24053b7197dacf9f393ffb58554647cf5796190"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesCompactTube.lean",
+      "git_blob_sha1": "2528635c7c0d8fd3149b810a514d7d1518c0c195",
+      "size": 1351,
+      "sha256": "2555e39d8dc340aa2ed7e3614f894c826414c7d083c567c0d84c91ff8f0a87c5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesCompleteGraph.lean",
+      "git_blob_sha1": "009430dda807e7cca2b3952d78d7a4946932d076",
+      "size": 2386,
+      "sha256": "e18393c781ca37feaabf16e7c4f427ba71e1a7ca524b88ab222b0e4ee865c247"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesDeficitTaylor.lean",
+      "git_blob_sha1": "7f3735b6db6861fb30740231b307ca6cc3e42a5f",
+      "size": 5308,
+      "sha256": "492ced3aee111a1cd7f7ff39dfd8730f928b25725b325795b339a55441bd78ae"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesDescentBridge.lean",
+      "git_blob_sha1": "f8bfbf34108133f70859a1ba3a34d48a8fe2dc4f",
+      "size": 10985,
+      "sha256": "8961a32cce3343dca3e20ee8e30ad65021ed937bb6a30ad4f3f6dd6f620eb8dc"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesEuler.lean",
+      "git_blob_sha1": "f06181d221b680279ef304889993264ee7cecbed",
+      "size": 16959,
+      "sha256": "c10d1533a29cf38c8be0ddc805d9c20572d7d8489ae717f37c21f02b09e6d08e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesEulerCanonical.lean",
+      "git_blob_sha1": "6eace619457f90430d07b77f88c832f1dbffca8d",
+      "size": 19817,
+      "sha256": "807bce72a04158afc2c9c744e28e52f8b9b7da2d7cf75683d2eaf545c4855976"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesEulerStrong.lean",
+      "git_blob_sha1": "30746992d1c82901d1855f91250ccfda4b46df33",
+      "size": 12436,
+      "sha256": "6acdf32a9014e5d1f13b878606187200a000c154bd92a090c2c0cdc56926da20"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesExactlyTwoCharts.lean",
+      "git_blob_sha1": "d093db95442dc49efb5b5e7dd51701ebfaca5a1a",
+      "size": 7146,
+      "sha256": "6b77ed52e91871d38f246bc9643ac9786cf80768a58161388da4b914cbb6a0e2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesExactlyTwoOptimizers.lean",
+      "git_blob_sha1": "3ec0285626af97759d11f54fc9adc4b03762aaa1",
+      "size": 2714,
+      "sha256": "99124e6964069d2c3cf67c702a3d1d54aad2c6481363e14436854e34780173a1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFactorImplicitBranches.lean",
+      "git_blob_sha1": "70b6f0706faba6af327a18db1823da17473e0160",
+      "size": 12107,
+      "sha256": "c6551ae84b4a856976b6f6b9ddb3fcbb879e73abc311226f7fc9ad46e06e8562"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFieldRadialControl.lean",
+      "git_blob_sha1": "39d3e26057918355eb1bf2e9a10add72c45b5010",
+      "size": 28346,
+      "sha256": "453d8daf0021d05b317f4332c184a6c41d8608b774f88fac3b3b204328e9da82"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileCanonical.lean",
+      "git_blob_sha1": "24d2c74487240ad672e32c182155c5c925a9a7fc",
+      "size": 4848,
+      "sha256": "1f9b8d5c6333e0d6ab5ff0e45ff7fbf83fe0fa3b9cb9a31a0b59674aa035a704"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileDeficitExpansion.lean",
+      "git_blob_sha1": "24ff8814f663d1af48eb316997fe6c04adfe372e",
+      "size": 7037,
+      "sha256": "2a9543ece49a8e2530b9761b9f64b7471c9e60536b61fcfd28196fb7f670dbcb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileGapExpansion.lean",
+      "git_blob_sha1": "4ead3b5a6d2b648b628e3f6edc119a8f24f74d01",
+      "size": 6925,
+      "sha256": "5cfec5be82685412942da9251e4fecd0ba2576696525fcf9ded45957af39b1be"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileMomentBounds.lean",
+      "git_blob_sha1": "f456b872a00e1577affaf24eae93a1435e0b872e",
+      "size": 7740,
+      "sha256": "e489898c7342aaadcb0a08f21abbb2d0797aa4517a57da1868444271b60fcd01"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileMomentCoefficient.lean",
+      "git_blob_sha1": "6a06eb2424d3ff885bfc70c6229eaf2281cad325",
+      "size": 4233,
+      "sha256": "ed4ee84030d75e24b89ac735b84f3145b645c01057987ec446f4621085ef3739"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileMomentSecond.lean",
+      "git_blob_sha1": "27af76a85f92348131d46a713cb0954c1ce0e51e",
+      "size": 9548,
+      "sha256": "c52dbb66c2c594f3ed781ccf61b9149b227a19cde9456a3cc08cc0ccad73044e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileMoments.lean",
+      "git_blob_sha1": "991540f4019ef6c890aae0e5283d55934beea0f8",
+      "size": 5301,
+      "sha256": "bf2de056c91d4f16a87d3c46976722789841c4dad8b7c74a0049137cf6d4855e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFiniteProfileNonlocalBounds.lean",
+      "git_blob_sha1": "32d99349b8a1988d4f27647d81a3d70478c8f3fd",
+      "size": 5950,
+      "sha256": "1d013de2b77b77d43d071b23069b4eecc6454ca9f2c0c73b05185bb10adc3dab"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFullHessianControl.lean",
+      "git_blob_sha1": "a5e3c27932a88b9c4eb6b97c22e3dcd22a917df0",
+      "size": 3540,
+      "sha256": "1d94d33d20c711701efd82ae6223be8935cb660de370e7c586ab9d53be8e9be0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesFullLimitCapture.lean",
+      "git_blob_sha1": "809136d306d82dece721dfcb16a4e7382a7f32b0",
+      "size": 4814,
+      "sha256": "e76306f5ee46d3ecc565acad766ab7755e49bb616d6310ca0e3172499cb27145"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesGapComparison.lean",
+      "git_blob_sha1": "3469c54e10f8480bf6a0b3a09ec70cc49fee2295",
+      "size": 9349,
+      "sha256": "6963ec821b06c0e1969a08aba6df2c044040f4c3f8eb2b7da0b9b1b213fd9f23"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesGapHessianControl.lean",
+      "git_blob_sha1": "078e1fed4d0b7e6e1584d7e972ac09ec5e3b5812",
+      "size": 6463,
+      "sha256": "aeb8db5124fb7c921c0d6cbaeb8f5e9d178d0085a1cc49a8bf2dcaf8b99af8c2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesGapRadial.lean",
+      "git_blob_sha1": "668d5e50010924d2142dfd863648125df63f9f17",
+      "size": 9117,
+      "sha256": "9764d07e08802c3d325a035a0b69873b148a5cba8110b9dcce5e84a75458d207"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesGraphValueComparison.lean",
+      "git_blob_sha1": "575391ddb02d4643a367d3a6a47fd882585a1938",
+      "size": 10525,
+      "sha256": "e5c422deceebf42c299d48b1d5b10706c59b406cdd5b00f5a3a938241a34becd"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesHalfTurnEuler.lean",
+      "git_blob_sha1": "87099cd5d680d45ceabdfff647f52946c0850abd",
+      "size": 5667,
+      "sha256": "eb30af770c40f1214c744155bfa4d4de2fae46f7277b3f3ba7cde132fa57c0d9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesHalfTurnGenerator.lean",
+      "git_blob_sha1": "3fafdb5b8290d2e93eae0220df219be5ae049ab5",
+      "size": 3076,
+      "sha256": "3cb0f752ab45e4ab2399e2d320d8cdf60ac01410c00c1925575349bce1fa0106"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesHalfTurnGraph.lean",
+      "git_blob_sha1": "e310eec70d3fdfd501b1442233abb9938a0da23d",
+      "size": 5527,
+      "sha256": "70e691da3c183ce15cddd28bf52ba7a53d28323265f989fddda5c4596c46b27b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesHalfTurnValue.lean",
+      "git_blob_sha1": "1501913f5e3fbcd4e90204eaddf8e0eec0f453c0",
+      "size": 6021,
+      "sha256": "58e2b52aa93e8248ebf56cd5c6eed3c0b1d8843ac7f5987e9b2a6a2fea294874"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesIndependentResidual.lean",
+      "git_blob_sha1": "6e4565f570763b1d910778607623df6bde9ae421",
+      "size": 2184,
+      "sha256": "7e9faa191872d120aac1e2a7fdc1e2beb592187000c1e1cb3229d4cb1207860a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesJointOddJet.lean",
+      "git_blob_sha1": "b743df0b24e5c863996f9f024e066e718fed1435",
+      "size": 2358,
+      "sha256": "1d984972b90f19f241ab6127e4eab46f422e2eef6255d55d6d1b1c8463f07568"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMinimizerProfileJet.lean",
+      "git_blob_sha1": "2b27357a4923ff781c30d710845ec7be5ba8eb37",
+      "size": 6807,
+      "sha256": "1e7beeb92adee8edc6cac647a43cd65e9d8cf3486d9043b07adb02beafccc375"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMinimizerScaledCritical.lean",
+      "git_blob_sha1": "5e211ab281a86d22e70fa376418cc620260cbc72",
+      "size": 18081,
+      "sha256": "9058e7fa755ca62ce971a65e793bcdb634aad19e45b5043b7aec24651e5172a5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedEulerSecond.lean",
+      "git_blob_sha1": "a1ec5dce2372a6205bdfd35dd09a7a1224645ce2",
+      "size": 9515,
+      "sha256": "26d0ca227bded5ad5ed9b7d0c94006e93c67a8f4697214e57eb709660b1ea42f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedFiniteProfile.lean",
+      "git_blob_sha1": "e2bb86a92ca9a41e10b32fd9ddd30d4a27f1e276",
+      "size": 3961,
+      "sha256": "bfef4727576c1e02a0e900aad6f999ce1339089cba01d7f0c43d0eb8023aa6e5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedFirstJets.lean",
+      "git_blob_sha1": "4521a61218251e492fd1dde73b44a6b2e6af3add",
+      "size": 2760,
+      "sha256": "13dc95f48cc1fe6b35880c6d0a9e68ab0de0c9ce8f7ab0a3357363724caf4d44"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedGeneratorSecond.lean",
+      "git_blob_sha1": "74b111ef7386767c2a104c984fec5960f3af6f6b",
+      "size": 11117,
+      "sha256": "1aba15ab1d73e2581e55ca5e40f4c53c371255bf143a3433696402c23a6da75e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedMoment.lean",
+      "git_blob_sha1": "6839f56aaf754089871157fb3b303d8bcfd5332a",
+      "size": 4915,
+      "sha256": "32d89401f9a6e9d3b5edbc767803a171ce8e84d5443cb6a1b49cedfc5f634e11"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedMomentSecond.lean",
+      "git_blob_sha1": "cd072224d86a0ef95b3c96d7a493b907b3047ddd",
+      "size": 5328,
+      "sha256": "f62088969da4fe5b62caa1d01c78cddbfecc7e7179dc1ec71bf5a8385fdb5045"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedNonlocalSecond.lean",
+      "git_blob_sha1": "8f0a9653a896e12ebf0ce6ba81f95f7445c2a5e1",
+      "size": 10581,
+      "sha256": "aa677f2ebe8ec51173294c1bb4af5d1f8df080f2a3e6397445f342f6a80518cc"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesMixedPotentialJets.lean",
+      "git_blob_sha1": "60711ffbaec3a5b4e85d2eccec6ab90b4336e428",
+      "size": 8443,
+      "sha256": "8781d1df27c42df7df0ce3739ec920bfc00434b54281911f278ebc76c58374bf"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesNativeDescentFactory.lean",
+      "git_blob_sha1": "af22497372aa906d7e48952f7c28647b8527cf9a",
+      "size": 3669,
+      "sha256": "3a30fd1ae4aff6a8ab5b9a57216e62cf2733c993de24aa0c8ef1640388df5521"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesNativeProfile.lean",
+      "git_blob_sha1": "96020d1d184a65f155ef37c834c1fee7bc966eb5",
+      "size": 6640,
+      "sha256": "d03711dd8cb0bd1fd1c2c1d75682a5b166f36048b578e7d2a7e8f14caac5ffa1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesNonlocalFourth.lean",
+      "git_blob_sha1": "2b3ed2db50e62431dbe05c1910b5d0e3d8eb1160",
+      "size": 2970,
+      "sha256": "98fd3f27df83eb04fd01ebd00db2ed72d5a2a0517176b46ad5cd623e8524f39d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOptimizerAssembly.lean",
+      "git_blob_sha1": "399baa9ffa5c525ab2657ab493b864ac4efcffbb",
+      "size": 7500,
+      "sha256": "7def64d327e5f50b9d58af4d3f2575ce6abb395e456e03f017ee31e8924adb4d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOptimizerSmooth.lean",
+      "git_blob_sha1": "594176d4a2cc8fc83724ce3208c3c9fd03171da9",
+      "size": 1283,
+      "sha256": "e4d43f653c960f078cfc202315db35329acc3c445fae4e7a8569eab38bbb016d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginData.lean",
+      "git_blob_sha1": "3871a5629ab3e9dabaa0fa48a63d080804d1f159",
+      "size": 4120,
+      "sha256": "2694f8ec5878201ab4e29a8f886018b7bd429eff0a1047963f0d58fb9a130d93"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginDeficit.lean",
+      "git_blob_sha1": "e7fcf3e11e86647474ac7b62f1888fc1a89d5598",
+      "size": 6755,
+      "sha256": "ecddf633a32b28d3360b274c572e95b1d45550b588e96de0e4f51e2791d0bff7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginDeficitHessian.lean",
+      "git_blob_sha1": "b990beb3871b5c2891c7a2b673dc1cfac6738705",
+      "size": 12633,
+      "sha256": "8b02d12cac5f31f06f808eac299c3fa18601e7c59ab74b7615a78acba1564bb9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginMixedCorrection.lean",
+      "git_blob_sha1": "9bab722b2b4263855954650d8964b39990c952fa",
+      "size": 2425,
+      "sha256": "11e9d93012ed152aa70e8beafd01e1a81495a08daa8ba2169b439b47daeb9259"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginMomentCoefficient.lean",
+      "git_blob_sha1": "d42bc0075186e7ecce21df4cc004a09b50e80391",
+      "size": 4691,
+      "sha256": "34adb9c01ebb8680b698d6dae5057f6b7cb45418cbe9f053c6dd91767dbe60f2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginMomentSecond.lean",
+      "git_blob_sha1": "36363f54147337c103a4b1c5ad61c4b8c2b29691",
+      "size": 4403,
+      "sha256": "f47ccedb2acf234b046b7a0e6e3f2786de2b9d81f2eb18606295ebbc07a6e89a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginPotential.lean",
+      "git_blob_sha1": "17646bc073737ca8ad1421617bf861e885f18df7",
+      "size": 4404,
+      "sha256": "0d315327383f3c3e8996e7543ebe2975d38e00e2f1ef9b4b1d15f3ae7a0205cf"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginRadialLower.lean",
+      "git_blob_sha1": "9f1fb9a9d07db701b678dda47ab3291ff8aea332",
+      "size": 17759,
+      "sha256": "955b640a77ba6900b23d2ca49adccaadc49f8b26fb6ed7a5f85dcd2d455f5503"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginSecondCorrection.lean",
+      "git_blob_sha1": "f5c6a66a51b885cd439fccc3aca8f4c65a0c812b",
+      "size": 6417,
+      "sha256": "b4334f1ad503101a0e9041cada28289ef5917dd6a31b547bdb1b5684542874d6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesOriginValueLower.lean",
+      "git_blob_sha1": "10761fad3c47886b2578bc488f79377b8abdd614",
+      "size": 6202,
+      "sha256": "53476f4b2edb6925354172c7f4ee9b1a368be555f4828c12bbc82275e7a9d9ac"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesPoincareMargin.lean",
+      "git_blob_sha1": "52e232c8d15bb03d634239684f62b070d3c3fe82",
+      "size": 5955,
+      "sha256": "ed7e6ce0189e4e727f383d03a19e4d509f6017bbb7e745846a3de5c67f8bf920"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesPositiveRate.lean",
+      "git_blob_sha1": "08067e7ab41f2330037b68f7e2ac7601abba80a4",
+      "size": 7420,
+      "sha256": "3cf5ffd2fd07c4cb6c433a345aa78b451a457f9eb5a1102e28941259386ec9a8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesProfilePoincare.lean",
+      "git_blob_sha1": "d56dbecb2294847f809bd220b9ec36a3af8eeca8",
+      "size": 5701,
+      "sha256": "8e3c00d06ab46a0b734aa4ed0f9464d1512275f0e15a86907323b00afad4b7f0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesQuarticNondegeneracy.lean",
+      "git_blob_sha1": "39e4300982e6ab5040db961b1749800fa3694c5e",
+      "size": 11508,
+      "sha256": "f5fc8d3d5f13f8c6cbe6da7038ab3fee423bf9b2f2d112028642839013608693"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRadialBootstrap.lean",
+      "git_blob_sha1": "c32068ee66ab13d8756c6c976e25a54fff9cc5db",
+      "size": 20681,
+      "sha256": "62464dcd71ce0f695628d6ce87c79a49739ef3a380055ff4b2fa52e7f483655d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRadialEnvelope.lean",
+      "git_blob_sha1": "fad99584c0236376b9e3c58c21e7f815fbf871ab",
+      "size": 10922,
+      "sha256": "a25f566b337342b8c316842cd710f1f96bc367398ceb34fa5f43be0b307738a8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeAmplitude.lean",
+      "git_blob_sha1": "6fd5703d0a9fa532ffdc89576cb1489785977d88",
+      "size": 10545,
+      "sha256": "36a979c16022984e735804d3ae0552fe78af98c3d3d8fd45bc7d118570242623"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeChart.lean",
+      "git_blob_sha1": "ca0efcade14281f2abf7bd5425dbc33425d51d47",
+      "size": 12727,
+      "sha256": "11443d39a1e65f93ecae07ed7b31e649a1a1b3cf3ac18d2db5e00da1e4943aa3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeCommon.lean",
+      "git_blob_sha1": "5c1ff5bf65dcac77afb110ae74ca55d5a4c546a0",
+      "size": 4739,
+      "sha256": "18593b71b3acab747c78eb058501f83d6ff1b537cf816b2ee7aa244e5b15b112"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeControl.lean",
+      "git_blob_sha1": "0a243bc6e05369174771203971e515e583236a89",
+      "size": 5429,
+      "sha256": "f327e493acd8b46fdf2c1bbcdfc70fc494ab090d10b0e7e97e36197bea7550af"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeDeficit.lean",
+      "git_blob_sha1": "1043f06d601fb852c526483638b496c294f90be7",
+      "size": 7726,
+      "sha256": "b5b4000767044dba4a9e6fdfe5a32441acf28a8f32ea3564be4556ad70e60eff"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeDerivative.lean",
+      "git_blob_sha1": "8c243a27353c27d2151eb25415cbd52777b54eee",
+      "size": 14690,
+      "sha256": "922e84d44bfe9fed76d4b7ed986a98c0196dc5ede8f0cf01bc64a39af49f29cd"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeEnvelope.lean",
+      "git_blob_sha1": "8b47485c20e2a7c4d64f81eb74c83ce9489a7d47",
+      "size": 7308,
+      "sha256": "69ef00beedcfd74eb73886f6cd6582e5d719df2e8725f7be630d2bbab5a41dab"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGap.lean",
+      "git_blob_sha1": "75b622068b0697848538e6c7b053bc6548375892",
+      "size": 8156,
+      "sha256": "03d1038f6664fa758d892a486e00e1edeef59635f505563ab389313f4c9ed40b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphDerivative.lean",
+      "git_blob_sha1": "05eff0a66a62953ee1b506fc249e22c2aea7ef01",
+      "size": 6041,
+      "sha256": "e5a3f1b715c3a9b191d09411293cb456afa19a2c73b45b438bf018936c8668ef"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphFullDerivative.lean",
+      "git_blob_sha1": "1f64330f1e5c4ef8f99c3b1baee8a828f87081a4",
+      "size": 3715,
+      "sha256": "9a6c9ba9e658e461b15f6ebe74d17429ec051346d86425e0000f98568271a2b3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphMixedCoefficient.lean",
+      "git_blob_sha1": "033bcf767936b4b764f48450e6d38d32592598c4",
+      "size": 4077,
+      "sha256": "363d97366d243aa91c21acdfc18db796c4f00feaa9d83144759c6b5f8a8924b1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphMixedSecond.lean",
+      "git_blob_sha1": "54212647e8569a3e5cd853e94cd2bff1a0db9e9d",
+      "size": 5496,
+      "sha256": "8fb5db062b9ca61280f21890b538ab7575b3af1742554c1587ded64f356da9a1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphRayTaylor.lean",
+      "git_blob_sha1": "9284623802a85dff665cea490e20b22396df49d1",
+      "size": 7515,
+      "sha256": "9d510dc3527eede19a545e242e5d8cfd2733465139a13236a4fa9430f4ca7ec2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeGraphScaledTaylor.lean",
+      "git_blob_sha1": "0849e64d945ee55ef39f71c2736750a239c4ff8b",
+      "size": 7952,
+      "sha256": "c9d2844615774fbb531f6e25e7bbdfa811865a7f5c357b05faa109a0fb892bc6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeHalfTurn.lean",
+      "git_blob_sha1": "8058a9064d65255e3cc34e3396da493cbb26be90",
+      "size": 7608,
+      "sha256": "e50b247e63e4f27544de88b6c092c75127eed9aca8138809395a202c7f3d73ef"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeHessian.lean",
+      "git_blob_sha1": "c0b1383b162c5ee334f74e014abf2b3d83814aab",
+      "size": 8101,
+      "sha256": "4b3d710159989ce9bdaecde3ec7fba158b93bceb118738639e540c1768cb7bcb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeInverse.lean",
+      "git_blob_sha1": "98eb03be502aa88f44949ab0aaf5dcfa0e9079e5",
+      "size": 9497,
+      "sha256": "35ef35935568577ab5772e9e30a70dd23c767d8734f2459d7bd6d8bfd140c43e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeMap.lean",
+      "git_blob_sha1": "a58c42559d5d7264d69cc91d5fef54e18645cf66",
+      "size": 10172,
+      "sha256": "d69902166289402905ac64f1fb0dc5a2431a213d6b835c3120d85ff9050e41e6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeOrigin.lean",
+      "git_blob_sha1": "73c1e30fbb8c608ec0ca53ab7324dcf0092fe91b",
+      "size": 2532,
+      "sha256": "aa175e41083b5d5385184067aca0b98c2a7b5e8b763a1b2be50084b9f49c3f76"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeQuadratic.lean",
+      "git_blob_sha1": "23b5dda61668b6e61dfc4ad24b1d792bf374e1d9",
+      "size": 4010,
+      "sha256": "f2598a224918bd2cf9530c0dfd1be88b94189eaa87daa7bf2b51796bbd66cf76"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeRestriction.lean",
+      "git_blob_sha1": "fb861d4748e625029f8b2475f6dca0377103663d",
+      "size": 10939,
+      "sha256": "c202883df6cbfdb3ac15d510812220483066e9d184166009d5ea6ef9d81e0bff"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRangeStationarity.lean",
+      "git_blob_sha1": "7260ed200e55382c4a8a623dfa7b290fbd80772c",
+      "size": 3568,
+      "sha256": "f85e1572189348fcfd59666a0c26fe96582e61464f0b27e551c2d18060db16e5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRateChainSupport.lean",
+      "git_blob_sha1": "823086b35c8453c6e94301a8f7454dbd45235d64",
+      "size": 4378,
+      "sha256": "321e5ac0e94146eb04ce7581b98c8ff904b76b4f7ccc607f491564385d4cadfe"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesRateRadialControl.lean",
+      "git_blob_sha1": "ea8154d007298955ca005199a45bb1462e5f83f6",
+      "size": 12501,
+      "sha256": "a09241d163e00e1ac5f73bff29eeb464223a17b7192f5d6eb68ea63901689803"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReducedGap.lean",
+      "git_blob_sha1": "e680907d7bddb30358c0004d0a4e4e21f5b7b50c",
+      "size": 6350,
+      "sha256": "541fe21500ee25dcfd318a2190b8cfac1385479561dc0411583b4951631437e9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReducedHessian.lean",
+      "git_blob_sha1": "d5a505ff0d2c14b963ee7cb1502a2f2d5358f3bf",
+      "size": 6249,
+      "sha256": "1c83253e2ce9f94078e2ae30e601834ba36cf939e45c79092f9813f2228ab726"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReducedRadial.lean",
+      "git_blob_sha1": "a20604176a49aabeb9df424b6fcfe1ed1f0c70f9",
+      "size": 981,
+      "sha256": "830d6d33e4f903bc38858dea41eb17a45de56a5f02c66e29a03542ca9a782c1b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReferenceMomentSecond.lean",
+      "git_blob_sha1": "bd189c17745c75a71e1681504bd1ce6feb81b4d4",
+      "size": 3436,
+      "sha256": "bd72e817c5cb487f184951a5b1ac9d82faaacd1fd69f7d82cf211d21c1c1a761"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReferenceValueControl.lean",
+      "git_blob_sha1": "5478a22a7914c99ef84c1f4c237d036b2c9e4183",
+      "size": 5960,
+      "sha256": "48290bf99a9210a78b9bcf41025862320b5a9c3e9d13ae6c8b27b6829583338e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionCaptureBounds.lean",
+      "git_blob_sha1": "2677623c3e2188e8de8982392968557e9f6cb1f0",
+      "size": 2518,
+      "sha256": "73b25f869662f6af69967a2807c886a1e5ff9eae0c256b36ca289c6c884000e2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionData.lean",
+      "git_blob_sha1": "01952cab68a0e6607bb9403e0c54b46d6044a7d9",
+      "size": 4313,
+      "sha256": "b4ec7409f96d32f9e02f42f57cafb8fdf61378b17c7afe3db9c86787118bab89"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionEuler.lean",
+      "git_blob_sha1": "66dc6110a336c975a50a70be58ab4236af927014",
+      "size": 5991,
+      "sha256": "d60f93fe3d904a3910cc7c35ec287226bea499b03dee5c826ea1bdfc63e28838"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionGraph.lean",
+      "git_blob_sha1": "80c008655ca3d3805def1412fbdba9e034ae4433",
+      "size": 6735,
+      "sha256": "eae833845f9b1bc5390f49ddc9f4c9c77b89986add6b3769ffc7e3880b8dfb81"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionOptimizers.lean",
+      "git_blob_sha1": "92f4682d96e019906849c3d3acc6c389676e52e8",
+      "size": 6883,
+      "sha256": "9f404190a3f8b004d21feb6efbcb1bfae270a5223c4e5fd80d86b42d2ee57e6c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionPushforward.lean",
+      "git_blob_sha1": "e0278b642e18e2f6f32a6b3bc1fd5a337abb47b7",
+      "size": 3005,
+      "sha256": "15bdc39d21a22a54dcf919fb01e1eda2609f4edd99737dbad80eda94ea9340d0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesReflectionValue.lean",
+      "git_blob_sha1": "d0d018cd2fdc420b5c650ccbed1e9ff28d9c0eee",
+      "size": 5818,
+      "sha256": "05c2c75295362df4a106c9311326c3df37d391f6c372e0cda7e13f93dc1a0318"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesResidualBound.lean",
+      "git_blob_sha1": "5e9b8f57b59d2965fd9f19d0aa2c95c86a163dd4",
+      "size": 10236,
+      "sha256": "924fa3d50d82666960f261fc7b59bf2e6bddaf150a5d2dac82ce76f606f766d1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledCoefficient.lean",
+      "git_blob_sha1": "c717bf083e6f991e6c22ae01777adfcdc453a60d",
+      "size": 4988,
+      "sha256": "4826add1e998a2bddc9e9ff7b4412e0c84e73c13fc6961909d6d3c0112af3124"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledDeficitExpansion.lean",
+      "git_blob_sha1": "5c7ae6dbac8dc8be0b778307c3cfd5393f022ab2",
+      "size": 9321,
+      "sha256": "2c423b01e1fe9c70ee0fb58a84baa33bb51912a1f687eb6c57ff3a23c5fab0b6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledFactor.lean",
+      "git_blob_sha1": "d852cedb7b01937b3f2c5b514dda798a8b747734",
+      "size": 12666,
+      "sha256": "8e4fa6e42d3cd86f2e7362aa2861a9dde0a07bcddcb2d88116828cabedb54056"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledFactorIdentification.lean",
+      "git_blob_sha1": "17a46ee8ed2290bc727ff40f0a6d5236aa29cdfc",
+      "size": 9241,
+      "sha256": "56bc88617cf0b35aceb7146e12c19ea6433cb40b044619554af2b303b33c314d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledFactorOriginJets.lean",
+      "git_blob_sha1": "fbdfe1d01d20b63082c25708a727ba93182de045",
+      "size": 16338,
+      "sha256": "784a4c5bd6db34c4321fb5eed97bf9e0c33391a935025cce2fcabb25361e2909"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledFourier.lean",
+      "git_blob_sha1": "41d21e1f94d3e00bfc56eb11af03b848a8a7a034",
+      "size": 2715,
+      "sha256": "7c26e7c71614fe5b87bade30e8731d93b3543870dea6a98420c4a6bd55120ab1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledOriginExclusion.lean",
+      "git_blob_sha1": "1a26248a997bec5918ed97faaf2ad62e5a9aa9bf",
+      "size": 10158,
+      "sha256": "20de28627c343e48a4f2f142e5591a3884cdf9733ffa13950200ed0b162bcab9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledQuartic.lean",
+      "git_blob_sha1": "7949bdd4302de19c58575a3190a3973bf6b3d458",
+      "size": 577,
+      "sha256": "10bfdce087764fa017947540eb03df31a0f6ddf6d22a35259560cc5b2013b889"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesScaledQuarticCapture.lean",
+      "git_blob_sha1": "8a9ccaefd3be80d228839a37935e048452186703",
+      "size": 2826,
+      "sha256": "d800e92ae856cee9861a34004c0ffe656f07984f52ae03e993f6e3ef8dedb6a3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesSplit.lean",
+      "git_blob_sha1": "4412d879c010ad1d5285b8bad0b8ed2c668743a1",
+      "size": 32000,
+      "sha256": "d744331cf36f8a838cca4f784726b174111442e0bc74aad884dacd17b0bdb1c3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesStrictDescent.lean",
+      "git_blob_sha1": "eff14ed23c1277a411354c31a991ccb97ed8ab50",
+      "size": 2909,
+      "sha256": "b60d3e664d395367d5c114fe9486a9400db3d494d43229d2cbf47192d6cfed85"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesStrictRateChain.lean",
+      "git_blob_sha1": "125475fedfe2ec77410c00c046f60ce2124aebf4",
+      "size": 1585,
+      "sha256": "1d20c7da19f86e347823dbace74b1ada56c4d36bb580358a269fe19fa4cce3ea"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesTwoLawAssembly.lean",
+      "git_blob_sha1": "8101689719d85ad952e09a3d6933142f1a26e559",
+      "size": 1949,
+      "sha256": "98c79d2e27cfa6cde8d5c887a43433b6b67402f5b9776bc98216cd9ba42d28d6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesUniformBranchUniqueness.lean",
+      "git_blob_sha1": "eaee99139c6565c92e28244723be9b1f57bb664e",
+      "size": 3092,
+      "sha256": "c3e905c22f04e0a9e367b48d6fd33c5b1b88bf313cdab4fb7b52e06f12f63f1e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialSpeciesUniformOptimizerCapture.lean",
+      "git_blob_sha1": "a297d675f8ef47b52705985c1310ccf16477e1e5",
+      "size": 4546,
+      "sha256": "d95d94925bfc2cd3821caaba75d918e5addb9be461df59851d7239b25da76927"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialUniformCompactness.lean",
+      "git_blob_sha1": "7efbc137cf73c44ef0d597e2bf183243a2dd5ef3",
+      "size": 10735,
+      "sha256": "ba0f407a14173851edc911f4d70a79abed5e111ea08ac5f7d887113169666873"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialUniformData.lean",
+      "git_blob_sha1": "35ee1c19b3596159bc60b19fff8157eadebdd878",
+      "size": 12581,
+      "sha256": "06abe2cd173de9f9b5fbe4f1b7b95f07fa2f7bcc51a242f05dd3fafe4cd83fd2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialVaryingLimits.lean",
+      "git_blob_sha1": "7f896c204be00baf692d47e69468c253f4bb296b",
+      "size": 15507,
+      "sha256": "9380b94e307829fd67ef3cfddf1e9c4c8db50ec8b4e34d57359fdd0be973b0c6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PolynomialWeakEuler.lean",
+      "git_blob_sha1": "e40edf9792ed9b4c54c8e3d014c68144a5cd3447",
+      "size": 9770,
+      "sha256": "168519e6ceb1a95c3f33d89e387b1c765f2c4d0843c91e36acac01248d6b7537"
     },
     {
       "path": "Campaign/DGPS/Examples/PositiveH1/ConditionalForceVariance.lean",
@@ -703,6 +1741,18 @@
       "git_blob_sha1": "9a1b642bb43c1eed5ee9f8ba4abe23606a7c7ba8",
       "size": 51143,
       "sha256": "cffd2a7b63747c2b6d32006fcfae255518b682b0b82719e22a9db1404852f64f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PositiveH1/T02Assembly.lean",
+      "git_blob_sha1": "8c23c295b6a736bd860f12ecb73a09ee0f46731f",
+      "size": 4055,
+      "sha256": "7ba5ca32d98646c564c9b64e7888781aa752f96e5fcde07ef5a2b84408714066"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/PositiveH1/T02SharpLimits.lean",
+      "git_blob_sha1": "b9f291530d3c0557e6693c57299371ecda6b6c03",
+      "size": 16243,
+      "sha256": "62d8d2048053bf4d55a4c68e06c471e54737718b545525ac128e7985db21301b"
     },
     {
       "path": "Campaign/DGPS/Examples/PositiveH1/Transfer.lean",
@@ -1095,16 +2145,958 @@
       "sha256": "ac44084ee54980287529c21031c4c12dc361dd06bae75617b3b483d494d942e3"
     },
     {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/CompensatingDilutionLimit.lean",
+      "git_blob_sha1": "b651e80200f7be2f0354e21204cf2b3a9ec06de6",
+      "size": 3630,
+      "sha256": "0d67877a1ac0c936f6078a4c64aef9c0e0c161302880deceecc68d029518f509"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/CompensatingH1Binary.lean",
+      "git_blob_sha1": "d5f7e90df766e390078d35557021a051288fe669",
+      "size": 6561,
+      "sha256": "bbcaac978f3e58b015435874b95a528cbde4e41036a8fe5d3b664fe3e96d3819"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/CompensatingOrdinaryModel.lean",
+      "git_blob_sha1": "357c9c60c245932efb9afbb122ad48926d5161a0",
+      "size": 3203,
+      "sha256": "3e5ec86b754eeea5b0057c4fddb22711550713bd0bb8ba68a469729d33af0130"
+    },
+    {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/ElementaryModel.lean",
       "git_blob_sha1": "e071bebfc2f290ff78dabdcf79a6accab38c934b",
       "size": 102482,
       "sha256": "c5f9434ef41ba73ce728b24a4c8ccadcfac3e733c6cf654ed01cad15a6375b73"
     },
     {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/ElementaryRateChain.lean",
+      "git_blob_sha1": "32af3ff74a19601e421c128c7208555436ed6768",
+      "size": 8521,
+      "sha256": "53b87390aa430afb622d84e35be836dc959ce6d47d18e87f9ced90d0e580169b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesActiveLocalization.lean",
+      "git_blob_sha1": "a801cb717b8a76ca887b8108b633992691a8ddbd",
+      "size": 28777,
+      "sha256": "5d2f115b448bbeb48be186dba608917a4371a128944c98cb773b8698e1e55ee6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesActiveSmooth.lean",
+      "git_blob_sha1": "3c1b54f79c3a1c1c681435ec35ee75c7b7c09981",
+      "size": 6192,
+      "sha256": "7906ea0bb37dad44ce986261ae711f19c55f98ef745b37abd61a875279633da5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesAddition.lean",
+      "git_blob_sha1": "c980bc9049b320307a7760f3f982f6f5fa004e3a",
+      "size": 35359,
+      "sha256": "49a1a371ec258f88028e04930cab39581c57ccef8b873d0ce475aa41e860194e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesAttainment.lean",
+      "git_blob_sha1": "f39aafc4c0a39407cd31d01a512cda9ad1fa93d8",
+      "size": 7408,
+      "sha256": "86b0e9da2d81bbdffc6029616f38ae4672dfc5a02839016b07fb601b44242296"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesClassification.lean",
+      "git_blob_sha1": "8a06b65e42fff4bbff7c4c80dd6a952ffde7dc39",
+      "size": 10918,
+      "sha256": "9cea40a656ce6a4bd4da2985abc1d8f828b43f9384c6ba88d7fd3df46f0bf29a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesCompactness.lean",
+      "git_blob_sha1": "2db9482e94ceb280fa3d4499daaf05c9014508e3",
+      "size": 39369,
+      "sha256": "8b478d7cc660c0858c0c098083a9067acae2715bcd5e97293cc7f9406921e998"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesCorrections.lean",
+      "git_blob_sha1": "fada64a6732bc9508367ce2c088f238fac92980a",
+      "size": 10890,
+      "sha256": "5d58ec35c5b7531c225c94ae340d4d123b388498b7d0a63fb588b6e09a1daf11"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesCyclicDistance.lean",
+      "git_blob_sha1": "4a1b2f6fe1f79917a4c348617b887c305328f694",
+      "size": 6244,
+      "sha256": "271fce4df1721483117a139519c587adb9ec94d13ba2fc28c6e2ab21f6c01084"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesFeedbackLipschitz.lean",
+      "git_blob_sha1": "7b291a791e17ff4911c401ef84ea4a9c0f37dc21",
+      "size": 15417,
+      "sha256": "3d21ccf076191fccda85a58ee0cdea3220c977b3c7506c0f89a16e5f64c1591d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesFeedbackPairing.lean",
+      "git_blob_sha1": "7e38633d0818482c1eccee2a9885b66110ec7443",
+      "size": 19302,
+      "sha256": "1e3d91fb2382c3c5d10750df97e2c552bc74953832f5f433c3ad2a02a3003501"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesFieldMonotonicity.lean",
+      "git_blob_sha1": "8f18806e7222866988a54c88d3c8c65b3c125601",
+      "size": 7340,
+      "sha256": "7e06c0f5347ebbe9e2991c7f9030cbdb3482b84da35425112da9e1616ea3e71b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesGapBarrier.lean",
+      "git_blob_sha1": "2e33aea2dcdf04e86b34df5ad3a3ca65f20005d0",
+      "size": 9831,
+      "sha256": "bdf4e43079e8cf2e359bb8c377dfc3fddf6fde0961599be7506b3235af5e7f7f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesGrouping.lean",
+      "git_blob_sha1": "1b41540c96f6a6cd06d824753e8fddb8bccb14cf",
+      "size": 5272,
+      "sha256": "fed5873c039c61f9a7c40d97abd727a91509ed3044abadda9bf5e4f8277821c8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesGroupingObjective.lean",
+      "git_blob_sha1": "a69d9425a1ff0269a13268fae6829fd19b2de837",
+      "size": 5525,
+      "sha256": "d33dd47aaf4f0aa4c5fc0f183dfab1779346b57795ccf7f42c433f9380bf937d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesLawwiseObjective.lean",
+      "git_blob_sha1": "fc310114de0a3424fef1aa24f366b46f28d8cbf3",
+      "size": 6182,
+      "sha256": "00c83c0b9fb67ab5881d0b514630c6be02bc2a51fafe91875503f19d1349225f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesMerging.lean",
+      "git_blob_sha1": "8fe532ce43aa31fd5b9a75d1f314731d8df17ff7",
+      "size": 19815,
+      "sha256": "0f5c098c693803a3e0fed0ed2fae5f76b5ff1576c3758cff131621dee0de43d1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesMinimizerLocalization.lean",
+      "git_blob_sha1": "d1beb1e606b35056a7d928f7840e776f0e7c8dca",
+      "size": 11278,
+      "sha256": "5d521c1b4a0dd7d5bc5ce66956b02001fbc33662d85b2203f14eed89397900b9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesOrbitLocalization.lean",
+      "git_blob_sha1": "f16e7b8df6d093e8677c7617a6cab3e7b8db5d2d",
+      "size": 11863,
+      "sha256": "5b83c516a5a7b9ae76739d5200a9dddbd58c4b03857691095031261755fd941c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesProfileComparison.lean",
+      "git_blob_sha1": "407edcc30b9c39f903831bd25d777aa0dafa6287",
+      "size": 15608,
+      "sha256": "f922919a95e698cd41583697b8b63dadd2e3cae821dda9d99a15ea786b668f79"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesReduction.lean",
+      "git_blob_sha1": "1b2023a82d20fca297d72e3a632c7997edbbfe74",
+      "size": 25651,
+      "sha256": "4249f15b5323f17356e76b938295713820f43834bc452d243075327de6d70a67"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesReferenceExclusion.lean",
+      "git_blob_sha1": "de43d5baf649bb8352d214a411e4e89d7279a4d6",
+      "size": 17110,
+      "sha256": "8b5ce9a5c1180177afdd1e033a0ea574bd592cb99abc47958f53917734efcb80"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesSmoothClassification.lean",
+      "git_blob_sha1": "368015a98a712949304e5aaaf554b06e0fac513f",
+      "size": 7846,
+      "sha256": "4798954747250e0efc30b08ecc53b7f2dc02860b49e5aadd20bcd089d8fb066b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesThirdTurn.lean",
+      "git_blob_sha1": "08b20c25856c8fd47c0490f986d2af950385c8a7",
+      "size": 6589,
+      "sha256": "66b3460e7c3fd543648e99a414b22a20291b4a9f0414ee63e0384de169c19626"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesThreeGrouping.lean",
+      "git_blob_sha1": "a2dc1dc80173946c36a431c71dcfe68045de3c67",
+      "size": 4512,
+      "sha256": "f0158278c70e472636e2d19ad9e39e92ebd0eb5b6d72dd3eda56ee3f9a8a1ed3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesThreeSymmetry.lean",
+      "git_blob_sha1": "c6bc1c94d9dacb228c9750597c240a8a8c3ddc45",
+      "size": 5935,
+      "sha256": "ff02e2979ece474220f3454c44fe17b5e8dbefc7415ff80305f24fd48879505f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesThreeUniqueness.lean",
+      "git_blob_sha1": "6d29742e60b22b6a1390a4674a371fdab162622b",
+      "size": 8936,
+      "sha256": "fdefeda3d346afd527a21c411158f4cbe5992151fcee248156ec31c3adbff932"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/FiniteSpeciesWeightVariation.lean",
+      "git_blob_sha1": "71304e06b46bf6ae0d9a4ab2887f6fed538e6721",
+      "size": 39251,
+      "sha256": "6ab9b0201ef894bdb9a8e8f1c2a91d491cc8236844290abbb6d770145a19cc8a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianComparison.lean",
+      "git_blob_sha1": "9ae93a357d69eab1d6d0cdf26608ce505c45b1a0",
+      "size": 4655,
+      "sha256": "9f497d3a33f5bfa8083165c4492e5e87df7db05eeb31453bb1b2535e7d37f311"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianDefectMassControl.lean",
+      "git_blob_sha1": "5cbecdff49fb9094fd7275f3bb9f51a3cd7741cd",
+      "size": 8006,
+      "sha256": "7fd767f4e2ba7716567f305fa11b9c38877980ceb0eddd9a149f8e6394ce0f5d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianFeatureCovariance.lean",
+      "git_blob_sha1": "f55e64bdd873a481268c432308ace98c598c574b",
+      "size": 7464,
+      "sha256": "e69329caedeee464735ebf84a9e58d8d5354f19286e976a72abc9dd7776513e1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianFeatureOperator.lean",
+      "git_blob_sha1": "941d83cf1e5887d78d83c1b953a072df36aebd41",
+      "size": 4816,
+      "sha256": "15da3f3d39bc28da8c365db32734dc4e41c1462880ff5dfd10c103b836bbeffe"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianFirstFeatureForm.lean",
+      "git_blob_sha1": "c502ff67b5bc9caea45a34ae61cc96246e4db5d4",
+      "size": 7669,
+      "sha256": "3f1eced476e997e3ef0e435a2527ce59c2f9b5c5dd40de7872c52113dc4f5145"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianFirstProjection.lean",
+      "git_blob_sha1": "415ae44860187a62a1eed7f7be3077f58ca0a015",
+      "size": 6861,
+      "sha256": "5954e754f0e3324a2882741d5988618310a8d5a1c6a5dcd086700e8a5f379cde"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianNativeComplement.lean",
+      "git_blob_sha1": "30433b6b965fe60fbddd5a0b8177e48cbcad2208",
+      "size": 8967,
+      "sha256": "8770ed339a58c8f65eec9f962dd0aa723acf9d349e481e0432a84a37db8f9e5a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianNativeCovariance.lean",
+      "git_blob_sha1": "e833d8df7c9d689d55e6efbbee375bd9c84f8c42",
+      "size": 2873,
+      "sha256": "98eb377608ca16743b60486d0c61e5cb2b17d87e1702720d81563fe03bbed088"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianRateFinite.lean",
+      "git_blob_sha1": "952f0b913b67e7a9918b1e9225c17fe9adeea2b8",
+      "size": 1269,
+      "sha256": "29f98d9b380af4822ae43f9d74703eb0cd312ed9e2a428e0777ef0e1fa164bbd"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianReferenceComplement.lean",
+      "git_blob_sha1": "0dc717b387692824d5535022781036c2179171cc",
+      "size": 7070,
+      "sha256": "64d44b1abd98f1083c68e6d5785a40dce5033986e1344a1bc7caefa78d6ffcd2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianReferenceDefect.lean",
+      "git_blob_sha1": "ab2b51639cd5eeeb270a67fb73d2d7c0fa83b61e",
+      "size": 9780,
+      "sha256": "5537ff43a45fd08692679633c084d70eea90aa2df02768ed14a9cfafc401672c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianReferenceGram.lean",
+      "git_blob_sha1": "cf44a0b0d53819f84d88b77bbbb05a3bfe993c61",
+      "size": 8366,
+      "sha256": "4c3dd3ee4442aff006f6c37281bfcbd242fc6efa98892fb09efdff24bf1263aa"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianReferenceUpper.lean",
+      "git_blob_sha1": "a57933083ee42c48ef8fd8f3ee61c8cf22f2b28e",
+      "size": 3622,
+      "sha256": "6998abf129c55e1759150f8b1da07d99205bdc7f57e37e2531861190678ae396"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianRotationForms.lean",
+      "git_blob_sha1": "06def523ff0a5ef26b4f827275f9fc52e1e34714",
+      "size": 6781,
+      "sha256": "6caf253d751463d36adc83f770259a25bfe6ef9601b54f2713522d010dae6561"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianRotationMoments.lean",
+      "git_blob_sha1": "dbae5bcbca1b35eb47dfe8b1be571c88b35a480e",
+      "size": 7983,
+      "sha256": "e0f04419ca2880533a1ef1b0fe624138bd5f78316ccd3bfd5edd6c2392593f25"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianRotationSector.lean",
+      "git_blob_sha1": "57c0adeb7af0fdc9490fa75a2780341b0f1208a7",
+      "size": 5470,
+      "sha256": "27f6a8378cb0025825adc9bb9cb8106db1aa0258177574953a7322a55faad2b8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianStrictLift.lean",
+      "git_blob_sha1": "d853fbed2fd3ad7427f01f1d2e273f70493bbea2",
+      "size": 6665,
+      "sha256": "04e9812a32608249bec5785e5a57e5076165a210a956bf510d83f61d82a650c4"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianStrictLiftAlgebra.lean",
+      "git_blob_sha1": "7ad9413ec50ce913513f48b09b2c81b28189ccb2",
+      "size": 2654,
+      "sha256": "9eac57ac2a58dbc986016c6ab454eb0cad9bc5169c0ddd64cc134b77a468af63"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/GaussianTwoSector.lean",
+      "git_blob_sha1": "2cbe13807876384dbac0f4fd6de94488bb270009",
+      "size": 1094,
+      "sha256": "744d33b1e9ce5bacc9964ea32d3a98401768b35461a9ab190c59c4e42d4f8c57"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentBounds.lean",
+      "git_blob_sha1": "6b73a0db621568d001e747e897145a86cb03e9d4",
+      "size": 5952,
+      "sha256": "19107ea2042e152fb0594bbaf20706327e11003c02da0bbbbadf77df9147c34e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentCalculus.lean",
+      "git_blob_sha1": "f6b94646602e18cce8a9f0fa1fded7b04f264780",
+      "size": 7394,
+      "sha256": "4642efebcf3187d9130cc39df420affc6e09040ad3f6df6f8179aa6baa15f2da"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentCost.lean",
+      "git_blob_sha1": "8f4ffa253b001316d31f432e7bc55eabf141b5a8",
+      "size": 6746,
+      "sha256": "73a7d57bb8c3137e4e22c457f6aef4efb7d83e0c82a5f4111bdc185b448e16b2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentDifferentiation.lean",
+      "git_blob_sha1": "d883c4248c49409545f9415daf9f38b9a52dd8c4",
+      "size": 23005,
+      "sha256": "24e117a9dc05db418c697b12021406dab6f520d72bfb781bd7db42467a949b9b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentHessian.lean",
+      "git_blob_sha1": "67d4d01588f9c28b16d64ae597021a84aeac853d",
+      "size": 15678,
+      "sha256": "884c942559e2be6b02a9607c4c3bcd93c059487bdb50b19ca98e8529b1e39f14"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentJensen.lean",
+      "git_blob_sha1": "c7770ec3e10a39aabbc251b2054ec8bef83aeb12",
+      "size": 17263,
+      "sha256": "7d9aa55fb1a568f3b94006a6a50ac5834fe9b5e9ef78f8f9a5418583bf454a5d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentStrongJensen.lean",
+      "git_blob_sha1": "3917eb89446b0ac0140490a0c0a5a5aefd9315a5",
+      "size": 11522,
+      "sha256": "acbdaa8be8e2fd541557d53713f3dcbe12280cfe1f3dcf8199723641aaf965fd"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1DensitySegmentStrongScalar.lean",
+      "git_blob_sha1": "5c61b7c8c6fc96078f1ec2c6205607b3f6b68126",
+      "size": 2388,
+      "sha256": "6b58ac9b198fc260c66a56099bebb8bc0bb8a11b83fd887170d4d7c3b9278748"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1FixedBarycenterIdentities.lean",
+      "git_blob_sha1": "83df5fa5ec5e6554e29788dc81a723af023a4fb5",
+      "size": 10735,
+      "sha256": "237ba4bddf71ffd2fe031645c6b258c77f8e6cdd49c802d74a1280a32e9f7b0a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1FixedBarycenterSplit.lean",
+      "git_blob_sha1": "363e62ffe580dfc0328b5f30e504aa6a656583cf",
+      "size": 13362,
+      "sha256": "df055f0853787010511d42c3dadef177671f069244d4d388d1016a3f08537b28"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1SplitActualQuotient.lean",
+      "git_blob_sha1": "15b95c99f4861c41f801279c04f6ace569282612",
+      "size": 7073,
+      "sha256": "93d9f808655e01a909acd87ae87e020730d2437dab43da4c016e111e4c7da1d2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1SplitQuotientAlgebra.lean",
+      "git_blob_sha1": "fc69d596eee10dc04835e61fedbd82cb9c9d7982",
+      "size": 5580,
+      "sha256": "706f721dc460f1a14db2149a7bad2493bb7b5bf77bd34e10ede9dcfe523dcb5d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1SplitRealInformation.lean",
+      "git_blob_sha1": "fa17e26760f0d2665cf8bdad091d53c34f94a6ce",
+      "size": 6801,
+      "sha256": "9e798bedea19da8b4a6ab24ec6b0bb6f85e8898a17de8ec029067f62c0dff4d9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/H1SplitSecondOrder.lean",
+      "git_blob_sha1": "564fd7592ee60c01d02e22e9cf2b1b55d4266e75",
+      "size": 9503,
+      "sha256": "bd06c0194c3e49ec7b8a191daad195309dc476b6a152f9373d235a54c43b8030"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingBranchBaseInverse.lean",
+      "git_blob_sha1": "802372fb7d2184287085409858dce3f6981ef2e4",
+      "size": 6976,
+      "sha256": "6f84f31037ca26f77a9767ecf2aadb4d9a528c7cc16825b63214ecd604246ee4"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingBranchRotation.lean",
+      "git_blob_sha1": "28a09c93b5ba4bfe78c10427e760246b63907af4",
+      "size": 11519,
+      "sha256": "737ae23ddeba4b19e2813dedfd6228c85105f5dae56aac6b1797817efbe81b8f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartCalculus.lean",
+      "git_blob_sha1": "41d0203db50f4919c61abdfa3dfccc3626369087",
+      "size": 36628,
+      "sha256": "9928302d3b7e856a19873488d40a97d0d8e4d3e69974af54c6ca8a219aeea9ca"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartCoordinates.lean",
+      "git_blob_sha1": "a884c9d043c71bd9a71321a8e39ddf22beb142f4",
+      "size": 8461,
+      "sha256": "165dc9042f4a1a23f42032b7028d60ce424acdd4c33570e82fdc10594831b783"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartDistinctness.lean",
+      "git_blob_sha1": "595812cab818e243e662e8326718a331ed2571ba",
+      "size": 5771,
+      "sha256": "273039d7cdfb88b50d52ff245eff77778fc78633fa109b0ceb52f74edabda030"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartLogEuler.lean",
+      "git_blob_sha1": "627ca6b904127cd21e73500458841ba3c0e247b3",
+      "size": 6072,
+      "sha256": "3d03fc7a0559833af2e26df29266d1eff6c2750f8b311ab8f3c98b7b8f3da7e0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartLogProfile.lean",
+      "git_blob_sha1": "3c593d26d41b4121b1bd183aba979ea91393aaab",
+      "size": 3236,
+      "sha256": "c3190ea41d731e750697832be356d7157cd4ffdd9ef8ee0cb546e54175206568"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartNative.lean",
+      "git_blob_sha1": "1d03c6259e025316b3a3b76e05875fc6bc81668f",
+      "size": 5120,
+      "sha256": "7394d962e6af0dd3ef0f07d3ba74c37c999f376f2960da0d9109573e6bee5d17"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartProbability.lean",
+      "git_blob_sha1": "55e36b842be6b7f758ae75aaf1afcfa9d109a8f2",
+      "size": 6800,
+      "sha256": "d04f6272d217939ab6364738a4ff0783552a759c4fdaf038d6d251baaca940d2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartResidual.lean",
+      "git_blob_sha1": "b6c39323b09d09dbf5516ee9c7183d4a728eebb5",
+      "size": 2434,
+      "sha256": "e5009a8805c612b28dfc9903f40c59922ef3054e9250b110b5d4c283d122f104"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartTurn.lean",
+      "git_blob_sha1": "e414d254135b8cb5942b4b16389632f51fce71cc",
+      "size": 7195,
+      "sha256": "efcaa2b01fb4488169576098e12ebafedab334b8b6464dec07d48f38033b07fb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingChartTurnCoordinates.lean",
+      "git_blob_sha1": "698030c95469772f06f7a28a6c933f17ee91e6fd",
+      "size": 5331,
+      "sha256": "a71d13cde896d04a7d6e7c67aade11f237fccb2dc2a43ed0b232a25ed0824d0a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingCorrectionVariation.lean",
+      "git_blob_sha1": "b52039aaad2f967fa26b25f4ad0b60f51886a3e3",
+      "size": 4511,
+      "sha256": "4e99a707e20157bc536d3ca9d36c12f8d5006ce3ee2a28039731bb8df7d201c3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingCrossEntropy.lean",
+      "git_blob_sha1": "a0089be7ee8913ca5830054fd1e3732837ce527c",
+      "size": 6257,
+      "sha256": "8fa8bda3206f6b94c03d0dd34aef9833f58f6095c0df960407ad9904de97ef61"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingDeficitExpansion.lean",
+      "git_blob_sha1": "d729cd67214c7bd8e060288bc173e3e86f3c66ea",
+      "size": 24794,
+      "sha256": "40f7e561d00ec21bc394935fd1cb4b6d288dbdb4d68875b48f9728594662cecf"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingDensityTurn.lean",
+      "git_blob_sha1": "3970527cfd5167e538cb410a7dbd212c6a7c06a1",
+      "size": 5581,
+      "sha256": "4e0347e17f95009725bef9ffce123e96d16a4ffb946a07d4aaea5856dbcad886"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingDissipationVariation.lean",
+      "git_blob_sha1": "a8d94059dbedac4a7d5a504033c2e7ba0da9c1ce",
+      "size": 2402,
+      "sha256": "44fe6a77e131086c019c40cf3a722a6372080855781cd4d2d9ffc2c690d7ffa0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingEntropyAllVariation.lean",
+      "git_blob_sha1": "860d458e100ee82ef6fa22f89db2c2d99617128d",
+      "size": 5652,
+      "sha256": "d052791acddcf98feb4e38cee8ecb75c25fdeba87fdacf23da47949e66a74a5b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingEntropyComparison.lean",
+      "git_blob_sha1": "8c22fe7181faecba385923411ab843c714124766",
+      "size": 5272,
+      "sha256": "003a5e8a621731905b5dc93aa5fc9f06ad596433561148c771ddd915b6df503a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingEntropyVariation.lean",
+      "git_blob_sha1": "b490890d35bf709dcfbc1c65eea5cc33fded0ff6",
+      "size": 4499,
+      "sha256": "d05e3fa75e82c2229337341680531af0dd93b6ef1d360568533cb957e8121a50"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingExternalChart.lean",
+      "git_blob_sha1": "4d0d14f1d2f2a82b96128c1208124d2629be4ab3",
+      "size": 5975,
+      "sha256": "47d65acbac54a02981ebe3d016d7972ac1295f028698b40a2b48336fe6a24e1f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingExternalRotation.lean",
+      "git_blob_sha1": "e74773c2e39381365f9e775ae790821881709753",
+      "size": 4672,
+      "sha256": "32cd07ec90a50ffa8a3797a927bd8f7e969f7d97a6d727b6cdf233c1865398fc"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeatureGeneratorIdentities.lean",
+      "git_blob_sha1": "99f30faf3c93129242fe004d4e05b9b449ef13a3",
+      "size": 6966,
+      "sha256": "cda59a1c1c3194350982c666f250f3198acb6ad7539c91cebc06571b5946b206"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeedbackBounds.lean",
+      "git_blob_sha1": "04497fd5deecb3c166a033da81a3359d2e311b64",
+      "size": 11346,
+      "sha256": "45764805cd97632aae450c2e4c338dddbdef3c9221de42b9db6fd3fdea034aac"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeedbackDerivativeBounds.lean",
+      "git_blob_sha1": "f7466b7b49ee78e518df9a0d2723e44796de8a85",
+      "size": 10177,
+      "sha256": "426f83c58b54ce0657dd7734e54e6dec134c3f97a9459bd7934634c45d04d819"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeedbackMeans.lean",
+      "git_blob_sha1": "ddf2a271e98959719e6c1fef5049ec874f06e734",
+      "size": 10371,
+      "sha256": "c85b3c03c8402a5e361cffd4f443a10d1fe431cb1b8b5745ff039c72efe851bf"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeedbackRotation.lean",
+      "git_blob_sha1": "b0d45ec211e8aa8bee79fe7e3b64539a3cb8af55",
+      "size": 9914,
+      "sha256": "07baf041f7277e007bd23207d9d16c37b56d3a12e62b7bfaafaee0bbddc94131"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFeedbackSpatialRegularity.lean",
+      "git_blob_sha1": "71d9246dc1eabbf9b0e863783d17fda27fa38a4f",
+      "size": 4598,
+      "sha256": "f1c4c5a8ccb9261019ece3f8cc235cdc1f3e13039569148a36f0e16ae4f24789"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFisherVariation.lean",
+      "git_blob_sha1": "eedf0d1e44f5e043a72dc8b1cc3607a11c3f2b6b",
+      "size": 3272,
+      "sha256": "ae517fd82012cddde68b38e0d4358812e9160c887a70d1a01efcfff2f53002c7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFixedFieldSmooth.lean",
+      "git_blob_sha1": "386f115e160f07ecac0ddfa58dc7ed7f4ca18a9b",
+      "size": 11554,
+      "sha256": "53d06e842228f273f2911dca761f4017009707647f6407c9d5b0f8e3089b7e72"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingFixedFieldWeakEuler.lean",
+      "git_blob_sha1": "30ad08fb3a166fbbc3fccecd8d0bcd2aa1adeace",
+      "size": 5798,
+      "sha256": "337fe4460d7e122319735a898af18778503d744c451e3810fa420bd3ee32e96e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingForceFeedbackVariation.lean",
+      "git_blob_sha1": "f2e62a4d28a57e6e28f2a8f2680d7e33cbb0c70a",
+      "size": 6042,
+      "sha256": "e7d6fb34152e7c69e70273a74d2c14d78e21046f9349522eb2b5276ac64efc67"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingForceSquareVariation.lean",
+      "git_blob_sha1": "c8144f200b1bee8b93e65588f0c8f556ac636c5a",
+      "size": 8443,
+      "sha256": "14fee43ed203fbe9630eb95333c44a0a1ab4b703c022f167784d56a56ec8b791"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingGapVariation.lean",
+      "git_blob_sha1": "f91a6ca613ab4158b4bf802daa80548ba17ee2b6",
+      "size": 5270,
+      "sha256": "9001c65c700d85d252c82f7a4b2f95f83534783f32ae15f8bc270a446c49b76c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingGeneratorAlgebra.lean",
+      "git_blob_sha1": "45555d9879ec96228a37b396106380f4f9ecacd6",
+      "size": 7764,
+      "sha256": "2fe2924be51b17146b1d1ff24bbd4a8a9600f01288cacfd45f2e22bcd6d6ae15"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingGeneratorCentering.lean",
+      "git_blob_sha1": "c4d4b9bdf99610991bfa8e744821e5ee3c2b03cc",
+      "size": 3891,
+      "sha256": "a051a12fedd1a8f5c88aadb9b02336e5af42656d7b6403b4c2364168d209408b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingGeneratorFeedback.lean",
+      "git_blob_sha1": "aab39ec805ce6e570c6b56af08049b6c5a7b9947",
+      "size": 7416,
+      "sha256": "6f4f75ae2ea923f18ce3710649f7907b6cbd2f00b8c72defe6f217d9a9731dc0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingHolderCaptureControl.lean",
+      "git_blob_sha1": "64c1f864da76586f9ee9147a093c8bdffe1a7990",
+      "size": 2383,
+      "sha256": "b793bb0f3f45dbe33235e23ca61d6bae8de5dac505e35bbdd7a88c0af5ed2eb2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingHolderFeedback.lean",
+      "git_blob_sha1": "dd503948f51f1bcda56d07e0a3cdb935ad9b9d43",
+      "size": 16690,
+      "sha256": "2c7da9a291d37723a7cdec9e689bdea06b0a67298066b3a14bff68102ad0b8b6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingHolderFeedbackCoefficients.lean",
+      "git_blob_sha1": "3543d3eea48e96c8858e26684d46abc887b32b13",
+      "size": 7639,
+      "sha256": "8bf9db044fa7d6d547248d1eabd02c1129251d7688671f59a9bfa966c54c0e50"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingHolderRotation.lean",
+      "git_blob_sha1": "c0563a6fc5efdaa043dcf4881f3b1929dbb254e5",
+      "size": 2507,
+      "sha256": "17ec230d6e2b6125264fcc4c7aeb53757926e8ad0d3cc44880c40c343bd56ca4"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingKernelRotation.lean",
+      "git_blob_sha1": "415b05bbce354d2854249398f3ade37ab1f77f85",
+      "size": 7761,
+      "sha256": "be3db050a6b52d4215ec9670a24531bbc331ef2270f84613b88004efe5d69255"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingLocalUniqueness.lean",
+      "git_blob_sha1": "e01a84f383936496d8ac67db38403818fbc997bc",
+      "size": 7406,
+      "sha256": "d28f52291aa0e2bbf87155c174abf168b024ea6bcd25b1f5bc4036e961f119d0"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingLogDerivativeUpgrade.lean",
+      "git_blob_sha1": "213c1a2993ec0d6c6a13a201e121019ad2862076",
+      "size": 8456,
+      "sha256": "e58b0a2662b019535083580732abf39dc8d68b42330312a9e6caf40ce9accceb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingLogNonlinearityControl.lean",
+      "git_blob_sha1": "42f0b8b161c975cfea571a07d044e780c79379c1",
+      "size": 4514,
+      "sha256": "895ac56c2bce737dd22e092c0d8e462a88129a4350f7eade18a190743a997fcc"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingLogOdeControl.lean",
+      "git_blob_sha1": "35de204febd77b3b8732c8f786cc527ac6cfea76",
+      "size": 6773,
+      "sha256": "d7660f7fd9f0f56e9e53f376e3003d7a1eaec8587ae9b82e5f53539b0d0f80ae"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingLogProfileControl.lean",
+      "git_blob_sha1": "e0126128d4abffab5ff1616d39e14b97c02e337f",
+      "size": 5590,
+      "sha256": "0cbc573fc2ac7b8ac7f838f6161328a669fb1b84c1d623fbe2646418899a755c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerGraphEntry.lean",
+      "git_blob_sha1": "59c81ad0c1b227d0dfc67ee0805c6ef9155bf2c7",
+      "size": 4126,
+      "sha256": "124d933dfdda0743f42378626ea024dc76865804b766bd8755de5b4eece22fa3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerHolderCapture.lean",
+      "git_blob_sha1": "c2a26afe29a4dcb3eabe4487f8aadcfe761aa930",
+      "size": 21253,
+      "sha256": "fc672e479c0306fe372e11cdf0032965f22ab0a2f01761da42fadae8e32c3f7d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerInformation.lean",
+      "git_blob_sha1": "11b09f61c0ab55a06cac24bfa470799a560e4534",
+      "size": 2547,
+      "sha256": "a034a7ff31b07a5750a1042989124eb38c18bbc25fec4b760953713de17d1f7e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerLocalization.lean",
+      "git_blob_sha1": "28c4a744d5c95025e7010278166a061bf516ed62",
+      "size": 6652,
+      "sha256": "76884284528ede099c02c8aadefb8de1369499f3059d1c0fa08129eee9d4a08e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerPoincareGap.lean",
+      "git_blob_sha1": "6a9a376cb18cdcd03f3d0ada68e218181e683dc5",
+      "size": 13487,
+      "sha256": "e958a4b386c2bce4eb48c3d53205d575fc9648068d538a33a7f64949b31a6d7d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerPositivity.lean",
+      "git_blob_sha1": "e0f770a1b10f67929c24525cf17cc54475a7423c",
+      "size": 7348,
+      "sha256": "15090ab667f9b765076bc3b8c7a4f3248b9e27f3145a889cf584c260e18848e2"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMinimizerUniformLocalization.lean",
+      "git_blob_sha1": "2996ed1da59308c733391bfba46dcbe78136b1fb",
+      "size": 5779,
+      "sha256": "fa804c0a276e681b9369fd852bb0c96dd96a8cfa37560c6f12ca93a908524bc7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingMomentLinearity.lean",
+      "git_blob_sha1": "87c943c5b5c1b7a867ad24a4cb794d071a798ad4",
+      "size": 4273,
+      "sha256": "b56857a418fd601cd24c090ea23e30fdc13fd197f5eba0b2e263fc3905bd0732"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingOrdinaryScoreBase.lean",
+      "git_blob_sha1": "c56be1c7557b38a020fe240f99655b3262a8738c",
+      "size": 4637,
+      "sha256": "23eb7e1fd315fe40a98ccc02c17b813c19a3a52ce90e89bd7e468902a169e43f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingPhysicalChartNorm.lean",
+      "git_blob_sha1": "889e724d4b775205504f0d70a62ea3c883acbca9",
+      "size": 8342,
+      "sha256": "8bf4772b06e37b834ff3cbd62fe2bb6b62c8ab3876597ea6ee64e38852a07717"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingPositiveRate.lean",
+      "git_blob_sha1": "50b62a135a2ffb9d80d21909eee3a5b410181fdb",
+      "size": 4740,
+      "sha256": "d4ffcd29f7b5bad532627117d1eeb8067f2ae2ab8e758af516ad1fc1c4899fdb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingQuotientInformationBound.lean",
+      "git_blob_sha1": "4fecaa32f19458c004c22a6d854c9fb763f668a0",
+      "size": 4218,
+      "sha256": "7d27291fb2c65e00702a33edff7e5903aafedeca0def7977a13f1ceec432f785"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingRangeAgreement.lean",
+      "git_blob_sha1": "0639ce38e557776b1823f579e0687d9e5e622de8",
+      "size": 4369,
+      "sha256": "52df24a0386ccec846fe16551498902904bea415e77452f6e067a8bcd59fedc6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingRangeGraph.lean",
+      "git_blob_sha1": "b341d4f7eac723f903ed67b3428f1531b70c967f",
+      "size": 3941,
+      "sha256": "1c6927d7b0534e349e6ddebb4c3ef51d3085e343272d9d39b377cce2c061d245"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingReducedBranches.lean",
+      "git_blob_sha1": "0e97d381f92dd85d198949115232474749f33eb3",
+      "size": 10732,
+      "sha256": "289078fd8f2ec2e13da64420e5457b0248a9e694629a725c55de8a9bbc7b1835"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingReferenceBarrier.lean",
+      "git_blob_sha1": "a1099548d976a5f0faa802501e736859eb48ef19",
+      "size": 10244,
+      "sha256": "acd4eaa3e658ae9f7d794aa6e978d4fe684b933559474394696e4ca5a48f1515"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingRootUniformControl.lean",
+      "git_blob_sha1": "2de14e9078ded5abeae227d59cd49e9576aa4fd5",
+      "size": 2702,
+      "sha256": "388bbdf97424f8467f55428cc7c85adbbf522a4d8dc2fc581ca3151f99c2e474"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingRootVariations.lean",
+      "git_blob_sha1": "dd038dfcf926251a7530b181b1d95690fa1afe1f",
+      "size": 4239,
+      "sha256": "266d1d051ce358920555ed98d376a5f8bee795d9f89532a18e3b8acd85935be5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarAttainment.lean",
+      "git_blob_sha1": "4be8cc47c5112ee8e490d7e0ffa3011b88723fc0",
+      "size": 8392,
+      "sha256": "0222e5bc44994df698d0f83632d269c16c604f68d0319bc1a09f5af6a3455062"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarClassification.lean",
+      "git_blob_sha1": "b052d43ab4dfb0415d4537f9422242fe77abfdae",
+      "size": 15049,
+      "sha256": "3e32de173677d149f3a0a4f5a3952d98f5dc16afc43e5218f51b14875626ec44"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarClassificationFactory.lean",
+      "git_blob_sha1": "446c1b2975cb090b6bccfce60afcf45baf5f5eda",
+      "size": 1831,
+      "sha256": "dc8419ebaeb695aa25d95f67bd80d61dd9837a97b069f281480c12013b227b8c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarCompactness.lean",
+      "git_blob_sha1": "0e166df1ba49a0b249ac29d86b895854f989fdf0",
+      "size": 7586,
+      "sha256": "521691e9ae99ed329e1dae8407981947f5f9c68778fbe48be9fc4046b7cc3630"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarDeficitVariation.lean",
+      "git_blob_sha1": "6a52b29383099d389e9fc692455c19c8f957c0cf",
+      "size": 5010,
+      "sha256": "f68052245876fdf5df5879fc4bfb49400485de56a828fc5aa2ae04509467c97f"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarLimitPassage.lean",
+      "git_blob_sha1": "be0e24a16206b4f5b1720e8621a2b9221b5abed4",
+      "size": 8533,
+      "sha256": "b2f18733847244bfc7ca7d574da5ada9363ee2921d7405d4fa39378fe27fe261"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarLimits.lean",
+      "git_blob_sha1": "5a240cb26e1b881f72bce21062babf0c678f2d55",
+      "size": 8702,
+      "sha256": "0c215f01f3a00c44a2424b5611e019686a337e3257bc9220e49bb8f26c764d1e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarLogEuler.lean",
+      "git_blob_sha1": "a93bd074a5f4a6d89704663ff26b4508b8b007b6",
+      "size": 4856,
+      "sha256": "4c0ac00e5c75eff006fc64be1792172520bea0788e2047fdacfcf41e8c617783"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarPositiveGapCompactness.lean",
+      "git_blob_sha1": "77600093e75ae20d17c8b8af3dddb72b273465df",
+      "size": 7872,
+      "sha256": "62fb51a7d2cd12dcc3d70d9577181dcc1acfeff2cfea55b3133fc00df6776e3b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarRateLimit.lean",
+      "git_blob_sha1": "4424747126a7d7af8af7a1aabeeedd841f9be676",
+      "size": 3572,
+      "sha256": "1b197e0af0fb80a49aaace6031e3325cfa2732aa56356269d3322e385dd207b5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarRateSqueeze.lean",
+      "git_blob_sha1": "871f98d6768076333e9830c9684d371ca6f9a24f",
+      "size": 5155,
+      "sha256": "12fc9660017be3f0aaa2cf037346e80b8c9fe25ec2c51e6e4b6822676c422b11"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarScore.lean",
+      "git_blob_sha1": "6d845818cd8e761f00b0640d874bf91899581427",
+      "size": 11579,
+      "sha256": "4267b57a2fad45fa6a0a7795ac40c5c0f65bad4087aa4df61ee5f065478387e8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarSmooth.lean",
+      "git_blob_sha1": "2f1d6f00e346edd43d42669fa649cc8fe63806c9",
+      "size": 6054,
+      "sha256": "27894f1271239ff9db248cb6b96bc0dece1e68e78c15f6b4a602ccfd062fb134"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarSplitUphill.lean",
+      "git_blob_sha1": "399c9e415edbab1492193051e3b52fc17061651b",
+      "size": 7237,
+      "sha256": "0aa4a51f0e6dd647cb62c0f7e014871cb323456662829f3fee1e803e3ad6b756"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarStationarity.lean",
+      "git_blob_sha1": "b363406e2f4e61b091f810f47353c960df6cf58a",
+      "size": 5735,
+      "sha256": "17a5af3c93aa702ab5bb46b2501559653b2bf9e46ea4d6ac59976166f5bca935"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarStrictRates.lean",
+      "git_blob_sha1": "30c9443feb8e6050dc6dfb696213662ea2268d26",
+      "size": 5408,
+      "sha256": "68c115d75ff43d4fe602a6ee7649cb3d793ebd2c920beca4079ddc94654d3492"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarTrial.lean",
+      "git_blob_sha1": "9b93c5382c2b1dca546a020575e19412fb6c6214",
+      "size": 6283,
+      "sha256": "a18b8e6f53e9e76ea26d5d1823d94bf30ac51f67af0b280fec3fa400dc66ee4d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarTrialLinear.lean",
+      "git_blob_sha1": "7db02ca40dd3090780f28f40f9c14e1a7564d1ee",
+      "size": 4388,
+      "sha256": "67bf2618095caffaa1cd411c200cd26973c05378e4ef4226d3d777e2c79d8461"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScalarWeakEuler.lean",
+      "git_blob_sha1": "1ff0832dff3b175a2783da9b26596839544c32bb",
+      "size": 10167,
+      "sha256": "ae39c3aed1866d903b7ab8dd35b75a1d6d410aa6709c80927e7542832dc49101"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScoreMetricControl.lean",
+      "git_blob_sha1": "1b0e47453661c3698271c705ed552c3b188d5e03",
+      "size": 4335,
+      "sha256": "ea80bfa13ace62a75150caeb2d2cdd70a49546dae771c7661950015764ce90f7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScoreRhsControl.lean",
+      "git_blob_sha1": "1e0e3b2926c07cf40417c10de884d6cef42c41fa",
+      "size": 10083,
+      "sha256": "aaffda8e989544241debfc6feed73b0b4da65a3b0fdcce3e3579b9d8fe7dc58a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingScoreUniformControl.lean",
+      "git_blob_sha1": "da6b047ca0207fe2caceddb123a44308e25d59ff",
+      "size": 5247,
+      "sha256": "fc24cd3c091ec905a1c29a8a8455c45ba29847e1c28a653d30fcc613a766ae47"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingSeedRotation.lean",
+      "git_blob_sha1": "bcb5607c1629a86e902819593713aa7ae400fc70",
+      "size": 3228,
+      "sha256": "db73304fc0ce191fd52119d35172aaa19d9dceb19774785a27392edfe58fac3e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingSelfChartRotation.lean",
+      "git_blob_sha1": "2fb58cbd4316a5b2c08514809fb1c76f59d922da",
+      "size": 5129,
+      "sha256": "f2aa25d2fd2ce17eee1f6a378b250d95af7244e270e3d19d66b35f8daa252b52"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingSmoothChart.lean",
+      "git_blob_sha1": "5d091a94ba46c8faf56b4b9c93dba66a64a4d532",
+      "size": 7337,
+      "sha256": "7c2e42bc0368a4fcb6107143c30703ff054163d57419c324425d848f7da7e7e7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingUniformInformationBound.lean",
+      "git_blob_sha1": "618128a47c6a0c2c11f4e5ba47d00044ec24123d",
+      "size": 5714,
+      "sha256": "e177f720b29d1a0831365d5a9537ceef193ad58e0372331276ee3206103b2b5a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/InteractingVariationInitial.lean",
+      "git_blob_sha1": "6051dd32006891dc36c0042971f3c9f79af90085",
+      "size": 5203,
+      "sha256": "a3983620aefcb0d25a55daff9d8b78e86167c5ea4007c3095dc3288b2af31b24"
+    },
+    {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/Model.lean",
       "git_blob_sha1": "7c258a3f3bd257bee21cb5331e3f2168406fed9e",
       "size": 25934,
       "sha256": "573c19b1574867172e50c76fe62b99e99bc5883a742f9510da744568fdb5c0d5"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/NearestRootMomentError.lean",
+      "git_blob_sha1": "9305b475e0dec5f3df5bd7b847916b691e6cdbce",
+      "size": 19247,
+      "sha256": "7aed159a8a71b2ef7e9da338755b24a2c74b4a8eb9381b17ed17380fb87a14ae"
     },
     {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryAllOptimizers.lean",
@@ -1125,16 +3117,82 @@
       "sha256": "f96bfd86d79c397c70096faa155e77d1e676706a866b693b1b8952a0a2bfd1d0"
     },
     {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryAssignedRootCBound.lean",
+      "git_blob_sha1": "e10f875168043ea5f7786c3b599df6bf64a86ed2",
+      "size": 3286,
+      "sha256": "1926762d0ae8dd577559957cd8b453e9aabc5c4cd79650ee6e623b7310fdd36c"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryAssignmentZero.lean",
+      "git_blob_sha1": "0bf7bfea86850b518fead005b815d7039589c1ca",
+      "size": 4996,
+      "sha256": "053022dd8de55fca6a2ca33057740fc234b9f61d0f98de4e68b662b8a3033c3a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryBinaryClosure.lean",
+      "git_blob_sha1": "61cd289f634454281e0bd04524a0390b02a62e47",
+      "size": 8682,
+      "sha256": "23d3e26a218b70874cd9251c7d24cb5f577eec90b49a046d3f80e8b2bef6e471"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryBinaryDilution.lean",
+      "git_blob_sha1": "87e97658e73daeff818dfe35d2d43e5ad848254c",
+      "size": 19520,
+      "sha256": "8fe1e2e931594a5d6f1c674ea3fca746cca707cfe7671047266efd00aa98c684"
+    },
+    {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryBootstrap.lean",
       "git_blob_sha1": "9b9de84cd1c07ef24dc3d090b6a6107c0d3c56f8",
       "size": 46816,
       "sha256": "0cd4d9079f4f1df733c00de607170364b5f2882f161f8ce18643199f7baa65df"
     },
     {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryCompensatingData.lean",
+      "git_blob_sha1": "2597be46a6d33323d4f0e0f5f4a1b9d5e68aeff8",
+      "size": 4541,
+      "sha256": "bb907be2707724caf113d7eaa1cf3d0cb7a4023eee95174de98f129f002f0242"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryCompensatingSequence.lean",
+      "git_blob_sha1": "52013d2fb063103df1e310503f0cfbf826cd0ef4",
+      "size": 11138,
+      "sha256": "c75a5164d15fc50b0ad394e11fc8cb734f461e5f561864561380aace1c4d0a9d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryDeficitCompactness.lean",
+      "git_blob_sha1": "20ffa5af4d0a2aefbe8e3f55ceb5d038357a5283",
+      "size": 9789,
+      "sha256": "5f804cec577a0a231e96ae24b9cf2e22865d05630df662b208dfc26d5b53bab7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryDeficitDistanceBounds.lean",
+      "git_blob_sha1": "4dc3486aaced56153fa0304f637097ab4bf72877",
+      "size": 4995,
+      "sha256": "d490987d0a402778a77e867b690e5d30c030e162048279182f39a65c62859bfb"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryDeficitGlobal.lean",
+      "git_blob_sha1": "236c9c4024970f4921be45b6d6f2612bd66899aa",
+      "size": 11629,
+      "sha256": "432218d86310e1def3412097da814d8ac0fa567c646927109a219dd183554747"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryDeficitMomentError.lean",
+      "git_blob_sha1": "139b94f8698a81e4e9fbdab92b387bb9ddf8973f",
+      "size": 8039,
+      "sha256": "d8b4e8c3909f2848349250c943531904a97648f6a730fd12969b8d329632ed9e"
+    },
+    {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryEuler.lean",
       "git_blob_sha1": "06e53259e515809e5cf999fdfe38c2ab7a7fc60b",
       "size": 26053,
       "sha256": "c307b8735cd35cfeeecdb7c6afbe2f1757c37dca32a530c0e2f1f9f4da6e0413"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryFisherStrongConvergence.lean",
+      "git_blob_sha1": "b88acdfad4eebdf40be750d6f12d3efd3f5c46b6",
+      "size": 11290,
+      "sha256": "2996eb22808841edc9d8d57c9ce0081de828470eea9067228b545bfa6e9864fa"
     },
     {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryGammaLower.lean",
@@ -1147,6 +3205,24 @@
       "git_blob_sha1": "452aa3c5f747f5df52b71fec6bc3715baaf4dc4d",
       "size": 8928,
       "sha256": "834e21abbce70148ba75727efda2e8db00303ec47273205e1673d7f99d6df084"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryGroundState.lean",
+      "git_blob_sha1": "292656e3ca2824261bff8dda48835d9516fecf3c",
+      "size": 16128,
+      "sha256": "bd4d7a50a96ad2ad81fd2119cf25eb4676709ee6d8f70cb7e74b1e16743b3a41"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryGroundStateRoots.lean",
+      "git_blob_sha1": "6e8dad6acb5ca52e45e6fd362d510d7861e286d8",
+      "size": 4648,
+      "sha256": "0396a74e4711e937fe75e24763d235bd7ee2c9d31be247099021a1738cabe7b4"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryHessianSchur.lean",
+      "git_blob_sha1": "6223b648af663422e1aa061ba741d57b5de6db3e",
+      "size": 12055,
+      "sha256": "9fcfadaa42610832bfd8cf50854f93502355635e18038d6981d7f36ec159b089"
     },
     {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryJetExpansion.lean",
@@ -1179,6 +3255,276 @@
       "sha256": "5f056d692f2a2ebcd730d3c9a7fb9fdf65d6d04500845fd0c467354a827d1840"
     },
     {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryReducedHessianPositive.lean",
+      "git_blob_sha1": "ba07ad74d4497c3d6630979293572cc232faba4e",
+      "size": 13378,
+      "sha256": "5ffcdc4771c04c6314dc8ec3ce5f073d736a3522133aa16a3284d62cffdf732e"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryReducedHessianScale.lean",
+      "git_blob_sha1": "0c311cd0148757c1b886442fb91589e37e65fcb6",
+      "size": 3555,
+      "sha256": "ed10a7a398c38c90f5da0ee52bdac15e9236403ae20dd302e6460e11cba916cd"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryReferenceLocalStability.lean",
+      "git_blob_sha1": "ab1398424b11fd88b86fa7fed00ad5273d4e91ea",
+      "size": 12754,
+      "sha256": "beb39d259993acc3fe2554bd317585749ae79451f050ecc010be9ab4146fbcb7"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryReferenceMoments.lean",
+      "git_blob_sha1": "e647b42b862efcf04fcd407d7ea42ee365008d0f",
+      "size": 5143,
+      "sha256": "ae95e97849c781b2c671b747d71a80440bab981dfc3f8e8b420c7d096fc819dc"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryReferencePoincareGap.lean",
+      "git_blob_sha1": "9a3f45d15bd2131234dcb0c5423c73302cf8e671",
+      "size": 10708,
+      "sha256": "7eb5616299c5517aa3fc14b495eb09f3dadf87f22d610bf89d14af656847a1a8"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootAngularMoments.lean",
+      "git_blob_sha1": "27073ba02e8e9fa8b355086d07b6b1c6edb96112",
+      "size": 10758,
+      "sha256": "784199f30f3b823c3a9b878412c19c5a0672a0e78316bfde2750dac10da06661"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootBinaryMargin.lean",
+      "git_blob_sha1": "8838ab282c80964792662727c88844e968914eed",
+      "size": 4735,
+      "sha256": "700f84e7780bfd0d87eab33fa7e12677b76c255b7130738726df482248ea3e5d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootCenteredTest.lean",
+      "git_blob_sha1": "63696536565f29199308855f29d00d1c7bad42ae",
+      "size": 2859,
+      "sha256": "e9a8d19110dd9f2e8a291dcaa8e7cc61c1f91e5f595be66dd261d23bf9913c3a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootCubicMoment.lean",
+      "git_blob_sha1": "2e6163131516681e11ebc9367c26fc92974ba07d",
+      "size": 5423,
+      "sha256": "23dd96a0e384fc1f2dc8e43ce00809319dfe2190b48398ea8f1506c7e9270296"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootDensityBounds.lean",
+      "git_blob_sha1": "0f9e53309579187240fab5ff824486e336f9f85d",
+      "size": 8755,
+      "sha256": "ee9d3272f5894b8142a1390f3145c6c8effee2721c48ec958768601409ef24d6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootDensityExpansion.lean",
+      "git_blob_sha1": "9b3ec34b53676a46d42acc9ecb75e593b0807fb7",
+      "size": 8760,
+      "sha256": "04de18a9cf21bfe82cfc99cfe6de8f6de9e9909c78fd3e2a85291220d9870967"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootDensitySegmentJensen.lean",
+      "git_blob_sha1": "7a900638063f8a520b4701fd4773208e4fceea6c",
+      "size": 6037,
+      "sha256": "7df6ab9651433308f733c90a68a2c3f33d63fc9daaa7999a5f61450f6e0a2b20"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootDensitySegmentStability.lean",
+      "git_blob_sha1": "df2c778a9b46d538eb942c921c80963317b07ea8",
+      "size": 11022,
+      "sha256": "643adbb0056d606d9efd6ec1ae7a05eea6e36e37963bddb9e6534fc85ffa983a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootDensitySegmentStrongJensen.lean",
+      "git_blob_sha1": "f0ab4d4f83503d48a914bf9ad51e6847bcb84b57",
+      "size": 5701,
+      "sha256": "e8e73fd6c473f9e72b0592309a9f93c690a699c55610c2eb4aa1e8b853c49163"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootEntropyDistance.lean",
+      "git_blob_sha1": "f161ddbe2bb2ead869b9c124187462fe0b6f8ead",
+      "size": 12331,
+      "sha256": "00173d8cd98ff8cf5a20565886017c8dc7e16721e1f2d42f656199c8ed38c1c9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootFormAlgebra.lean",
+      "git_blob_sha1": "ce62c290c6743f4b9354b4ec6e9513e47db8a000",
+      "size": 6684,
+      "sha256": "223ba1cd9a3ac0b1cc507b0aab84c461a15b7f6ad6874e2a13331a43f2073c8b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootFormDomain.lean",
+      "git_blob_sha1": "026d3086f505c51a50949263010d1dd0df4abdb6",
+      "size": 4112,
+      "sha256": "0ebd1e58e11a5448fb07d5d96628b25e2331c7f385e545496f06603a27b38807"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootFormIntegrals.lean",
+      "git_blob_sha1": "4675ebecc2589d24a525e2a57dc701d25ea25e41",
+      "size": 4803,
+      "sha256": "b7dabca021016fed8c868085c9277c1b0cd3e17b207ede041d620c2c01bee86b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootFullCoercivity.lean",
+      "git_blob_sha1": "cd520d91fb1bc3d47a9ead30c9210169a9bef572",
+      "size": 6542,
+      "sha256": "4cc329712ef54a262cc69fbb0e5b41a99b2a175787a2bf8b61105e8cc567012d"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootGraphData.lean",
+      "git_blob_sha1": "84ae1aa74e095ed2230a43220d1dcd8b0a1b8231",
+      "size": 9405,
+      "sha256": "987e177f3244ac47ef903cc9d940024d0d2f95d00df412aa0d64706b6050defe"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootGraphDecomposition.lean",
+      "git_blob_sha1": "a41dc12a1d2004deba9ac668dd8d85198a53f95c",
+      "size": 6426,
+      "sha256": "c77348498ac2f79a243e4528150e5188c054cacd81ac21aa4eda293aff3d9460"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootLinearizedForm.lean",
+      "git_blob_sha1": "daf8cd38b021f1479ba927f70920254ad3dc35c9",
+      "size": 5481,
+      "sha256": "6675a23b76c3bba2c787e67cbeefc264ee806699a17a530a0f7f660054404db3"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootLocalStability.lean",
+      "git_blob_sha1": "fedde1bf1006bc67665c1cde1dd3ad611da5d9aa",
+      "size": 7499,
+      "sha256": "4cadc7820fd06198f728f5e9cb72a6c5cf8dadd65567678e3cd9b1a39b5a0001"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootLocalStabilityCore.lean",
+      "git_blob_sha1": "862b65cba0ea3409314703c5db8acc31a46cdf4a",
+      "size": 17534,
+      "sha256": "87b2806aa6d0e0ba5eb377ed6839bdc03fdf8c64dd9629da9474be65eb3d7b87"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMixtureCorrection.lean",
+      "git_blob_sha1": "9e8982b53e970953fbc23dd2ef07f6ab8120c141",
+      "size": 9134,
+      "sha256": "c0a5305d995b1cd2fe89c143dcaf7035647d9f793e6f67672a6be33a8c7c6c3b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentCoefficients.lean",
+      "git_blob_sha1": "9f99a2a5f36772ee56588df7ea32c3d60a6f4a1d",
+      "size": 7325,
+      "sha256": "8a39f703cbe1b5a029c7a5afa4e51bcd6dbd01fbfe9146ee9b634852571d2e77"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentLimits.lean",
+      "git_blob_sha1": "d05bd9e5f7ddc6f620b5b17d47e9d70c72dbf6d3",
+      "size": 14620,
+      "sha256": "f0f98f3c837bcbee9827f9aadf97e18840681ca28e99dfac8b89288aafda3108"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentRotations.lean",
+      "git_blob_sha1": "de90619e0699f57827f6e533372a7a6ff2cba142",
+      "size": 10514,
+      "sha256": "327216d38f6be2f4204b8272ca3072c76dc1f73845985a3eb4ea1deadacebd33"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentSeparation.lean",
+      "git_blob_sha1": "8a7967d1ad3cad7a1e45061543869b4fe8272b24",
+      "size": 4932,
+      "sha256": "95b9ce095c4cb1583fadc8d3a07396bfb50da140627fd74d38f03f37ab2a47a9"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentSigns.lean",
+      "git_blob_sha1": "c76b24ceaf9d1014ff57c871cac9cc4218891535",
+      "size": 6571,
+      "sha256": "b743434b57dc1e00cf8bafedc4f233c33c6d294afbf22f8e32499b77e8f62b85"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMomentTaylor.lean",
+      "git_blob_sha1": "af0df731724dd5f0b19f89bc3a6acb32871c812a",
+      "size": 8485,
+      "sha256": "58dfe8780a8b3b64f94015233dcd1c2c4f70830e5da669bfccce72ac8bdb9f81"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootMoments.lean",
+      "git_blob_sha1": "f3dbbec0941d3c69c49663c519c1da83e89194c4",
+      "size": 9699,
+      "sha256": "e313264218ca1b6d2ebfe5b2712eed8f0e499bfb1054e3bf4b6f6daa60f5930b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootNativeMoments.lean",
+      "git_blob_sha1": "32f98a9521bf6c0bb0256b342b8dc0c9c7195905",
+      "size": 6947,
+      "sha256": "0f3b7364b3018c0ed90b111d9d3963ca5bba53b8790cb8346a352de6f6ec6775"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootNormComparison.lean",
+      "git_blob_sha1": "7b2d576d54546ac796175cb14a7f759fc1d36b6c",
+      "size": 9774,
+      "sha256": "3ec9312622812e1b1d4b7815f8bbaf7938291956cccbeb79245f47afc183f553"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootNormalizedMoments.lean",
+      "git_blob_sha1": "a90c4b9cd89e2fde99d527aa199f73918ad85992",
+      "size": 8078,
+      "sha256": "3ac9934677a7fb70161946de0131ac2ce8997769afa32c9e3d10a838cd663485"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootParameterBounds.lean",
+      "git_blob_sha1": "16afb8d20b9056004dc2098478e5c7c6426b2c8c",
+      "size": 1837,
+      "sha256": "d83a72b6d7f6f0decc43cda81c0ae5a44dbffc79b3dd6b0b73eee64dbe8e7c7a"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootPoincareGap.lean",
+      "git_blob_sha1": "9dc519299a43a0f74af640e2a0e16785428f1cb2",
+      "size": 8687,
+      "sha256": "7b668234fb65795bacab9762ee10fda2d2b85c2f9e3fbca9ded75074e29907f6"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootSchurPairing.lean",
+      "git_blob_sha1": "59993423534590244ecca8ed4c6d49a03659e85e",
+      "size": 7510,
+      "sha256": "5298ca2a2d9340aad1be4cd0135e8f8b6ede438c3dc8aec75515b074231afc2b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootSixAngularMoments.lean",
+      "git_blob_sha1": "994d7133c314040acde2b8decf241e8e8d7e836e",
+      "size": 8443,
+      "sha256": "b6f13ad069b0062de0d0bd53731180b45563888e67a811e4cbdaa2d8e3cf4c29"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootTangentBounds.lean",
+      "git_blob_sha1": "ba99a0b246ce646905fc4c58886b9e8828afebdf",
+      "size": 6563,
+      "sha256": "a5307f6d575b3fec80c8f27407078c0ceed8a7cc80822f832f5670d7c48dd272"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootTangentPositive.lean",
+      "git_blob_sha1": "0a3f72b2d4fdcbad4693c453ae883251a939dadc",
+      "size": 4051,
+      "sha256": "3bdff53c88afde886afe1a6559ed7b1340031c3d562f934720fce981c11c44c1"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootThirdMoment.lean",
+      "git_blob_sha1": "e7e9fba2cc63192433f50b6ee63940513649762c",
+      "size": 7585,
+      "sha256": "2327c3180de1155d808c44fe94447f476c48a246624c33120d9b1aa23ab7f317"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryRootWeakPairing.lean",
+      "git_blob_sha1": "bdd92cf4af69b0014c51fde9f5f07b4b801ae7b4",
+      "size": 8114,
+      "sha256": "ae772b9e4c5d2a5a6a9b2a879be77641077235934234269ab37da40963c4d070"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinarySecondVariation.lean",
+      "git_blob_sha1": "c422349ff1654e708b482c298385f5b4206c386a",
+      "size": 15964,
+      "sha256": "be456f77abd851713cfa7653b5953fdfe56b9b10d08498d96543f82d131087ff"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinarySignedRootMomentBound.lean",
+      "git_blob_sha1": "55941f12cb370cc7ac3974d748e9f151cb35a754",
+      "size": 9064,
+      "sha256": "c140ba6260aff1ddcd6d6cbb45fd2209929a367d36f63144afc7e1f5f0854ff5"
+    },
+    {
       "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/OrdinaryTrialState.lean",
       "git_blob_sha1": "1f213410ba5b4a124c215ce73d1612bb1d390374",
       "size": 53628,
@@ -1189,6 +3535,330 @@
       "git_blob_sha1": "434a1372a1f6288cf1ac7739765f7300c01d3dc0",
       "size": 14053,
       "sha256": "017742e575c952f452eba69a93bbffb027b861aef203618db5d750677fe60dec"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/SmoothAbsoluteRepresentative.lean",
+      "git_blob_sha1": "1b7a1e972385d9836b38513095d2a191be614bb3",
+      "size": 3162,
+      "sha256": "cb541b4de2caa4800595c8cad5ee0580b35573892b32ebf9fab8e2752a98e51b"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/ThreeSpeciesCanonicalAssembly.lean",
+      "git_blob_sha1": "e99f52351e2fb57a3a39edaef21bede73c608823",
+      "size": 33607,
+      "sha256": "a2388cf444adbb3a2c21889c6bee2507c00d6c14cd483d58a6f45d7237c8ff05"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/ThreeSpeciesTrial.lean",
+      "git_blob_sha1": "ed09c54854f334c9afdab37fde870e0e88fdd276",
+      "size": 5944,
+      "sha256": "e487a310f4d5efaf95abcf60945fd2128e86d016e682e9eca7893f38df962e36"
+    },
+    {
+      "path": "Campaign/DGPS/Examples/ThreeSpeciesCircle/ThreefoldMomentQuadratic.lean",
+      "git_blob_sha1": "7ef5135e508cccfb721d8a14c7fa900f291b0a7e",
+      "size": 8171,
+      "sha256": "dcad48230a1d48e6afd142d3f53cafdf81079d41a7d8507af162fd68e3b8de5b"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticAuxiliaryMass.lean",
+      "git_blob_sha1": "d4ab0d7b3bd56bc071e5c682f3929d44e6c12952",
+      "size": 5536,
+      "sha256": "b2b262702983933ea3ca85bec3819ae09d7a2b177e53a05f2706be3133e24472"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticAuxiliaryTransfer.lean",
+      "git_blob_sha1": "c37d440c67ae0a19df0345f48d4ae9dc80db427d",
+      "size": 7718,
+      "sha256": "9517b0ea0d05d9ca836967ad7e3435c8e056739e0e2085269f02176704a6bd2a"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticChangeOfVariables.lean",
+      "git_blob_sha1": "59748cfc82718d49a69b8cb1a8aea11e09efada6",
+      "size": 2583,
+      "sha256": "22d748abf95ab33091055df88e5e695195b6f3b6815e263e1b80075b61d94d41"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticChart.lean",
+      "git_blob_sha1": "a876af61138543104b538dfaf2c87b88974d9f16",
+      "size": 2857,
+      "sha256": "d24c3bfbc1485b574c20cba935eba9cc15aa913782bc8205c792c99682d3ff24"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticConditionalCore.lean",
+      "git_blob_sha1": "6cd3b567fdc1a865371597e9a3f18846976ab512",
+      "size": 11286,
+      "sha256": "2c21e288a3da30cca618c0c391aa063b85f371adc57e8c988ab642ccf5c89a86"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticConditionalLSI.lean",
+      "git_blob_sha1": "ffc443a6a720983d563be5e3f1d45f89442fe291",
+      "size": 7252,
+      "sha256": "fa4b5d6fe2940bea73cbd6269b448bace86b66ef15ba767baf3ffd8e30217132"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticConditionalMoments.lean",
+      "git_blob_sha1": "2fdce2dcd99ed86b923f913868fa6c274db9d757",
+      "size": 6432,
+      "sha256": "315560cc17f9d236e748575be30937282406f8374ea1f907353781153ecda9d0"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticConditionalPoincare.lean",
+      "git_blob_sha1": "3f6e56dd09916de8608a5b243ecc02b8625420d2",
+      "size": 8329,
+      "sha256": "f63a33b4b6733121cf1440823a0c8e5cc9b63516974887a49d0d57b4f8666b30"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticCriticalGeometry.lean",
+      "git_blob_sha1": "b06f4856db8d54592f03ab0c4cc2bfb01279d74c",
+      "size": 3079,
+      "sha256": "0543dcea0b332bc916ef2a915878491b56cbecd8ba520a117a46e1c450332ea4"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticCriticalPatches.lean",
+      "git_blob_sha1": "18edeb0843e803b4c96212bca8067d0c8c89adf9",
+      "size": 2782,
+      "sha256": "afbf695a01b1bebe2b210d5bc88a0e633c482d567e2b1aa27e7eafdaa654713c"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticEmpiricalCore.lean",
+      "git_blob_sha1": "6053014491e71a33e6908ed315b3a907b62d6bf7",
+      "size": 4996,
+      "sha256": "85486be6c4807365a0b4f58ee18661b6f1fe5799f5cbc46d8146bd6101782af3"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticEmpiricalSupport.lean",
+      "git_blob_sha1": "989fdef3cf24e0678a7b012350335ec849dbf307",
+      "size": 5862,
+      "sha256": "85cf2f3972e49081cae7307fe0f4f5abe8181f412107dd644c0d5013d66c9c1e"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticEntropyDefect.lean",
+      "git_blob_sha1": "5008558d778a64aea24432b0d2d976dca00820f1",
+      "size": 2412,
+      "sha256": "1e0a0b1ba92f36a3518bdde8a2f4d691635369b2059b3d129b31e6b9a6140af7"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticEuclidean.lean",
+      "git_blob_sha1": "e39b56ae069f54abb1dc69d4987da0148ec7c7e6",
+      "size": 2417,
+      "sha256": "e57862d0c2b5fa84103d8ab4130e787fe991b84115321ece3c51b087270d42c3"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticExterior.lean",
+      "git_blob_sha1": "5b2ea44fb9ddbbf744419f178c557b2f0217f482",
+      "size": 7606,
+      "sha256": "d22c7649be725cc2ed8dab8d616a7178703a80c51d1a4c6cf9c689202a6a8687"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticExteriorGeometry.lean",
+      "git_blob_sha1": "31d328bacf05e95ff2cb73b985a4609548e6188f",
+      "size": 5526,
+      "sha256": "d65b03be99f6da71250a06782609dca9517bf6e710fa2c42b48c8e8f06aaed92"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticFIN069.lean",
+      "git_blob_sha1": "02509a22aaab9ca3640e74fa482abae8ab4727a6",
+      "size": 4014,
+      "sha256": "75b35f3d57b45bbaee4bb5f83052f91e43b2c9e7b690ef4619284f526e4d4778"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticGlobalLower.lean",
+      "git_blob_sha1": "d1bdb4d05493c9c64b46a4f2ef9337f8430cd304",
+      "size": 6520,
+      "sha256": "ffbe0b07b1952519ffd55fb62d7abf6484a30cbdeeb4151b0344c2a54b29cfba"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticGradientGap.lean",
+      "git_blob_sha1": "e2c87de2d5e3d29abef71ca1edfcf9d17bc8110f",
+      "size": 2977,
+      "sha256": "bb98a567340c8ffeb24f4d910ff44b9853f24f2c04bb4aae8b9c12a9d1f9bb23"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticHubbard.lean",
+      "git_blob_sha1": "1355dc2551088335e48a529d06879f791b80eba5",
+      "size": 6490,
+      "sha256": "8fe9378bb83db94ccbda3c08afbac8f8b3f8b181e22334a5cd8264700d603418"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticJacobian.lean",
+      "git_blob_sha1": "377095c1b95e647616fef405547323043517213f",
+      "size": 1453,
+      "sha256": "377e8bc83e8bc6efafd3ad5fef8dfadbe1e8bf9aff8f7c4d0c6e80cc1140a2f2"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticLaplace.lean",
+      "git_blob_sha1": "9933efca3c1cf4e1fbef70c6807da8b73ebf9c58",
+      "size": 5853,
+      "sha256": "0b56159563ab4c444697eff3392110d0176a135a2a0bab2750b5c29b75b230a2"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticLocalChart.lean",
+      "git_blob_sha1": "67f8e5e33bac755d33fb05a87cb7b0948453526f",
+      "size": 4823,
+      "sha256": "6aa601c7bc9a1443109236da30b49b9be8663b39d003c40a892136d8f9c136d0"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticLocalLower.lean",
+      "git_blob_sha1": "4df52ea0c09ee65355e7d5a44d5bc017d0713ed6",
+      "size": 14627,
+      "sha256": "f2c1a5ecdac61169973fb90b9d72a231d4ee9d3b7df641d170bec513e6a505c3"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticMinimumData.lean",
+      "git_blob_sha1": "2fee4c7d5dfd02534d469a268efddcd1bf1b0439",
+      "size": 2448,
+      "sha256": "b3094edb7ee67b84c78d9d09169c47a9b754febabbda8244015b0edc7ecd5e7c"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticMinimumPatch.lean",
+      "git_blob_sha1": "dc887451ff27a065e7a5182c3b562ee75a785388",
+      "size": 3198,
+      "sha256": "f0b4a81cb39fc557fe3fd003cb5c2812e17ad94bb205c28015c484f1e3b7b279"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticOccupationUpper.lean",
+      "git_blob_sha1": "b5cf26cd43c189e9560a3b4c7cb47847e47f14f1",
+      "size": 3903,
+      "sha256": "7bd43943d68fdf210058824d380c9ad5303a9333e2801725c039e24bbb100b54"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticOtherCritical.lean",
+      "git_blob_sha1": "81fa53f20572e8c366399ae5637aac4862386cc8",
+      "size": 3022,
+      "sha256": "5365a2a7066f743f1de71b96881455a8cbcf71d57486d4dc4ed2faaf9e479021"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticParticleLower.lean",
+      "git_blob_sha1": "38c5c3ab74fbfff24b43481e4ad2811c53845263",
+      "size": 7240,
+      "sha256": "04c329ae7c31dcf868e45004637e0096be538d25e665a7dcdaa7a34baff9180a"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticParticleUpper.lean",
+      "git_blob_sha1": "4c96ce0f09d1cf4a664b2d537735d5439bf009d8",
+      "size": 6168,
+      "sha256": "c3160bd4b0acb73965ea7686e802feacc5fbc286d4ed77e6d12fc119aac73d9b"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticPatchCover.lean",
+      "git_blob_sha1": "e2c2c5f258b148e9d0fabd76d8691a3b674a6489",
+      "size": 6411,
+      "sha256": "1e31acfe8722650ddf402d08c14fd45fbdd804fc348fbe22f7ef47e7d648e1ff"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticPhysicalStrip.lean",
+      "git_blob_sha1": "94644f4504de6ce0625b592efe3ae7edcee0d202",
+      "size": 2720,
+      "sha256": "183b3ce02b57ae9e703e4a53dc1db28dd31bf0dd3a78322eb383755aace3457f"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticPosteriorBox.lean",
+      "git_blob_sha1": "43968187d580d6ae2f9b55e1d07947e4ca785705",
+      "size": 3736,
+      "sha256": "5f8c1ad93defd32185321a8644d1e2cd6d987f60dc7a7212608fc2315d8eaba5"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareCoreMass.lean",
+      "git_blob_sha1": "a0453d0e22dfad16b5481a654e43cf7a2bd87f70",
+      "size": 5515,
+      "sha256": "51eb7520d83ee79e45f516fa398e19db33398fa21168f03f6264614f86da45d2"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareMass.lean",
+      "git_blob_sha1": "67f5de5c214ed4e3926b72ba7d83fa4373be0d40",
+      "size": 5151,
+      "sha256": "78858e3678b1dc07d67497f4323f7b2c9ae800d30613688b1c9d900a0d1986a1"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareRectangle.lean",
+      "git_blob_sha1": "5c1b4467cd2c419fe38f46c67f7cfca7bb280237",
+      "size": 4757,
+      "sha256": "cc68883b2587f0d2e87d4d8d05e489fb13e85a602705ec309e6afc54883cbadd"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareShell.lean",
+      "git_blob_sha1": "d229cb34a332f169925334f34c101fe1089e54b3",
+      "size": 4504,
+      "sha256": "fd504ff7243631cea5a697e2cf3e42ab4887bdbec179d0e0adf0b0c71e9c2fe7"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareStrip.lean",
+      "git_blob_sha1": "2e3e789a0ffb83c1c034305d507f0073ec432193",
+      "size": 3994,
+      "sha256": "54c3dbb9561269ebed913ba106537788356d1d07b6e9a1e5c548cd5d98e8bfff"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareTest.lean",
+      "git_blob_sha1": "c30faefe29f4797b5cbd1a09a1f5adbd615072fe",
+      "size": 4395,
+      "sha256": "46ae6e2ba98c407ab7ec32520611a3c78fb36bb966b8ccd7e7e640ae47789b36"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareTestChain.lean",
+      "git_blob_sha1": "90f9b5540d537ff7841f3d1ffd2c2239babbfdbb",
+      "size": 2385,
+      "sha256": "9639d89e968566f3b8f8895ef858509a4c5ba39b2d37889ea3f442905fd93d66"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareTestDerivatives.lean",
+      "git_blob_sha1": "935edb70647a2260af1e54c314fb67e78250ea59",
+      "size": 4440,
+      "sha256": "1a8bc05a8c30dbce866f6d2d09f995091a995cd9c08b6bd4f0f73e0bece792bd"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareTestEnergy.lean",
+      "git_blob_sha1": "1364a9b5d8cf06a9a8ec7d28611fd3289d7f2dfd",
+      "size": 13445,
+      "sha256": "6121d4aca252d1babf86008cf9003711b153f6d70efb26e2ebbbe1bc438cfd8c"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRareTestSupport.lean",
+      "git_blob_sha1": "79ca2edb1677006c0f2f8b4589fffa2d265d66a5",
+      "size": 2577,
+      "sha256": "61552f46180abe29aa668cfbf11566f51a193a7e0f89f10754471e31cd96303a"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticRatePowers.lean",
+      "git_blob_sha1": "1612db62ea8d49b5e90dca4884191ed0ea9a2cfe",
+      "size": 5162,
+      "sha256": "4d56754ed285eec3b582824a0e75bea69fef1876cd9eadba79310ace7dd137c9"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticReducedExtension.lean",
+      "git_blob_sha1": "c50a5edd258e45d727f83518882dcffdc445945f",
+      "size": 2765,
+      "sha256": "336ac89583942f87e6918d459c2ad8d741bfbfb1804b8b89afbdf6fb12ca80da"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticScale.lean",
+      "git_blob_sha1": "12aba96f5bf4a77cb042498b753f5e350d893073",
+      "size": 12153,
+      "sha256": "bbe37ce1ec2d061c8c925a045b1f02bf438364032962caa2e3c34b0d6b2a3058"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticSmallCoreMass.lean",
+      "git_blob_sha1": "99502a5427fb66e141c57fcfbdf479e1bd2f01d1",
+      "size": 4727,
+      "sha256": "2ab8a0907e246e0d609f9e2a79297cdaccc411d63061b520e644b262700881c6"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticSmoothClosure.lean",
+      "git_blob_sha1": "dc025375ed9a3edf480619d7bb4d6293ef923904",
+      "size": 18989,
+      "sha256": "7723efb1b773b30ca9d9683f0df0eaf392be1c39b59beb56673668a3a498c3a3"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticStableDirection.lean",
+      "git_blob_sha1": "1728e41fef46906c3c12db6368abe713cb75116c",
+      "size": 3253,
+      "sha256": "b11206dfa0a9acd217da7a951b8714da41dd5bf734c914c6e05397c62d9ce13b"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/AnisotropicQuarticStripMass.lean",
+      "git_blob_sha1": "03ed3730b4ab158f5a0182677af28b071962dd1b",
+      "size": 5490,
+      "sha256": "e0381b83c706554c04b73dac49413f31ca4f48d4ef0f7a64079be7089f6dfca1"
     },
     {
       "path": "Campaign/DGPS/FiniteN/AttractiveLandscape/AbstractInertia.lean",
@@ -1525,6 +4195,12 @@
       "git_blob_sha1": "4bdf1c9e5a858832e70fc43b06d04adccb5b9b2c",
       "size": 62763,
       "sha256": "ed955d92fcfe26c5b4966515c754ad97d86e899f484384a132fd57b036d6324c"
+    },
+    {
+      "path": "Campaign/DGPS/FiniteN/SecondHarmonicLimits.lean",
+      "git_blob_sha1": "7a7e7981ead75b218cb726abbda0c68c536c7848",
+      "size": 5880,
+      "sha256": "3798510a008d85d10a00a3aa300fb02a65f814c3b45cd300f0939dfa80ff8f73"
     },
     {
       "path": "Campaign/DGPS/FiniteN/SecondHarmonicOrthogonality.lean",
@@ -3712,15 +6388,15 @@
     },
     {
       "path": "Campaign/DGPS/Lipschitz/EquilibriumDissipation.lean",
-      "git_blob_sha1": "ffc0840f7ff54f6d6233b69972e19c635f02c0c2",
-      "size": 26180,
-      "sha256": "b15d2f7aefe4de71a4d5232d3f32afae1bb44b9a585a4d335ae770d83bb58d72"
+      "git_blob_sha1": "31c2004c3cb4aaf615034b98cce59a2726519632",
+      "size": 30584,
+      "sha256": "2d4be434e2e6d34caa5b265fc0b1f6883d715ae383aca6503ff876480b05c4a4"
     },
     {
       "path": "Campaign/DGPS/Lipschitz/EquilibriumManifold.lean",
-      "git_blob_sha1": "dc4be2b9561bac1605a47b942806fe22a8748ebb",
-      "size": 41577,
-      "sha256": "2c3d871b76cc118650f5c7f3fc58b43ee6371fa606c9620cc2b2ab1f3680b94c"
+      "git_blob_sha1": "77429c9f77b0e2edd373b424b41dd243345d8f88",
+      "size": 43091,
+      "sha256": "fcf975774456f89dfe9498db451c2d9f1691a085064c2f10e76c43ff12d5a0ea"
     },
     {
       "path": "Campaign/DGPS/Lipschitz/EquilibriumPotential.lean",
@@ -3730,9 +6406,9 @@
     },
     {
       "path": "Campaign/DGPS/Lipschitz/FlatReducedEnergy.lean",
-      "git_blob_sha1": "707c4068b6c8ceb6b92f5a51c21514c4f92db310",
-      "size": 12551,
-      "sha256": "811d5271bb8414140b4a98c0a05a8c96ccfd17a18540c0ae17fcd319e3b7cae4"
+      "git_blob_sha1": "8727e12a5e847164f05bfad7632f21905a7a8e11",
+      "size": 14260,
+      "sha256": "877c26245b623a6fdfd37b2c4886b3e60c6a78881ebcd797a2b68e15be520024"
     },
     {
       "path": "Campaign/DGPS/Lipschitz/GaussianKernelTilt.lean",
@@ -3760,9 +6436,9 @@
     },
     {
       "path": "Campaign/DGPS/Lipschitz/KernelApproximation.lean",
-      "git_blob_sha1": "eed2543212f075dca48d973dd532c87766ce6d35",
-      "size": 83245,
-      "sha256": "135927ba9196e88937bf506ce983dcd67601a72e9ecc93f345fcf14ff2955936"
+      "git_blob_sha1": "e1f30735868b6ed2402840619fa9f94ed18d8ac0",
+      "size": 84719,
+      "sha256": "72d2b94fccbfca59bce791552a7d57740d01dc4003d80c7ff2f5beccc866b560"
     },
     {
       "path": "Campaign/DGPS/Lipschitz/KernelDiagonal.lean",
@@ -3873,6 +6549,12 @@
       "sha256": "7b25db2f8e1a061f5a6eba2154511cd7bd86db09d71cf6e75da276a996a65f70"
     },
     {
+      "path": "Campaign/DGPS/Lipschitz/SharpLimits.lean",
+      "git_blob_sha1": "80b8c1c183a7702e25be704ae0370c883ae4849e",
+      "size": 5615,
+      "sha256": "1a6d2a9195abed6d606a17d3396fdb6cb26160b6aa691aeaf17bf431f2f640dd"
+    },
+    {
       "path": "Campaign/DGPS/Lipschitz/SymmetricOccupation.lean",
       "git_blob_sha1": "14164fba3ff6bf4a57533cf011de8810a03c8d8c",
       "size": 96701,
@@ -3883,6 +6565,762 @@
       "git_blob_sha1": "960def0395cd4054af52ec2c1a64572e36d5118d",
       "size": 17197,
       "sha256": "4f349e85d0204723453f7e21163be68a3a9739b0d825611f393f45cafc421ae5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ActualBoundedComparison.lean",
+      "git_blob_sha1": "8029eb2a2bd0f112d48a090a82aa7f573c06cfc8",
+      "size": 4594,
+      "sha256": "1ef1449c326f0f73ba79cdeb80f774781ee4dd03106b7abfa4b7249a18cf4acb"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ActualGaussianEnergyLower.lean",
+      "git_blob_sha1": "55740a14a7577af8e0883e2218c5b9199f98bf6a",
+      "size": 5117,
+      "sha256": "bc6e71bf98acdc88b72adbb723e7294374b4c6f28a2c2831239438a6cdf37dc3"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ActualRankReplacement.lean",
+      "git_blob_sha1": "01eaeb9ee4398b32111444c6e85eaeda0e4bf98a",
+      "size": 7456,
+      "sha256": "c013eae0e6573ac3aed14dce52b3a33416fdb016ee130b26c2ad2f6a74cd0ad5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ActualScoreData.lean",
+      "git_blob_sha1": "8061fa7e417503b37a8cd88abe03a612fb692580",
+      "size": 12214,
+      "sha256": "1a6488d5c7f0c5b7a8e4a7d7fee07fb1186ff214155b3907c762e1e6a3436cb6"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ActualSpectralComparison.lean",
+      "git_blob_sha1": "0b1d16bbad04fcbbdf5fafd2719937a372562717",
+      "size": 2249,
+      "sha256": "facbf2ac7db856bae11163fe55b84c932ebad8973cf2acce37f508d519af1749"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ArbitraryForceBound.lean",
+      "git_blob_sha1": "e65831750a3bb2330f9a3296903663a3fcfc571e",
+      "size": 11566,
+      "sha256": "c8855bd5185609932c5fb757d51d27107c29a4fe2e4be03b5161238666a61001"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01BoundedComparisonUniformity.lean",
+      "git_blob_sha1": "3eab83e7a8de598597e7e7ae977d5d3ed75742f4",
+      "size": 4516,
+      "sha256": "9a39158fb9684e5c2d987033d4096a546c3ecf64c77e50093150f0f93d63059e"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01BoundedDilution.lean",
+      "git_blob_sha1": "60cc5d5fe38007f7431ec08b4d0c7ca18d4cae9f",
+      "size": 6269,
+      "sha256": "a7310e92f818672b59306cee17300329b800e9a5f2115cce910dad01f61b2fed"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01BoundedLawEntropy.lean",
+      "git_blob_sha1": "2cf786fc5896d5f8baff9a542a41f034bd60cbd4",
+      "size": 6088,
+      "sha256": "e9c9f11d9a97cca7cc6bd86ef384157ce580c33a1e3235090eadf84797741474"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01BoundedObservableComparison.lean",
+      "git_blob_sha1": "cc377c111a9cccce5334c5d1035cf6a9570cf1ad",
+      "size": 4048,
+      "sha256": "f6a7006f3f6d1ddce2d856d40e54616b06e32b2f593773cf6f40e3f5e1fc9e04"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredDrift.lean",
+      "git_blob_sha1": "c975aa0fe335b8e1a6933c8464874a28078cf2e7",
+      "size": 4705,
+      "sha256": "9da1593ff4ffa577e256ad895e56461cc5ea89aa2070bd0729163809bd93a9dc"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredDualGenerator.lean",
+      "git_blob_sha1": "80f03804db55f1019a2441e41c02f17b7e41cd06",
+      "size": 10671,
+      "sha256": "75457579f71fd749e98b9c133ea5e54a3ab3cb93df69af705422b18dc1eb6ecd"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredForceGenerator.lean",
+      "git_blob_sha1": "bf83ba8fbfa9f12c73b5dc352b517e60f1013342",
+      "size": 13077,
+      "sha256": "dc5eec548b4747b005f554f2ec11277a4c98e32b80a6c3ce0daf4c6231410deb"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredGeneratorAlgebra.lean",
+      "git_blob_sha1": "216375d9856c7508c26c3fdc32a962ccf148328a",
+      "size": 5696,
+      "sha256": "67c61c3bd69f5b1ad6a271395cf89a4651aa3726957211ee18b34a31aed50a91"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredGeneratorErrorBound.lean",
+      "git_blob_sha1": "3fe650b020091a0028eb769c188b9788c6a463b8",
+      "size": 18012,
+      "sha256": "6de71648c70cf7dc6131b8d71e267f9a74490f6701956ff0c7bfaba0f9c8d19c"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredGeneratorLimit.lean",
+      "git_blob_sha1": "a6f4bed4eacd83019be2c7b9a494cff86ecd0c69",
+      "size": 24868,
+      "sha256": "f47e01ba76980d4b75d72e442d034014ebb05148842d99821838cfc5091da8ac"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CenteredGeneratorPairing.lean",
+      "git_blob_sha1": "b3e02e7e52f64801a085f72d52b963e4cfb4750b",
+      "size": 14102,
+      "sha256": "38d7c801fd53261e80e0930359c1a7f04ff9b9a51f722be7191c42e723f7c736"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalFactory.lean",
+      "git_blob_sha1": "2807ffbfbb677c250ae70db6f5c11b925df3a0d0",
+      "size": 13615,
+      "sha256": "10f324851b7167fbbe7e6f4584856f992320f426e5d2e3db183c47fe5b797699"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalInformation.lean",
+      "git_blob_sha1": "a552b7095cdd7dc45baf63144388fcba8ac80cbc",
+      "size": 6271,
+      "sha256": "4b54e65ef4309139cc2bd775a962e6cfdc2ef22f89926dd14e308393f4a1cf00"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalIntegrability.lean",
+      "git_blob_sha1": "c6d66bee60203a82ab1b94bb5683e8e5dc5d3b30",
+      "size": 5164,
+      "sha256": "ab22d7471b424456485bfb88d8dae8f097b017b6b458651aea4bac265ce01b99"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalLevel.lean",
+      "git_blob_sha1": "90c39816c0211c125e34a94ec60b484e0a1e7276",
+      "size": 4500,
+      "sha256": "fd5723a9ba3fdd996311c1bfab964e643606c6b7aa79dd601f9a14ac08c90738"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalMeanField.lean",
+      "git_blob_sha1": "a938586c61a109ee7b19ca11b20adb202fb8a73d",
+      "size": 10214,
+      "sha256": "49ba0c4974cbe372ce9d1d3e490811b25dd18b0ec7caf72abce3f716b0c3f522"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalMeanFieldLevel.lean",
+      "git_blob_sha1": "ac17161f7d533a627783f240cbf30050b311906a",
+      "size": 16779,
+      "sha256": "e0f900cf0b4db955289489b6f821d51f2a3a1ea892797155b88214546bfe7cc9"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalScoreIdentification.lean",
+      "git_blob_sha1": "c7d6f87fe6ab8ecb02ce45709ae5731f06224329",
+      "size": 8153,
+      "sha256": "f6597103c0b2b71d1d9de20da13310bf9462cd01b991deadd39a165011b15423"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ConditionalSpecies.lean",
+      "git_blob_sha1": "0dd83a3133a5c54492444657779a5eb337e845f6",
+      "size": 6201,
+      "sha256": "4ed560499bab741ddda6c3ce86e8174dd598a3f72efb681a21ae6db47bdb84ef"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01CovarianceMatrix.lean",
+      "git_blob_sha1": "871d28c46d7f6429c58c4c93b553b4c6fdadd7f6",
+      "size": 11828,
+      "sha256": "9fee8b075b7c0ac471130f74b9c475599182d8d05dd925ebd25580c5bdc47b69"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01DefectiveAssembly.lean",
+      "git_blob_sha1": "7401956e83b9e44501b46bb79a40a9968e362294",
+      "size": 10198,
+      "sha256": "e7afe56c72bb02b8452e05640566a1d52250053f878fb041289928984ca52465"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01DefectiveDomainClosure.lean",
+      "git_blob_sha1": "e58ff09e45e9a70cdfde2ddb0c28ea2e4b09c2e2",
+      "size": 2242,
+      "sha256": "3d5d6017eeb3d13e74f505d1129bd6df3be3f94a9f29042afdd93e573ba96b8b"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01DependencyBridge.lean",
+      "git_blob_sha1": "84e3d2e1c9ca61e5f2b41435f467da5aeef6aaef",
+      "size": 912,
+      "sha256": "f3af71b8a62ed48710c15ecb319ba35aa11b8c65de72e9cd54badc138def0676"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01DilutionComplement.lean",
+      "git_blob_sha1": "e42860406c4d2ea6dc41c92d0f0549eb9f5a116c",
+      "size": 7308,
+      "sha256": "58cbf6a9de713580973d16b2b330f1094ed5acfd20a4c9cbe6617a5bc9d22a7f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01EnergyReplacement.lean",
+      "git_blob_sha1": "47efaa7742569b9c464b9c7c4a6f26a8134e46b3",
+      "size": 15268,
+      "sha256": "ea4a832a5bdf5e23206f09cbee434cacfdbb7dbc903f5c12cb7cd2e2c4925711"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01EntropyCoercivity.lean",
+      "git_blob_sha1": "9728645247947b53ed17b497b38f3e872596a35f",
+      "size": 4440,
+      "sha256": "7bd9ddc4bfa3a8e7182ecf3cf139ddc86d1793c8fa1de28eed667822ca99a7ee"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01EquilibriumBasis.lean",
+      "git_blob_sha1": "f7823b61701ad4edae12082e33a8ebb24f0dddc1",
+      "size": 2402,
+      "sha256": "78086725b2ddc4b7807cc0c474bcc67b0abcb7b4d346b3caf1353857b178e146"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01EquilibriumBridge.lean",
+      "git_blob_sha1": "f0012678728d3a4f7c6f22ee71065e25a5453acc",
+      "size": 3314,
+      "sha256": "37853aed4e04fb16947a909addb8db4ee25606434adce5674bccfe69b9f83dcc"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FiniteRankBridge.lean",
+      "git_blob_sha1": "d1f65c4330d6b52a046c4735591506e3993e81bc",
+      "size": 17982,
+      "sha256": "de9191ae54839eb41ac7800bf37aefaf46ef976c5c51f04f6caf69210ca11a5b"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FiniteRankComparison.lean",
+      "git_blob_sha1": "ddf4bda13679e18f3156686a8abb7b6133ca3e78",
+      "size": 5462,
+      "sha256": "8e8175176b2bf98fd0f1c761a384a96ae387becd6e5d7058dab3bd0325fcb2c3"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FiniteRankPositivity.lean",
+      "git_blob_sha1": "48214f0fc358b09b513ec3b47c425260636a7917",
+      "size": 4044,
+      "sha256": "692d219aaddd8ddf3d6253b1a3e0b8e8e216a0b4b4444c96a006b1b989b985be"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FixedParticleDefective.lean",
+      "git_blob_sha1": "0a3c5b53e2d05c335868647929345f18a67b2460",
+      "size": 5945,
+      "sha256": "8406fc150349f84a4f2fa7d50858514bcc684aa5cd5d027da43cc812e1d37208"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FixedReferenceComparison.lean",
+      "git_blob_sha1": "eff470a2e6e66a5a0ad026508a94409fea8ed527",
+      "size": 2760,
+      "sha256": "ac5f6165eac73bd77b439560acbbc5fee03e58d912604dc21d597fbec6190a7f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FluctuationFourthMoment.lean",
+      "git_blob_sha1": "c60b3a25022293aed2717c179380006a15a146ed",
+      "size": 6656,
+      "sha256": "16bee0a3705585d531b16a6e9a8b2cfd9d2a185e74781f386a82bdda18270262"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ForceThreshold.lean",
+      "git_blob_sha1": "96593f8b7ece8132fa1bdf63cf8b40f2997bbb75",
+      "size": 3460,
+      "sha256": "7bd8c0ce4ff5de157cb3341dc74767820ba0750a704284e2d11fc6672795364e"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01FrozenSpectralHessian.lean",
+      "git_blob_sha1": "2c83d9b58a826fd67eace9c7770b17fc60103a2d",
+      "size": 6643,
+      "sha256": "26004998fea2536ea24479cc2fd5675bdae3b3a43282e4fda28fa90309875d9e"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianEnergyLower.lean",
+      "git_blob_sha1": "cb3564b70ad18076351a792d9d532bd1809b7c07",
+      "size": 3430,
+      "sha256": "b9b332b268fd640dd34afcbe31ad149f62e542b489e6074f7e8ed02182fc9e17"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianFormDuality.lean",
+      "git_blob_sha1": "2db449c6f9f48d755fce608e0ebeabaf72e4e0ba",
+      "size": 3177,
+      "sha256": "bf14c57e189f0d3fc03a1c91e19359b536f0ebeeb654da1361baf07575be23ad"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianLSI.lean",
+      "git_blob_sha1": "a9fbe9de5d636c60ff4d87be81c2310dffc8e044",
+      "size": 1968,
+      "sha256": "53cc64f9bc414c7cb08f871692a847c3fcc183f546e4471cdbef7709acb35b00"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianNormalizer.lean",
+      "git_blob_sha1": "af1d7c7355e212ef220ae734ed472d79ca30eea6",
+      "size": 6174,
+      "sha256": "74948ba3ed4ff0d41b53c09e3e979c00a4a0886aecdbde8623e904dd5888ac71"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianPerturbation.lean",
+      "git_blob_sha1": "d1dbd5f9239e6849c4711bebd2a59d4151d47665",
+      "size": 4573,
+      "sha256": "2ad00cbd11b23bb3f6c5bad58fb48584e332337b12950c64d815bdbcfcd504cb"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianRateBridge.lean",
+      "git_blob_sha1": "ae1e7a7e5bbc944931b462a7f643ec9bc03062e4",
+      "size": 5080,
+      "sha256": "da5803665ff20f78ae6a3b3ffb51d8c51d57509fa537d80142afee0222a04a42"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GaussianSpectralTests.lean",
+      "git_blob_sha1": "df709ef48546b9dcb70deb1516cec4065d61b1f1",
+      "size": 7975,
+      "sha256": "61f15d0ddd654f8524df4a01824298eee75b9367b1f2d8fc0d9800169db563af"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GlobalEntropyCoercivity.lean",
+      "git_blob_sha1": "10d09c5e38d63fb3e4e5b56fc1178b9fbdc5026b",
+      "size": 7507,
+      "sha256": "a4410ac12136c514f9ec2bbeda2449f96cce86e4afc136dd9c35f6863e7b8046"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GroundStateSchrodinger.lean",
+      "git_blob_sha1": "144763338238fac0488fb2f1978e00269cf69575",
+      "size": 46151,
+      "sha256": "6ebdd2f4ef2949d4d2d271601d5e6836a6f0048dee62055fc641c8034a541eb7"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01GroundStateSobolev.lean",
+      "git_blob_sha1": "efb05c63bcc087bb9ed85d2cec40d6c919e2822f",
+      "size": 16548,
+      "sha256": "21a08730d4e0363d7dd8ac6a330843598bcca8f9496d4541556d7f8ee46fabb0"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01HessianCoercivity.lean",
+      "git_blob_sha1": "aa9c16f357378453cb92c3dea47bc45984208c13",
+      "size": 5175,
+      "sha256": "b35780ff001cf3abca9f146398bbb37ca3860be5a4a554a7a8b56edb7bc8a2f6"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01HessianContinuousForm.lean",
+      "git_blob_sha1": "9ad9fd5bd8b46eda5f2070e2d28aea5ae56f0ed9",
+      "size": 3583,
+      "sha256": "d91c029f48d72d5c29b974bb95194dab550098e4ebcffcae2b24e9b59a2339d5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01HybridComparison.lean",
+      "git_blob_sha1": "056bce408d69fd73165370bd0a1b242934ffe300",
+      "size": 4066,
+      "sha256": "1dac9ec4145c792bd63075b297b896c907ad08ae940e1958cb2cd72a30b4679d"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01KernelGradientBridge.lean",
+      "git_blob_sha1": "e882ffb253728f26dce6d522016e6f99360ef371",
+      "size": 5288,
+      "sha256": "faad19d1ba0db8360a675ec4be25325cb4587c7b4052e9cc30ee4d280614f0b1"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01LargeNDefective.lean",
+      "git_blob_sha1": "2aed8b692b8c13035738c2a1b9bf9dc6b451dc34",
+      "size": 14212,
+      "sha256": "d905b21c00fb11888a6cb4da60e65898f57c0ba869b97ae5705d6daf11f8cf28"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01LastIncrementReference.lean",
+      "git_blob_sha1": "0738fca805dd730bf15eb444097bce3cef1ce0d3",
+      "size": 14309,
+      "sha256": "a3f8cbf7a69b12501e6f189b37b0fd71d08b19b77ee32483c53c7ab5bef63610"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01LegacyRateBridge.lean",
+      "git_blob_sha1": "36e408b579fe43c79cf85dc3af1f365ebfca2c64",
+      "size": 3118,
+      "sha256": "b8b4eee678394defef31e3b1907e8e996f915c3801026e11da32f24e91832e67"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MeanFieldBridge.lean",
+      "git_blob_sha1": "5e120a415c18e5ca3a6071fc1513d1fc4cdedf31",
+      "size": 3450,
+      "sha256": "dd1cf57643b1bc0cd8112b94d9b4762c5980e8eed89ed38389349cff3e7173f3"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MinimizerChart.lean",
+      "git_blob_sha1": "d7e2fabbe3cc9fac62f181276f6029a71760b84e",
+      "size": 6402,
+      "sha256": "a2ac8afd5d7929b14354bba86352d43cba86c262966271b3dc9a7fc768d94828"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MinimizerCoordinates.lean",
+      "git_blob_sha1": "24984d3f6797b2d99600fb388005406258c49d1c",
+      "size": 12862,
+      "sha256": "90339a5a824143d7e315f18c0f8b792aba01a7a7b2bdbe40e78a02ccf22433f4"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MinimizerEuler.lean",
+      "git_blob_sha1": "324991383e2b54c265c08881a1ea54e042e96075",
+      "size": 7113,
+      "sha256": "050e002acb84bcadadc167c47ec6fc13b487c0bbc7d73c51118d91a92023f3e7"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MobilityLimit.lean",
+      "git_blob_sha1": "dc7483aa99fe19ce698029d1bf380844317cf188",
+      "size": 8007,
+      "sha256": "b076a97c041238310841bbd5685a584476595b1a0b809fb650f1235c9472594f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01MobilityWeightedError.lean",
+      "git_blob_sha1": "4623d9e9ad9529eeb03fd199ae1694f0991a9264",
+      "size": 2967,
+      "sha256": "de9a0817d18a2576c3b0dbb8ed1cbf0bee153a1ff696b4aca134859f238cbfb0"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01NormalizerLimit.lean",
+      "git_blob_sha1": "2ff4c44358957aef84eedbd54ff0b59131f20cd7",
+      "size": 3706,
+      "sha256": "c29373bd83130a7867e2bd049975064f6e49af4fb602880947437248e34401ff"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01OccupationBridge.lean",
+      "git_blob_sha1": "390e3c1c255fd66963739ebde32b9eeb5e9767cd",
+      "size": 2728,
+      "sha256": "36b60e5a359e2861fd3454de7cc527ff48a4d5765ccb41e47c051906ca8c4464"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01OccupationCompactness.lean",
+      "git_blob_sha1": "92ed2402468c7fb1bfe558c316375c545ea41f67",
+      "size": 20894,
+      "sha256": "1b8fe65b868dafc05342f402b0cd7081597ace19f61230b6f2ab77c118c08b99"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01OccupationUI.lean",
+      "git_blob_sha1": "3311ddc7de9af5a172e675523d2b8a10f9327a24",
+      "size": 9675,
+      "sha256": "e2f935195517bb23d8473dbcb63cbe0a91a720b57890f020f4444e59e42b2791"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleCylinderEnergy.lean",
+      "git_blob_sha1": "f078759774b1efeed9001d4e16c5af34d6c30112",
+      "size": 10796,
+      "sha256": "6bb9f9c900270e063582e6a81976a9da8800346f5ece0576241d4699c6406d4a"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleDefective.lean",
+      "git_blob_sha1": "e77e6250dfeb5fd2f70dfdd15b66749db58eb428",
+      "size": 7443,
+      "sha256": "6a8edb94684ba5d763494379f7862bfaee74e428010a0a7f1195b58820f308d9"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleDensityGradient.lean",
+      "git_blob_sha1": "65b7e34bb7280d916c0769fd984ff9db1bfbbcfd",
+      "size": 4772,
+      "sha256": "f7afebc4a17c366ea7be9ecff1f7d879968e9a0fa619cf6ae056fa04ded6c6eb"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleNormalizer.lean",
+      "git_blob_sha1": "4ff6f270b7d4a23de603af45ecd640bca6a9a26b",
+      "size": 6071,
+      "sha256": "c53b72d75b38745bbaf2aca8ef7801dfdf78fdf720337ca8cd3c352d5a066911"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticlePoincare.lean",
+      "git_blob_sha1": "87fa31cc86077f03add11331311d9f2724102452",
+      "size": 6748,
+      "sha256": "c89d3bbf6dd4e6651f782f38a7f6e4ef7a7b71c4a366080069494670cbd9d3c7"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleReferenceBridge.lean",
+      "git_blob_sha1": "46f0a6531e8151a4d9ca44e2a4284cc5004bbb70",
+      "size": 6196,
+      "sha256": "6c2d68f11158aad6830029b75d1c65d3fda98d64c9881d405dc28283221a1ae6"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleTightening.lean",
+      "git_blob_sha1": "898cf7454ef691ea0cc52aae1f811896561b3b93",
+      "size": 15862,
+      "sha256": "fe2e23fe0f9a168c463a8e9783d08976b6a4d9f185134ed0389704f6a0da2e20"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleTiltData.lean",
+      "git_blob_sha1": "794e0d50e43bfc6ba93ca03baaeafb3f89c4c3af",
+      "size": 5588,
+      "sha256": "1b92e6552a992dd3ed63217981bb706123ab30439751a548ce3e7d0fc0126eb2"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleTiltNormalization.lean",
+      "git_blob_sha1": "e5d15e91367f3ae3fb75988947e1dbe2e3e7e4b6",
+      "size": 8148,
+      "sha256": "200730b279cb0b0131546b390b79cfeadf04b2294bfdd0fcf7c280ac7673f0d6"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ParticleTiltScore.lean",
+      "git_blob_sha1": "2a07bfa26ea1415c0c0ca59c20a64f2c458c7d7c",
+      "size": 4188,
+      "sha256": "3152cc1e3943a630b77242b06087c510be5c62c726d673c3a09de05038f86cb8"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01PerturbationDissipation.lean",
+      "git_blob_sha1": "9d5144c3a54a44527877ee1f42a6cf243f2952f2",
+      "size": 2157,
+      "sha256": "059f8a0368bced4b7d0e163d039f6c17c507bfaee42b1d31da62bf90b1e04b7e"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01PositiveBoundedComparison.lean",
+      "git_blob_sha1": "4b00b2c3cc53f7bfe1c084456ae8850aaf69d8aa",
+      "size": 4083,
+      "sha256": "97cdab3abcc153179d84d91f08a43ca7983d43dd39e5eae1f7730ec8393d4dbc"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01PositiveEquilibrium.lean",
+      "git_blob_sha1": "94a2c5d8071d48f1da1d92152e0e5f4f240cdb9c",
+      "size": 5484,
+      "sha256": "94c0040191f059957bc094b3ac89b3e4cec478b71a04fdf45c5bb6466d99b6fa"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01Positivity.lean",
+      "git_blob_sha1": "61ea772964d451a234a5efeaaacd5e99b0a065b7",
+      "size": 1374,
+      "sha256": "c77ebe395d9c81b77bc6a29f32e5bcb272962194e1e5036b3740d5954cb07a9f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01PotentialTaylor.lean",
+      "git_blob_sha1": "40cf451e3ae112b0d9297c900c7058278c127ef4",
+      "size": 6280,
+      "sha256": "f02741e22698d6c401d44753107325b7d02c4de7935d21067be5190b98d93b9f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01RankRateConvergence.lean",
+      "git_blob_sha1": "974b74b266db51e6dc82dc61773775a9afcceca6",
+      "size": 7123,
+      "sha256": "e7f5a19ad656d2958c20f3bcf820f77d8975f0b6e31b23ff61630d2cf5180280"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReduceComparison.lean",
+      "git_blob_sha1": "bef4653570363d744cd16aa00b101aa1ec8d4223",
+      "size": 10169,
+      "sha256": "e2912dd6041bf31ac03fd7e50623daa9ee6c2d5c3481eff1e58be588e84ccc6f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceComparison.lean",
+      "git_blob_sha1": "11b899670a8beaefd214af35f936f5cba7176ea2",
+      "size": 3130,
+      "sha256": "5a81654bef4e83b52014e39659ffcd6541c8cf60ecc68366fafd99a18f26a080"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceData.lean",
+      "git_blob_sha1": "5231a725739e090950f4458c2c4bb50ccb8b7a2f",
+      "size": 3693,
+      "sha256": "07f4ee3c31b2f9f4c0dc0266db2350b9fbe6ae8af823699c009649fcf06f9ac2"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceEigenbasis.lean",
+      "git_blob_sha1": "e20d23263fdd09cc85233aba0da6024034d30c2d",
+      "size": 5050,
+      "sha256": "9dab1342aa2319146fc949f96e4218e99f859f8e5f7fde47c7ae12c12ab515b9"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceEntropy.lean",
+      "git_blob_sha1": "134c4326ef2d41829d859dfb129a3d317c5544b1",
+      "size": 5952,
+      "sha256": "8d5c8de406bb8149d1ffbe77fdf0da7356324891e91f20596ef130d702ee4aee"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceLSI.lean",
+      "git_blob_sha1": "affe992d797da0e19e11b4a7b826fc302f44af80",
+      "size": 12700,
+      "sha256": "5ed86218c7c598186d0d3cec7a1c5b2c696901afbd0a4ccaaa474342a8b80a61"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ReferenceMoments.lean",
+      "git_blob_sha1": "1687ba1226d19181ab7145a5975e3e3290d64afa",
+      "size": 28188,
+      "sha256": "ef03abc3337a1b60791090a1726ce01520ee0b8132d39a1102394e0911a0a38c"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01Regularization.lean",
+      "git_blob_sha1": "fe24a1e193a8229caa8544eeca1db5513ff5ce82",
+      "size": 8383,
+      "sha256": "e2b00c14a773c65f8b6e1d4f413b57c57fbb0c4889633bda43272f9c8da259ee"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ResidualForce.lean",
+      "git_blob_sha1": "866e7ec21be76ccc2bae768c2bbb0c9abc725846",
+      "size": 7539,
+      "sha256": "6c2e5a94526379367785e36785ebc3ebba2650c33e0aec8c43fe7d612d689a16"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ResidualForceBound.lean",
+      "git_blob_sha1": "1e63a253ae53085b314c0f82f5f1fc80f1b05527",
+      "size": 8242,
+      "sha256": "97825ba5c66d40ab29e1d3f6d59f18583b6738fef236bf84a4f4588ee1f93e8f"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ResidualMoments.lean",
+      "git_blob_sha1": "96ce80f221ecf8580e1f664a724d22769ae8ba50",
+      "size": 3573,
+      "sha256": "e888a674e001b5fa7058eaa85554198b08177a934a4c75b75a319952a18436f2"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01RootForceBound.lean",
+      "git_blob_sha1": "42baa97f6301ec83d0d4d3b7a55b88ef91b04ab4",
+      "size": 7148,
+      "sha256": "77d3dbde1e3777ae8ceed1bfffa62d4df1ff0d7ff3b929f6432f5a8a735f2c38"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01RootMoments.lean",
+      "git_blob_sha1": "2a66d04eb07ed8febdff2f1d6b6579983f6abab1",
+      "size": 2826,
+      "sha256": "a2df8c7b61fbcd8d2933effbdf3dc2d1bf11e825ab5977abd00eb9da09d3da07"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01RootReferenceBounds.lean",
+      "git_blob_sha1": "f7907712d0191f638b624eff2f3f9a514db04a45",
+      "size": 4216,
+      "sha256": "5d1e1be6ba00cfcf2a85bba372084bdf4ad19699078e47335357a221d8bb4e2b"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01ScalarGaussian.lean",
+      "git_blob_sha1": "ed6ff3cab09f8b8d8ad5f4b2e6a56ec0a64ea9d5",
+      "size": 8157,
+      "sha256": "fe92c8ec7bf49703cee3924396f62770509c5fbe375c7efca624453be9dfc1a0"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SharpAssembly.lean",
+      "git_blob_sha1": "f8671f8e501fe87c5e417c1c6110bab1f65dcef1",
+      "size": 2745,
+      "sha256": "af4d9e4bf59be6b920068f91e70269c30932b4146c43eb366c9c8d4bc0bbd096"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SmallEntropyCoercivity.lean",
+      "git_blob_sha1": "566bb48476f704a97e36e73c0024d80e1a34ce6b",
+      "size": 13586,
+      "sha256": "9644f166c90baed9afcc4aad922bc0bc4db194a324310c6297c68fac1460e913"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SmoothingWitness.lean",
+      "git_blob_sha1": "abd233e31b513f840af849d3a8f93a449579f976",
+      "size": 2939,
+      "sha256": "2f1cdf84ea893a3f61962ec19cef7d808f24848d92d02bf471c087321d3665ad"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpeciesOrdinaryRate.lean",
+      "git_blob_sha1": "31ce8027f88d98eba38886171972b6935af81750",
+      "size": 6875,
+      "sha256": "8e6fb17214740ec42fc59287402683c6316eaeb85ab9c220fee165dfca797682"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpeciesReferenceQuotient.lean",
+      "git_blob_sha1": "797e0bf75a451105935fa598f147eaf4874e36f6",
+      "size": 5903,
+      "sha256": "61809d10ae108bb216bc93cff81e42cfcc195e5b9ce651ae7b23012204c7d5f5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpeciesReferenceRate.lean",
+      "git_blob_sha1": "e1e245455085226746513eb9e857701f631d9162",
+      "size": 8673,
+      "sha256": "bda732934ad9e861113914e3725bbc0650e989d943537573f66d430b9e69bff5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpectralBridge.lean",
+      "git_blob_sha1": "e8d511a184cda82e0e82499bf016e6720a75f709",
+      "size": 8175,
+      "sha256": "bfb0afe61da5e87c2281b490991378a76110f1b696f3ce08024abdfee5236c42"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpectralComparison.lean",
+      "git_blob_sha1": "d79c54d360603b68a1d3f6a8e41122d5352763d0",
+      "size": 16806,
+      "sha256": "f6b068898fdb828f4a5bad1983fa3c1a9bf264300aa269d223243bdb85fa659b"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SpectralCut.lean",
+      "git_blob_sha1": "252d66a7fd94e4d2a911d157eaef51aec33fe537",
+      "size": 15226,
+      "sha256": "3985d46d6ecdd8b4b1d762992d9a336b33a568c2c650a7a8ffa5b6de613fbd89"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricBoundedComparison.lean",
+      "git_blob_sha1": "de7bb6533b6e7ba59a983939a6c5044b4ccc2dbf",
+      "size": 11989,
+      "sha256": "50c0100aa0555cf78186f88fbd734a3cf67ca6f730841245e4c54748e0e4ac82"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricConditionalRate.lean",
+      "git_blob_sha1": "a25e8effecb37e9826bc5e979ca60d77b6436562",
+      "size": 7725,
+      "sha256": "2d772d3f3d1d0736927bf95fd650197bf3de4ea64c10649b7e3e2c7431231f16"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricDefectiveDomainClosure.lean",
+      "git_blob_sha1": "64e1adc0f9ffa373888f0ac4759332aecc067717",
+      "size": 2371,
+      "sha256": "b556cbe7d6fad5fa889c5fb82cdddae89cbc7def9f4034552db62cd54cb16e3e"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricFamilyRate.lean",
+      "git_blob_sha1": "08942fd8400b2cd002571dfa58a2b81f971368f0",
+      "size": 6974,
+      "sha256": "aee03dec91f59bf7d588b1ae44de71fb708b0f059c8b0d32adec4dee601c3618"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricGibbsCompactness.lean",
+      "git_blob_sha1": "fb02d445291cc1f428695b6c1d4b4bf8429406b3",
+      "size": 11927,
+      "sha256": "9749d5ab3be8c08be37d1a0df1489ec441eacaf5177209639cf3003ab086d935"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricJointLaw.lean",
+      "git_blob_sha1": "cf05bd5aab23ed9d73352126fab6476b2f04609c",
+      "size": 41791,
+      "sha256": "0f68a0f62be587bf82807bec6c1eb43001c2667dc2e73b1f452a8014d6d8d064"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricLower.lean",
+      "git_blob_sha1": "9b50c2eed4d6c6f3ef34685ae538ff5d40278e66",
+      "size": 19377,
+      "sha256": "7882bafca4a2b9f86cbee8519903b7e422b19cafa5ae9ecada383c111e20c8fc"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricLowerLimit.lean",
+      "git_blob_sha1": "d04b146791a22592c7acbb5ecbc9cda5950e381c",
+      "size": 5042,
+      "sha256": "7d40ccec9f252e1732437be149ab4c11b135062cb56d0ce6ef5bbd1d74a8a66b"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01SymmetricPoincare.lean",
+      "git_blob_sha1": "3fda97dc85ffe5c866ff5c69977581ebcc402500",
+      "size": 7462,
+      "sha256": "d11b8dbab2e8dac913bc7028acd1930e15c8575f1b97d139a1415a5fc4162a24"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01TighteningBridge.lean",
+      "git_blob_sha1": "89883eff7ca81b1ea2dbffa4c6977c601eaa775c",
+      "size": 5615,
+      "sha256": "94700d3ab92ffa7f3047c4f717333e43b6000afd136ecd6c9537eade611f8fe5"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01TiltEnergy.lean",
+      "git_blob_sha1": "8d59df245fcf1f85c8c40313569310eafd21d29c",
+      "size": 7765,
+      "sha256": "75ffddc00813f64362c1ae4942ed5feb570b5afbf2124462cf2d4db3b6da9539"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01TiltScore.lean",
+      "git_blob_sha1": "5ab16663ee6b91a70e4fb45ef03ab237069c1962",
+      "size": 6438,
+      "sha256": "a71d97d63d85ca9478accaf3a5d1f7f69f006f40b2327d664266ae4aa3b71b24"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01UniformParticleDefective.lean",
+      "git_blob_sha1": "a3cf6b7400703b94af50bce5a1d6e902cba71940",
+      "size": 4835,
+      "sha256": "1618b06a89167ee480b50e734b7fcaa95bdedd422e654ef450f026ff12f084a9"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01UnnormalizedRoots.lean",
+      "git_blob_sha1": "68f8a2df1c8e81873cadad1cce4fa24af39bf14b",
+      "size": 6957,
+      "sha256": "f590fd594f2ff2d7ae614722440d87fc2b7a7e75e567a77b529437ade0167d10"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01UnrestrictedLower.lean",
+      "git_blob_sha1": "109cb5f9e0d8c6fef3f2ab0c4d6898eb376e95bf",
+      "size": 6158,
+      "sha256": "72ae9f008a2ed720a32031b52120ad0d4cedf14ec89eb353378b576cb4e721bc"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01UnrestrictedLowerLimit.lean",
+      "git_blob_sha1": "af501c133cf6f6caa6276dec6196b62c007ebb9b",
+      "size": 5009,
+      "sha256": "f0e87265f664bd27681298dccdee0941c2fd68895c7443ef131cd5615353e044"
+    },
+    {
+      "path": "Campaign/DGPS/Lipschitz/T01UnrestrictedPoincare.lean",
+      "git_blob_sha1": "ff7906f44d5374b25abd3f1999b258e436a83c6a",
+      "size": 9557,
+      "sha256": "034c08554899be4f5c85db67bf9cac825cd266e92cbe3036898b79d63daab11d"
     },
     {
       "path": "Campaign/DGPS/Lipschitz/VolterraGradient.lean",
@@ -3993,10 +7431,28 @@
       "sha256": "b3d428c2573671ca63f4f1cececa86eecddc514c45547d450243c50fb41c9472"
     },
     {
+      "path": "Campaign/DGPS/Particle/ConditionalForceReplacement.lean",
+      "git_blob_sha1": "af42c464b2e84a4987233fd760048cef0b68b3f9",
+      "size": 10247,
+      "sha256": "20ad3d4a25ad77c1038b0a319611f2fa1b11c128566e601adf7d8e4a19330021"
+    },
+    {
       "path": "Campaign/DGPS/Particle/ConditionalProducts.lean",
       "git_blob_sha1": "3ce3c60f453b172aeb39790dfe75b73e4e862792",
       "size": 87423,
       "sha256": "4f382e0eedb489b8e93636fe31536598817e776c1c6c3edd54b924b3899be011"
+    },
+    {
+      "path": "Campaign/DGPS/Particle/ConditionalScores.lean",
+      "git_blob_sha1": "6af6760274054ef82bf62d0f83b88f1ee64855db",
+      "size": 9884,
+      "sha256": "e15911d8762bb3fa5aa6dce33893fbb14630ff7a3854b3aa8f0cb41d0fbf779e"
+    },
+    {
+      "path": "Campaign/DGPS/Particle/ConditionalSubsetScores.lean",
+      "git_blob_sha1": "ff7c6f147591fd90dff3636ea21cdd1603623b34",
+      "size": 3706,
+      "sha256": "160860224e0d168d4dcdbdc1efa0520f5450a4ac4e587f52cda92c7d64ee4753"
     },
     {
       "path": "Campaign/DGPS/Particle/Contractions.lean",
@@ -4287,6 +7743,12 @@
       "sha256": "36f8baa7abe3d4a47e4d180a102bc554c3170f7aebf83e0e8e2428e4bbed999d"
     },
     {
+      "path": "Campaign/DGPS/Structural/PositiveRateCriterion.lean",
+      "git_blob_sha1": "df5e33a1433c402c1336b0d75ab9ce5431ad4716",
+      "size": 3978,
+      "sha256": "2ceed3343e525aab2bf46e149c3f65721bf851880e8109c337874351aa6e33cf"
+    },
+    {
       "path": "Campaign/DGPS/Structural/PositivityFromResidual.lean",
       "git_blob_sha1": "d54f91111113e1b1e2ff423e1547a20ebb431a0b",
       "size": 14243,
@@ -4315,6 +7777,54 @@
       "git_blob_sha1": "b43296cba05bf28e5eae2e6a0fa52feb13d8ded6",
       "size": 8012,
       "sha256": "747cc78401e5199b33cbd0cd01648647f33cec503615678b1001b468b81e6a08"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T05T06IntegrationGate.lean",
+      "git_blob_sha1": "6823dc1215123d12ee7b198d6f0d192d6c81902b",
+      "size": 572,
+      "sha256": "bc3932dd7a433af92efd8661062b9184f2405a3a94699baa79ddc7937ab6fed0"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06AmplitudeBound.lean",
+      "git_blob_sha1": "235f37c98919b8ac57ec4c9d11b26a09b88255e0",
+      "size": 2518,
+      "sha256": "85b31ff910c6b86f3fc06c19c3f51598a133b8125896898fce1109e4f020268b"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06Comparison.lean",
+      "git_blob_sha1": "1702856a9c362590b418f80a0b2785cb5d3ed469",
+      "size": 4329,
+      "sha256": "60e19349ed5c36dab7b7b699adc804c7fdecaa7fe1cd35f0d0d06771b21ec9c0"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06DensityBounds.lean",
+      "git_blob_sha1": "91ebb3a448930932ecfe66f5b72c0cc7d58f62d2",
+      "size": 1688,
+      "sha256": "0e4e785c6c2671ca575f6bedc00300084584bd88523e1c9efbdc109f1c69d29b"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06FullGate.lean",
+      "git_blob_sha1": "fd8821dfc2b0404e7b50b3c76cd5ecb6de8fe53f",
+      "size": 537,
+      "sha256": "d8f64d5816ab5ea521f827723a8dbe1865aba2be30186ba739e1836d502ca1d2"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06RatioArithmetic.lean",
+      "git_blob_sha1": "f23d7285c46f88074ac01a0c2bbd6ca5cfb03ee5",
+      "size": 1618,
+      "sha256": "f2f88be379e3ec4f8dd3ee046b9c884bd8dd2c67fe50cf8ef3c09dd091b3afc1"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06ScalarSmoothBound.lean",
+      "git_blob_sha1": "25859690030b82462c26bfcb658d58526ae68ae4",
+      "size": 3617,
+      "sha256": "759c9ff45f76cc95ce7332df3a3352e37eb068011434b81f03857cc656dcaac9"
+    },
+    {
+      "path": "Campaign/DGPS/Structural/T06SineBounds.lean",
+      "git_blob_sha1": "4852e744cd8ae3be1f6299f3a82386ca781dc3ef",
+      "size": 4459,
+      "sha256": "19f87a0a8582e40ac4671a1a6b317a0fc484518518ac59d0b87f3d4678e693fc"
     },
     {
       "path": "Campaign/DGPS/Structural/ZeroDissipationFixedPoint.lean",
@@ -10859,9 +14369,9 @@
     "FullLabeledLSI/Nonvacuity/Prop82.lean"
   ],
   "validation": {
-    "git_blob_identity": "PASS for every candidate and every included file",
-    "local_import_closure": "PASS (static analysis; not a Lean build)",
-    "new_lean_build": "NOT RUN",
-    "new_independent_proof_replay": "NOT RUN"
+    "git_blob_identity": "PASS",
+    "local_import_closure": "PASS (static analysis)",
+    "new_lean_build": "NOT PERFORMED BY PACKAGER",
+    "new_independent_proof_replay": "NOT PERFORMED BY PACKAGER"
   }
 }

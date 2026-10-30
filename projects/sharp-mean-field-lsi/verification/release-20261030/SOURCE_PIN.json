@@ -1,0 +1,8 @@
+{
+  "distributed_source_files": 2393,
+  "final_evidence_commit": "Assigned only after publication; does not replace the code pin.",
+  "fresh_gate_status": "PASS",
+  "source_commit": "40f266f117e2ac74b447f5fa7372ba2d0355b327",
+  "source_manifest_sha256": "78ad2487940500e1116a5a17354e8fb3ecd0397fdb5fd9c1008659cdb2f58234",
+  "source_repository": "matthewrosenzweigwork-max/DGPS-LSI-"
+}

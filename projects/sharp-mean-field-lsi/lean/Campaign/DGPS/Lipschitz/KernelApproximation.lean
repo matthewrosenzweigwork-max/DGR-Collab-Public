@@ -1614,11 +1614,15 @@ theorem grad_continuous {v : Torus d → ℝ} {g : Torus d → Tangent d} (hv : 
     (hc.comp (PiLp.continuous_toLp 2 _))
 
 
-/-- The Gibbs spectral data (LIP008, LIP009, LIP010 combined). -/
-theorem exists_spec_aux {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 ≤ LΦ)
+/-- The Gibbs spectral data, retaining the ordered eigenvalue equation and C¹ representatives. -/
+theorem exists_spec_aux_eigen {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 ≤ LΦ)
     (hΦ : TorusLipschitzWith LΦ Φ) {b : Torus d → Tangent d}
     (hb : IsWeakGradient (fun x => Real.log (WeightedGenerator.gibbsW Φ x)) b) :
-    ∃ (S : Spec d) (_ : Aux S), S.w = WeightedGenerator.gibbsW Φ := by
+    ∃ (S : Spec d) (A : Aux S), S.w = WeightedGenerator.gibbsW Φ ∧ Monotone S.lam ∧
+      S.lam 0 = 0 ∧ S.lam 0 < S.lam 1 ∧ (∀ j, IsC1Periodic (S.v j)) ∧
+      ∀ j (f : Hw d S.w) (Y : Torus d → Tangent d),
+        IsWeakGradient (f : Torus d → ℝ) Y →
+        weightedForm S.w (A.g j) Y = S.lam j * ⟪S.e j, f⟫_ℝ := by
   obtain ⟨c, C, hW0⟩ := WeightedGenerator.gibbs_wdata hL hΦ
   have hwb : ∀ᵐ x ∂haar d, c ≤ WeightedGenerator.gibbsW Φ x ∧
       WeightedGenerator.gibbsW Φ x ≤ C := Eventually.of_forall hW0.bound
@@ -1655,8 +1659,8 @@ theorem exists_spec_aux {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 
       exact ⟨ũ, h1, h2⟩)
     (fun t F M hM0 hF =>
       gibbs_semigroup_sup_contraction hd hL hΦ hb hS t F hM0 hF)
-  refine ⟨S0, ?_, rfl⟩
-  exact
+  refine ⟨S0, ?_, rfl, hmono, hl0, hl01, hv1, ?_⟩
+  · exact
     { hd := hd
       g := g
       gm := fun j => (grad_continuous (hv1 j) (hgd j)).measurable
@@ -1676,6 +1680,24 @@ theorem exists_spec_aux {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 
       κ_nonneg := by positivity
       sg_lip := hsg.1
       sg_sup := hsg.2 }
+  · intro j f Y hY
+    exact (weightedForm_congr_ae (hge j) (Filter.EventuallyEq.refl _ _)).trans (hE j f Y hY)
+
+/-- The Gibbs spectral data, retaining the eigenvalue ordering for legacy reference interfaces. -/
+theorem exists_spec_aux_monotone {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 ≤ LΦ)
+    (hΦ : TorusLipschitzWith LΦ Φ) {b : Torus d → Tangent d}
+    (hb : IsWeakGradient (fun x => Real.log (WeightedGenerator.gibbsW Φ x)) b) :
+    ∃ (S : Spec d) (_ : Aux S), S.w = WeightedGenerator.gibbsW Φ ∧ Monotone S.lam := by
+  obtain ⟨S, aux, hw, hmono, -⟩ := exists_spec_aux_eigen hd hL hΦ hb
+  exact ⟨S, aux, hw, hmono⟩
+
+/-- The Gibbs spectral data (LIP008, LIP009, LIP010 combined). -/
+theorem exists_spec_aux {Φ : Torus d → ℝ} {LΦ : ℝ} (hd : 0 < d) (hL : 0 ≤ LΦ)
+    (hΦ : TorusLipschitzWith LΦ Φ) {b : Torus d → Tangent d}
+    (hb : IsWeakGradient (fun x => Real.log (WeightedGenerator.gibbsW Φ x)) b) :
+    ∃ (S : Spec d) (_ : Aux S), S.w = WeightedGenerator.gibbsW Φ := by
+  obtain ⟨S, aux, hw, -⟩ := exists_spec_aux_monotone hd hL hΦ hb
+  exact ⟨S, aux, hw⟩
 
 end DGPS.Lipschitz.KernelApproximation
 

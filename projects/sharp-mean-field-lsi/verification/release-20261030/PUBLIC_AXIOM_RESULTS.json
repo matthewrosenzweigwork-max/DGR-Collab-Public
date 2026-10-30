@@ -1,0 +1,301 @@
+{
+  "utc": "2026-10-30T18:40:03.378529+00:00",
+  "source_commit": "40f266f117e2ac74b447f5fa7372ba2d0355b327",
+  "status": "PASS",
+  "declarations_checked": 35,
+  "allowed_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "unexpected_axioms": [],
+  "all_expected_type_outputs_present": true,
+  "log_sha256": "24485ae9f8ee1037eba931c8f25df14c5aaef4eef52eb2d36754bd85370cf284",
+  "modules_freshly_compiled": [
+    "DGPS",
+    "CombinedReleaseGate"
+  ],
+  "scope": "Selected public exports, with source-bound cached project dependencies; not a new whole-repository independent kernel audit.",
+  "declarations": [
+    {
+      "declaration": "DGPS.Lipschitz.sharp_limits",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.sharp_limits_all",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.sharp_limits_sym",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.positive_scalar_implies_positive_species",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.eventual_lsi_all",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.eventual_lsi_sym",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Lipschitz.zero_scalar_rates_and_limits",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.nonlinear_rates",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.particle_one",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.strict_dip_every_N",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.particle_limits",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.exact_rates_and_nonmonotone",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.SecondHarmonic.neither_monotone_nor_antitone",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.RegularityBoundary.positive_h1_sharp_limits",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.RegularityBoundary.positive_h1_eventual_lsi",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.EngineeredRankOne.unbounded_scalar_species_separation",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.EngineeredRankOne.scalar_rate_theta_h",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.EngineeredRankOne.scalar_species_ratio_tends_atTop",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.EngineeredRankOne.species_rate_limit",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.FiniteN.Taxonomy.anisotropic_quartic_saddle",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.ThreeSpeciesCircle.elementaryCircle_exactlyThreeSpeciesNecessary",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.ThreeSpeciesCircle.binaryRate_eq_ordinaryLSRate",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.ThreeSpeciesCircle.unrestrictedOptimizer_unique_ternaryRotationOrbit",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_exact_three_rotationBranches",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_everyInfinitesimalFixedBarycenterSplit_uphill",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.PolynomialSpecies.actual_species_descent",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.PolynomialSpecies.strict_rate_chain",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.PolynomialSpecies.exactly_two_scalar_optimizers",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Examples.PolynomialSpecies.every_small_nonzero_split_improves",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian_of_drift",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.frozenGibbs_scalar_species_comparison",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    {
+      "declaration": "DGPS.Structural.scalarRate_le_amplitude_bound",
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  ]
+}

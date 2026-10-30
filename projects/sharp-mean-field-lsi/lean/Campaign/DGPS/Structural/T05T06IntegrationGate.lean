@@ -1,0 +1,9 @@
+import DGPS.Structural.PositiveRateCriterion
+import DGPS.Structural.T06Comparison
+#check DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian
+#print axioms DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian
+#check DGPS.Structural.frozenGibbs_scalar_species_comparison
+#print axioms DGPS.Structural.frozenGibbs_scalar_species_comparison
+#check DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound
+#print axioms DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound
+#print axioms DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS

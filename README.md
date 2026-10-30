@@ -18,7 +18,7 @@ The catalogue is organized by research theme. Each project has one home, with it
 
 ## Functional inequalities for mean-field systems
 
-- **[Sharp mean-field LSI rates and singular counterexamples](projects/sharp-mean-field-lsi/)** — the originally accepted symmetric/unrestricted LSI formalization and later verified declarations, including singular-interaction counterexamples. The scope of verification is stated separately from broader manuscript claims. The manuscript is being revised by the authors.
+- **[Sharp mean-field LSI rates and singular counterexamples](projects/sharp-mean-field-lsi/)** — the originally accepted symmetric/unrestricted LSI formalization, the 30 October T01-led source refresh, and separately preserved singular-interaction counterexamples. See the [dated verification scope](projects/sharp-mean-field-lsi/verification/release-verification-20261030.md); the manuscript is being revised by the authors.
 - **[Singular Riesz functional inequalities](projects/singular-riesz-functional-inequalities/)** — links to the existing public formalization of periodic LSI/Poincaré inequalities and whole-space Riesz Poincaré inequalities.
 - **[Homogeneous attractive-log LSI](projects/attractive-log-uniform-lsi/)** also belongs to this theme.
 
@@ -32,7 +32,7 @@ The four working manuscripts carry a DRAFT watermark and a Statement on AI use. 
 
 Each formalization is an independent Lean project with its own pinned toolchain and dependencies. Follow its project README rather than running a repository-wide Lake build. Selected public source and verification records are included; development worktrees, caches and private operational material are not part of this catalogue.
 
-All three included Lean packages passed their stated cleaned release-target compilation checks. Exact commands and scope are recorded in each project’s verification directory; compilation is distinct from manuscript correspondence and independent proof replay.
+Each included Lean package records its checked release targets and exact source pins. The sharp mean-field LSI refresh adds source-bound cloud integration checks; preserved historical clean-build receipts are not claims of an all-fresh rebuild of the refreshed tree. Consult each project’s verification directory. Compilation is distinct from manuscript correspondence and independent proof replay.
 
 ## Contact
 
@@ -41,3 +41,4 @@ All three included Lean packages passed their stated cleaned release-target comp
 - [Matthew Rosenzweig](https://matthewrosenzweigwork-max.github.io/) — mrosenz2@andrew.cmu.edu
 
 Licensing and third-party notices, where provided, apply to the relevant material; this catalogue does not impose a new blanket license on its component projects.
+

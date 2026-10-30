@@ -602,11 +602,14 @@ theorem bMap_apply (μ : Measure (Torus d)) [IsProbabilityMeasure μ] {k : ℕ}
 
 /-- **S4.** On the graph neighbourhood: positivity of `1 + h`, the Euler expression
 `log (1 + h) + T h = c + ∑ b_i φ_i`, and smoothness of `b` and `c`, with `b 0 = 0`, `D b 0 = 0`. -/
-theorem lip034_euler_expansion {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
+theorem lip034_euler_expansion_with_uniqueness {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
     (hφ : IsEquilibriumBasis A μ φ)
     (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν) :
     ∃ U : Set (Par k), IsOpen U ∧ (0 : Par k) ∈ U ∧ ∃ y : Par k → Ysub A μ,
       y 0 = 0 ∧ fderiv ℝ y 0 = 0 ∧ ContDiffOn ℝ ∞ y U ∧
+      ∃ Wn : Set (Ysub A μ), IsOpen Wn ∧ (0 : Ysub A μ) ∈ Wn ∧
+      (∀ a ∈ U, y a ∈ Wn ∧ redMap hφ (a, y a) = 0) ∧
+      (∀ a ∈ U, ∀ w ∈ Wn, redMap hφ (a, w) = 0 → w = y a) ∧
       (∀ a ∈ U, redMap hφ (a, y a) = 0) ∧
       (∀ a ∈ U, ∀ x, 0 < 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
       ∃ (b : Par k → Par k) (c : Par k → ℝ),
@@ -614,7 +617,7 @@ theorem lip034_euler_expansion {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
         (∀ a ∈ U, ∀ x, Real.log (1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) +
           centeredOperatorC A (μ : Measure (Torus d)) (phiMap φ a + (y a : C(Torus d, ℝ))) x =
           c a + ∑ i, b a i * φ i x) := by
-  obtain ⟨U, hUo, h0U, Wn, -, -, y, hy0, hyd, hsm, hgr, -⟩ := lip034_graph hφ hmin
+  obtain ⟨U, hUo, h0U, Wn, hWno, h0Wn, y, hy0, hyd, hsm, hgr, huniq⟩ := lip034_graph hφ hmin
   set m : Measure (Torus d) := (μ : Measure (Torus d)) with hm
   set H : Par k → C(Torus d, ℝ) := fun a => hMap A μ φ (a, y a) with hH
   have hHeq : ∀ a, H a = phiMap φ a + (y a : C(Torus d, ℝ)) := fun a => rfl
@@ -629,7 +632,9 @@ theorem lip034_euler_expansion {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
     ContinuousLinearMap.contDiff (E := C(Torus d, ℝ)) (F := Par k) _
   have hcsm : ContDiff ℝ ∞ (intCLM m) :=
     ContinuousLinearMap.contDiff (E := C(Torus d, ℝ)) (F := ℝ) _
-  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, fun a ha => (hgr a ha).2.1,
+  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn,
+    fun a ha => ⟨(hgr a ha).1, (hgr a ha).2.1⟩, huniq,
+    fun a ha => (hgr a ha).2.1,
     fun a ha x => hpos a ha x, fun a => bMap m φ (euler A μ (H a)),
     fun a => intCLM m (euler A μ (H a)), hbsm.comp_contDiffOn hE, hcsm.comp_contDiffOn hE,
     ?_, ?_, ?_⟩
@@ -681,6 +686,24 @@ theorem lip034_euler_expansion {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
     rw [← hHeq, ← hP]
     simp only [bMap_apply, intCLM_apply]
     linarith
+
+/-- The Euler expansion, with its original interface. -/
+theorem lip034_euler_expansion {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
+    (hφ : IsEquilibriumBasis A μ φ)
+    (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν) :
+    ∃ U : Set (Par k), IsOpen U ∧ (0 : Par k) ∈ U ∧ ∃ y : Par k → Ysub A μ,
+      y 0 = 0 ∧ fderiv ℝ y 0 = 0 ∧ ContDiffOn ℝ ∞ y U ∧
+      (∀ a ∈ U, redMap hφ (a, y a) = 0) ∧
+      (∀ a ∈ U, ∀ x, 0 < 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
+      ∃ (b : Par k → Par k) (c : Par k → ℝ),
+        ContDiffOn ℝ ∞ b U ∧ ContDiffOn ℝ ∞ c U ∧ b 0 = 0 ∧ fderiv ℝ b 0 = 0 ∧
+        (∀ a ∈ U, ∀ x, Real.log (1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) +
+          centeredOperatorC A (μ : Measure (Torus d)) (phiMap φ a + (y a : C(Torus d, ℝ))) x =
+          c a + ∑ i, b a i * φ i x) := by
+  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq,
+    hred, hpos, b, c, hbsm, hcsm, hb0, hbd, heq⟩ :=
+      lip034_euler_expansion_with_uniqueness hφ hmin
+  exact ⟨U, hUo, h0U, y, hy0, hyd, hsm, hred, hpos, b, c, hbsm, hcsm, hb0, hbd, heq⟩
 
 end Implicit
 

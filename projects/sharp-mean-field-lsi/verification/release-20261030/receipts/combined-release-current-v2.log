@@ -1,0 +1,707 @@
+DGPS.Lipschitz.sharp_limits (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) :
+  have b := DGPS.lipschitz_absoluteDrift A hLip;
+  DGPS.FiniteRate (DGPS.scalarRate A b) ∧
+    DGPS.FiniteRate (DGPS.speciesRate A b) ∧
+      (∀ (N : ℕ+), DGPS.FiniteRate (DGPS.particleRateAll A N) ∧ DGPS.FiniteRate (DGPS.particleRateSym A N)) ∧
+        Filter.Tendsto (fun N => DGPS.particleRateAll A N) Filter.atTop (nhds (DGPS.speciesRate A b)) ∧
+          Filter.Tendsto (fun N => DGPS.particleRateSym A N) Filter.atTop (nhds (DGPS.scalarRate A b)) ∧
+            (0 < DGPS.scalarRate A b → 0 < DGPS.speciesRate A b) ∧
+              (∀ (r : ℝ),
+                  0 < r →
+                    ENNReal.ofReal r < DGPS.speciesRate A b →
+                      ∃ N0,
+                        ∀ (N : ℕ+),
+                          N0 ≤ N →
+                            ∀ (f : DGPS.ParticleH1 A N),
+                              DGPS.particleEntropy A N f ≤ ENNReal.ofReal (2 / r * DGPS.particleEnergy A N f)) ∧
+                (∀ (r : ℝ),
+                    0 < r →
+                      ENNReal.ofReal r < DGPS.scalarRate A b →
+                        ∃ N0,
+                          ∀ (N : ℕ+),
+                            N0 ≤ N →
+                              ∀ (f : DGPS.ParticleH1 A N),
+                                DGPS.IsSymmetricParticleTest f →
+                                  DGPS.particleEntropy A N f ≤ ENNReal.ofReal (2 / r * DGPS.particleEnergy A N f)) ∧
+                  (DGPS.scalarRate A b = 0 →
+                    DGPS.speciesRate A b = 0 ∧
+                      Filter.Tendsto (fun N => DGPS.particleRateAll A N) Filter.atTop (nhds 0) ∧
+                        Filter.Tendsto (fun N => DGPS.particleRateSym A N) Filter.atTop (nhds 0))
+'DGPS.Lipschitz.sharp_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.sharp_limits_all (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) :
+  Filter.Tendsto (fun N => DGPS.particleRateAll A N) Filter.atTop
+    (nhds (DGPS.speciesRate A (DGPS.lipschitz_absoluteDrift A hLip)))
+'DGPS.Lipschitz.sharp_limits_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.sharp_limits_sym (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) :
+  Filter.Tendsto (fun N => DGPS.particleRateSym A N) Filter.atTop
+    (nhds (DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)))
+'DGPS.Lipschitz.sharp_limits_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.positive_scalar_implies_positive_species (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (hrate : 0 < DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  0 < DGPS.speciesRate A (DGPS.lipschitz_absoluteDrift A hLip)
+'DGPS.Lipschitz.positive_scalar_implies_positive_species' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.eventual_lsi_all (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) (r : ℝ)
+  (hr : 0 < r) (hR : ENNReal.ofReal r < DGPS.speciesRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  ∃ N0,
+    ∀ (N : ℕ+),
+      N0 ≤ N →
+        ∀ (f : DGPS.ParticleH1 A N), DGPS.particleEntropy A N f ≤ ENNReal.ofReal (2 / r * DGPS.particleEnergy A N f)
+'DGPS.Lipschitz.eventual_lsi_all' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.eventual_lsi_sym (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) (r : ℝ)
+  (hr : 0 < r) (hR : ENNReal.ofReal r < DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  ∃ N0,
+    ∀ (N : ℕ+),
+      N0 ≤ N →
+        ∀ (f : DGPS.ParticleH1 A N),
+          DGPS.IsSymmetricParticleTest f →
+            DGPS.particleEntropy A N f ≤ ENNReal.ofReal (2 / r * DGPS.particleEnergy A N f)
+'DGPS.Lipschitz.eventual_lsi_sym' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Lipschitz.zero_scalar_rates_and_limits (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (h0 : DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip) = 0) :
+  DGPS.speciesRate A (DGPS.lipschitz_absoluteDrift A hLip) = 0 ∧
+    Filter.Tendsto (fun N => DGPS.particleRateAll A N) Filter.atTop (nhds 0) ∧
+      Filter.Tendsto (fun N => DGPS.particleRateSym A N) Filter.atTop (nhds 0)
+'DGPS.Lipschitz.zero_scalar_rates_and_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.nonlinear_rates (κ : ℝ) (hκ : 0 < κ) :
+  have b := DGPS.lipschitz_absoluteDrift (DGPS.FiniteN.secondHarmonicData κ) ⋯;
+  DGPS.scalarRate (DGPS.FiniteN.secondHarmonicData κ) b = ENNReal.ofReal DGPS.a0 ∧
+    DGPS.speciesRate (DGPS.FiniteN.secondHarmonicData κ) b = ENNReal.ofReal DGPS.a0
+'DGPS.FiniteN.SecondHarmonic.nonlinear_rates' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.particle_one (κ : ℝ) (hκ : 0 < κ) :
+  DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ) 1 = ENNReal.ofReal DGPS.a0 ∧
+    DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) 1 = ENNReal.ofReal DGPS.a0
+'DGPS.FiniteN.SecondHarmonic.particle_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.strict_dip_every_N (κ : ℝ) (hκ : 0 < κ) (N : ℕ+) :
+  2 ≤ N →
+    DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ) N ≤
+        DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) N ∧
+      DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) N < ENNReal.ofReal DGPS.a0
+'DGPS.FiniteN.SecondHarmonic.strict_dip_every_N' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.particle_limits (κ : ℝ) (hκ : 0 < κ) :
+  Filter.Tendsto (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) Filter.atTop
+      (nhds (ENNReal.ofReal DGPS.a0)) ∧
+    Filter.Tendsto (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ)) Filter.atTop
+      (nhds (ENNReal.ofReal DGPS.a0))
+'DGPS.FiniteN.SecondHarmonic.particle_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.exact_rates_and_nonmonotone (κ : ℝ) (hκ : 0 < κ) :
+  have b := DGPS.lipschitz_absoluteDrift (DGPS.FiniteN.secondHarmonicData κ) ⋯;
+  DGPS.scalarRate (DGPS.FiniteN.secondHarmonicData κ) b = ENNReal.ofReal DGPS.a0 ∧
+    DGPS.speciesRate (DGPS.FiniteN.secondHarmonicData κ) b = ENNReal.ofReal DGPS.a0 ∧
+      DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ) 1 = ENNReal.ofReal DGPS.a0 ∧
+        DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) 1 = ENNReal.ofReal DGPS.a0 ∧
+          (∀ (N : ℕ+),
+              2 ≤ N →
+                DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ) N ≤
+                    DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) N ∧
+                  DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ) N < ENNReal.ofReal DGPS.a0) ∧
+            Filter.Tendsto (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) Filter.atTop
+                (nhds (ENNReal.ofReal DGPS.a0)) ∧
+              Filter.Tendsto (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ)) Filter.atTop
+                  (nhds (ENNReal.ofReal DGPS.a0)) ∧
+                ¬Monotone (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) ∧
+                  ¬Antitone (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) ∧
+                    ¬Monotone (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ)) ∧
+                      ¬Antitone (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ))
+'DGPS.FiniteN.SecondHarmonic.exact_rates_and_nonmonotone' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.SecondHarmonic.neither_monotone_nor_antitone (κ : ℝ) (hκ : 0 < κ) :
+  ¬Monotone (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) ∧
+    ¬Antitone (DGPS.particleRateAll (DGPS.FiniteN.secondHarmonicData κ)) ∧
+      ¬Monotone (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ)) ∧
+        ¬Antitone (DGPS.particleRateSym (DGPS.FiniteN.secondHarmonicData κ))
+'DGPS.FiniteN.SecondHarmonic.neither_monotone_nor_antitone' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.RegularityBoundary.positive_h1_sharp_limits :
+  let A := DGPS.Examples.PositiveH1.Model.positiveH1;
+  have b := DGPS.Examples.PositiveH1.Nonlinear.positiveH1Drift;
+  DGPS.MemH1 (DGPS.Examples.PositiveH1.Model.pairFun A.W) ∧
+    ¬DGPS.Examples.PositiveH1.Regularity.W1Infinity (DGPS.Examples.PositiveH1.Model.pairFun A.W) ∧
+      DGPS.scalarRate A b = ENNReal.ofReal DGPS.a0 ∧
+        DGPS.speciesRate A b = ENNReal.ofReal DGPS.a0 ∧
+          Filter.Tendsto (fun N => DGPS.particleRateAll A N) Filter.atTop (nhds (ENNReal.ofReal DGPS.a0)) ∧
+            Filter.Tendsto (fun N => DGPS.particleRateSym A N) Filter.atTop (nhds (ENNReal.ofReal DGPS.a0)) ∧
+              ∀ (r : ℝ),
+                0 < r →
+                  r < DGPS.a0 →
+                    ∃ N0,
+                      ∀ (N : ℕ+),
+                        N0 ≤ N →
+                          ∀ (f : DGPS.ParticleH1 A N),
+                            DGPS.particleEntropy A N f ≤ ENNReal.ofReal (2 / r * DGPS.particleEnergy A N f)
+'DGPS.RegularityBoundary.positive_h1_sharp_limits' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.RegularityBoundary.positive_h1_eventual_lsi (r : ℝ) (hr : 0 < r) (hra : r < DGPS.a0) :
+  ∃ N0,
+    ∀ (N : ℕ+),
+      N0 ≤ N →
+        ∀ (f : DGPS.ParticleH1 DGPS.Examples.PositiveH1.Model.positiveH1 N),
+          DGPS.particleEntropy DGPS.Examples.PositiveH1.Model.positiveH1 N f ≤
+            ENNReal.ofReal (2 / r * DGPS.particleEnergy DGPS.Examples.PositiveH1.Model.positiveH1 N f)
+'DGPS.RegularityBoundary.positive_h1_eventual_lsi' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Examples.EngineeredRankOne.unbounded_scalar_species_separation :
+  ∃ (hs :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)))
+    (hm :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate
+        (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))),
+    have rs := fun h =>
+      DGPS.realRate (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)) ⋯;
+    have rm := fun h =>
+      DGPS.realRate (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)) ⋯;
+    (∃ c C,
+        0 < c ∧
+          0 < C ∧
+            ∃ h0,
+              2 ≤ h0 ∧
+                ∀ (h : ↑(Set.Ici 2)),
+                  h0 ≤ ↑h → 0 < rm h ∧ 0 < rs h ∧ c * DGPS.a0 * ↑h ≤ rs h ∧ rs h ≤ C * DGPS.a0 * ↑h) ∧
+      Filter.Tendsto (fun h => rm h / DGPS.a0) Filter.atTop (nhds 1) ∧
+        Filter.Tendsto (fun h => rs h / rm h) Filter.atTop Filter.atTop
+'DGPS.Examples.EngineeredRankOne.unbounded_scalar_species_separation' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.EngineeredRankOne.scalar_rate_theta_h :
+  ∃ (hs :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))),
+    ∃ c C,
+      0 < c ∧
+        0 < C ∧
+          ∃ h0,
+            2 ≤ h0 ∧
+              ∀ (h : ↑(Set.Ici 2)),
+                h0 ≤ ↑h →
+                  c * DGPS.a0 * ↑h ≤
+                      DGPS.realRate
+                        (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))
+                        ⋯ ∧
+                    DGPS.realRate
+                        (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))
+                        ⋯ ≤
+                      C * DGPS.a0 * ↑h
+'DGPS.Examples.EngineeredRankOne.scalar_rate_theta_h' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Examples.EngineeredRankOne.scalar_species_ratio_tends_atTop :
+  ∃ (hs :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)))
+    (hm :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate
+        (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))),
+    (∀ᶠ (h : ↑(Set.Ici 2)) in Filter.atTop,
+        0 <
+          DGPS.realRate
+            (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)) ⋯) ∧
+      Filter.Tendsto
+        (fun h =>
+          DGPS.realRate (DGPS.scalarRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))
+              ⋯ /
+            DGPS.realRate
+              (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯)) ⋯)
+        Filter.atTop Filter.atTop
+'DGPS.Examples.EngineeredRankOne.scalar_species_ratio_tends_atTop' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.EngineeredRankOne.species_rate_limit :
+  ∃ (hm :
+    ∀ (h : ↑(Set.Ici 2)),
+      DGPS.FiniteRate
+        (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))),
+    Filter.Tendsto
+      (fun h =>
+        DGPS.realRate (DGPS.speciesRate (DGPS.Models.engineeredRankOne ↑h ⋯) (DGPS.Models.engineeredRankOneDrift ↑h ⋯))
+            ⋯ /
+          DGPS.a0)
+      Filter.atTop (nhds 1)
+'DGPS.Examples.EngineeredRankOne.species_rate_limit' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.FiniteN.Taxonomy.anisotropic_quartic_saddle :
+  (∀ (N : ℕ+),
+      (0 < DGPS.particleRateAll DGPS.Models.anisotropicQuarticSaddle N ∧
+          DGPS.particleRateAll DGPS.Models.anisotropicQuarticSaddle N < ⊤) ∧
+        (0 < DGPS.particleRateSym DGPS.Models.anisotropicQuarticSaddle N ∧
+            DGPS.particleRateSym DGPS.Models.anisotropicQuarticSaddle N < ⊤) ∧
+          0 < DGPS.particlePoincareRate DGPS.Models.anisotropicQuarticSaddle N ∧
+            DGPS.particlePoincareRate DGPS.Models.anisotropicQuarticSaddle N < ⊤) ∧
+    (DGPS.FiniteN.ThetaScale (1 / 2) fun n =>
+        if h : 0 < n then (DGPS.particlePoincareRate DGPS.Models.anisotropicQuarticSaddle ⟨n, h⟩).toReal else 0) ∧
+      (DGPS.FiniteN.ThetaScale (3 / 2) fun n =>
+          if h : 0 < n then (DGPS.particleRateAll DGPS.Models.anisotropicQuarticSaddle ⟨n, h⟩).toReal else 0) ∧
+        DGPS.FiniteN.ThetaScale (3 / 2) fun n =>
+          if h : 0 < n then (DGPS.particleRateSym DGPS.Models.anisotropicQuarticSaddle ⟨n, h⟩).toReal else 0
+'DGPS.FiniteN.Taxonomy.anisotropic_quartic_saddle' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Examples.ThreeSpeciesCircle.elementaryCircle_exactlyThreeSpeciesNecessary :
+  ∃ h0,
+    0 < h0 ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < h0 →
+            ∃ ε0,
+              0 < ε0 ∧
+                ∀ (ε : ℝ),
+                  0 < ε →
+                    ε < ε0 →
+                      DGPS.Examples.ThreeSpeciesCircle.CanonicalThreeSpeciesConclusion h ε
+                        (DGPS.Models.threeSpeciesCircleDrift h ε)
+'DGPS.Examples.ThreeSpeciesCircle.elementaryCircle_exactlyThreeSpeciesNecessary' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.ThreeSpeciesCircle.binaryRate_eq_ordinaryLSRate :
+  ∃ h0,
+    0 < h0 ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < h0 →
+            ∃ ε0,
+              0 < ε0 ∧
+                ε0 ≤ DGPS.Examples.ThreeSpeciesCircle.epsMax h ∧
+                  ∀ (ε : ℝ),
+                    0 < ε →
+                      ε < ε0 →
+                        ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.ThreeSpeciesCircle.modelData h ε)),
+                          DGPS.speciesRateAtMost (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b 2 =
+                              DGPS.ordinaryLSRate (DGPS.Examples.ThreeSpeciesCircle.ordinaryReference h) ∧
+                            (¬∃ F, DGPS.AttainsAtMostRate (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b 2 F) ∧
+                              ∃ σ,
+                                0 < DGPS.Examples.ThreeSpeciesCircle.ordinaryEntropy h σ ∧
+                                  DGPS.Examples.ThreeSpeciesCircle.str025_quot h σ =
+                                      DGPS.ordinaryLSRate (DGPS.Examples.ThreeSpeciesCircle.ordinaryReference h) ∧
+                                    ∃ w F,
+                                      ∃ (hcount : ∀ (n : ℕ), (F n).count = 2),
+                                        (∀ (n : ℕ), 0 < w n ∧ w n < 1) ∧
+                                          StrictAnti w ∧
+                                            Filter.Tendsto w Filter.atTop (nhds 0) ∧
+                                              (∀ (n : ℕ),
+                                                  (F n).weight ⟨0, ⋯⟩ = w n ∧
+                                                    (F n).weight ⟨1, ⋯⟩ = 1 - w n ∧
+                                                      DGPS.densityMeasure ((F n).density ⟨0, ⋯⟩) =
+                                                          DGPS.densityMeasure σ ∧
+                                                        (((F n).density ⟨1, ⋯⟩).density =ᵐ[DGPS.haar 1] fun x =>
+                                                            (DGPS.Examples.ThreeSpeciesCircle.referenceDensity h x -
+                                                                w n * σ.density x) /
+                                                              (1 - w n)) ∧
+                                                          (∃ v,
+                                                              Continuous v ∧
+                                                                (∀ (x : DGPS.Torus 1), 0 < v x) ∧
+                                                                  ((F n).density ⟨1, ⋯⟩).density =ᵐ[DGPS.haar 1] v) ∧
+                                                            ↑(DGPS.densityMeasure (DGPS.barycenter (F n))) =
+                                                                DGPS.Examples.ThreeSpeciesCircle.threefoldReference h ∧
+                                                              0 <
+                                                                  DGPS.speciesGap
+                                                                    (DGPS.Examples.ThreeSpeciesCircle.modelData h ε)
+                                                                    (F n) ∧
+                                                                DGPS.FiniteRate
+                                                                  (DGPS.speciesQuotient
+                                                                    (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b
+                                                                    (F n))) ∧
+                                                Filter.Tendsto
+                                                  (fun n =>
+                                                    DGPS.speciesQuotient
+                                                      (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b (F n))
+                                                  Filter.atTop
+                                                  (nhds
+                                                    (DGPS.ordinaryLSRate
+                                                      (DGPS.Examples.ThreeSpeciesCircle.ordinaryReference h)))
+'DGPS.Examples.ThreeSpeciesCircle.binaryRate_eq_ordinaryLSRate' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.ThreeSpeciesCircle.unrestrictedOptimizer_unique_ternaryRotationOrbit :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∃ ε0,
+              0 < ε0 ∧
+                ε0 ≤ DGPS.Examples.ThreeSpeciesCircle.epsMax h ∧
+                  ∀ (ε : ℝ),
+                    0 < ε →
+                      ε < ε0 →
+                        ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.ThreeSpeciesCircle.modelData h ε)),
+                          ∃ η,
+                            (∀ (j : Fin 3), DGPS.SmoothPositiveDensity (η j)) ∧
+                              (Function.Injective fun j => DGPS.densityMeasure (η j)) ∧
+                                (∀ (j : Fin 3),
+                                    DGPS.densityMeasure (η j) =
+                                      DGPS.densityMeasure
+                                        (DGPS.Examples.ThreeSpeciesCircle.interactingDensityTranslate
+                                          (DGPS.Examples.ThreeSpeciesCircle.pt (↑↑j / 3)) (η 0))) ∧
+                                  (∃ F, DGPS.IsSpeciesOptimizer (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b F) ∧
+                                    ∀ (F : DGPS.SpeciesFamily 1),
+                                      DGPS.IsSpeciesOptimizer (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b F ↔
+                                        0 < DGPS.speciesGap (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) F ∧
+                                          DGPS.speciesLaw F = DGPS.Examples.ThreeSpeciesCircle.ternarySpeciesLaw η
+'DGPS.Examples.ThreeSpeciesCircle.unrestrictedOptimizer_unique_ternaryRotationOrbit' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_exact_three_rotationBranches :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∃ ε0,
+              0 < ε0 ∧
+                ε0 ≤ DGPS.Examples.ThreeSpeciesCircle.epsMax h ∧
+                  ∀ (ε : ℝ),
+                    0 < ε →
+                      ε < ε0 →
+                        ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.ThreeSpeciesCircle.modelData h ε)),
+                          ∃ ξ,
+                            (∀ (j : Fin 3), DGPS.IsSmoothPeriodic (ξ j).sqrt ∧ ∀ (x : DGPS.Torus 1), 0 < (ξ j).sqrt x) ∧
+                              (Pairwise fun i j => DGPS.densityMeasure (ξ i) ≠ DGPS.densityMeasure (ξ j)) ∧
+                                (∀ (j : Fin 3) (x : DGPS.Torus 1),
+                                    (ξ j).density x =
+                                      (ξ 0).density (x - DGPS.Examples.ThreeSpeciesCircle.pt (↑↑j / 3))) ∧
+                                  (∀ (j : Fin 3),
+                                      0 < DGPS.scalarGap (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) (ξ j) ∧
+                                        DGPS.scalarQuotient (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b (ξ j) =
+                                          DGPS.scalarRate (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b) ∧
+                                    ∀ (ρ : DGPS.AbsoluteDensity 1),
+                                      0 < DGPS.scalarGap (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) ρ ∧
+                                          DGPS.scalarQuotient (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b ρ =
+                                            DGPS.scalarRate (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b ↔
+                                        ∃ j, DGPS.densityMeasure ρ = DGPS.densityMeasure (ξ j)
+'DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_exact_three_rotationBranches' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_everyInfinitesimalFixedBarycenterSplit_uphill :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∃ ε0,
+              0 < ε0 ∧
+                ε0 ≤ DGPS.Examples.ThreeSpeciesCircle.epsMax h ∧
+                  ∀ (ε : ℝ),
+                    0 < ε →
+                      ε < ε0 →
+                        ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.ThreeSpeciesCircle.modelData h ε))
+                          (σ : DGPS.AbsoluteDensity 1),
+                          0 < DGPS.scalarGap (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) σ →
+                            DGPS.scalarQuotient (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b σ =
+                                DGPS.scalarRate (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b →
+                              ∀ (q : ℕ+) (θ : Fin ↑q → ℝ) (hθ : ∀ (s : Fin ↑q), 0 < θ s) (hθsum : ∑ s, θ s = 1)
+                                (f : Fin ↑q → DGPS.WeakH1Test (DGPS.densityMeasure σ)),
+                                (∀ (s : Fin ↑q), ∫ (x : DGPS.Torus 1), (f s).fn x ∂↑(DGPS.densityMeasure σ) = 0) →
+                                  (∀ᵐ (x : DGPS.Torus 1) ∂↑(DGPS.densityMeasure σ), ∑ s, θ s * (f s).fn x = 0) →
+                                    have B := ∑ s, θ s * ∫ (x : DGPS.Torus 1), (f s).fn x ^ 2 ∂↑(DGPS.densityMeasure σ);
+                                    have r :=
+                                      (DGPS.scalarRate (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) b).toReal;
+                                    have c :=
+                                      (∑ s,
+                                            θ s *
+                                              ∫ (x : DGPS.Torus 1),
+                                                ((f s).grad x).ofLp 0 ^ 2 ∂↑(DGPS.densityMeasure σ) -
+                                          r * B) /
+                                        (2 * ↑(DGPS.scalarGap (DGPS.Examples.ThreeSpeciesCircle.modelData h ε) σ));
+                                    0 < B →
+                                      0 < c ∧
+                                        ∃ g,
+                                          ∃ (hg : ∀ (s : Fin ↑q), DGPS.IsWeakGradient (g s) (f s).grad) (hgc :
+                                            ∀ (s : Fin ↑q), Continuous (g s)) (hm :
+                                            ∀ (s : Fin ↑q), ∫ (x : DGPS.Torus 1), g s x ∂↑(DGPS.densityMeasure σ) = 0)
+                                            (_ : ∀ (x : DGPS.Torus 1), ∑ s, θ s * g s x = 0),
+                                            (∀ (s : Fin ↑q), g s =ᵐ[DGPS.haar 1] (f s).fn) ∧
+                                              ∃ t0,
+                                                0 < t0 ∧
+                                                  ∃ rem,
+                                                    Filter.Tendsto (fun t => rem t / t ^ 2) (nhdsWithin 0 {t | t ≠ 0})
+                                                        (nhds 0) ∧
+                                                      ∀ (t : ℝ),
+                                                        0 < |t| →
+                                                          |t| < t0 →
+                                                            ∃ (hp :
+                                                              ∀ (s : Fin ↑q) (x : DGPS.Torus 1), 0 < 1 + t * g s x),
+                                                              let F :=
+                                                                DGPS.Examples.ThreeSpeciesCircle.finiteH1Split σ q θ hθ
+                                                                  hθsum g (fun s => (f s).grad) hg hgc hm t hp;
+                                                              (∀ (s : Fin ↑F.count),
+                                                                  ↑(DGPS.densityMeasure (F.density s)) =
+                                                                    (↑(DGPS.densityMeasure σ)).withDensity fun x =>
+                                                                      ENNReal.ofReal (1 + t * (f s).fn x)) ∧
+                                                                (∀ (s : Fin ↑F.count),
+                                                                    ∃ v,
+                                                                      Continuous v ∧
+                                                                        (F.density s).sqrt =ᵐ[DGPS.haar 1] v ∧
+                                                                          DGPS.MemH1 v ∧
+                                                                            ∃ m,
+                                                                              0 < m ∧ ∀ (x : DGPS.Torus 1), m ≤ v x) ∧
+                                                                  DGPS.densityMeasure (DGPS.barycenter F) =
+                                                                      DGPS.densityMeasure σ ∧
+                                                                    0 <
+                                                                        DGPS.speciesGap
+                                                                          (DGPS.Examples.ThreeSpeciesCircle.modelData h
+                                                                            ε)
+                                                                          F ∧
+                                                                      DGPS.speciesQuotient
+                                                                            (DGPS.Examples.ThreeSpeciesCircle.modelData
+                                                                              h ε)
+                                                                            b F ≠
+                                                                          ⊤ ∧
+                                                                        DGPS.speciesQuotient
+                                                                              (DGPS.Examples.ThreeSpeciesCircle.modelData
+                                                                                h ε)
+                                                                              b F =
+                                                                            ENNReal.ofReal (r + c * t ^ 2 + rem t) ∧
+                                                                          DGPS.scalarRate
+                                                                              (DGPS.Examples.ThreeSpeciesCircle.modelData
+                                                                                h ε)
+                                                                              b <
+                                                                            DGPS.speciesQuotient
+                                                                              (DGPS.Examples.ThreeSpeciesCircle.modelData
+                                                                                h ε)
+                                                                              b F
+'DGPS.Examples.ThreeSpeciesCircle.scalarOptimizer_everyInfinitesimalFixedBarycenterSplit_uphill' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.PolynomialSpecies.actual_species_descent :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.canonical_elementary_polynomial_model h)),
+              (have rStar := DGPS.scalarRate (DGPS.Examples.canonical_elementary_polynomial_model h) b;
+                have rMs := DGPS.speciesRate (DGPS.Examples.canonical_elementary_polynomial_model h) b;
+                have lamG :=
+                  DGPS.gaussianRate (DGPS.Examples.canonical_elementary_polynomial_model h)
+                    (DGPS.Examples.PolynomialSpecies.polynomialRankOne h).lgeMu ⋯;
+                have lamTwo := min lamG (DGPS.poincareRate (DGPS.Examples.PolynomialSpecies.polynomialRankOne h).lgeMu);
+                (∀ r ∈ [rStar, rMs, lamG, lamTwo], DGPS.FiniteRate r) ∧
+                  0 < rMs ∧ rMs < rStar ∧ rStar < lamTwo ∧ lamTwo ≤ lamG) ∧
+                (∃ ρplus ρminus,
+                    DGPS.SmoothPositiveDensity ρplus ∧
+                      DGPS.SmoothPositiveDensity ρminus ∧
+                        DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρplus ∧
+                          DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρminus ∧
+                            DGPS.densityMeasure ρplus ≠ DGPS.densityMeasure ρminus ∧
+                              ↑(DGPS.densityMeasure ρminus) =
+                                  MeasureTheory.Measure.map (fun x => -x) ↑(DGPS.densityMeasure ρplus) ∧
+                                ∀ (ρ : DGPS.AbsoluteDensity 1),
+                                  DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρ ↔
+                                    DGPS.densityMeasure ρ = DGPS.densityMeasure ρplus ∨
+                                      DGPS.densityMeasure ρ = DGPS.densityMeasure ρminus) ∧
+                  ∀ (ρ : DGPS.AbsoluteDensity 1),
+                    0 < DGPS.scalarGap (DGPS.Examples.canonical_elementary_polynomial_model h) ρ →
+                      DGPS.scalarQuotient (DGPS.Examples.canonical_elementary_polynomial_model h) b ρ =
+                          DGPS.scalarRate (DGPS.Examples.canonical_elementary_polynomial_model h) b →
+                        ∀ (f : DGPS.WeakH1Test (DGPS.densityMeasure ρ)),
+                          ∫ (x : DGPS.Torus 1), f.fn x ∂↑(DGPS.densityMeasure ρ) = 0 →
+                            ∫ (x : DGPS.Torus 1), f.fn x ^ 2 ∂↑(DGPS.densityMeasure ρ) = 1 →
+                              ∫ (x : DGPS.Torus 1), ‖f.grad x‖ ^ 2 ∂↑(DGPS.densityMeasure ρ) =
+                                  (DGPS.poincareRate (DGPS.densityMeasure ρ)).toReal →
+                                ∃ g,
+                                  ∃ (hc : Continuous g) (hg : DGPS.IsWeakGradient g f.grad) (hm :
+                                    ∫ (x : DGPS.Torus 1), g x ∂↑(DGPS.densityMeasure ρ) = 0),
+                                    g =ᵐ[DGPS.haar 1] f.fn ∧
+                                      g =ᵐ[↑(DGPS.densityMeasure ρ)] f.fn ∧
+                                        ∃ δ,
+                                          0 < δ ∧
+                                            ∀ (t : ℝ),
+                                              0 < |t| →
+                                                |t| < δ →
+                                                  ∃ (hp :
+                                                    ∀ (s : Fin 2) (x : DGPS.Torus 1),
+                                                      0 < 1 + t * ![g, fun x => -g x] s x),
+                                                    have F :=
+                                                      DGPS.Examples.PolynomialSpecies.nativeH1BinarySplit ρ g f.grad hg
+                                                        hc hm t hp;
+                                                    (∀ (s : Fin ↑F.count), DGPS.PositiveH1Density (F.density s)) ∧
+                                                      DGPS.densityMeasure (DGPS.barycenter F) = DGPS.densityMeasure ρ ∧
+                                                        ↑(DGPS.speciesGap
+                                                                (DGPS.Examples.canonical_elementary_polynomial_model h)
+                                                                F) =
+                                                            ↑(DGPS.scalarGap
+                                                                  (DGPS.Examples.canonical_elementary_polynomial_model
+                                                                    h)
+                                                                  ρ) +
+                                                              1 / 2 *
+                                                                (∫ (x : DGPS.Torus 1),
+                                                                    InformationTheory.klFun
+                                                                      (1 + t * g x) ∂↑(DGPS.densityMeasure ρ) +
+                                                                  ∫ (x : DGPS.Torus 1),
+                                                                    InformationTheory.klFun
+                                                                      (1 + t * -g x) ∂↑(DGPS.densityMeasure ρ)) ∧
+                                                          0 <
+                                                              DGPS.speciesGap
+                                                                (DGPS.Examples.canonical_elementary_polynomial_model h)
+                                                                F ∧
+                                                            DGPS.speciesDissipation
+                                                                  (DGPS.Examples.canonical_elementary_polynomial_model
+                                                                    h)
+                                                                  b F ≠
+                                                                ⊤ ∧
+                                                              DGPS.speciesQuotient
+                                                                  (DGPS.Examples.canonical_elementary_polynomial_model
+                                                                    h)
+                                                                  b F <
+                                                                DGPS.scalarRate
+                                                                  (DGPS.Examples.canonical_elementary_polynomial_model
+                                                                    h)
+                                                                  b
+'DGPS.Examples.PolynomialSpecies.actual_species_descent' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Examples.PolynomialSpecies.strict_rate_chain :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.canonical_elementary_polynomial_model h)),
+              have rStar := DGPS.scalarRate (DGPS.Examples.canonical_elementary_polynomial_model h) b;
+              have rMs := DGPS.speciesRate (DGPS.Examples.canonical_elementary_polynomial_model h) b;
+              have lamG :=
+                DGPS.gaussianRate (DGPS.Examples.canonical_elementary_polynomial_model h)
+                  (DGPS.Examples.PolynomialSpecies.polynomialRankOne h).lgeMu ⋯;
+              have lamTwo := min lamG (DGPS.poincareRate (DGPS.Examples.PolynomialSpecies.polynomialRankOne h).lgeMu);
+              (∀ r ∈ [rStar, rMs, lamG, lamTwo], DGPS.FiniteRate r) ∧
+                0 < rMs ∧ rMs < rStar ∧ rStar < lamTwo ∧ lamTwo ≤ lamG
+'DGPS.Examples.PolynomialSpecies.strict_rate_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Examples.PolynomialSpecies.exactly_two_scalar_optimizers :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.canonical_elementary_polynomial_model h)),
+              ∃ ρplus ρminus,
+                DGPS.SmoothPositiveDensity ρplus ∧
+                  DGPS.SmoothPositiveDensity ρminus ∧
+                    DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρplus ∧
+                      DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρminus ∧
+                        DGPS.densityMeasure ρplus ≠ DGPS.densityMeasure ρminus ∧
+                          ↑(DGPS.densityMeasure ρminus) =
+                              MeasureTheory.Measure.map (fun x => -x) ↑(DGPS.densityMeasure ρplus) ∧
+                            ∀ (ρ : DGPS.AbsoluteDensity 1),
+                              DGPS.IsScalarOptimizer (DGPS.Examples.canonical_elementary_polynomial_model h) b ρ ↔
+                                DGPS.densityMeasure ρ = DGPS.densityMeasure ρplus ∨
+                                  DGPS.densityMeasure ρ = DGPS.densityMeasure ρminus
+'DGPS.Examples.PolynomialSpecies.exactly_two_scalar_optimizers' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Examples.PolynomialSpecies.every_small_nonzero_split_improves :
+  ∃ δ,
+    0 < δ ∧
+      ∀ (h : ℝ),
+        0 < h →
+          h < δ →
+            ∀ (b : DGPS.AbsoluteDrift (DGPS.Examples.canonical_elementary_polynomial_model h))
+              (ρ : DGPS.AbsoluteDensity 1),
+              0 < DGPS.scalarGap (DGPS.Examples.canonical_elementary_polynomial_model h) ρ →
+                DGPS.scalarQuotient (DGPS.Examples.canonical_elementary_polynomial_model h) b ρ =
+                    DGPS.scalarRate (DGPS.Examples.canonical_elementary_polynomial_model h) b →
+                  ∀ (f : DGPS.WeakH1Test (DGPS.densityMeasure ρ)),
+                    ∫ (x : DGPS.Torus 1), f.fn x ∂↑(DGPS.densityMeasure ρ) = 0 →
+                      ∫ (x : DGPS.Torus 1), f.fn x ^ 2 ∂↑(DGPS.densityMeasure ρ) = 1 →
+                        ∫ (x : DGPS.Torus 1), ‖f.grad x‖ ^ 2 ∂↑(DGPS.densityMeasure ρ) =
+                            (DGPS.poincareRate (DGPS.densityMeasure ρ)).toReal →
+                          ∃ g,
+                            ∃ (hc : Continuous g) (hg : DGPS.IsWeakGradient g f.grad) (hm :
+                              ∫ (x : DGPS.Torus 1), g x ∂↑(DGPS.densityMeasure ρ) = 0),
+                              g =ᵐ[DGPS.haar 1] f.fn ∧
+                                g =ᵐ[↑(DGPS.densityMeasure ρ)] f.fn ∧
+                                  ∃ δ,
+                                    0 < δ ∧
+                                      ∀ (t : ℝ),
+                                        0 < |t| →
+                                          |t| < δ →
+                                            ∃ (hp :
+                                              ∀ (s : Fin 2) (x : DGPS.Torus 1), 0 < 1 + t * ![g, fun x => -g x] s x),
+                                              have F :=
+                                                DGPS.Examples.PolynomialSpecies.nativeH1BinarySplit ρ g f.grad hg hc hm
+                                                  t hp;
+                                              (∀ (s : Fin ↑F.count), DGPS.PositiveH1Density (F.density s)) ∧
+                                                DGPS.densityMeasure (DGPS.barycenter F) = DGPS.densityMeasure ρ ∧
+                                                  ↑(DGPS.speciesGap
+                                                          (DGPS.Examples.canonical_elementary_polynomial_model h) F) =
+                                                      ↑(DGPS.scalarGap
+                                                            (DGPS.Examples.canonical_elementary_polynomial_model h) ρ) +
+                                                        1 / 2 *
+                                                          (∫ (x : DGPS.Torus 1),
+                                                              InformationTheory.klFun
+                                                                (1 + t * g x) ∂↑(DGPS.densityMeasure ρ) +
+                                                            ∫ (x : DGPS.Torus 1),
+                                                              InformationTheory.klFun
+                                                                (1 + t * -g x) ∂↑(DGPS.densityMeasure ρ)) ∧
+                                                    0 <
+                                                        DGPS.speciesGap
+                                                          (DGPS.Examples.canonical_elementary_polynomial_model h) F ∧
+                                                      DGPS.speciesDissipation
+                                                            (DGPS.Examples.canonical_elementary_polynomial_model h) b
+                                                            F ≠
+                                                          ⊤ ∧
+                                                        DGPS.speciesQuotient
+                                                            (DGPS.Examples.canonical_elementary_polynomial_model h) b
+                                                            F <
+                                                          DGPS.scalarRate
+                                                            (DGPS.Examples.canonical_elementary_polynomial_model h) b
+'DGPS.Examples.PolynomialSpecies.every_small_nonzero_split_improves' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) :
+  have b := DGPS.lipschitz_absoluteDrift A hLip;
+  (0 < DGPS.scalarRate A b ↔ 0 < DGPS.speciesRate A b) ∧
+    (0 < DGPS.scalarRate A b ↔
+      ∃ μ,
+        DGPS.scalarDissipation A b μ = 0 ∧
+          (∀ (ρ : DGPS.AbsoluteDensity d),
+              DGPS.scalarDissipation A b ρ = 0 → DGPS.densityMeasure ρ = DGPS.densityMeasure μ) ∧
+            ∃ c,
+              0 < c ∧
+                ∀ (f : ↥(DGPS.centeredL2 (DGPS.densityMeasure μ))),
+                  c * ‖f‖ ^ 2 ≤ inner ℝ f ((DGPS.densityHessian A (DGPS.densityMeasure μ)) f))
+'DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian_of_drift {d : ℕ} (hd : 0 < d)
+  (A : DGPS.InteractionData d) (hLip : DGPS.LipschitzData A) (b : DGPS.AbsoluteDrift A) :
+  (0 < DGPS.scalarRate A b ↔ 0 < DGPS.speciesRate A b) ∧
+    (0 < DGPS.scalarRate A b ↔
+      ∃ μ,
+        DGPS.scalarDissipation A b μ = 0 ∧
+          (∀ (ρ : DGPS.AbsoluteDensity d),
+              DGPS.scalarDissipation A b ρ = 0 → DGPS.densityMeasure ρ = DGPS.densityMeasure μ) ∧
+            DGPS.IsCoerciveDensityHessian A (DGPS.densityMeasure μ))
+'DGPS.Structural.positiveRate_iff_uniqueZeroDissipation_coerciveHessian_of_drift' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+DGPS.Structural.frozenGibbs_scalar_species_comparison (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (hpos : 0 < DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  have b := DGPS.lipschitz_absoluteDrift A hLip;
+  ∃ (hs : DGPS.FiniteRate (DGPS.scalarRate A b)) (hm : DGPS.FiniteRate (DGPS.speciesRate A b)) (hl :
+    DGPS.FiniteRate (DGPS.frozenLSRateInf A)),
+    have rs := DGPS.realRate (DGPS.scalarRate A b) hs;
+    have rm := DGPS.realRate (DGPS.speciesRate A b) hm;
+    have ell := DGPS.realRate (DGPS.frozenLSRateInf A) hl;
+    have B := DGPS.interactionOscillation A;
+    have M := DGPS.totalOscillation A;
+    0 < rs ∧
+      0 < rm ∧
+        0 < ell ∧
+          DGPS.a0 * Real.exp (-M) ≤ ell ∧
+            rs * ell / (rs + ell) ≤ rm ∧ rm ≤ rs ∧ 1 ≤ rs / rm ∧ rs / rm ≤ 1 + (1 + B / 2) * Real.exp (2 * M)
+'DGPS.Structural.frozenGibbs_scalar_species_comparison' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (hpos : 0 < DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  have b := DGPS.lipschitz_absoluteDrift A hLip;
+  ∃ (hs : DGPS.FiniteRate (DGPS.scalarRate A b)) (hm : DGPS.FiniteRate (DGPS.speciesRate A b)),
+    have rs := DGPS.realRate (DGPS.scalarRate A b) hs;
+    have rm := DGPS.realRate (DGPS.speciesRate A b) hm;
+    0 < rs ∧
+      0 < rm ∧
+        1 ≤ rs / rm ∧ rs / rm ≤ 1 + (1 + DGPS.interactionOscillation A / 2) * Real.exp (2 * DGPS.totalOscillation A)
+'DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS {d : ℕ} (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (b : DGPS.AbsoluteDrift A) (hr : 0 < DGPS.scalarRate A b)
+  (hrf : DGPS.scalarRate A b ≠ ⊤) :
+  ENNReal.ofReal
+        ((DGPS.scalarRate A b).toReal * (DGPS.frozenLSRateInf A).toReal /
+          ((DGPS.scalarRate A b).toReal + (DGPS.frozenLSRateInf A).toReal)) ≤
+      DGPS.speciesRate A b ∧
+    DGPS.speciesRate A b ≤ DGPS.scalarRate A b
+'DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS' depends on axioms: [propext, Classical.choice, Quot.sound]
+DGPS.Structural.scalarRate_le_amplitude_bound (d : ℕ) (hd : 0 < d) (A : DGPS.InteractionData d)
+  (hLip : DGPS.LipschitzData A) (hpos : 0 < DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip)) :
+  DGPS.scalarRate A (DGPS.lipschitz_absoluteDrift A hLip) ≤
+    ENNReal.ofReal (DGPS.a0 * (1 + DGPS.interactionOscillation A / 2) * Real.exp (DGPS.totalOscillation A))
+'DGPS.Structural.scalarRate_le_amplitude_bound' depends on axioms: [propext, Classical.choice, Quot.sound]

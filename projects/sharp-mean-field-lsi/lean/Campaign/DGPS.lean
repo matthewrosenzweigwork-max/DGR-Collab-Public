@@ -1,3 +1,5 @@
+import DGPS.Examples.PolynomialSpeciesCanonicalAssembly
+import DGPS.Examples.ThreeSpeciesCircle.ThreeSpeciesCanonicalAssembly
 import DGPS.Wave0.Namespace
 import DGPS.Foundations.Torus
 import DGPS.Foundations.Entropy
@@ -218,11 +220,13 @@ import DGPS.Topology.CompactLocalClassGluing
 import DGPS.Structural.ImprovingFamilySmall
 import DGPS.Examples.PositiveH1.TransferHellinger
 import DGPS.FiniteN.SecondHarmonicStrictLSI
+import DGPS.FiniteN.SecondHarmonicLimits
 import DGPS.Examples.PositiveH1.TransferDirichlet
 import DGPS.Structural.FrozenEnergyIdentity
 import DGPS.Variational.HeatRecoveryConvergence
 import DGPS.Examples.PositiveH1.ProductEntropyInformation
 import DGPS.Examples.PositiveH1.UpperLimits
+import DGPS.Examples.PositiveH1.T02Assembly
 import DGPS.Topology.FundamentalClass
 import DGPS.Structural.CircleDensityRatio
 import DGPS.Topology.ClosedManifoldNoncontractible
@@ -385,6 +389,7 @@ import DGPS.FiniteN.EmpiricalCosineCramerFIN080
 import DGPS.FiniteN.FalseMinimumFIN077
 import DGPS.FiniteN.FalseMinimumFIN078
 import DGPS.FiniteN.QuarticSaddleCriticalFIN067
+import DGPS.FiniteN.AnisotropicQuarticRatePowers
 import DGPS.FiniteN.TiltedXYPosteriorFIN050
 import DGPS.FiniteN.OrderedRadialLift
 import DGPS.FiniteN.ScalarFoldFIN060
@@ -407,6 +412,7 @@ import DGPS.Targets.T09
 import DGPS.Examples.RoughBoundary.BottleneckPrefactorRUF048
 import DGPS.FiniteN.FalseMinimumFIN085
 import DGPS.Examples.EngineeredRankOneEX045
+import DGPS.Examples.EngineeredRankOneSharpSeparation
 import DGPS.Examples.RoughBoundary.Assembly
 import DGPS.Examples.HarmonicMinimizingFamiliesEX081
 import DGPS.Frontier.EX012.T37
@@ -703,6 +709,7 @@ import DGPS.Frontier.STR029.T32
 import DGPS.Frontier.STR029.CloseA
 import DGPS.Frontier.STR029.CloseB
 import DGPS.Lipschitz.MinimizerTopology
+import DGPS.Lipschitz.SharpLimits
 
 /-!
 # DGPS campaign library root

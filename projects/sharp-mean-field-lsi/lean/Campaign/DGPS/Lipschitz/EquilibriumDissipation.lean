@@ -104,9 +104,18 @@ section Core
 
 variable {A : InteractionData d} {μ : ProbabilityMeasure (Torus d)}
 
-/-- The core of S7: along an Euler solution `log (1 + h) + T h = c + ∑ bᵢ φᵢ`, the density
-`q (1 + h)` is an absolute density whose dissipation is at most `(∑ |bᵢ| Lᵢ)²`. -/
-theorem lip034_dissipation_core (hA : LipschitzData A) {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
+theorem lip034_smoothGrad_const_add (v : Torus d → ℝ) (c : ℝ) (x : Torus d) :
+    smoothGrad (fun y => c + v y) x = smoothGrad v x := by
+  apply WithLp.ofLp_injective
+  funext j
+  change fderiv ℝ (fun z => c + v (torusLift z)) (SharpLSI.secT x) (Pi.single j 1) =
+    fderiv ℝ (v ∘ torusLift) (SharpLSI.secT x) (Pi.single j 1)
+  rw [fderiv_const_add]
+  rfl
+
+/-- The core of S7, retaining the exact score for the same constructed density. -/
+theorem lip034_dissipation_core_with_score (hA : LipschitzData A) {k : ℕ}
+    {φ : Fin k → C(Torus d, ℝ)}
     (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν)
     {Lφ : Fin k → ℝ} (hLφ : ∀ i, 0 ≤ Lφ i ∧ TorusLipschitzWith (Lφ i) fun x => φ i x)
     {h : C(Torus d, ℝ)} (hpos : ∀ x, 0 < 1 + h x)
@@ -115,6 +124,8 @@ theorem lip034_dissipation_core (hA : LipschitzData A) {k : ℕ} {φ : Fin k →
       c + ∑ i, b i * φ i x) :
     ∃ ρ : AbsoluteDensity d, (densityMeasure ρ : Measure (Torus d)) =
         perturb (μ : Measure (Torus d)) (fun x => 1 + h x) ∧
+      (∀ drift : AbsoluteDrift A, ∀ᵐ x ∂haar d,
+        scalarScore A drift ρ x = ρ.sqrt x • smoothGrad (fun y => ∑ i, b i * φ i y) x) ∧
       ∀ drift : AbsoluteDrift A,
         scalarDissipation A drift ρ ≤ ENNReal.ofReal ((∑ i, |b i| * Lφ i) ^ 2) := by
   set m : Measure (Torus d) := (μ : Measure (Torus d)) with hm
@@ -218,9 +229,26 @@ theorem lip034_dissipation_core (hA : LipschitzData A) {k : ℕ} {φ : Fin k →
       fun x => (c - Real.log (gibbsPartition A m) + s) + S x from
     funext fun x => by rw [hWfdef, hPot]; ring] at hsum
   have hae := (lip034_isWeakGradient_of_top hsum).ae_eq (lip034_isWeakGradient_of_top hgS)
-  refine ⟨ρ, hρ, fun drift => ?_⟩
-  have hF : drift.force ρ =ᵐ[haar d] smoothGrad (interactionPotential A ρ) :=
-    drift.ae_eq_of_isWeakGradient ρ (lip034_isWeakGradientLp_one_of_top hgP)
+  have hscore_all : ∀ drift : AbsoluteDrift A, ∀ᵐ x ∂haar d,
+      scalarScore A drift ρ x = ρ.sqrt x • smoothGrad S x := by
+    intro drift
+    have hF : drift.force ρ =ᵐ[haar d] smoothGrad (interactionPotential A ρ) :=
+      drift.ae_eq_of_isWeakGradient ρ (lip034_isWeakGradientLp_one_of_top hgP)
+    filter_upwards [hF, hρm, hae] with x hx1 hx2 hx3
+    have hscore : scalarScore A drift ρ x =
+        u x • smoothGrad (fun x => (c - Real.log (gibbsPartition A m) + s) + S x) x := by
+      unfold scalarScore
+      rw [hx1, hx2, ← hx3, hρs]
+      rw [smul_add, smul_smul, hu x]
+      congr 2
+      ring
+    simpa only [hρs, lip034_smoothGrad_const_add] using hscore
+  have hgSb' : ∀ᵐ x ∂haar d, ‖smoothGrad S x‖ ≤ ∑ i, |b i| * Lφ i := by
+    simpa only [lip034_smoothGrad_const_add] using hgSb
+  have hscore_out : ∀ drift : AbsoluteDrift A, ∀ᵐ x ∂haar d,
+      scalarScore A drift ρ x = ρ.sqrt x • smoothGrad (fun y => ∑ i, b i * φ i y) x := by
+    simpa only [show S = (fun x => ∑ i, b i * φ i x) from funext hSdef] using hscore_all
+  refine ⟨ρ, hρ, hscore_out, fun drift => ?_⟩
   have hfi : Integrable (fun x => u x ^ 2 * (∑ i, |b i| * Lφ i) ^ 2) (haar d) :=
     integrable_of_continuous_torus ((hucont.pow 2).mul continuous_const) (haar d)
   have hnn : 0 ≤ᵐ[haar d] fun x => u x ^ 2 * (∑ i, |b i| * Lφ i) ^ 2 :=
@@ -229,23 +257,32 @@ theorem lip034_dissipation_core (hA : LipschitzData A) {k : ℕ} {φ : Fin k →
       ≤ ∫⁻ x, ENNReal.ofReal (u x ^ 2 * (∑ i, |b i| * Lφ i) ^ 2) ∂haar d := by
         unfold scalarDissipation
         refine lintegral_mono_ae ?_
-        filter_upwards [hF, hρm, hae, hgSb] with x hx1 hx2 hx3 hx4
+        filter_upwards [hscore_all drift, hgSb'] with x hxscore hx4
         apply ENNReal.ofReal_le_ofReal
-        have hscore : scalarScore A drift ρ x =
-            u x • smoothGrad (fun x => (c - Real.log (gibbsPartition A m) + s) + S x) x := by
-          unfold scalarScore
-          rw [hx1, hx2, ← hx3, hρs]
-          rw [smul_add, smul_smul, hu x]
-          congr 2
-          ring
-        rw [hscore, norm_smul, Real.norm_eq_abs, abs_of_pos (hu0 x)]
-        calc (u x * ‖smoothGrad (fun x => (c - Real.log (gibbsPartition A m) + s) + S x) x‖) ^ 2
+        rw [hxscore, hρs, norm_smul, Real.norm_eq_abs, abs_of_pos (hu0 x)]
+        calc (u x * ‖smoothGrad S x‖) ^ 2
             ≤ (u x * ∑ i, |b i| * Lφ i) ^ 2 :=
               pow_le_pow_left₀ (mul_nonneg (hu0 x).le (norm_nonneg _))
                 (mul_le_mul_of_nonneg_left hx4 (hu0 x).le) 2
           _ = u x ^ 2 * (∑ i, |b i| * Lφ i) ^ 2 := by ring
     _ = ENNReal.ofReal ((∑ i, |b i| * Lφ i) ^ 2) := by
         rw [← ofReal_integral_eq_lintegral_ofReal hfi hnn, integral_mul_const, hmass, one_mul]
+
+/-- The original S7 interface, projected from the exact-score construction. -/
+theorem lip034_dissipation_core (hA : LipschitzData A) {k : ℕ} {φ : Fin k → C(Torus d, ℝ)}
+    (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν)
+    {Lφ : Fin k → ℝ} (hLφ : ∀ i, 0 ≤ Lφ i ∧ TorusLipschitzWith (Lφ i) fun x => φ i x)
+    {h : C(Torus d, ℝ)} (hpos : ∀ x, 0 < 1 + h x)
+    (h0 : ∫ x, h x ∂(μ : Measure (Torus d)) = 0) (b : Par k) (c : ℝ)
+    (heq : ∀ x, Real.log (1 + h x) + centeredOperatorC A (μ : Measure (Torus d)) h x =
+      c + ∑ i, b i * φ i x) :
+    ∃ ρ : AbsoluteDensity d, (densityMeasure ρ : Measure (Torus d)) =
+        perturb (μ : Measure (Torus d)) (fun x => 1 + h x) ∧
+      ∀ drift : AbsoluteDrift A,
+        scalarDissipation A drift ρ ≤ ENNReal.ofReal ((∑ i, |b i| * Lφ i) ^ 2) := by
+  obtain ⟨ρ, hρ, -, hD⟩ :=
+    lip034_dissipation_core_with_score hA hmin hLφ hpos h0 b c heq
+  exact ⟨ρ, hρ, hD⟩
 
 end Core
 
@@ -409,6 +446,51 @@ theorem lip034_dissipation_bound (hA : LipschitzData A) {k : ℕ} {φ : Fin k �
 `h(a) = ∑ aᵢ φᵢ + y(a)` of the projected Euler equation, with positivity, the Euler expression
 `log (1 + h) + T h = c + ∑ bᵢ φᵢ`, the gradient `∇Ψ = b`, the identification of `Ψ` with the
 free-energy gap `G(q (1 + h))`, and the dissipation bound `D ≤ C_D ‖b‖²`. -/
+theorem lyapunov_schmidt_graph_for_equilibrium_with_uniqueness (hA : LipschitzData A) {k : ℕ}
+    {φ : Fin k → C(Torus d, ℝ)} (hφ : IsEquilibriumBasis A μ φ)
+    (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν) :
+    ∃ U : Set (Par k), IsOpen U ∧ (0 : Par k) ∈ U ∧ ∃ y : Par k → Ysub A μ,
+      y 0 = 0 ∧ fderiv ℝ y 0 = 0 ∧ ContDiffOn ℝ ∞ y U ∧
+      ∃ Wn : Set (Ysub A μ), IsOpen Wn ∧ (0 : Ysub A μ) ∈ Wn ∧
+      (∀ a ∈ U, y a ∈ Wn ∧ redMap hφ (a, y a) = 0) ∧
+      (∀ a ∈ U, ∀ w ∈ Wn, redMap hφ (a, w) = 0 → w = y a) ∧
+      (∀ a ∈ U, ∀ x, 0 < 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
+      ∃ (b : Par k → Par k) (c : Par k → ℝ),
+        ContDiffOn ℝ ∞ b U ∧ ContDiffOn ℝ ∞ c U ∧ b 0 = 0 ∧ fderiv ℝ b 0 = 0 ∧
+        (∀ a ∈ U, ∀ x, Real.log (1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) +
+          centeredOperatorC A (μ : Measure (Torus d)) (phiMap φ a + (y a : C(Torus d, ℝ))) x =
+          c a + ∑ i, b a i * φ i x) ∧
+        (∀ a ∈ U, HasGradientAt
+          (fun a => lip034_potential (A := A) (μ : Measure (Torus d))
+            (phiMap φ a + (y a : C(Torus d, ℝ)))) (b a) a) ∧
+        ∃ C_D : ℝ, 0 ≤ C_D ∧ ∃ ρ : Par k → AbsoluteDensity d, ∀ a ∈ U,
+          (densityMeasure (ρ a) : Measure (Torus d)) = perturb (μ : Measure (Torus d))
+              (fun x => 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
+          ((scalarGap A (ρ a) : NNReal) : ℝ) = lip034_potential (A := A) (μ : Measure (Torus d))
+              (phiMap φ a + (y a : C(Torus d, ℝ))) ∧
+          HasGradientAt (fun a => ((scalarGap A (ρ a) : NNReal) : ℝ)) (b a) a ∧
+          ∀ drift : AbsoluteDrift A,
+            scalarDissipation A drift (ρ a) ≤ ENNReal.ofReal (C_D * ‖b a‖ ^ 2) := by
+  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq, -, hpos, b, c, hbsm, hcsm, hb0, hbd, heq⟩ :=
+    lip034_euler_expansion_with_uniqueness hφ hmin
+  obtain ⟨C_D, hC, ρ, hρ⟩ := lip034_dissipation_bound hA hφ hmin h0U y hpos b c heq
+  have hgrad : ∀ a ∈ U, HasGradientAt
+      (fun a => lip034_potential (A := A) (μ : Measure (Torus d))
+        (phiMap φ a + (y a : C(Torus d, ℝ)))) (b a) a := fun a ha =>
+    lip034_potential_gradient_of_euler hφ hUo y hsm hpos b c heq ha
+  have hgap : ∀ a ∈ U, ((scalarGap A (ρ a) : NNReal) : ℝ) = lip034_potential (A := A)
+      (μ : Measure (Torus d)) (phiMap φ a + (y a : C(Torus d, ℝ))) := fun a ha => by
+    have h0 : ∫ x, (phiMap φ a + (y a : C(Torus d, ℝ))) x ∂(μ : Measure (Torus d)) = 0 := by
+      have := lip034_int_phi_add hφ (y a).2 a
+      rwa [intCLM_apply] at this
+    exact lip034_gap_eq_potential hmin (hpos a ha) h0 (ρ a) (hρ a ha).1
+  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq, hpos, b, c, hbsm, hcsm, hb0, hbd, heq, hgrad, C_D, hC, ρ,
+    fun a ha => ⟨(hρ a ha).1, hgap a ha, ?_, (hρ a ha).2⟩⟩
+  refine (hgrad a ha).congr_of_eventuallyEq ?_
+  filter_upwards [hUo.mem_nhds ha] with a' ha'
+  exact hgap a' ha'
+
+/-- The equilibrium graph, with its original interface. -/
 theorem lyapunov_schmidt_graph_for_equilibrium (hA : LipschitzData A) {k : ℕ}
     {φ : Fin k → C(Torus d, ℝ)} (hφ : IsEquilibriumBasis A μ φ)
     (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν) :
@@ -431,24 +513,11 @@ theorem lyapunov_schmidt_graph_for_equilibrium (hA : LipschitzData A) {k : ℕ}
           HasGradientAt (fun a => ((scalarGap A (ρ a) : NNReal) : ℝ)) (b a) a ∧
           ∀ drift : AbsoluteDrift A,
             scalarDissipation A drift (ρ a) ≤ ENNReal.ofReal (C_D * ‖b a‖ ^ 2) := by
-  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, -, hpos, b, c, hbsm, hcsm, hb0, hbd, heq⟩ :=
-    lip034_euler_expansion hφ hmin
-  obtain ⟨C_D, hC, ρ, hρ⟩ := lip034_dissipation_bound hA hφ hmin h0U y hpos b c heq
-  have hgrad : ∀ a ∈ U, HasGradientAt
-      (fun a => lip034_potential (A := A) (μ : Measure (Torus d))
-        (phiMap φ a + (y a : C(Torus d, ℝ)))) (b a) a := fun a ha =>
-    lip034_potential_gradient_of_euler hφ hUo y hsm hpos b c heq ha
-  have hgap : ∀ a ∈ U, ((scalarGap A (ρ a) : NNReal) : ℝ) = lip034_potential (A := A)
-      (μ : Measure (Torus d)) (phiMap φ a + (y a : C(Torus d, ℝ))) := fun a ha => by
-    have h0 : ∫ x, (phiMap φ a + (y a : C(Torus d, ℝ))) x ∂(μ : Measure (Torus d)) = 0 := by
-      have := lip034_int_phi_add hφ (y a).2 a
-      rwa [intCLM_apply] at this
-    exact lip034_gap_eq_potential hmin (hpos a ha) h0 (ρ a) (hρ a ha).1
-  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, hpos, b, c, hbsm, hcsm, hb0, hbd, heq, hgrad, C_D, hC, ρ,
-    fun a ha => ⟨(hρ a ha).1, hgap a ha, ?_, (hρ a ha).2⟩⟩
-  refine (hgrad a ha).congr_of_eventuallyEq ?_
-  filter_upwards [hUo.mem_nhds ha] with a' ha'
-  exact hgap a' ha'
+  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq,
+    hpos, b, c, hbsm, hcsm, hb0, hbd, heq, hgrad, C_D, hC, ρ, hρ⟩ :=
+      lyapunov_schmidt_graph_for_equilibrium_with_uniqueness hA hφ hmin
+  exact ⟨U, hUo, h0U, y, hy0, hyd, hsm, hpos, b, c, hbsm, hcsm, hb0, hbd,
+    heq, hgrad, C_D, hC, ρ, hρ⟩
 
 end Assemble
 

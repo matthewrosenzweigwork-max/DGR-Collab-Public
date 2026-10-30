@@ -1,0 +1,9 @@
+import DGPS.Structural.T06Comparison
+#check DGPS.Structural.frozenGibbs_scalar_species_comparison
+#print axioms DGPS.Structural.frozenGibbs_scalar_species_comparison
+#check DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound
+#print axioms DGPS.Structural.scalarSpecies_ratio_le_amplitude_bound
+#check DGPS.Structural.scalarRate_le_amplitude_bound
+#print axioms DGPS.Structural.scalarRate_le_amplitude_bound
+#check DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS
+#print axioms DGPS.Structural.speciesRate_ge_harmonicMean_frozenLS

@@ -1,0 +1,14 @@
+{
+  "initial_runner_sha256": "a993a3218e841f6c0f6b2f11eecfd4181796e9276836638c08cb0e6b413992b0",
+  "initial_runner_bytes": 4779,
+  "initial_runner_checks": [
+    "dgps-root-current-v1",
+    "dgps-root-current-v2"
+  ],
+  "progress_runner_sha256": "54eb76554cb25c0eb6d02cc465398945ffdb06a3176bd87bea97fbf34615c385",
+  "progress_runner_checks": [
+    "combined-release-current-v1",
+    "combined-release-current-v2"
+  ],
+  "difference": "Added periodic process/resource diagnostic progress only; commands, limits, termination, exit/log/source/object receipts unchanged."
+}

@@ -1,0 +1,120 @@
+{
+  "attempts": {
+    "combined-release-current-v1": "Resolved infrastructure failure: sparse first Lean path shadowed DGPS descendant namespace. Only isolated boundary promotion changed; production source unchanged.",
+    "combined-release-current-v2": "PASS",
+    "dgps-root-current-v1": "Resolved infrastructure failure: required module-system sidecar not exposed. Original failed receipt/log retained.",
+    "dgps-root-current-v2": "PASS"
+  },
+  "excluded_claims": [
+    "all project sources freshly rebuilt",
+    "new whole-repository Comparator/Nanoda audit",
+    "fresh singular-entrypoint replay",
+    "author acceptance",
+    "manuscript certification"
+  ],
+  "fresh_gate_status": "PASS",
+  "original_artifact_bindings": [
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/dgps-root-current-v1.json",
+      "sha256": "9f3f933a32f1dea8baf76c3610f58fdbbea9de98762798531943da31a3563e25",
+      "source_artifact": "receipts/dgps-root-current-v1.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/dgps-root-current-v1.log",
+      "sha256": "7c9f9a976c4dfce158c56ffcc7195be316acf4ccf3e4e032200849de1ab8e050",
+      "source_artifact": "receipts/dgps-root-current-v1.log"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/combined-release-current-v1.json",
+      "sha256": "fdad9dc93fe838a01e3c7843b3b3dd9c3ec80b0d9ccd123271884f41023ab7e6",
+      "source_artifact": "receipts/combined-release-current-v1.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/combined-release-current-v1.log",
+      "sha256": "48b722a4ebd13c7f590e4e07a3f2f84c3949913b181fd3ab156bb365c4a5545e",
+      "source_artifact": "receipts/combined-release-current-v1.log"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/dgps-root-current-v2.json",
+      "sha256": "e3e4e3554c40d6f7bf246aad7bcf54b0e5a36efa5ea73915654b8a5e65a502e8",
+      "source_artifact": "receipts/dgps-root-current-v2.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/dgps-root-current-v2.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_artifact": "receipts/dgps-root-current-v2.log"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/combined-release-current-v2.json",
+      "sha256": "7987100527ed37faa0759ec65bf317d8e29932ee69e85d3c54364e7ebe096930",
+      "source_artifact": "receipts/combined-release-current-v2.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "receipts/combined-release-current-v2.log",
+      "sha256": "24485ae9f8ee1037eba931c8f25df14c5aaef4eef52eb2d36754bd85370cf284",
+      "source_artifact": "receipts/combined-release-current-v2.log"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "CombinedReleaseGate.lean",
+      "sha256": "16f890b3f9eb92502833f728ab579d42a346dcd360acb8344511adc09213ca4f",
+      "source_artifact": "CombinedReleaseGate.lean"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "PUBLIC_DECLARATIONS.json",
+      "sha256": "96c45a2f3487905c715d92af6e6c69741a6797133ef8bdd15b57ca860cd9e866",
+      "source_artifact": "PUBLIC_DECLARATIONS.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "PUBLIC_AXIOM_RESULTS.json",
+      "sha256": "124fcd70bbf01b420a162a1240d03cc3c92a7032b411f6cdd033c56bb3c4a715",
+      "source_artifact": "PUBLIC_AXIOM_RESULTS.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "STATIC_PROOF_TOKEN_SCAN.json",
+      "sha256": "e7ae644ebbfe9ab313581780c93d54a4483b484d2705b9f24488d2a711b366f7",
+      "source_artifact": "STATIC_PROOF_TOKEN_SCAN.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "PACKAGE_INTEGRITY.log",
+      "sha256": "9c9c2a61d4284c398d4a170abfd013ae2bac21332edca3a84acce372fd8116a1",
+      "source_artifact": "PACKAGE_INTEGRITY.log"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "BOUNDARY_FRESH_ROOT_PROMOTION.json",
+      "sha256": "d3057ec7837407df8f81ece513e88f98f0e5fbe73d4dab65a1875df173be92a6",
+      "source_artifact": "BOUNDARY_FRESH_ROOT_PROMOTION.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "CHECKER_VERSION_BINDING.json",
+      "sha256": "07be4b4545bb9517bc7e300564e2833afdd018ccc182a6ff8681f84a6ff3ce6c",
+      "source_artifact": "CHECKER_VERSION_BINDING.json"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "guarded_check_initial.py",
+      "sha256": "a993a3218e841f6c0f6b2f11eecfd4181796e9276836638c08cb0e6b413992b0",
+      "source_artifact": "guarded_check_initial.py"
+    },
+    {
+      "byte_for_byte": true,
+      "distributed_path": "guarded_check.py",
+      "sha256": "54eb76554cb25c0eb6d02cc465398945ffdb06a3176bd87bea97fbf34615c385",
+      "source_artifact": "guarded_check.py"
+    }
+  ]
+}

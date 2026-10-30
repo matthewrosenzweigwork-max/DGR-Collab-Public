@@ -1,0 +1,43 @@
+{
+  "label": "combined-release-current-v1",
+  "command": [
+    "/workspace/shared/dgr-build-tools/lean-4.35.0-rc3-linux/bin/lean",
+    "--threads=1",
+    "--trust=0",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "--root=/workspace/shared/t01-release-verification-20261030T1737Z",
+    "-o",
+    "/workspace/shared/t01-release-verification-20261030T1737Z/fresh-output/lib/lean/CombinedReleaseGate.olean",
+    "/workspace/shared/t01-release-verification-20261030T1737Z/CombinedReleaseGate.lean"
+  ],
+  "lean_path": "/workspace/shared/t01-release-verification-20261030T1737Z/fresh-output/lib/lean:/workspace/shared/t01-release-verification-20261030T1737Z/boundary/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/Qq/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/aesop/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/batteries/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/plausible/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "source_sha256": "16f890b3f9eb92502833f728ab579d42a346dcd360acb8344511adc09213ca4f",
+  "source_root": "/workspace/shared/t01-release-verification-20261030T1737Z",
+  "compiler_wrapper_sha256": "975a2bc44a20dd7c696c2722e3006677d6ccea51f731cfef37b6d1f274a0b178",
+  "compiler_binary_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "limits": {
+    "deadline_seconds": 300,
+    "rss_kib": 6291456,
+    "memory_floor_kib": 2097152,
+    "disk_floor_bytes": 838860800
+  },
+  "psi_available": false,
+  "preflight": {
+    "mem_available_kib": 8011664,
+    "disk_free_bytes": 882106368,
+    "pressure": {}
+  },
+  "started_utc": "2026-10-30T18:34:58.662464+00:00",
+  "pid": 7,
+  "exit_code": 1,
+  "duration_seconds": 0.7519737859838642,
+  "peak_rss_kib": 147456,
+  "log_sha256": "48b722a4ebd13c7f590e4e07a3f2f84c3949913b181fd3ab156bb365c4a5545e",
+  "source_unchanged": true,
+  "postflight": {
+    "mem_available_kib": 8015684,
+    "disk_free_bytes": 882081792,
+    "pressure": {}
+  }
+}

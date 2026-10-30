@@ -1,0 +1,10 @@
+{
+  "utc": "2026-10-30T18:35:47.735506+00:00",
+  "reason": "Lean package-prefix resolution requires one complete DGPS object namespace; promote byte-identical fresh root in isolated boundary rather than shadowing descendants with a sparse first path.",
+  "old_target": "/workspace/shared/t01-release-verification-20261030T1737Z/inputs/lib/lean/DGPS.olean",
+  "new_target": "/workspace/shared/t01-release-verification-20261030T1737Z/fresh-output/lib/lean/DGPS.olean",
+  "old_sha256": "98e87a6de8cbf61d1bcc6ff4ae39448885d56d73b2f8adbd8fd6f1f164648310",
+  "new_sha256": "98e87a6de8cbf61d1bcc6ff4ae39448885d56d73b2f8adbd8fd6f1f164648310",
+  "fresh_receipt": "receipts/dgps-root-current-v2.json",
+  "lean_path": "/workspace/shared/t01-release-verification-20261030T1737Z/boundary/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/Qq/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/aesop/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/batteries/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/plausible/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/proofwidgets/.lake/build/lib/lean"
+}

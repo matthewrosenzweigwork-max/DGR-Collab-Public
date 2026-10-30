@@ -195,6 +195,48 @@ Lyapunov–Schmidt graph `h(a) = ∑ aᵢ φᵢ + y(a)` of LIP034 (with `y 0 = 0
 `a = 0` contained in the graph neighbourhood: for every `a` in that ball the potential
 `lip034_potential` vanishes and the density `q (1 + h(a))` has zero free-energy gap, i.e. it is a
 free-energy minimizer. -/
+theorem flat_reduced_energy_from_positive_nonlinear_rate_with_uniqueness (hA : LipschitzData A) {k : ℕ}
+    {φ : Fin k → C(Torus d, ℝ)} (hφ : IsEquilibriumBasis A μ φ)
+    (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν)
+    (drift : AbsoluteDrift A) {r : ℝ} (hr : 0 < r) (hrate : ENNReal.ofReal r < scalarRate A drift) :
+    ∃ U : Set (Par k), IsOpen U ∧ (0 : Par k) ∈ U ∧ ∃ y : Par k → Ysub A μ,
+      y 0 = 0 ∧ fderiv ℝ y 0 = 0 ∧ ContDiffOn ℝ ∞ y U ∧
+      ∃ Wn : Set (Ysub A μ), IsOpen Wn ∧ (0 : Ysub A μ) ∈ Wn ∧
+      (∀ a ∈ U, y a ∈ Wn ∧ redMap hφ (a, y a) = 0) ∧
+      (∀ a ∈ U, ∀ w ∈ Wn, redMap hφ (a, w) = 0 → w = y a) ∧
+      (∀ a ∈ U, ∀ x, 0 < 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
+      ∃ ε : ℝ, 0 < ε ∧ Metric.ball (0 : Par k) ε ⊆ U ∧
+        ∀ a ∈ Metric.ball (0 : Par k) ε,
+          lip034_potential (A := A) (μ : Measure (Torus d))
+            (phiMap φ a + (y a : C(Torus d, ℝ))) = 0 ∧
+          ∃ ρ : AbsoluteDensity d,
+            (densityMeasure ρ : Measure (Torus d)) = perturb (μ : Measure (Torus d))
+              (fun x => 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
+            scalarGap A ρ = 0 := by
+  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq, hpos, b, c, hbsm, hcsm, hb0, hbd, heq, hgrad, C_D, hC,
+    ρ, hρ⟩ := lyapunov_schmidt_graph_for_equilibrium_with_uniqueness hA hφ hmin
+  set Ψ : Par k → ℝ := fun a => lip034_potential (A := A) (μ : Measure (Torus d))
+    (phiMap φ a + (y a : C(Torus d, ℝ))) with hΨdef
+  have hgap : ∀ a ∈ U, ((scalarGap A (ρ a) : NNReal) : ℝ) = Ψ a := fun a ha => (hρ a ha).2.1
+  have hnn : ∀ a ∈ U, 0 ≤ Ψ a := fun a ha => by rw [← hgap a ha]; exact NNReal.coe_nonneg _
+  have hbound : ∀ a ∈ U, 2 * r * Ψ a ≤ C_D * ‖b a‖ ^ 2 := fun a ha => by
+    rw [← hgap a ha]
+    exact lip035_rate_bound drift hr hrate (ρ a) (by positivity) ((hρ a ha).2.2.2 drift)
+  have hCpos : 0 < C_D + 1 := by linarith
+  have hrate' : ∀ a ∈ U, (2 * r / (C_D + 1)) * Ψ a ≤ ‖b a‖ ^ 2 := fun a ha => by
+    rw [div_mul_eq_mul_div, div_le_iff₀ hCpos]
+    have := hbound a ha
+    nlinarith [sq_nonneg ‖b a‖]
+  obtain ⟨ε, hε, hsub, hflat⟩ := lip035_flat_of_gradient_lower_bound (Ψ := Ψ) (b := b) hUo h0U
+    hbsm hb0 hbd hgrad hnn (by positivity) hrate'
+  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq, hpos, ε, hε, hsub, fun a ha => ⟨hflat a ha, ?_⟩⟩
+  have haU := hsub ha
+  refine ⟨ρ a, (hρ a haU).1, ?_⟩
+  have := hgap a haU
+  rw [hflat a ha] at this
+  exact_mod_cast this
+
+/-- Flatness of the reduced energy, with its original interface. -/
 theorem flat_reduced_energy_from_positive_nonlinear_rate (hA : LipschitzData A) {k : ℕ}
     {φ : Fin k → C(Torus d, ℝ)} (hφ : IsEquilibriumBasis A μ φ)
     (hmin : ∀ ν : ProbabilityMeasure (Torus d), freeEnergy A μ ≤ freeEnergy A ν)
@@ -210,28 +252,10 @@ theorem flat_reduced_energy_from_positive_nonlinear_rate (hA : LipschitzData A) 
             (densityMeasure ρ : Measure (Torus d)) = perturb (μ : Measure (Torus d))
               (fun x => 1 + (phiMap φ a + (y a : C(Torus d, ℝ))) x) ∧
             scalarGap A ρ = 0 := by
-  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, hpos, b, c, hbsm, hcsm, hb0, hbd, heq, hgrad, C_D, hC,
-    ρ, hρ⟩ := lyapunov_schmidt_graph_for_equilibrium hA hφ hmin
-  set Ψ : Par k → ℝ := fun a => lip034_potential (A := A) (μ : Measure (Torus d))
-    (phiMap φ a + (y a : C(Torus d, ℝ))) with hΨdef
-  have hgap : ∀ a ∈ U, ((scalarGap A (ρ a) : NNReal) : ℝ) = Ψ a := fun a ha => (hρ a ha).2.1
-  have hnn : ∀ a ∈ U, 0 ≤ Ψ a := fun a ha => by rw [← hgap a ha]; exact NNReal.coe_nonneg _
-  have hbound : ∀ a ∈ U, 2 * r * Ψ a ≤ C_D * ‖b a‖ ^ 2 := fun a ha => by
-    rw [← hgap a ha]
-    exact lip035_rate_bound drift hr hrate (ρ a) (by positivity) ((hρ a ha).2.2.2 drift)
-  have hCpos : 0 < C_D + 1 := by linarith
-  have hrate' : ∀ a ∈ U, (2 * r / (C_D + 1)) * Ψ a ≤ ‖b a‖ ^ 2 := fun a ha => by
-    rw [div_mul_eq_mul_div, div_le_iff₀ hCpos]
-    have := hbound a ha
-    nlinarith [sq_nonneg ‖b a‖]
-  obtain ⟨ε, hε, hsub, hflat⟩ := lip035_flat_of_gradient_lower_bound (Ψ := Ψ) (b := b) hUo h0U
-    hbsm hb0 hbd hgrad hnn (by positivity) hrate'
-  refine ⟨U, hUo, h0U, y, hy0, hyd, hsm, hpos, ε, hε, hsub, fun a ha => ⟨hflat a ha, ?_⟩⟩
-  have haU := hsub ha
-  refine ⟨ρ a, (hρ a haU).1, ?_⟩
-  have := hgap a haU
-  rw [hflat a ha] at this
-  exact_mod_cast this
+  obtain ⟨U, hUo, h0U, y, hy0, hyd, hsm, Wn, hWno, h0Wn, hgr, huniq,
+    hpos, ε, hε, hsub, hflat⟩ :=
+      flat_reduced_energy_from_positive_nonlinear_rate_with_uniqueness hA hφ hmin drift hr hrate
+  exact ⟨U, hUo, h0U, y, hy0, hyd, hsm, hpos, ε, hε, hsub, hflat⟩
 
 end Assemble
 

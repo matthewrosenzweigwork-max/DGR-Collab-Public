@@ -1,0 +1,43 @@
+{
+  "label": "dgps-root-current-v1",
+  "command": [
+    "/workspace/shared/dgr-build-tools/lean-4.35.0-rc3-linux/bin/lean",
+    "--threads=1",
+    "--trust=0",
+    "-DautoImplicit=false",
+    "-DrelaxedAutoImplicit=false",
+    "--root=/workspace/shared/t01-release-verification-20261030T1737Z/packaging/final-staging/lean/Campaign",
+    "-o",
+    "/workspace/shared/t01-release-verification-20261030T1737Z/fresh-output/lib/lean/DGPS.olean",
+    "/workspace/shared/t01-release-verification-20261030T1737Z/packaging/final-staging/lean/Campaign/DGPS.lean"
+  ],
+  "lean_path": "/workspace/shared/t01-release-verification-20261030T1737Z/fresh-output/lib/lean:/workspace/shared/t01-release-verification-20261030T1737Z/boundary/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/Qq/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/aesop/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/batteries/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/importGraph/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/mathlib/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/plausible/.lake/build/lib/lean:/workspace/shared/dgr-build-checks/dgps/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "source_sha256": "fb01d6992af32ea96e4905319310335ab6a3f9de7c4a9b65a0a765a7ed6e6d25",
+  "source_root": "/workspace/shared/t01-release-verification-20261030T1737Z/packaging/final-staging/lean/Campaign",
+  "compiler_wrapper_sha256": "975a2bc44a20dd7c696c2722e3006677d6ccea51f731cfef37b6d1f274a0b178",
+  "compiler_binary_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "limits": {
+    "deadline_seconds": 300,
+    "rss_kib": 6291456,
+    "memory_floor_kib": 2097152,
+    "disk_floor_bytes": 838860800
+  },
+  "psi_available": false,
+  "preflight": {
+    "mem_available_kib": 8010912,
+    "disk_free_bytes": 885702656,
+    "pressure": {}
+  },
+  "started_utc": "2026-10-30T18:28:55.462288+00:00",
+  "pid": 7,
+  "exit_code": 1,
+  "duration_seconds": 20.789072327985195,
+  "peak_rss_kib": 1390756,
+  "log_sha256": "7c9f9a976c4dfce158c56ffcc7195be316acf4ccf3e4e032200849de1ab8e050",
+  "source_unchanged": true,
+  "postflight": {
+    "mem_available_kib": 7925372,
+    "disk_free_bytes": 885678080,
+    "pressure": {}
+  }
+}
