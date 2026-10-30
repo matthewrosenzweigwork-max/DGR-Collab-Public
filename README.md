@@ -6,7 +6,7 @@ The catalogue is organized by research theme. Each project has one home, with it
 
 ## Diffusive log/Riesz gases in the Hilbert–Schmidt regime
 
-- **[Sharp mean-field estimates](projects/hilbert-schmidt-mean-field/)** — accepted Lean release with its precise coverage and correspondence qualifications. [Existing preprint](https://arxiv.org/abs/2609.02743); a surgically revised manuscript will be added after author review.
+- **[Sharp mean-field estimates](projects/hilbert-schmidt-mean-field/)** — [revised manuscript (clean PDF)](projects/hilbert-schmidt-mean-field/manuscript/paper-revised.pdf), alongside the accepted Lean release with its precise coverage and correspondence qualifications. [Original preprint](https://arxiv.org/abs/2609.02743).
 - **[Sharp two-sided size of chaos](projects/hilbert-schmidt-size-of-chaos/)** — quantitative equilibrium chaos estimates. [Draft PDF](projects/hilbert-schmidt-size-of-chaos/manuscript/paper.pdf).
 - **[Dynamical local propagation of chaos](projects/hilbert-schmidt-local-chaos/)** — local estimates for diffusive log/Riesz dynamics. [Draft PDF](projects/hilbert-schmidt-local-chaos/manuscript/paper.pdf).
 
