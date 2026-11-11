@@ -1,0 +1,36 @@
+{
+  "machine_status": "machine_checks_passed",
+  "target_count": 5,
+  "fresh_project_objects": 52,
+  "strict_nanoda_declarations": 69638,
+  "archive": {
+    "filename": "loggas-public-package-complete-evidence-20261110.tar.gz",
+    "sha256": "20a31a2ca999dd19f32ff5e579396a8cbfcc7292240adb1c3a61e396309aa151",
+    "bytes": 181771151,
+    "machine_receipt_sha256": "e45f660455d356fd298f660c8437c7a8a90ac5dd549d7ba0b4261e318c5a68e6",
+    "source_manifest_sha256": "11e98d656f2b5d54d041190416abc3cf32250797011922fa76deb4ffaabbbdca",
+    "raw_exports_included": true,
+    "bound_evidence_artifacts_verified": 37
+  },
+  "archive_members": {
+    "machine_receipt": "evidence/receipt.json",
+    "machine_logs": "evidence/logs/",
+    "raw_exports": "evidence/*.ndjson",
+    "source_package": "loggas-public-package.tar.gz",
+    "reviewed_toolchain_sources": "toolchain-review/"
+  },
+  "availability": "Complete archive prepared as a separate release artifact; publication pending. Source distribution includes the exact receipt and selected logs.",
+  "historical_archive": {
+    "file": "loggas-independent-c8c7191-20261110-01-full-evidence.tar.gz",
+    "sha256": "b002ea8e09662c39ce6ceb89701421eb947fe85a82ee509adcc7c1af7b5ed314",
+    "bytes": 181419499,
+    "contains_raw_exports": true,
+    "verified_export_hashes": {
+      "forbidden-axiom.ndjson": "e37a2b21d056c8471f86d666057996062c6f725d3040df554e5953978ca30e0a",
+      "challenge.ndjson": "25a32e131c86958dc1e4ba48a4082ecd50d1209bdab6e32e065a13e375bd4dd1",
+      "wrong-statement.ndjson": "248dff5e0cf61c5941764f2ead73c8347cd7b2e3d3b542c23f0ef0774fae8bad",
+      "solution.ndjson": "36b084c1b9657dc294ea43485f626ff3d22edec3699854de3cc4d9d0c01841df"
+    }
+  },
+  "scope": "Fresh packaged project build with pinned dependency artifacts reused; same-run source/object bindings; selected-target Comparator and strict Nanoda replay. No whole-Mathlib rebuild, independent OS administration, or human certification."
+}

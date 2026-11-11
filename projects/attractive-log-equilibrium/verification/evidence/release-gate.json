@@ -1,0 +1,10 @@
+{
+  "status": "release_checks_passed",
+  "errors": [],
+  "scope": "Recorded machine evidence and source-bound reviews; not a new replay or publication approval.",
+  "reviewer_ids": [
+    "codex-fresh-context-lean-verification-20261110-01",
+    "fresh-context-ai-/root/fidelity_review-2026-11-10"
+  ],
+  "machine_receipt_sha256": "e45f660455d356fd298f660c8437c7a8a90ac5dd549d7ba0b4261e318c5a68e6"
+}

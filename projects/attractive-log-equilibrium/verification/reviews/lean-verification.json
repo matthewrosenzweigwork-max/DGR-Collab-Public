@@ -1,0 +1,143 @@
+{
+  "reviewer_id": "codex-fresh-context-lean-verification-20261110-01",
+  "role": "lean-verification",
+  "verdict": "passed",
+  "review_stage": "Final source-bound machine evidence reviewed",
+  "recorded_utc": "2026-11-10T17:21:45.563813+00:00",
+  "scope": "Technical acceptance of final packaged selected-five-target run and evidence gate, subject to stated trust and review limitations; no publication approval.",
+  "targets": [
+    "LogGasPaper.main",
+    "LogGasPaper.kernel_exists",
+    "LogGasChallenge.principal",
+    "LogGasChallenge.bulk",
+    "LogGasPaper.main_with_domain"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "machine_receipt_sha256": "e45f660455d356fd298f660c8437c7a8a90ac5dd549d7ba0b4261e318c5a68e6",
+  "source_manifest_sha256": "11e98d656f2b5d54d041190416abc3cf32250797011922fa76deb4ffaabbbdca",
+  "blocking_findings": [],
+  "required_fixes": [],
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "info",
+      "finding": "Final controlling package run passed all required machine checks and three substantive rejection controls.",
+      "evidence": [
+        "evidence/receipt.json",
+        "evidence/logs/project-build.log",
+        "evidence/logs/official-comparator-nanoda.log",
+        "evidence/logs/strict-nanoda.log"
+      ],
+      "detail": "Build succeeded with 52 fresh project objects. Official Comparator reported both Nanoda and Lean default kernel acceptance. Strict Nanoda checked 69638 declarations with no errors. Controls rejected missing target, changed main_with_domain statement, and forbidden axiom for the expected reasons."
+    },
+    {
+      "id": "F2",
+      "severity": "info",
+      "finding": "Source, objects, exports, checker configs, scripts and receipt identity are adequately bound for this scoped run.",
+      "evidence": [
+        "evidence/source-manifest.json",
+        "evidence/fresh-object-bindings.json",
+        "evidence/control-object-bindings.json",
+        "evidence/receipt.json",
+        "loggas-public-package.tar.gz"
+      ],
+      "detail": "Independently verified all 37 bound artifact hashes/sizes both remotely and locally, all 67 source files in archived source package/current public tree, and the 52 actual remote project objects against their immediate post-build bindings. Production export hash is 36b084c1b9657dc294ea43485f626ff3d22edec3699854de3cc4d9d0c01841df."
+    },
+    {
+      "id": "F3",
+      "severity": "info",
+      "finding": "Actual toolchain pin confirmed from final version log and recorded binary hashes.",
+      "evidence": [
+        "evidence/logs/lean-version.log",
+        "evidence/receipt.json"
+      ],
+      "detail": "Lean 4.36.0-rc1 at c9afcddf514a6772bd4d649f7cfc04eff0b9f15e. All five binaries match the prior pinned installation. Source manifest hash matches final receipt, archived copy, and local public package."
+    },
+    {
+      "id": "F4",
+      "severity": "info",
+      "finding": "Public checker rejects stale sources, nonpassing/missing checks, changed or absent bound evidence, missing/stale reviews, and a verification review bound to another receipt.",
+      "evidence": [
+        "verification/verify_release.py",
+        "verification/check_package.py",
+        "verification/check_release.py"
+      ],
+      "detail": "Code reviewed before run and after two binding fixes. Final exports are rehashed against immediate hashes; build config, control objects and generated checker configs are checked against originals; final evidence map binds all artifacts. Local source-integrity checker returned PASS with 67 files. Reviewer did not independently execute the synthetic test suite reported by coordinator."
+    },
+    {
+      "id": "F5",
+      "severity": "info",
+      "finding": "Selected target semantics and permitted-axiom policy are enforced by the official Comparator and strict independent kernel.",
+      "evidence": [
+        "evidence/official-comparator-nanoda.json",
+        "evidence/strict-nanoda.json",
+        "toolchain-review/Check.lean",
+        "toolchain-review/Compare.lean"
+      ],
+      "detail": "Exactly five target names; permitted axioms propext, Classical.choice, Quot.sound. Installed Compare.lean recursively compares non-target definitions in target type closure. Check.lean launches kernels in sandbox; trusted frontend parses NDJSON outside sandbox. Direct strict Nanoda disallows unlisted axioms even when unused."
+    }
+  ],
+  "limitations": [
+    "Fresh-context AI technical review, not independent human certification or independent OS administration. Mathematical/manuscript fidelity is delegated to the separate fidelity review and is outside this verdict.",
+    "Pinned dependency build artifacts and installed toolchain binaries are trusted and reused; no all-fresh Mathlib rebuild, dependency-wide audit, or independent toolchain bootstrap is claimed. Installed checker source-to-binary correspondence is trusted.",
+    "Reviewer monitored and audited recorded execution and independently rehashed sources/artifacts; reviewer did not launch a separate Lean/Nanoda replay. Raw NDJSON was inspected for byte integrity, size and metadata headers, not manually typechecked term by term.",
+    "Project builds/exports and direct strict Nanoda have read-only root with explicit writable build area and no network. Comparator frontend is trusted outside sandbox; its kernel subprocesses use the installed official sandbox implementation. This is not an independently administered environment.",
+    "Final evidence archive is prepared and hashed but publication is pending. Historical receipts retain their original incomplete/failed states and are not the controlling record for this release."
+  ],
+  "resolved_findings": [
+    {
+      "id": "G1",
+      "resolution": "Verifier now rehashes every export plus size at completion; release checker validates each export and complete artifact map."
+    },
+    {
+      "id": "G2",
+      "resolution": "Receipt binds complete evidence artifact hash/size map; control object hashes are captured immediately and checked at finalization; build configuration and fresh object map are compared to original in-memory values."
+    }
+  ],
+  "reviewed_package_files": {
+    "verification/verify_release.py": "8a2ee18860476d8a2666eb68477bda0d55d2e9dc8432cedc6b7b1097dc53d198",
+    "verification/check_package.py": "258d39938e55faf06d332211969216ec840bc4cf9f8328abbe825ef7064dd7ec",
+    "verification/check_release.py": "127a9ba80ffe02d71ce8fd75276b8c1520782655be33a390a558b5d37851ed30",
+    "verification/source-manifest.json": "11e98d656f2b5d54d041190416abc3cf32250797011922fa76deb4ffaabbbdca",
+    "verification/README.md": "67cd8b18a7f7fc2199efa0d2b5ce887e92470c5a5d2ac304e590259c1b20492b",
+    "verification/SCOPE.md": "caed2e0a34b7d51eb09b2568505f5869d941887dfca429f8efa0c81bcaa6722d",
+    "lean/lakefile.toml": "b8ba5799a01b87d25ee7302da1fee1db3eb6db76560f002554a0c842dad86132",
+    "lean/lake-manifest.json": "42d3c10a6b18e7c1929b33209c9f9b43ff67f5c5f4a86e14df678df935a4b7ef",
+    "lean/lean-toolchain": "d581a24b57a4ae9e0b2132ca8ac7cc3ac336a9fc2751fe6b29414e2d434d54c4",
+    "lean/PaperDomainChallenge.lean": "ead8cb3c95fdbd3f14e20f24423bd82e57995f3c2cfd1c58d3b42585dd2d7204",
+    "lean/PaperDomainSolution.lean": "110b0d4d82fbde1b00c241bb5fb55d1a946616ac9d89987d8fc700296a6cdbec"
+  },
+  "inspection_method": "File map includes directly inspected scripts/configs/logs and structurally or byte-hash-validated evidence. Hash inclusion does not imply manual proof-term audit. Full raw exports were locally hashed and their version headers inspected.",
+  "historical_archive": {
+    "sha256": "b002ea8e09662c39ce6ceb89701421eb947fe85a82ee509adcc7c1af7b5ed314",
+    "bytes": 181419499,
+    "all_four_export_hashes_and_sizes_verified": true
+  },
+  "tool_hashes": {
+    "lean": "db7f559d05795e7af52e42bc966c90240a39dcb9712161c54c97afa546e20c00",
+    "lake": "42678ccbc2605e2f892540dc7236e009fdd1224e823d104dfd72725d2f1a52d2",
+    "leanexport": "8298d4412a1f8986b5dbfd1d9925211778d8d320fc47b72040c8fdfdd5b603d5",
+    "leanchecker": "2b2ff08805ace61c935b023f8114ac3f7f1d3bc79cb4e8c47ef7801a5af58798",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "reviewer": "Fresh-context AI technical reviewer; did not author production changes",
+  "evidence_index": "verification/evidence/index.json",
+  "machine_receipt": "verification/evidence/machine-receipt.json",
+  "evidence_reference_convention": "Source paths are relative to the public project root. evidence/* and toolchain-review/* refer to members of the full archive identified by verification/evidence/index.json.",
+  "evidence_archive": {
+    "filename": "loggas-public-package-complete-evidence-20261110.tar.gz",
+    "sha256": "20a31a2ca999dd19f32ff5e579396a8cbfcc7292240adb1c3a61e396309aa151",
+    "bytes": 181771151,
+    "availability": "Prepared separately; publication pending."
+  },
+  "original_review": {
+    "filename": "verification.json",
+    "sha256": "3ecdcd30e2bd49ced7c21c7a5628b23bda83d58d3ace22707bb951e8894ad4d2",
+    "availability": "Original full workspace review retained separately; public report preserves its technical conclusions and removes workstation paths."
+  },
+  "historical_evidence_note": "Historical incomplete gate and failed replay-postprocessing receipts are preserved. Supplemental historical completion is supported by its explicit-printing rerun. Final same-run package evidence controls this review."
+}

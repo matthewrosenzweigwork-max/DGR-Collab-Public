@@ -1,0 +1,30 @@
+name = "LogGas"
+defaultTargets = ["LogGas"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+
+[[lean_lib]]
+name = "LogGas"
+
+[[lean_lib]]
+name = "Challenge"
+
+[[lean_lib]]
+name = "Solution"
+
+[[lean_lib]]
+name = "VerificationAudit"
+
+[[lean_lib]]
+name = "PaperChallenge"
+
+[[lean_lib]]
+name = "PaperSolution"
+
+[[lean_lib]]
+name = "PaperDomainChallenge"
+
+[[lean_lib]]
+name = "PaperDomainSolution"

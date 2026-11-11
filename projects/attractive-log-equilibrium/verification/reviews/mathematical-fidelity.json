@@ -1,0 +1,414 @@
+{
+  "schema": 1,
+  "reviewer": {
+    "identity": "fresh-context AI agent /root/fidelity_review",
+    "human_certification": false,
+    "independence": "Started from actual Lean statements and manuscript text, without reading prior review conclusions. Author decisions were interpreted only as intended scope."
+  },
+  "created_utc": "2026-11-10T16:57:51.497754+00:00",
+  "public_target": "LogGasPaper.main_with_domain : LogGasPaper.PaperTheoremWithDomain",
+  "companion_target": "LogGasPaper.kernel_exists : LogGasPaper.LogKernelExists",
+  "verdict": "passed",
+  "statement_fidelity_verdict": "passed for the approved conditional, domain-explicit, Fourier-characterized scope",
+  "reason": "No blocking mathematical-fidelity findings within the explicitly conditional, domain-explicit, Fourier-characterized release scope. Final public scope documents resolve the documentation qualification. This semantic pass is not a claim of completed machine verification, publication approval, human certification, or full manuscript correspondence.",
+  "method": {
+    "actual_source_review": true,
+    "prior_review_conclusions_used": false,
+    "recompiled_lean": false,
+    "proof_correctness_boundary": "Inspected declaration meanings and key bridge proof architecture. Does not independently replay every proof or certify the Lean toolchain; use separate recorded fresh kernel checks for that purpose.",
+    "manuscript_review_extent": "Short-draft setting/theorem and relevant proof references; canonical introduction, principal statements, thresholds and functional domains. Not a full line-by-line proof audit of the entire canonical manuscript.",
+    "final_scope_document_review": "Read final project README, lean/README, verification/SCOPE, verification/README, verification/author-decisions; read catalogue entry; inspected public domain declarations and compared all original reviewed Lean/reference files byte-for-byte."
+  },
+  "findings": [
+    {
+      "id": "F1",
+      "status": "passed",
+      "topic": "Quantifiers and uniform constant",
+      "finding": "The public statement quantifies over natural dimensions d >= 2, real 0 < B <= 2d, and 0 <= beta_0 < B; it chooses a finite nonnegative real C before g, N >= 2 and beta in [0,beta_0]. This is the approved uniform conditional assertion, including beta=0. The natural subtraction in 2^(d-1) agrees with the intended exponent on d >= 2. No endpoint beta=B or range B>2d is claimed.",
+      "evidence": [
+        {
+          "file": "lean/PaperDomainChallenge.lean",
+          "lines": "15-18"
+        },
+        {
+          "file": "lean/PaperDomainSolution.lean",
+          "lines": "15-24"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "71-77"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_short_draft.tex",
+          "lines": "152-168"
+        }
+      ]
+    },
+    {
+      "id": "F2",
+      "status": "passed",
+      "topic": "Normalization and probability measure",
+      "finding": "Fin d -> AddCircle 1 with product normalized Haar is the unit torus with probability measure. Fourier characters have the negative exponent convention; latticeNorm is Euclidean. The zero coefficient is zero and nonzero coefficients are exactly 2^(d-1) pi^(d/2) Gamma(d/2)/(2 pi |k|)^d. The partition exponent is +beta/(2N) times the ordered distinct-pair sum. No volume, factor-of-two, or sign mismatch was found.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "45-82"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "121-128"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_short_draft.tex",
+          "lines": "134-150"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_I.tex",
+          "lines": "1281-1303"
+        }
+      ]
+    },
+    {
+      "id": "F3",
+      "status": "passed",
+      "topic": "Finite-entropy density domain",
+      "finding": "FiniteEntropyDensity requires a measurable real representative, nonnegativity almost everywhere, integral one, integrability of rho and of rho log rho. On a probability space, the lower bound t log t >= -1/e for t >= 0 makes integrability of rho log rho the usual finite-entropy condition. Lean totalization at log 0 is harmless because rho log rho=0 there; arbitrary negative values on a null set are harmless. Absolutely continuous finite-entropy probability measures admit representatives of this kind. The measure-to-density correspondence is a mathematical interpretation here, not a separately certified public bridge theorem.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "92-99"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_short_draft.tex",
+          "lines": "154-160"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_I.tex",
+          "lines": "398-417"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "status": "passed",
+      "topic": "Explicit integrability and totalized energy",
+      "finding": "LogHLSWithDomain universally demands absolute integrability of the full centered interaction integrand for every finite-entropy density, and the log-HLS inequality for that same density. It is not restricted to densities whose energy happened to be integrable. Thus the public theorem avoids interpreting a nonintegrable Bochner energy as zero. The original LogHLS-only result is retained as a distinct stronger implication with a weaker antecedent; main_with_domain correctly discards the integrability conjunct to invoke it.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "101-119"
+        },
+        {
+          "file": "lean/PaperDomainSolution.lean",
+          "lines": "20-24"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "134-145"
+        }
+      ]
+    },
+    {
+      "id": "F5",
+      "status": "passed",
+      "topic": "Extended partition integral",
+      "finding": "The partition is a nonnegative extended integral in ENNReal of a measurable exponential weight, so a divergent partition is top, not zero. Its comparison with a coerced NNReal constant asserts actual finiteness. The integral is over N independent uniform particles. The real-valued representative at collisions does not change the integral because the diagonal is null for this Haar measure in d >= 2.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "121-128"
+        },
+        {
+          "file": "lean/PaperDomainChallenge.lean",
+          "lines": "16-18"
+        },
+        {
+          "file": "lean/LogGas/MainTheorem.lean",
+          "lines": "26-30"
+        },
+        {
+          "file": "lean/LogGas/SpecAE.lean",
+          "lines": "95-130"
+        }
+      ]
+    },
+    {
+      "id": "F6",
+      "status": "passed",
+      "topic": "A.e. representatives and uniformity over kernels",
+      "finding": "Integrable kernels with the fixed coefficients agree almost everywhere by ae_eq_of_coeff_eq. Off-diagonal pair differences preserve Haar-null sets under independent sampling; partition_congr_ae transfers equality to the partition. Paper.paper_main actually uses these results to select C before all representatives. No pointwise evenness or a fixed diagonal value is silently required in the public target.",
+      "evidence": [
+        {
+          "file": "lean/LogGas/FourierUnique.lean",
+          "lines": "119-130"
+        },
+        {
+          "file": "lean/LogGas/SpecAE.lean",
+          "lines": "95-130"
+        },
+        {
+          "file": "lean/LogGas/PaperMain.lean",
+          "lines": "25-38"
+        }
+      ]
+    },
+    {
+      "id": "F7",
+      "status": "scope_limitation",
+      "topic": "Kernel existence versus HLS satisfiability",
+      "finding": "kernel_exists produces a measurable integrable real kernel with the prescribed Fourier coefficients for each d >= 2. It does not produce B or prove LogHLSWithDomain for that kernel. Paper.paper_main explicitly permits the vacuous case in which no normalized kernel satisfies the LogHLS assumption at the selected B. This is valid for the approved conditional scope but cannot substantiate an unconditional partition bound or nonempty admissible positive-coupling range. The finite-entropy density class itself is nonempty (rho=1).",
+      "evidence": [
+        {
+          "file": "lean/PaperSolution.lean",
+          "lines": "153-155"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "84-86"
+        },
+        {
+          "file": "lean/LogGas/KernelExists.lean",
+          "lines": "101-124"
+        },
+        {
+          "file": "lean/LogGas/PaperMain.lean",
+          "lines": "28-40"
+        }
+      ]
+    },
+    {
+      "id": "F8",
+      "status": "scope_limitation",
+      "topic": "Local logarithmic asymptotic",
+      "finding": "IsLogKernel uses Fourier coefficients and L1 integrability, not a local logarithmic estimate. LogAsymptotic is only a definition and does not occur in the public conclusion. The short draft states a local -log|x|+O(1) property, while this release deliberately uses the Fourier characterization. Neither existence nor the public partition theorem should be described as separately certifying that local asymptotic.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "79-90"
+        },
+        {
+          "file": "lean/PaperDomainChallenge.lean",
+          "lines": "15-18"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_short_draft.tex",
+          "lines": "134-142"
+        }
+      ]
+    },
+    {
+      "id": "F9",
+      "status": "scope_limitation",
+      "topic": "Short draft versus canonical Part I",
+      "finding": "The short draft theorem is the conditional uniform partition bound. The canonical Part I principal theorem also asserts threshold identity, determinant convergence with O(1/N) error, positive pressure, fixed-particle sharp integrability, and transported-reference results. Its functional-domain section supplies a finite-entropy energy argument and derives the macroscopic inequality from beta_gm. Those claims and bridges are outside the reviewed public Lean target. The approved public result is a conditional ingredient of canonical Part I, not certification of its full principal theorem or all Part I.",
+      "evidence": [
+        {
+          "file": "verification/reference/attractive_log_gas_short_draft.tex",
+          "lines": "152-169"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_I.tex",
+          "lines": "447-508"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_I.tex",
+          "lines": "1306-1337"
+        }
+      ]
+    },
+    {
+      "id": "F10",
+      "status": "passed",
+      "topic": "Metric distinction",
+      "finding": "The ambient Pi metric on Fin d -> AddCircle 1 is the maximum coordinate distance, whereas the defined radius is the Euclidean combination of circle distances. TorusBase proves dist <= radius <= sqrt(d)*dist; latticeNorm independently uses the Euclidean norm. The public theorem and its Fourier normalization do not use the ambient metric, and no exact local-asymptotic conclusion is advertised, so the distinction is not a defect in the approved statement.",
+      "evidence": [
+        {
+          "file": "lean/LogGas/TorusBase.lean",
+          "lines": "38-59"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "55-69"
+        },
+        {
+          "file": "lean/PaperDomainChallenge.lean",
+          "lines": "15-18"
+        }
+      ]
+    },
+    {
+      "id": "F11",
+      "status": "passed",
+      "topic": "Statement copies and imported definitions",
+      "finding": "Direct text comparisons after stripping introductory comments found the frozen mathematical declaration prefix in PaperSolution identical to PaperChallenge, and the PaperTheoremWithDomain declaration identical in the domain challenge and solution. The proof library uses corresponding torus, density, Fourier coefficient, energy and partition definitions; the public aliases main and kernel_exists expose the intended statements. Kernel checking/type equality is a separate verification obligation.",
+      "evidence": [
+        {
+          "file": "lean/PaperDomainChallenge.lean",
+          "lines": "15-18"
+        },
+        {
+          "file": "lean/PaperDomainSolution.lean",
+          "lines": "15-24"
+        },
+        {
+          "file": "lean/PaperSolution.lean",
+          "lines": "153-155"
+        },
+        {
+          "file": "lean/LogGas/TorusBase.lean",
+          "lines": "101-149"
+        },
+        {
+          "file": "lean/LogGas/SpecAE.lean",
+          "lines": "23-28"
+        }
+      ]
+    },
+    {
+      "id": "F12",
+      "status": "documentation_qualification",
+      "topic": "Historical comments in frozen statement",
+      "finding": "The frozen specification commentary says the kernel is not constructed, uniqueness is unavailable in Mathlib, and that existence is not proved here. As a statement-only file this is historical context, but copied verbatim into PaperSolution these remarks can mislead readers about the current proof library, which proves Fourier uniqueness and kernel existence. The phrase Theorem 1.1 as stated in the paper must be tied to the short draft, not read as the current canonical principal theorem. Contextualize these comments in public scope documentation without modifying the frozen target.",
+      "evidence": [
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "19-33"
+        },
+        {
+          "file": "lean/PaperChallenge.lean",
+          "lines": "130-141"
+        },
+        {
+          "file": "lean/PaperSolution.lean",
+          "lines": "153-155"
+        },
+        {
+          "file": "lean/LogGas/FourierUnique.lean",
+          "lines": "119-130"
+        },
+        {
+          "file": "verification/reference/attractive_log_gas_I.tex",
+          "lines": "447-508"
+        }
+      ],
+      "resolution": "Historical-comments concern is contextualized by verification/SCOPE.md lines 45-48 and the project README lines 19-25; no frozen-file edit is needed."
+    },
+    {
+      "id": "F13",
+      "status": "passed",
+      "topic": "Final release scope and catalogue",
+      "finding": "The final project README, Lean README, verification scope and verification README consistently name the domain-explicit conditional theorem; separate kernel existence from HLS satisfiability; disclaim full Part I/II correspondence and separately certified local asymptotics; contextualize frozen historical comments; and distinguish author scope approval, AI review, machine acceptance and publication approval. The root catalogue explicitly labels the Lean package as a separate conditional uniform partition bound with integrability/log-HLS assumptions. The copied author decisions retain their limits and are not treated as mathematical proof. All previously reviewed Lean declarations and reference TeX snapshots are byte-identical in the release package. No blocking semantic inconsistency remains.",
+      "evidence": [
+        {
+          "package_file": "verification/SCOPE.md",
+          "lines": "3-58"
+        },
+        {
+          "package_file": "README.md",
+          "lines": "11-25"
+        },
+        {
+          "package_file": "lean/README.md",
+          "lines": "1-5,35-37"
+        },
+        {
+          "package_file": "verification/README.md",
+          "lines": "31-44"
+        },
+        {
+          "package_file": "verification/author-decisions.json",
+          "lines": "7-33"
+        },
+        {
+          "catalogue_file": "README.md",
+          "section": "Attractive logarithmic gases / Reading the status of a project"
+        }
+      ]
+    }
+  ],
+  "required_fixes": [],
+  "scope_limitations": [
+    "AI review only; no human mathematical certification.",
+    "No proof of satisfiability of the full LogHLSWithDomain premise or of any positive admissible B is established by the public targets.",
+    "Kernel existence covers the Fourier/L1 characterization only.",
+    "Local logarithmic asymptotic is not a separately certified release conclusion.",
+    "Canonical threshold identities, determinant/pressure/transport/expansion/fluctuation results and extended spectral-energy bridges are not certified by these public targets.",
+    "Separate Lean verification and dependency-trust audit are required; no recompilation was performed by this reviewer."
+  ],
+  "source_modified": false,
+  "role": "mathematical-fidelity",
+  "reviewer_id": "fresh-context-ai-/root/fidelity_review-2026-11-10",
+  "reviewer_type": "AI",
+  "human_certification": false,
+  "blocking_findings": [],
+  "reviewed_package_files": {
+    "README.md": "ba5f05f952a0af3f9a4f3f8b99d85372b125bc5be6edab0eb5fe37acdce1e31b",
+    "lean/README.md": "4cc55cb859a34179c9e41d68202f7ab779092666f31efb8c1980f1519ea6d3a7",
+    "verification/SCOPE.md": "caed2e0a34b7d51eb09b2568505f5869d941887dfca429f8efa0c81bcaa6722d",
+    "verification/README.md": "67cd8b18a7f7fc2199efa0d2b5ce887e92470c5a5d2ac304e590259c1b20492b",
+    "verification/author-decisions.json": "14155c17577613b58e4f500a9c9459b7759c18fa9b074f097052edcd170f4fc5",
+    "lean/PaperChallenge.lean": "d5b88cc52e26048515e412a559ab879666b9aaee02bb7e14bfd065c53fa02f22",
+    "lean/PaperSolution.lean": "b19ac9b20802f322b5e5b9015346d450939300d2d84caa0a5ac815c0b04b7520",
+    "lean/PaperDomainChallenge.lean": "ead8cb3c95fdbd3f14e20f24423bd82e57995f3c2cfd1c58d3b42585dd2d7204",
+    "lean/PaperDomainSolution.lean": "110b0d4d82fbde1b00c241bb5fb55d1a946616ac9d89987d8fc700296a6cdbec",
+    "lean/LogGas.lean": "92e224a23022fe78a5e95721c898482cc4844605d09a043421bdc52e6ebaaebf",
+    "lean/LogGas/PaperMain.lean": "d12408afc3bcb44ed4c2cc35db3d960fdd262cfb575338e17f080e3fdced6f99",
+    "lean/LogGas/TorusBase.lean": "a62f43d13e0feefd4b201193ab46b3131e539376c74a5cff1ece357dea4fa899",
+    "lean/LogGas/SpecAE.lean": "c1038954ac9bbfeff0c22d265ca0e8a65ffd9f935e161f5e96c2785c5f45ee76",
+    "lean/LogGas/MainAE.lean": "11c86c24a4f7cbafb7187701322403e2ff63726ab4a4388058e670069acdcdc6",
+    "lean/LogGas/FourierUnique.lean": "9ee60fa067cf45dd3247d866cbd0e088cfcc9486d5ae7d9dc647485496b3819c",
+    "lean/LogGas/KernelExists.lean": "7c878b0a14129af70c4376a78087e8bb3a2806d94df8811bb60dac30ff7ea68b",
+    "lean/LogGas/MainTheorem.lean": "19006e80b5a4a107401008008e45e848455b15e9e6c670d9ec7c7628a485a8d9",
+    "verification/reference/attractive_log_gas_short_draft.tex": "17683a036cc51de7317c3587795c2731884daa3e54f2b668e1a0cade1de83ad5",
+    "verification/reference/attractive_log_gas_I.tex": "860c5be06d891e3146a7bad556952d268cbce4112389049c711f1f4db0f12b92"
+  },
+  "followup_completed_utc": "2026-11-10T17:02:05.062882+00:00",
+  "machine_verification_status": "Final machine run pending at followup review; this review does not assert machine completion.",
+  "reviewed_catalogue_files": {
+    "README.md": {
+      "root": "catalogue root",
+      "sha256": "85aae9368712159cca4faf19cccf852e32bd51596d616f907a863f251d45df7b",
+      "review_extent": "Attractive logarithmic gases entry and general status/correspondence distinctions; no certification of other catalogue projects."
+    }
+  },
+  "resolved_required_fixes": [
+    {
+      "id": "R1",
+      "kind": "release_documentation",
+      "blocking_for_statement_fidelity": false,
+      "requirement": "Before final consolidated sign-off, inspect final public scope documents and ensure they explicitly say: conditional on LogHLSWithDomain for every finite-entropy density; 0 < B <= 2d; kernel existence does not prove HLS satisfiability; no separately certified local logarithmic asymptotic; no full Part I or canonical principal-theorem certification. Contextualize frozen historical comments instead of editing the frozen specification.",
+      "status": "resolved by final package documentation review",
+      "resolution_evidence": [
+        {
+          "file": "verification/SCOPE.md",
+          "lines": "8-48"
+        },
+        {
+          "file": "verification/SCOPE.md",
+          "lines": "55-58"
+        },
+        {
+          "file": "README.md",
+          "lines": "11-25"
+        },
+        {
+          "file": "verification/README.md",
+          "lines": "31-44"
+        }
+      ]
+    }
+  ],
+  "package_location": "projects/attractive-log-equilibrium (relative to catalogue root)",
+  "path_convention": "Evidence file paths and reviewed_package_files keys are relative to the attractive-log-equilibrium package root. Catalogue paths are relative to the catalogue root. /root/fidelity_review is an AI agent identifier, not a workstation directory.",
+  "full_report_binding": {
+    "sha256": "dfeef147a7a76d46168da98905a6490a5bef1a970f7b882bdfdc2c24e8dc9947",
+    "algorithm": "SHA256",
+    "report_filename": "fidelity.json",
+    "description": "Unmodified full review report retained separately; this public copy preserves its verdict, substantive findings, limitations and reviewer identity, with package-relative evidence paths and workstation provenance paths omitted."
+  },
+  "public_copy_authorship": {
+    "reviewer_id": "fresh-context-ai-/root/fidelity_review-2026-11-10",
+    "prepared_by": "same fresh-context AI reviewer who authored the full report",
+    "human_certification": false
+  }
+}

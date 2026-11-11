@@ -1,0 +1,37 @@
+{
+  "source_commit": "c8c7191bf834be29ca3680924a512544ed3523a5",
+  "full_statement_signoff": "independent fidelity review and consolidated final sign-off pending",
+  "decisions": [
+    {
+      "recorded_utc": "2026-11-10T16:00:51Z",
+      "topic": "conditional_release_scope",
+      "question": "Do you want to publish this conditional result first, keeping the explicit restriction B <= 2d?",
+      "user_response": "yes",
+      "approved_scope": "Uniform partition bound conditional on LogHLS g B, for d >= 2, 0 < B <= 2d and 0 <= beta_0 < B, plus existence of the normalized logarithmic kernel. Log-HLS satisfiability and the other Part I conclusions are not claimed as proved in this release.",
+      "limits": "Scope approval only. Does not approve all statement encodings, establish review completion, or authorize marking verification passed."
+    },
+    {
+      "recorded_utc": "2026-11-10T16:12:04.098472+00:00",
+      "topic": "normalization",
+      "question": "Are these the normalization and partition function you intend to certify?",
+      "user_response": "yes",
+      "approved_scope": "Unit torus R^d/Z^d with Haar probability measure; mean-zero kernel with Fourier coefficients 2^(d-1) pi^(d/2) Gamma(d/2) / (2 pi |k|)^d for nonzero k; partition function E exp[beta/(2N) sum over ordered distinct pairs g(X_i-X_j)], with positive attractive sign.",
+      "limits": "Normalization approval only; kernel representative conventions and log-HLS integrability encoding remain to be reviewed."
+    },
+    {
+      "recorded_utc": "2026-11-10T16:17:29.419912+00:00",
+      "topic": "explicit_integrability",
+      "user_response": "Assume the explicit integrability, it is ok",
+      "approved_scope": "Use LogHLSWithDomain in the public-facing partition-bound corollary: for every finite-entropy probability density, the interaction-energy integrand is absolutely integrable and the log-HLS inequality holds. Preserve the existing frozen theorem.",
+      "limits": "Approves this stronger hypothesis; does not assert that it has been proved for the logarithmic kernel or that certification is complete."
+    },
+    {
+      "recorded_utc": "2026-11-10T16:32:35.416847+00:00",
+      "topic": "kernel_characterization",
+      "user_response": "Yes",
+      "approved_scope": "Identify the normalized logarithmic kernel by the specified Fourier coefficients and integrability, allowing representatives equal almost everywhere. Do not claim the local -log|x| + O(1) asymptotic as a separately certified conclusion.",
+      "limits": "Release-scope approval; does not substitute for independent mathematical fidelity or verification review."
+    }
+  ],
+  "release_scope_decisions": "approved_in_conversation"
+}

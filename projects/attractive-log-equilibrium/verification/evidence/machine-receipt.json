@@ -1,0 +1,794 @@
+{
+  "status": "machine_checks_passed",
+  "checks": [
+    {
+      "name": "lean-version",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/package/lean",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lean",
+        "--version"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 2.0,
+      "stop_reason": null,
+      "log_sha256": "4285543e294225208d6c2e8f8228c7d7db5baba0e1e22a2293b2c837052c4053"
+    },
+    {
+      "name": "project-build",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--bind",
+        "/tmp/loggas-package-release-20261110-01/package/lean/.lake",
+        "/tmp/loggas-package-release-20261110-01/package/lean/.lake",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/package/lean",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "-f",
+        "/tmp/loggas-package-release-20261110-01/package/lean/lakefile.release-20261110T170427Z-1601945.toml",
+        "build",
+        "LogGas",
+        "Challenge",
+        "Solution",
+        "PaperChallenge",
+        "PaperSolution",
+        "PaperDomainChallenge",
+        "PaperDomainSolution",
+        "VerificationAudit"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 254.08,
+      "stop_reason": null,
+      "log_sha256": "4b5bb8e4f23bb33c55a145b4a9fb2334cb49941dc217f8d9eb438198bfea084f"
+    },
+    {
+      "name": "lean-path",
+      "command": [
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "-f",
+        "/tmp/loggas-package-release-20261110-01/package/lean/lakefile.release-20261110T170427Z-1601945.toml",
+        "env",
+        "printenv",
+        "LEAN_PATH"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 4.0,
+      "stop_reason": null,
+      "log_sha256": "584eff38dbc38f06e8bff3177c74bc47e8a3e01c759dabdedb32ba5443b14667"
+    },
+    {
+      "name": "compile-ReleaseChallenge",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--bind",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lean",
+        "-o",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects/ReleaseChallenge.olean",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs/ReleaseChallenge.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 8.0,
+      "stop_reason": null,
+      "log_sha256": "c4b9534d380e3872d8d398efeff72516252a9f46cdecaf34da5cedd7a7ba6dfc"
+    },
+    {
+      "name": "export-ReleaseChallenge",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/leanexport",
+        "ReleaseChallenge",
+        "--",
+        "LogGasPaper.main",
+        "LogGasPaper.kernel_exists",
+        "LogGasChallenge.principal",
+        "LogGasChallenge.bulk",
+        "LogGasPaper.main_with_domain",
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "Quot",
+        "Quot.mk",
+        "Quot.lift",
+        "Quot.ind",
+        "Nat.add",
+        "Nat.sub",
+        "Nat.mul",
+        "Nat.pow",
+        "Nat.gcd",
+        "Nat.div",
+        "Nat.mod",
+        "Nat.beq",
+        "Nat.ble",
+        "Nat.land",
+        "Nat.lor",
+        "Nat.xor",
+        "Nat.shiftLeft",
+        "Nat.shiftRight",
+        "String.ofList",
+        "Char.ofNat",
+        "List",
+        "eagerReduce",
+        "Nat",
+        "String",
+        "String.mk",
+        "Char",
+        "optParam",
+        "autoParam",
+        "semiOutParam",
+        "outParam"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 22.01,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export": "ReleaseChallenge.ndjson",
+      "export_sha256": "ef13db675fc7bea93ded380795a00fdc7e262fad1a6bb83d46cd3d5dfbfff7de",
+      "export_bytes": 181533764
+    },
+    {
+      "name": "compile-ReleaseSolution",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--bind",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lean",
+        "-o",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects/ReleaseSolution.olean",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs/ReleaseSolution.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 12.0,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "export-ReleaseSolution",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/leanexport",
+        "ReleaseSolution",
+        "--",
+        "LogGasPaper.main",
+        "LogGasPaper.kernel_exists",
+        "LogGasChallenge.principal",
+        "LogGasChallenge.bulk",
+        "LogGasPaper.main_with_domain",
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "Quot",
+        "Quot.mk",
+        "Quot.lift",
+        "Quot.ind",
+        "Nat.add",
+        "Nat.sub",
+        "Nat.mul",
+        "Nat.pow",
+        "Nat.gcd",
+        "Nat.div",
+        "Nat.mod",
+        "Nat.beq",
+        "Nat.ble",
+        "Nat.land",
+        "Nat.lor",
+        "Nat.xor",
+        "Nat.shiftLeft",
+        "Nat.shiftRight",
+        "String.ofList",
+        "Char.ofNat",
+        "List",
+        "eagerReduce",
+        "Nat",
+        "String",
+        "String.mk",
+        "Char",
+        "optParam",
+        "autoParam",
+        "semiOutParam",
+        "outParam"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 60.02,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export": "ReleaseSolution.ndjson",
+      "export_sha256": "36b084c1b9657dc294ea43485f626ff3d22edec3699854de3cc4d9d0c01841df",
+      "export_bytes": 571108046
+    },
+    {
+      "name": "compile-WrongStatement",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--bind",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lean",
+        "-o",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects/WrongStatement.olean",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs/WrongStatement.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 10.01,
+      "stop_reason": null,
+      "log_sha256": "a10c6d33831fd8aa25e105aa02d4d9f7ad054f6b5d12a24213e5a1ab6b880fb3"
+    },
+    {
+      "name": "export-WrongStatement",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/leanexport",
+        "WrongStatement",
+        "--",
+        "LogGasPaper.main",
+        "LogGasPaper.kernel_exists",
+        "LogGasChallenge.principal",
+        "LogGasChallenge.bulk",
+        "LogGasPaper.main_with_domain",
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "Quot",
+        "Quot.mk",
+        "Quot.lift",
+        "Quot.ind",
+        "Nat.add",
+        "Nat.sub",
+        "Nat.mul",
+        "Nat.pow",
+        "Nat.gcd",
+        "Nat.div",
+        "Nat.mod",
+        "Nat.beq",
+        "Nat.ble",
+        "Nat.land",
+        "Nat.lor",
+        "Nat.xor",
+        "Nat.shiftLeft",
+        "Nat.shiftRight",
+        "String.ofList",
+        "Char.ofNat",
+        "List",
+        "eagerReduce",
+        "Nat",
+        "String",
+        "String.mk",
+        "Char",
+        "optParam",
+        "autoParam",
+        "semiOutParam",
+        "outParam"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 30.01,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export": "WrongStatement.ndjson",
+      "export_sha256": "962d170968d8a948b54f60a8f3698143f19b33a97818a8e412720531c03d09e3",
+      "export_bytes": 181527295
+    },
+    {
+      "name": "compile-ForbiddenAxiom",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--bind",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lean",
+        "-o",
+        "/tmp/loggas-package-release-20261110-01/evidence/control-objects/ForbiddenAxiom.olean",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs/ForbiddenAxiom.lean"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 10.01,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "export-ForbiddenAxiom",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/evidence/inputs",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/leanexport",
+        "ForbiddenAxiom",
+        "--",
+        "LogGasPaper.main",
+        "LogGasPaper.kernel_exists",
+        "LogGasChallenge.principal",
+        "LogGasChallenge.bulk",
+        "LogGasPaper.main_with_domain",
+        "propext",
+        "Classical.choice",
+        "Quot.sound",
+        "Quot",
+        "Quot.mk",
+        "Quot.lift",
+        "Quot.ind",
+        "Nat.add",
+        "Nat.sub",
+        "Nat.mul",
+        "Nat.pow",
+        "Nat.gcd",
+        "Nat.div",
+        "Nat.mod",
+        "Nat.beq",
+        "Nat.ble",
+        "Nat.land",
+        "Nat.lor",
+        "Nat.xor",
+        "Nat.shiftLeft",
+        "Nat.shiftRight",
+        "String.ofList",
+        "Char.ofNat",
+        "List",
+        "eagerReduce",
+        "Nat",
+        "String",
+        "String.mk",
+        "Char",
+        "optParam",
+        "autoParam",
+        "semiOutParam",
+        "outParam"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 30.01,
+      "stop_reason": null,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "export": "ForbiddenAxiom.ndjson",
+      "export_sha256": "1c0cac513913aee62bce1ce9569da39064cbc29a4902f853fdc4b0da4d315a3e",
+      "export_bytes": 181524084
+    },
+    {
+      "name": "reject-missing-target",
+      "command": [
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "comparator",
+        "--config",
+        "/tmp/loggas-package-release-20261110-01/evidence/reject-missing-target.json",
+        "--challenge-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseChallenge.ndjson",
+        "--solution-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseSolution.ndjson"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 46.01,
+      "stop_reason": null,
+      "log_sha256": "1ceb744fc0a1c6a280ac7c9caf36d7b5ce9038b75cab9e4e0d9c9b18b064d982"
+    },
+    {
+      "name": "reject-changed-statement",
+      "command": [
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "comparator",
+        "--config",
+        "/tmp/loggas-package-release-20261110-01/evidence/reject-changed-statement.json",
+        "--challenge-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/WrongStatement.ndjson",
+        "--solution-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseSolution.ndjson"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 40.01,
+      "stop_reason": null,
+      "log_sha256": "bac778c1fbc93f2409741141302195d6a2b665424db6b2c6f6ceca803eab87b5"
+    },
+    {
+      "name": "reject-forbidden-axiom",
+      "command": [
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "comparator",
+        "--config",
+        "/tmp/loggas-package-release-20261110-01/evidence/reject-forbidden-axiom.json",
+        "--challenge-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseChallenge.ndjson",
+        "--solution-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ForbiddenAxiom.ndjson"
+      ],
+      "exit_code": 1,
+      "expected_exit_code": 1,
+      "seconds": 16.01,
+      "stop_reason": null,
+      "log_sha256": "edba8a25bb6d16b54a1c574b02b196f0372e80543a2e41056f3edafbb69810d0"
+    },
+    {
+      "name": "official-comparator-nanoda",
+      "command": [
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/lake",
+        "comparator",
+        "--config",
+        "/tmp/loggas-package-release-20261110-01/evidence/official-comparator-nanoda.json",
+        "--challenge-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseChallenge.ndjson",
+        "--solution-from-export",
+        "/tmp/loggas-package-release-20261110-01/evidence/ReleaseSolution.ndjson"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 224.05,
+      "stop_reason": null,
+      "log_sha256": "5b304adfe00c8107856812ee5184f11fcb2582fe7931ce1f2038375a4cce8171"
+    },
+    {
+      "name": "strict-nanoda",
+      "command": [
+        "bwrap",
+        "--die-with-parent",
+        "--unshare-net",
+        "--ro-bind",
+        "/",
+        "/",
+        "--dev",
+        "/dev",
+        "--proc",
+        "/proc",
+        "--chdir",
+        "/tmp/loggas-package-release-20261110-01/package/lean",
+        "--",
+        "/home/mgd885/.elan/toolchains/leanprover--lean4---v4.36.0-rc1/bin/nanoda_bin",
+        "/tmp/loggas-package-release-20261110-01/evidence/strict-nanoda.json"
+      ],
+      "exit_code": 0,
+      "expected_exit_code": 0,
+      "seconds": 48.01,
+      "stop_reason": null,
+      "log_sha256": "07498602e73539bd8158e91d9d2312b8ff924739ced43015db5b5fbd7339c3c4"
+    }
+  ],
+  "targets": [
+    "LogGasPaper.main",
+    "LogGasPaper.kernel_exists",
+    "LogGasChallenge.principal",
+    "LogGasChallenge.bulk",
+    "LogGasPaper.main_with_domain"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "scope": "Fresh packaged project build with pinned dependency artifacts reused; same-run source/object bindings; selected-target Comparator and strict Nanoda replay. No whole-Mathlib rebuild, independent OS administration, or human certification.",
+  "started_utc": "2026-11-10T17:04:26.986945+00:00",
+  "pid": 1601945,
+  "source_manifest_sha256": "11e98d656f2b5d54d041190416abc3cf32250797011922fa76deb4ffaabbbdca",
+  "dependencies": [
+    {
+      "name": "mathlib",
+      "revision": "625d8914199bc567cca9b91f90e8e5afafa5ae51"
+    },
+    {
+      "name": "plausible",
+      "revision": "c2d7840c65673533e15b499f25beecdc6227f7d8"
+    },
+    {
+      "name": "LeanSearchClient",
+      "revision": "9d39f9bb0c30aa2f6200808805ff16e6ce950890"
+    },
+    {
+      "name": "importGraph",
+      "revision": "b3cc36c295aa5e3e3c0197b09a6556298e710447"
+    },
+    {
+      "name": "proofwidgets",
+      "revision": "17137fad38a2cc782ff00b323a13c3a991d085ab"
+    },
+    {
+      "name": "aesop",
+      "revision": "cbdde3aa2665915fb286c48bcd4cdf885c629511"
+    },
+    {
+      "name": "Qq",
+      "revision": "6d26f8bb4b2bb78f929ad160feac508866821316"
+    },
+    {
+      "name": "batteries",
+      "revision": "4453b52d2468f4c346a8711d728c0742e7483c9b"
+    },
+    {
+      "name": "Cli",
+      "revision": "34d2efffcb6dc8d5f3537cf6a7f88bfaa999ec49"
+    }
+  ],
+  "tool_hashes": {
+    "lean": "db7f559d05795e7af52e42bc966c90240a39dcb9712161c54c97afa546e20c00",
+    "lake": "42678ccbc2605e2f892540dc7236e009fdd1224e823d104dfd72725d2f1a52d2",
+    "leanexport": "8298d4412a1f8986b5dbfd1d9925211778d8d320fc47b72040c8fdfdd5b603d5",
+    "leanchecker": "2b2ff08805ace61c935b023f8114ac3f7f1d3bc79cb4e8c47ef7801a5af58798",
+    "nanoda_bin": "8241c5e6baa29490aa118d382f97961b208ae730fdb96545c2abed74c9ece5a8"
+  },
+  "sandbox_binary_sha256": "e318903862396f96de3df57264e0158682b952fd3fb53ac23d876413e7b30f71",
+  "stage": "strict-nanoda",
+  "updated_utc": "2026-11-10T17:18:12.494133+00:00",
+  "project_object_count": 52,
+  "build_directory": ".lake/build-release-20261110T170427Z-1601945",
+  "challenge_and_control_sources": {
+    "ReleaseSolution.lean": "1281ef5d2c1904c747f26526906402d2fb35f909e9c41ef25ea7414d2539115a",
+    "ForbiddenAxiom.lean": "fa5d365f0b0843a90b9aad4fe0dbd3f07f2342bfd1058f3edafd992aec871af9",
+    "ReleaseChallenge.lean": "05f3e19f5323bcc85f11158f8d7df51752e978aed8cb64f780cec12ff4748474",
+    "WrongStatement.lean": "74053826249ef435b99812593b45c6503bbfafd236b5027372ac7b94075002ea"
+  },
+  "strict_nanoda_declarations": 69638,
+  "evidence_artifacts": {
+    "ForbiddenAxiom.ndjson": {
+      "sha256": "1c0cac513913aee62bce1ce9569da39064cbc29a4902f853fdc4b0da4d315a3e",
+      "bytes": 181524084
+    },
+    "ReleaseChallenge.ndjson": {
+      "sha256": "ef13db675fc7bea93ded380795a00fdc7e262fad1a6bb83d46cd3d5dfbfff7de",
+      "bytes": 181533764
+    },
+    "ReleaseSolution.ndjson": {
+      "sha256": "36b084c1b9657dc294ea43485f626ff3d22edec3699854de3cc4d9d0c01841df",
+      "bytes": 571108046
+    },
+    "WrongStatement.ndjson": {
+      "sha256": "962d170968d8a948b54f60a8f3698143f19b33a97818a8e412720531c03d09e3",
+      "bytes": 181527295
+    },
+    "build-config.toml": {
+      "sha256": "697187e3b650ac9e5ca504c9b91037d5f9e124f06b9162f680a63e74ce68cabb",
+      "bytes": 461
+    },
+    "control-object-bindings.json": {
+      "sha256": "c2a977bc9dbbd019f50a14d3e324a6f2d1aa5e5e39917718ec49ef317f31d68f",
+      "bytes": 382
+    },
+    "control-objects/ForbiddenAxiom.olean": {
+      "sha256": "d28cf45dea9d0fb1979dca4e0e0b7a56182f35f78e3fc9597212e1319dc06c30",
+      "bytes": 6712
+    },
+    "control-objects/ReleaseChallenge.olean": {
+      "sha256": "fe80820c12d4b995c80d2cc18f4e687a2d44ff76e450df8e6d847dcb71ecf006",
+      "bytes": 15280
+    },
+    "control-objects/ReleaseSolution.olean": {
+      "sha256": "b93d0e8befd96f1ac5972aec8f813f72431ea86a91c2afbc22c77d6138e4fdb1",
+      "bytes": 1264
+    },
+    "control-objects/WrongStatement.olean": {
+      "sha256": "1e1565c4751b21efcdcdd1aa6a78bc2b86c543808ae5f6363b006b750b75bdff",
+      "bytes": 13872
+    },
+    "fresh-object-bindings.json": {
+      "sha256": "ecd2ba7ff2704bd02e616d94455e99552d556099e5f1c24648a6917ae4615780",
+      "bytes": 5472
+    },
+    "inputs/ForbiddenAxiom.lean": {
+      "sha256": "fa5d365f0b0843a90b9aad4fe0dbd3f07f2342bfd1058f3edafd992aec871af9",
+      "bytes": 602
+    },
+    "inputs/ReleaseChallenge.lean": {
+      "sha256": "05f3e19f5323bcc85f11158f8d7df51752e978aed8cb64f780cec12ff4748474",
+      "bytes": 428
+    },
+    "inputs/ReleaseSolution.lean": {
+      "sha256": "1281ef5d2c1904c747f26526906402d2fb35f909e9c41ef25ea7414d2539115a",
+      "bytes": 43
+    },
+    "inputs/WrongStatement.lean": {
+      "sha256": "74053826249ef435b99812593b45c6503bbfafd236b5027372ac7b94075002ea",
+      "bytes": 400
+    },
+    "logs/compile-ForbiddenAxiom.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/compile-ReleaseChallenge.log": {
+      "sha256": "c4b9534d380e3872d8d398efeff72516252a9f46cdecaf34da5cedd7a7ba6dfc",
+      "bytes": 585
+    },
+    "logs/compile-ReleaseSolution.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/compile-WrongStatement.log": {
+      "sha256": "a10c6d33831fd8aa25e105aa02d4d9f7ad054f6b5d12a24213e5a1ab6b880fb3",
+      "bytes": 460
+    },
+    "logs/export-ForbiddenAxiom.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/export-ReleaseChallenge.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/export-ReleaseSolution.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/export-WrongStatement.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "logs/lean-path.log": {
+      "sha256": "584eff38dbc38f06e8bff3177c74bc47e8a3e01c759dabdedb32ba5443b14667",
+      "bytes": 999
+    },
+    "logs/lean-version.log": {
+      "sha256": "4285543e294225208d6c2e8f8228c7d7db5baba0e1e22a2293b2c837052c4053",
+      "bytes": 110
+    },
+    "logs/official-comparator-nanoda.log": {
+      "sha256": "5b304adfe00c8107856812ee5184f11fcb2582fe7931ce1f2038375a4cce8171",
+      "bytes": 173
+    },
+    "logs/project-build.log": {
+      "sha256": "4b5bb8e4f23bb33c55a145b4a9fb2334cb49941dc217f8d9eb438198bfea084f",
+      "bytes": 33394
+    },
+    "logs/reject-changed-statement.log": {
+      "sha256": "bac778c1fbc93f2409741141302195d6a2b665424db6b2c6f6ceca803eab87b5",
+      "bytes": 93
+    },
+    "logs/reject-forbidden-axiom.log": {
+      "sha256": "edba8a25bb6d16b54a1c574b02b196f0372e80543a2e41056f3edafbb69810d0",
+      "bytes": 58
+    },
+    "logs/reject-missing-target.log": {
+      "sha256": "1ceb744fc0a1c6a280ac7c9caf36d7b5ce9038b75cab9e4e0d9c9b18b064d982",
+      "bytes": 62
+    },
+    "logs/strict-nanoda.log": {
+      "sha256": "07498602e73539bd8158e91d9d2312b8ff924739ced43015db5b5fbd7339c3c4",
+      "bytes": 621
+    },
+    "official-comparator-nanoda.json": {
+      "sha256": "4c639d9f0b5d81a1e199cf915ecedc8e202c8a7d3cbc0b40c69addee5ce6d5b1",
+      "bytes": 511
+    },
+    "reject-changed-statement.json": {
+      "sha256": "4c639d9f0b5d81a1e199cf915ecedc8e202c8a7d3cbc0b40c69addee5ce6d5b1",
+      "bytes": 511
+    },
+    "reject-forbidden-axiom.json": {
+      "sha256": "4c639d9f0b5d81a1e199cf915ecedc8e202c8a7d3cbc0b40c69addee5ce6d5b1",
+      "bytes": 511
+    },
+    "reject-missing-target.json": {
+      "sha256": "1bfb2f80710b38c53a0ada2b133e52793df6c9efe9c2b96ae20c49c58b609406",
+      "bytes": 541
+    },
+    "source-manifest.json": {
+      "sha256": "11e98d656f2b5d54d041190416abc3cf32250797011922fa76deb4ffaabbbdca",
+      "bytes": 7049
+    },
+    "strict-nanoda.json": {
+      "sha256": "615079d6e9fa96256cc402e134f09835df514b601547feacc44cd60ff217559f",
+      "bytes": 590
+    }
+  },
+  "inputs_unchanged": true,
+  "finished_utc": "2026-11-10T17:18:12.494120+00:00"
+}

@@ -9,12 +9,20 @@ All-order equilibrium expansions for partition functions, fixed-particle margina
 ## Status
 
 - **Manuscript:** public working draft; the authors have not yet reviewed and independently verified all AI-generated content.
-- **Lean formalization:** no completed corresponding formalization is supplied with this manuscript.
+- **Lean formalization:** [conditional uniform partition bound](lean/), assuming the log-HLS inequality and explicit integrability of its energy integrand, plus existence of the Fourier-normalized kernel. See the [exact scope](verification/SCOPE.md) and [verification records](verification/README.md).
 - **Correspondence:** no claim of complete manuscript-to-Lean correspondence is made.
 
 The manuscript includes a Statement on AI use and a diagonal DRAFT watermark. The authors are formalizing the results in Lean and revising the natural-language presentation. Statements, proofs, references and exposition remain subject to correction.
 
 The homogeneous torus LSI formalization is a separate result: it is **not** a formalization of all of Parts I and II.
+
+The partition-bound release covers the conditional implication corresponding to
+the short draft's uniform bound. It does not establish the log-HLS assumption,
+threshold identification, determinant asymptotics, fluctuations, or the rest of
+this working manuscript. Its public declaration is
+`LogGasPaper.main_with_domain`. AI fidelity and verification reviews, machine
+acceptance and author scope decisions are recorded separately; none is presented
+as independent human certification of the complete manuscript.
 
 ## Related projects
 

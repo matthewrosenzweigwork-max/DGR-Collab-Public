@@ -12,7 +12,7 @@ The catalogue is organized by research theme. Each project has one home, with it
 
 ## Attractive logarithmic gases
 
-- **[Part I: partition functions and equilibrium fluctuations](projects/attractive-log-equilibrium/)** — all-order equilibrium expansions, marginals, cumulants and fluctuations. [Draft PDF](projects/attractive-log-equilibrium/manuscript/paper.pdf).
+- **[Part I: partition functions and equilibrium fluctuations](projects/attractive-log-equilibrium/)** — all-order equilibrium expansions, marginals, cumulants and fluctuations. [Draft PDF](projects/attractive-log-equilibrium/manuscript/paper.pdf). Includes a separate [Lean package for the conditional uniform partition bound](projects/attractive-log-equilibrium/lean/), with explicit integrability and log-HLS assumptions; [scope and limitations](projects/attractive-log-equilibrium/verification/SCOPE.md).
 - **[Part II: mean-field dynamics](projects/attractive-log-dynamics/)** — modulated free energy and uniform-in-time near-equilibrium estimates under the stated assumptions. [Draft PDF](projects/attractive-log-dynamics/manuscript/paper.pdf).
 - **[Uniform LSI on the homogeneous two-dimensional torus](projects/attractive-log-uniform-lsi/)** — completed formalization throughout the subcritical coupling range, uniformly on compact subintervals. A natural-language informalization will follow. This is a separate result, not a formalization of all of Parts I and II.
 

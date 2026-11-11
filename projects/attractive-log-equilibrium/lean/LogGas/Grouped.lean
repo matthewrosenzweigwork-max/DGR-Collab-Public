@@ -1,0 +1,980 @@
+import LogGas.Decoupling
+
+/-!
+# Phase 2 — Lemma 6.1 (`lem:canonical-array-exponential`), grouped bound (6.4)
+
+Source: `notes/sec6-lemma61.tex`, last paragraph of the proof.  Phase notes: `notes/phase2.md`.
+
+Setting.  As in `LogGas.Decoupling`: `(Ω, μ)` a probability space, `Y : Fin m → Ω → E`
+independent with laws `ν i`, kernels `h : Fin m → Fin m → E → E → ℝ` satisfying `Hyp`.
+The `m` variables are partitioned into `M` groups by `grp : Fin m → Fin M`, each group has
+at most `m*` members, and the interaction pattern between groups is a simple graph
+`G : SimpleGraph (Fin M)` of maximum degree `≤ K - 1`: kernels between variables of distinct
+non-adjacent groups vanish.
+
+Statements (phase notes G1–G3):
+* G1 `greedy_edge_coloring` — proper edge coloring with `≤ 2K-1` colors;
+* G2 `blocks_indep`, `class_mgf` — block sums on disjoint variable sets are independent and
+  the exponential moment of a class factors;
+* G3 `grouped_exp_bound` — eq. `eq:canonical-grouped-exponential` (6.4), via
+  eq. `eq:array-grouped-holder` (6.14).
+
+Auxiliary statements: restriction/reindexing of `Hyp` (`Hyp.restrict`, `Hyp.reindex`), the
+one-block bound with `m_b` in place of `m` (`block_exp_bound`, `block_factor`), the class
+decomposition `class_decomposition`, and finite Hölder `holder_classes`.
+
+The standing hypotheses H1/H2 of `notes/hypotheses.md` are not needed in this phase.
+-/
+
+set_option autoImplicit false
+set_option linter.unusedSectionVars false
+
+open MeasureTheory ProbabilityTheory Finset Function
+open scoped BigOperators ENNReal
+
+namespace LogGas.Grouped
+
+open LogGas.Decoupling
+
+variable {Ω E : Type*} [MeasurableSpace Ω] [MeasurableSpace E]
+
+/-! ### G1: greedy edge coloring -/
+
+-- SKETCH (G1): induction on the edge set (`Finset.induction_on` over `G.edgeFinset`, or
+-- strong induction on `#G.edgeFinset` deleting one edge with `SimpleGraph.deleteEdges`).
+-- An edge `s(a,b)` meets at most `(K-1-1) + (K-1-1) = 2K-4` other edges
+-- (`SimpleGraph.degree`, `SimpleGraph.card_neighborFinset_eq_degree`), so among `2K-1`
+-- colors one is free (`Finset.exists_mem_notMem_of_card_lt_card`, `Finset.card_image_le`).
+-- Equivalently: the line graph `G.lineGraph` has max degree `≤ 2K-4` and is greedily
+-- `(2K-1)`-colorable (`SimpleGraph.Colorable`, `lineGraph_adj_iff_exists`).  Extend the
+-- resulting `G.edgeSet → Fin (2K-1)` to all pairs by a default value (`Fin.mk 0`), symmetric
+-- via `Sym2.eq_swap`.
+/-- Greedy edge coloring used for eq. `eq:canonical-grouped-exponential` (6.4): a finite
+simple graph with all degrees `≤ K - 1` admits a symmetric coloring of its vertex pairs with
+`2K - 1` colors such that two distinct edges sharing a vertex receive different colors. -/
+theorem greedy_edge_coloring {V : Type*} [Fintype V] [DecidableEq V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (K : ℕ) (hK : 1 ≤ K) (hdeg : ∀ v, G.degree v ≤ K - 1) :
+    ∃ c : V → V → Fin (2 * K - 1), (∀ a b, c a b = c b a) ∧
+      ∀ a b b', G.Adj a b → G.Adj a b' → b ≠ b' → c a b ≠ c a b' := by
+  have key : ∀ s : Finset (Sym2 V), ∃ f : Sym2 V → Fin (2 * K - 1),
+      ∀ e ∈ s, ∀ e' ∈ s, e ∈ G.edgeSet → e' ∈ G.edgeSet → e ≠ e' →
+        (∃ v, v ∈ e ∧ v ∈ e') → f e ≠ f e' := by
+    intro s
+    induction s using Finset.induction_on with
+    | empty => exact ⟨fun _ => ⟨0, by omega⟩, by simp⟩
+    | insert a s has ih =>
+      obtain ⟨f, hf⟩ := ih
+      by_cases ha : a ∈ G.edgeSet
+      · induction a using Sym2.ind with
+        | _ u v =>
+        have huv : G.Adj u v := ha
+        set B : Finset (Sym2 V) :=
+          ((G.incidenceFinset u ∪ G.incidenceFinset v).filter (· ∈ s)) with hB
+        have hcard : (B.image f).card < 2 * K - 1 := by
+          calc (B.image f).card ≤ B.card := Finset.card_image_le
+            _ ≤ (G.incidenceFinset u ∪ G.incidenceFinset v).card := Finset.card_filter_le _ _
+            _ ≤ (G.incidenceFinset u).card + (G.incidenceFinset v).card :=
+                Finset.card_union_le _ _
+            _ ≤ (K - 1) + (K - 1) := by
+                rw [G.card_incidenceFinset_eq_degree, G.card_incidenceFinset_eq_degree]
+                exact Nat.add_le_add (hdeg u) (hdeg v)
+            _ < 2 * K - 1 := by omega
+        obtain ⟨col, hcol⟩ : ∃ col : Fin (2 * K - 1), col ∉ B.image f := by
+          by_contra hcon
+          push_neg at hcon
+          have : (Finset.univ : Finset (Fin (2 * K - 1))) ⊆ B.image f := fun x _ => hcon x
+          have := Finset.card_le_card this
+          simp at this
+          omega
+        refine ⟨Function.update f s(u, v) col, ?_⟩
+        intro e he e' he' hE hE' hne ⟨w, hw, hw'⟩
+        have key2 : ∀ x ∈ s, x ∈ G.edgeSet → (∃ w, w ∈ s(u, v) ∧ w ∈ x) →
+            col ≠ f x := by
+          intro x hx hxe ⟨w, hw, hwx⟩ hceq
+          apply hcol
+          rw [Finset.mem_image]
+          refine ⟨x, ?_, hceq.symm⟩
+          rw [hB, Finset.mem_filter, Finset.mem_union]
+          refine ⟨?_, hx⟩
+          rw [Sym2.mem_iff] at hw
+          rcases hw with rfl | rfl
+          · left; rw [SimpleGraph.mem_incidenceFinset]; exact ⟨hxe, hwx⟩
+          · right; rw [SimpleGraph.mem_incidenceFinset]; exact ⟨hxe, hwx⟩
+        rw [Finset.mem_insert] at he he'
+        rcases he with rfl | he <;> rcases he' with rfl | he'
+        · exact absurd rfl hne
+        · rw [Function.update_self, Function.update_of_ne (by rintro rfl; exact has he')]
+          exact key2 _ he' hE' ⟨w, hw, hw'⟩
+        · rw [Function.update_self, Function.update_of_ne (by rintro rfl; exact has he)]
+          exact (key2 _ he hE ⟨w, hw', hw⟩).symm
+        · rw [Function.update_of_ne (by rintro rfl; exact has he),
+            Function.update_of_ne (by rintro rfl; exact has he')]
+          exact hf e he e' he' hE hE' hne ⟨w, hw, hw'⟩
+      · refine ⟨f, ?_⟩
+        intro e he e' he' hE hE' hne hw
+        rw [Finset.mem_insert] at he he'
+        rcases he with rfl | he
+        · exact absurd hE ha
+        rcases he' with rfl | he'
+        · exact absurd hE' ha
+        exact hf e he e' he' hE hE' hne hw
+  obtain ⟨f, hf⟩ := key Finset.univ
+  refine ⟨fun a b => f s(a, b), fun a b => by simp only [Sym2.eq_swap (a := a)], ?_⟩
+  intro a b b' hab hab' hbb
+  refine hf _ (Finset.mem_univ _) _ (Finset.mem_univ _) hab hab' ?_ ⟨a, by simp, by simp⟩
+  intro h; exact hbb (Sym2.congr_right.mp h)
+
+/-! ### Restriction and reindexing of the one-block hypotheses -/
+
+section Blocks
+
+variable {m : ℕ} {μ : Measure Ω} [IsProbabilityMeasure μ] {ν : Fin m → Measure E}
+  [∀ i, IsProbabilityMeasure (ν i)] {Y : Fin m → Ω → E}
+  {h : Fin m → Fin m → E → E → ℝ} {κ : ℝ}
+
+/-- The kernel `h` with all pairs `(i, j)` not satisfying `p` replaced by the zero kernel
+("zero kernels are allowed"). -/
+def restrict (h : Fin m → Fin m → E → E → ℝ) (p : Fin m → Fin m → Prop)
+    [∀ i j, Decidable (p i j)] (i j : Fin m) (x y : E) : ℝ :=
+  if p i j then h i j x y else 0
+
+-- SKETCH: every field of `Hyp` is either independent of `h` (copy from `H`) or is checked
+-- by `unfold restrict; split_ifs`: the `then` branch is the corresponding field of `H`, the
+-- `else` branch is the zero kernel (`measurable_const`, `integral_zero`, `abs_zero`,
+-- `zero_pow`, and `0 ≤ 2 κ^p p!` by `positivity` using `H.κ_pos`).
+/-- Zero kernels are allowed in Lemma 6.1: restricting the kernels to a set of pairs
+preserves the hypotheses (6.1), (6.2). -/
+theorem Hyp.restrict (H : Hyp μ ν Y h κ) (p : Fin m → Fin m → Prop)
+    [∀ i j, Decidable (p i j)] : Hyp μ ν Y (restrict h p) κ := by
+  have hz : ∀ (q : ℕ) (hq : 1 ≤ q), (0:ℝ) ≤ 2 * κ ^ q * (q.factorial : ℝ) := fun q _ => by
+    have := H.κ_pos
+    positivity
+  refine { H with
+    h_meas := ?_
+    h_int := ?_
+    centered_left := ?_
+    centered_right := ?_
+    moment_left := ?_
+    moment_right := ?_ }
+  · intro i j
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.h_meas i j
+    · exact measurable_const
+  · intro i j q hq
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.h_int i j q hq
+    · simpa [zero_pow (by omega : q ≠ 0)] using
+        (integrable_zero : Integrable (fun _ : E × E => (0 : ℝ)) ((ν i).prod (ν j)))
+  · intro i j hij
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.centered_left i j hij
+    · simp
+  · intro i j hij
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.centered_right i j hij
+    · simp
+  · intro i j hij q hq
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.moment_left i j hij q hq
+    · filter_upwards [] with y
+      simpa [zero_pow (by omega : q ≠ 0)] using hz q hq
+  · intro i j hij q hq
+    unfold LogGas.Grouped.restrict
+    split_ifs
+    · exact H.moment_right i j hij q hq
+    · filter_upwards [] with x
+      simpa [zero_pow (by omega : q ≠ 0)] using hz q hq
+
+-- SKETCH: `Y_indep` is `H.Y_indep.precomp e.injective`; `Y_law`, `Y_meas`, `h_meas`, `h_int`
+-- are instances of the fields of `H` at `e a`, `e b`.  For the `i < j` fields use
+-- `e.strictMono` / `OrderEmbedding.lt_iff_lt` to transport `a < b` to `e a < e b`.
+/-- Reindexing along a strictly monotone injection `e : Fin n ↪o Fin m` (the increasing
+enumeration of a block of variables) preserves the hypotheses of Lemma 6.1. -/
+theorem Hyp.reindex (H : Hyp μ ν Y h κ) {n : ℕ} (e : Fin n ↪o Fin m) :
+    Hyp μ (fun a => ν (e a)) (fun a => Y (e a)) (fun a b => h (e a) (e b)) κ := by
+  exact { κ_pos := H.κ_pos
+          Y_meas := fun a => H.Y_meas (e a)
+          Y_indep := H.Y_indep.precomp e.injective
+          Y_law := fun a => H.Y_law (e a)
+          h_meas := fun a b => H.h_meas (e a) (e b)
+          h_int := fun a b q hq => H.h_int (e a) (e b) q hq
+          centered_left := fun a b hab => H.centered_left (e a) (e b) (e.strictMono hab)
+          centered_right := fun a b hab => H.centered_right (e a) (e b) (e.strictMono hab)
+          moment_left := fun a b hab q hq => H.moment_left (e a) (e b) (e.strictMono hab) q hq
+          moment_right := fun a b hab q hq => H.moment_right (e a) (e b) (e.strictMono hab) q hq }
+
+-- SKETCH: unfold `S`; on the right drop all terms with `i ∉ T` or `j ∉ T` (`hvan`,
+-- `Finset.sum_subset`, `Finset.sum_eq_zero`), leaving `∑ i ∈ T, ∑ j ∈ T.filter (i < ·), …`.
+-- Reindex with the order isomorphism `Fin n ≃o T` underlying `T.orderEmbOfFin hT`
+-- (`Finset.orderEmbOfFin_mem`, `Finset.range_orderEmbOfFin`, `Finset.sum_nbij` or
+-- `Finset.sum_map`), using `OrderEmbedding.lt_iff_lt` to match `a < b` with `e a < e b`
+-- (`Finset.mem_Ioi`).
+omit [MeasurableSpace E] in
+/-- A kernel supported on pairs of variables in `T` has the same `S` whether computed on all
+`m` variables or on the `#T` variables of `T`, enumerated increasingly. -/
+theorem S_reindex (h : Fin m → Fin m → E → E → ℝ) (Y : Fin m → Ω → E) {n : ℕ}
+    (T : Finset (Fin m)) (hT : T.card = n)
+    (hvan : ∀ i j, (i ∉ T ∨ j ∉ T) → ∀ x y, h i j x y = 0) (ω : Ω) :
+    S (fun a b => h (T.orderEmbOfFin hT a) (T.orderEmbOfFin hT b))
+        (fun a => Y (T.orderEmbOfFin hT a)) ω = S h Y ω := by
+  set e := T.orderEmbOfFin hT with he
+  have hmem : ∀ a, e a ∈ T := fun a => Finset.orderEmbOfFin_mem T hT a
+  have hsurj : ∀ i ∈ T, ∃ a, e a = i := by
+    intro i hi
+    have : i ∈ Set.range e := by
+      rw [he, Finset.range_orderEmbOfFin]; exact hi
+    exact this
+  unfold S
+  have h1 : ∀ i, ∑ j ∈ Ioi i, h i j (Y i ω) (Y j ω)
+      = ∑ j ∈ T.filter (i < ·), if i ∈ T then h i j (Y i ω) (Y j ω) else 0 := by
+    intro i
+    by_cases hi : i ∈ T
+    · simp only [hi, if_true]
+      symm
+      apply Finset.sum_subset
+      · intro j hj; simp at hj ⊢; exact hj.2
+      · intro j hj hj'
+        simp at hj hj'
+        exact hvan i j (Or.inr (fun hjT => absurd (hj' hjT) (not_le.mpr hj))) _ _
+    · simp only [hi, if_false, Finset.sum_const_zero]
+      exact Finset.sum_eq_zero fun j _ => hvan i j (Or.inl hi) _ _
+  simp_rw [h1]
+  rw [← Finset.sum_subset (Finset.subset_univ T)]
+  · apply Finset.sum_bij (fun a _ => e a)
+    · intro a _; exact Finset.mem_coe.mp (hmem a) |> fun h => h
+    · intro a _ b _ hab; exact e.injective hab
+    · intro i hi
+      obtain ⟨a, ha⟩ := hsurj i hi
+      exact ⟨a, Finset.mem_univ _, ha⟩
+    · intro a _
+      simp only [hmem a, if_true]
+      apply Finset.sum_bij (fun b _ => e b)
+      · intro b hb
+        simp only [Finset.mem_Ioi] at hb
+        simp [hmem b, e.lt_iff_lt.mpr hb]
+      · intro b _ c _ hbc; exact e.injective hbc
+      · intro j hj
+        simp only [Finset.mem_filter] at hj
+        obtain ⟨b, hb⟩ := hsurj j hj.1
+        refine ⟨b, ?_, hb⟩
+        simp only [Finset.mem_Ioi]
+        rw [← e.lt_iff_lt, hb]; exact hj.2
+      · intro b _; rfl
+  · intro i _ hi
+    simp only [hi, if_false, Finset.sum_const_zero]
+
+-- SKETCH: `Finset.measurable_sum` twice; each summand is
+-- `(hh i j).comp ((hY i).prodMk (hY j))` after rewriting `h i j (Y i ω) (Y j ω)` as
+-- `Function.uncurry (h i j) (Y i ω, Y j ω)`.
+omit [IsProbabilityMeasure μ] [∀ i, IsProbabilityMeasure (ν i)] in
+/-- `S` is measurable for measurable variables and kernels. -/
+theorem measurable_S (hY : ∀ i, Measurable (Y i))
+    (hh : ∀ i j, Measurable (Function.uncurry (h i j))) : Measurable (S h Y) := by
+  unfold S
+  refine Finset.measurable_sum _ fun i _ => Finset.measurable_sum _ fun j _ => ?_
+  exact (hh i j).comp ((hY i).prodMk (hY j))
+
+/-- A separate bounded-kernel utility. Boundedness is an explicit extra premise,
+not a consequence of the hypotheses of Lemma 6.1. -/
+theorem exists_bound_S (H : Hyp μ ν Y h κ)
+    (hbdd : ∀ i j, ∃ C : ℝ, ∀ x y, |h i j x y| ≤ C) :
+    ∃ C : ℝ, ∀ ω, |S h Y ω| ≤ C := by
+  classical
+  choose C hC using hbdd
+  refine ⟨∑ i, ∑ j ∈ Ioi i, C i j, fun ω => ?_⟩
+  unfold S
+  exact (Finset.abs_sum_le_sum_abs _ _).trans (Finset.sum_le_sum fun i _ =>
+    (Finset.abs_sum_le_sum_abs _ _).trans (Finset.sum_le_sum fun j _ => hC i j _ _))
+
+-- SKETCH: set `n := T.card`, `e := T.orderEmbOfFin rfl`.  `H.reindex e` gives the
+-- hypotheses on `Fin n`; `S_reindex h Y T rfl hvan ω` identifies the two `S`'s pointwise
+-- (`integral_congr_ae` / `funext`).  Apply `LogGas.Decoupling.exp_bound` with `m := n`
+-- (`hT` gives `1 ≤ n`), `θ`, `hθ`; the instance `∀ a, IsProbabilityMeasure (ν (e a))` is
+-- `inferInstance`.
+/-- Eq. `eq:canonical-array-exponential` (6.3) "with `m_b` in place of `m`": for a kernel
+supported on pairs in a block `T` of `m_b = #T ≥ 1` variables,
+`𝔼 e^{θ S/m_b} ≤ 2/(1-(C_u κ |θ|)^2)` whenever `C_u κ |θ| < 1`. -/
+theorem block_exp_bound (H : Hyp μ ν Y h κ) (T : Finset (Fin m)) (hT : 1 ≤ T.card)
+    (hvan : ∀ i j, (i ∉ T ∨ j ∉ T) → ∀ x y, h i j x y = 0) (θ : ℝ)
+    (hθ : Cu * κ * |θ| < 1) :
+    ∫ ω, Real.exp (θ * S h Y ω / T.card) ∂μ ≤ 2 / (1 - (Cu * κ * |θ|) ^ 2) := by
+  have key := LogGas.Decoupling.exp_bound (Hyp.reindex H (T.orderEmbOfFin rfl)) hT θ hθ
+  have hS := S_reindex h Y T rfl hvan
+  simpa [hS] using key
+
+-- SKETCH: if `T = ∅` then `S h Y = 0` by `hvan` (`Finset.sum_eq_zero`), the integrand is `1`
+-- and `∫ 1 ∂μ = 1 ≤ 8/3` (`integral_const`, `measure_univ`).  Otherwise put
+-- `θ := t * T.card / m`, so `θ * S / T.card = t * S / m` (`field_simp`, `T.card ≠ 0`,
+-- `m ≠ 0`), and `Cu κ |θ| = Cu κ |t| #T / m ≤ Cu κ |t| (2 m*) / m ≤ 1/2 < 1`
+-- (`abs_mul`, `abs_div`, `Nat.abs_cast`, `div_le_div_of_nonneg_right`, `hsize`).  Then
+-- `block_exp_bound` and `2/(1-x^2) ≤ 2/(1-1/4) = 8/3` for `0 ≤ x ≤ 1/2`
+-- (`div_le_div_of_nonneg_left`, `pow_le_pow_left₀`, `norm_num`).
+/-- One block factor in eq. `eq:array-grouped-holder` (6.14): `𝔼[e^{t S_b/m}] ≤ 8/3` when
+`#T_b ≤ 2 m_*` and `C_u κ |t| (2 m_*)/m ≤ 1/2`; empty blocks contribute `1`. -/
+theorem block_factor (H : Hyp μ ν Y h κ) (hm : 1 ≤ m) (T : Finset (Fin m)) (mstar : ℕ)
+    (hsize : T.card ≤ 2 * mstar)
+    (hvan : ∀ i j, (i ∉ T ∨ j ∉ T) → ∀ x y, h i j x y = 0) (t : ℝ)
+    (ht : Cu * κ * |t| * (2 * mstar) / m ≤ 1 / 2) :
+    ∫ ω, Real.exp (t * S h Y ω / m) ∂μ ≤ 8 / 3 := by
+  have hκ := H.κ_pos
+  have hCu : (0:ℝ) < Cu := by unfold Cu; norm_num
+  have hmR : (0:ℝ) < m := by exact_mod_cast hm
+  rcases T.eq_empty_or_nonempty with rfl | hne
+  · have hS : ∀ ω, S h Y ω = 0 := by
+      intro ω
+      unfold S
+      apply Finset.sum_eq_zero
+      intro i _
+      apply Finset.sum_eq_zero
+      intro j _
+      exact hvan i j (Or.inl (Finset.notMem_empty _)) _ _
+    simp [hS]
+    norm_num
+  · have hT : 1 ≤ T.card := Finset.card_pos.2 hne
+    have hTR : (0:ℝ) < T.card := by exact_mod_cast hT
+    have hle : (T.card : ℝ) ≤ 2 * mstar := by exact_mod_cast hsize
+    set θ : ℝ := t * T.card / m with hθdef
+    have hx : Cu * κ * |θ| ≤ 1 / 2 := by
+      have : Cu * κ * |θ| = Cu * κ * |t| * T.card / m := by
+        rw [hθdef, abs_div, abs_mul, abs_of_pos hmR, abs_of_pos hTR]; ring
+      rw [this]
+      refine le_trans ?_ ht
+      gcongr
+    have hx0 : 0 ≤ Cu * κ * |θ| := by positivity
+    have key := block_exp_bound H T hT hvan θ (by linarith)
+    have heq : ∀ ω, θ * S h Y ω / T.card = t * S h Y ω / m := by
+      intro ω; rw [hθdef]; field_simp
+    simp only [heq] at key
+    refine key.trans ?_
+    have h1 : (Cu * κ * |θ|) ^ 2 ≤ (1/2)^2 := pow_le_pow_left₀ hx0 hx 2
+    have h2 : 2 / (1 - (Cu * κ * |θ|) ^ 2) ≤ 2 / (1 - (1/2:ℝ)^2) :=
+      div_le_div_of_nonneg_left (by norm_num) (by norm_num) (by linarith)
+    refine h2.trans ?_
+    norm_num
+
+end Blocks
+
+/-! ### G2: independence of the blocks of one class -/
+
+section Classes
+
+variable {m : ℕ} {μ : Measure Ω} [IsProbabilityMeasure μ] {ν : Fin m → Measure E}
+  [∀ i, IsProbabilityMeasure (ν i)] {Y : Fin m → Ω → E}
+  {h : Fin m → Fin m → E → E → ℝ} {κ : ℝ}
+
+-- SKETCH (G2): `S (h' b) Y ω = Φ b (fun i : T b => Y i ω)` for the measurable map
+-- `Φ b : (T b → E) → ℝ`, `Φ b z := ∑ i ∈ T b, ∑ j ∈ (T b).filter (i < ·), h' b i j (z i) (z j)`
+-- (drop the vanishing terms with `hvan`, `Finset.sum_subset`).  The family
+-- `b ↦ (fun i : T b => Y i ω)` is independent because the `T b` are pairwise disjoint:
+-- use `iIndepFun_iff_measure_inter_preimage_eq_mul` / `iIndepFun_iff` and
+-- `ProbabilityTheory.indep_iSup_of_disjoint` on the σ-algebras `⨆ i ∈ T b, (Y i)⁻¹ ·`
+-- (`iIndepFun` is `iIndep (fun i => MeasurableSpace.comap (Y i) _)`), or
+-- `iIndepFun_iff_map_fun_eq_pi_map` with the product structure of `Measure.pi`.  Then
+-- `iIndepFun.comp` with the measurable `Φ b` (`Finset.measurable_sum`, `measurable_pi_apply`).
+omit [IsProbabilityMeasure μ] [∀ i, IsProbabilityMeasure (ν i)] in
+/-- Class independence for eq. `eq:array-grouped-holder` (6.14): block sums `S_{c,b}` whose
+kernels are supported on pairwise disjoint sets of variables `T b` are independent. -/
+theorem blocks_indep (hY_meas : ∀ i, Measurable (Y i)) (hY_indep : iIndepFun Y μ) {n : ℕ}
+    (T : Fin n → Finset (Fin m)) (hT : Pairwise (Disjoint on T))
+    (h' : Fin n → Fin m → Fin m → E → E → ℝ)
+    (hmeas : ∀ b i j, Measurable (Function.uncurry (h' b i j)))
+    (hvan : ∀ b i j, (i ∉ T b ∨ j ∉ T b) → ∀ x y, h' b i j x y = 0) :
+    iIndepFun (fun b ω => S (h' b) Y ω) μ := by
+  classical
+  let Φ : ∀ b, (T b → E) → ℝ := fun b z =>
+    ∑ i : T b, ∑ j : T b, if (i : Fin m) < j then h' b i j (z i) (z j) else 0
+  have hΦ : ∀ b, Measurable (Φ b) := by
+    intro b
+    refine Finset.measurable_sum _ fun i _ => Finset.measurable_sum _ fun j _ => ?_
+    by_cases hij : (i : Fin m) < j
+    · simp only [hij, if_true]
+      have : Measurable fun z : T b → E => Function.uncurry (h' b i j) (z i, z j) :=
+        (hmeas b i j).comp ((measurable_pi_apply i).prodMk (measurable_pi_apply j))
+      exact this
+    · simp only [hij, if_false]; exact measurable_const
+  have hsub : ∀ (b : Fin n) (f : Fin m → ℝ), (∀ i, i ∉ T b → f i = 0) →
+      ∑ i, f i = ∑ i : T b, f i := by
+    intro b f hf
+    rw [Finset.sum_coe_sort (T b) f]
+    exact (Finset.sum_subset (Finset.subset_univ _) (fun i _ hi => hf i hi)).symm
+  have hSΦ : ∀ b ω, S (h' b) Y ω = Φ b (fun i : T b => Y i ω) := by
+    intro b ω
+    unfold S
+    simp only [Φ]
+    have e1 : ∀ i : Fin m, ∑ j ∈ Finset.Ioi i, h' b i j (Y i ω) (Y j ω)
+        = ∑ j, if i < j then h' b i j (Y i ω) (Y j ω) else 0 := by
+      intro i
+      rw [← Finset.sum_filter]; congr 1; ext j; simp
+    simp_rw [e1]
+    rw [hsub b]
+    · refine Finset.sum_congr rfl fun i _ => ?_
+      rw [hsub b]
+      intro j hj
+      split_ifs
+      · exact hvan b i j (Or.inr hj) _ _
+      · rfl
+    · intro i hi
+      refine Finset.sum_eq_zero fun j _ => ?_
+      split_ifs
+      · exact hvan b i j (Or.inl hi) _ _
+      · rfl
+  have hfun : (fun b ω => S (h' b) Y ω) = fun b ω => Φ b (fun i : T b => Y i ω) := by
+    funext b ω; exact hSΦ b ω
+  rw [hfun, iIndepFun_iff_measure_inter_preimage_eq_mul]
+  intro s A hA
+  induction s using Finset.induction_on with
+  | empty =>
+    have h0 := hY_indep.measure_inter_preimage_eq_mul (∅ : Finset (Fin m))
+      (sets := fun _ => Set.univ) (by simp)
+    simpa using h0
+  | insert a s ha ih =>
+    have ih' := ih (fun i hi => hA i (Finset.mem_insert_of_mem hi))
+    have hdisj : Disjoint (T a) (s.biUnion T) := by
+      rw [Finset.disjoint_biUnion_right]
+      intro b hb
+      exact hT (fun hab => ha (hab ▸ hb))
+    have hind := hY_indep.indepFun_finset (T a) (s.biUnion T) hdisj hY_meas
+    let B : Set (↥(Finset.biUnion s T) → E) :=
+      ⋂ b ∈ s, {z | Φ b (fun i : T b => z ⟨i, Finset.mem_biUnion.2 ⟨b, ‹_›, i.2⟩⟩) ∈ A b}
+    have hB : MeasurableSet B := by
+      simp only [B]
+      refine MeasurableSet.iInter fun b => MeasurableSet.iInter fun hb => ?_
+      exact (hΦ b).comp (measurable_pi_iff.2 fun i => measurable_pi_apply _) (hA b (Finset.mem_insert_of_mem hb))
+    have hAa : MeasurableSet (Φ a ⁻¹' A a) := hΦ a (hA a (Finset.mem_insert_self a s))
+    have key := hind.measure_inter_preimage_eq_mul _ _ hAa hB
+    have e2 : (⋂ b ∈ s, (fun ω => Φ b (fun i : T b => Y i ω)) ⁻¹' A b)
+        = (fun ω (i : ↥(Finset.biUnion s T)) => Y i ω) ⁻¹' B := by
+      ext ω; simp [B]
+    rw [Finset.set_biInter_insert, Finset.prod_insert ha, ← ih', e2]
+    exact key
+
+-- SKETCH: both sides are `mgf`'s: `∫ exp (t * X ω) ∂μ = mgf X μ t` by definition
+-- (`ProbabilityTheory.mgf`), and `∑ b, S (h' b) Y ω = (∑ b, S (h' b) Y) ω`
+-- (`Finset.sum_apply`).  Apply `ProbabilityTheory.iIndepFun.mgf_sum` to `blocks_indep`,
+-- with measurability from `measurable_S`.
+omit [IsProbabilityMeasure μ] [∀ i, IsProbabilityMeasure (ν i)] in
+/-- The exponential moment of one class factors over its blocks
+(`∏_b 𝔼[e^{2KuS_{c,b}/m}]` in eq. `eq:array-grouped-holder` (6.14)). -/
+theorem class_mgf (hY_meas : ∀ i, Measurable (Y i)) (hY_indep : iIndepFun Y μ) {n : ℕ}
+    (T : Fin n → Finset (Fin m)) (hT : Pairwise (Disjoint on T))
+    (h' : Fin n → Fin m → Fin m → E → E → ℝ)
+    (hmeas : ∀ b i j, Measurable (Function.uncurry (h' b i j)))
+    (hvan : ∀ b i j, (i ∉ T b ∨ j ∉ T b) → ∀ x y, h' b i j x y = 0) (t : ℝ) :
+    ∫ ω, Real.exp (t * ∑ b, S (h' b) Y ω) ∂μ
+      = ∏ b, ∫ ω, Real.exp (t * S (h' b) Y ω) ∂μ := by
+  have hind := blocks_indep hY_meas hY_indep T hT h' hmeas hvan
+  have hm' : ∀ b, Measurable (S (h' b) Y) := fun b => measurable_S hY_meas (hmeas b)
+  have := hind.mgf_sum (fun b => hm' b) (Finset.univ) (t := t)
+  simpa [mgf, Finset.sum_apply] using this
+
+-- SKETCH: if `M = 0` both sides are `1` (`Fintype.sum_empty`, `integral_const`,
+-- `pow_zero`).  Otherwise rewrite `t * (∑ b, S_b) / m = (t/m) * ∑ b, S_b` and factor with
+-- `class_mgf` (measurability from `(hH b).Y_meas`, `(hH b).Y_indep`, `(hH b).h_meas`).
+-- Each factor `∫ exp ((t/m) * S_b)` equals `∫ exp (t * S_b / m) ≤ 8/3` by `block_factor`
+-- applied to `hH b`, `hsize b`, `hvan b`, `ht`.  Conclude with `Finset.prod_le_prod`
+-- (factors are nonnegative: `integral_nonneg`, `Real.exp_pos`), `Finset.prod_const`,
+-- `Finset.card_univ`, `Fintype.card_fin`.
+/-- One color class in eq. `eq:array-grouped-holder` (6.14): `M` blocks on pairwise disjoint
+variable sets of size `≤ 2 m_*` give `𝔼[e^{t ∑_b S_b/m}] ≤ (8/3)^M` when
+`C_u κ |t| (2 m_*)/m ≤ 1/2`. -/
+theorem class_bound (hm : 1 ≤ m) {M : ℕ} (T : Fin M → Finset (Fin m))
+    (hT : Pairwise (Disjoint on T)) (h' : Fin M → Fin m → Fin m → E → E → ℝ)
+    (hH : ∀ b, Hyp μ ν Y (h' b) κ)
+    (hvan : ∀ b i j, (i ∉ T b ∨ j ∉ T b) → ∀ x y, h' b i j x y = 0)
+    (mstar : ℕ) (hsize : ∀ b, (T b).card ≤ 2 * mstar) (t : ℝ)
+    (ht : Cu * κ * |t| * (2 * mstar) / m ≤ 1 / 2) :
+    ∫ ω, Real.exp (t * (∑ b, S (h' b) Y ω) / m) ∂μ ≤ (8 / 3) ^ M := by
+  rcases Nat.eq_zero_or_pos M with rfl | hM
+  · simp
+  have H0 := hH ⟨0, hM⟩
+  have hfac := class_mgf (μ := μ) H0.Y_meas H0.Y_indep T hT h'
+    (fun b => (hH b).h_meas) hvan (t / m)
+  have heq : ∀ ω, t * (∑ b, S (h' b) Y ω) / m = t / m * ∑ b, S (h' b) Y ω := by
+    intro ω; ring
+  simp_rw [heq]
+  rw [hfac]
+  calc ∏ b, ∫ ω, Real.exp (t / m * S (h' b) Y ω) ∂μ
+      ≤ ∏ _b : Fin M, (8 / 3 : ℝ) := by
+        refine Finset.prod_le_prod₀ (fun b _ => integral_nonneg fun ω => (Real.exp_pos _).le)
+          (fun b _ => ?_)
+        have := block_factor (hH b) hm (T b) mstar (hsize b) (hvan b) t ht
+        simpa only [div_mul_eq_mul_div] using this
+    _ = (8 / 3) ^ M := by simp [div_pow]
+
+end Classes
+
+/-! ### Finite Hölder and the class decomposition -/
+
+-- SKETCH: `Real.exp_sum` turns the integrand into `∏ c, exp (f c ω)`.  Apply the finite
+-- Hölder inequality `ENNReal.lintegral_prod_norm_pow_le` with exponents `p c = 1/n`
+-- (`Finset.sum_const`, `nsmul_eq_mul`, `mul_one_div_cancel`) to the nonnegative functions
+-- `ofReal (exp (f c ω))`; `‖exp (f c ω)‖ ^ (n : ℝ) = exp (n * f c ω)` by
+-- `Real.norm_of_nonneg`, `← Real.exp_mul` / `Real.rpow_natCast`.  Translate back to Bochner
+-- integrals with `ofReal_integral_eq_lintegral_ofReal` (using `hint`, `hf`) and
+-- `ENNReal.ofReal_rpow_of_nonneg`, `ENNReal.ofReal_prod_of_nonneg`, `ENNReal.ofReal_le_ofReal_iff`.
+-- Integrability of `∏ c, exp (f c)` follows from Hölder as well, or from
+-- `Integrable.of_bound` if the `f c` are bounded (not assumed here: use the `lintegral`
+-- route and `integral_eq_lintegral_of_nonneg_ae`).
+/-- Finite Hölder with `n` equal exponents (the "Hölder over the `2K` classes" step of
+eq. `eq:array-grouped-holder` (6.14)):
+`∫ exp(∑_c f_c) ≤ ∏_c (∫ exp(n f_c))^{1/n}` on a probability space. -/
+theorem holder_classes (μ : Measure Ω) [IsProbabilityMeasure μ] {n : ℕ} (hn : 1 ≤ n)
+    (f : Fin n → Ω → ℝ) (hf : ∀ c, Measurable (f c))
+    (hint : ∀ c, Integrable (fun ω => Real.exp (n * f c ω)) μ) :
+    ∫ ω, Real.exp (∑ c, f c ω) ∂μ
+      ≤ ∏ c, (∫ ω, Real.exp (n * f c ω) ∂μ) ^ (1 / (n : ℝ)) := by
+  have hn0 : (0 : ℝ) < n := by exact_mod_cast hn
+  have hp : ∑ _c : Fin n, (1 / (n : ℝ)) = 1 := by
+    simp [Finset.sum_const, Finset.card_univ]; field_simp
+  have hI : ∀ c, 0 ≤ ∫ ω, Real.exp (n * f c ω) ∂μ :=
+    fun c => integral_nonneg (fun ω => (Real.exp_pos _).le)
+  have hmeas : ∀ c, Measurable (fun ω => ENNReal.ofReal (Real.exp (n * f c ω))) :=
+    fun c => ENNReal.measurable_ofReal.comp
+      (Real.measurable_exp.comp (measurable_const.mul (hf c)))
+  have key := ENNReal.lintegral_prod_norm_pow_le (μ := μ) Finset.univ
+    (f := fun c ω => ENNReal.ofReal (Real.exp (n * f c ω)))
+    (fun c _ => (hmeas c).aemeasurable) hp (fun _ _ => by positivity)
+  have hpt : ∀ ω, ∏ c : Fin n, ENNReal.ofReal (Real.exp (n * f c ω)) ^ (1 / (n : ℝ))
+      = ENNReal.ofReal (Real.exp (∑ c, f c ω)) := by
+    intro ω
+    have : ∀ c : Fin n, ENNReal.ofReal (Real.exp (n * f c ω)) ^ (1 / (n : ℝ))
+        = ENNReal.ofReal (Real.exp (f c ω)) := by
+      intro c
+      rw [ENNReal.ofReal_rpow_of_nonneg (Real.exp_pos _).le (by positivity),
+        ← Real.exp_mul]
+      congr 2
+      field_simp
+    simp_rw [this]
+    rw [← ENNReal.ofReal_prod_of_nonneg (fun c _ => (Real.exp_pos _).le), ← Real.exp_sum]
+  simp_rw [hpt] at key
+  have hR : ∀ c, ∫⁻ ω, ENNReal.ofReal (Real.exp (n * f c ω)) ∂μ
+      = ENNReal.ofReal (∫ ω, Real.exp (n * f c ω) ∂μ) := fun c =>
+    (ofReal_integral_eq_lintegral_ofReal (hint c)
+      (Filter.Eventually.of_forall fun ω => (Real.exp_pos _).le)).symm
+  simp_rw [hR] at key
+  have hrhs : ∏ c : Fin n, ENNReal.ofReal (∫ ω, Real.exp (n * f c ω) ∂μ) ^ (1 / (n : ℝ))
+      = ENNReal.ofReal (∏ c, (∫ ω, Real.exp (n * f c ω) ∂μ) ^ (1 / (n : ℝ))) := by
+    rw [ENNReal.ofReal_prod_of_nonneg (fun c _ => Real.rpow_nonneg (hI c) _)]
+    refine Finset.prod_congr rfl fun c _ => ?_
+    rw [ENNReal.ofReal_rpow_of_nonneg (hI c) (by positivity)]
+  rw [hrhs] at key
+  have hmeasS : Measurable (fun ω => Real.exp (∑ c, f c ω)) :=
+    Real.measurable_exp.comp (Finset.measurable_sum _ fun c _ => hf c)
+  rw [integral_eq_lintegral_of_nonneg_ae
+    (Filter.Eventually.of_forall fun ω => (Real.exp_pos _).le) hmeasS.aestronglyMeasurable]
+  exact ENNReal.toReal_le_of_le_ofReal
+    (Finset.prod_nonneg fun c _ => Real.rpow_nonneg (hI c) _) key
+
+section Grouped
+
+variable {m : ℕ} {μ : Measure Ω} [IsProbabilityMeasure μ] {ν : Fin m → Measure E}
+  [∀ i, IsProbabilityMeasure (ν i)] {Y : Fin m → Ω → E}
+  {h : Fin m → Fin m → E → E → ℝ} {κ : ℝ}
+
+-- SKETCH: take the coloring `col` from `greedy_edge_coloring G K hK hdeg`.  Classes
+-- `c : Fin (2K)` with `c.val < 2K-1` collect the edges of color `c` (a matching: by the
+-- coloring property every group lies on at most one edge of each color); index the edge
+-- `{a, b}`, `a < b`, by its smaller endpoint `a`.  Define
+-- `T c a := univ.filter (fun i => grp i = a ∨ ∃ b, a < b ∧ G.Adj a b ∧ col a b = c ∧ grp i = b)`
+-- when some such `b` exists, else `∅`, and `h' c a := restrict h (pairs of distinct groups
+-- `{grp i, grp j} = {a, b}` for that edge)`; the last class `c = 2K-1` has
+-- `T c a := univ.filter (grp · = a)` and `h' c a := restrict h (fun i j => grp i = a ∧ grp j = a)`.
+-- `Hyp` by `Hyp.restrict`; sizes `≤ 2 m*` from `hsize` via `Finset.card_union_le` /
+-- `Finset.filter_or`; disjointness from the matching property (`Finset.disjoint_filter`);
+-- vanishing by construction.  The sum identity: every pair `i < j` with `h i j ≠ 0` has
+-- either `grp i = grp j` (last class, block `grp i`) or `G.Adj (grp i) (grp j)` (`hvan`),
+-- in which case it lies in exactly the class `col (grp i) (grp j)` and block
+-- `min (grp i) (grp j)`; so `∑ c, ∑ a, restrict … = h i j` pointwise by
+-- `Finset.sum_ite_eq`/`Finset.sum_eq_single`, then `Finset.sum_comm` and `Finset.sum_congr`.
+/-- The decomposition `S = ∑_{c=1}^{2K} ∑_b S_{c,b}` preceding eq. `eq:array-grouped-holder`
+(6.14): `2K` classes of `M` blocks each (possibly empty), blocks of one class on pairwise
+disjoint variable sets of size `≤ 2 m_*`, each block kernel satisfying the hypotheses of
+Lemma 6.1. -/
+theorem class_decomposition (H : Hyp μ ν Y h κ) {M : ℕ} (grp : Fin m → Fin M) (mstar : ℕ)
+    (hsize : ∀ a, (univ.filter (fun i => grp i = a)).card ≤ mstar)
+    (G : SimpleGraph (Fin M)) [DecidableRel G.Adj] (K : ℕ) (hK : 1 ≤ K)
+    (hdeg : ∀ a, G.degree a ≤ K - 1)
+    (hvan : ∀ i j, grp i ≠ grp j → ¬ G.Adj (grp i) (grp j) → ∀ x y, h i j x y = 0) :
+    ∃ (T : Fin (2 * K) → Fin M → Finset (Fin m))
+      (h' : Fin (2 * K) → Fin M → Fin m → Fin m → E → E → ℝ),
+      (∀ c, Pairwise (Disjoint on T c)) ∧
+      (∀ c a, (T c a).card ≤ 2 * mstar) ∧
+      (∀ c a, Hyp μ ν Y (h' c a) κ) ∧
+      (∀ c a i j, (i ∉ T c a ∨ j ∉ T c a) → ∀ x y, h' c a i j x y = 0) ∧
+      ∀ ω, S h Y ω = ∑ c, ∑ a, S (h' c a) Y ω := by
+  classical
+  obtain ⟨col, hsymm, hcol⟩ := greedy_edge_coloring G K hK hdeg
+  let Ed : Fin (2 * K) → Fin M → Fin M → Prop :=
+    fun c a b => a < b ∧ G.Adj a b ∧ (col a b).val = c.val
+  let R : Fin (2 * K) → Fin M → Fin M → Fin M → Prop := fun c a g g' =>
+    if c.val < 2 * K - 1 then (Ed c a g' ∧ g = a) ∨ (Ed c a g ∧ g' = a) else (g = a ∧ g' = a)
+  have huniq : ∀ x y y', G.Adj x y → G.Adj x y' → col x y = col x y' → y = y' := by
+    intro x y y' h1 h2 h3
+    by_contra hne
+    exact hcol x y y' h1 h2 hne h3
+  have hcv : ∀ x y y', G.Adj x y → G.Adj x y' → (col x y).val = (col x y').val → y = y' :=
+    fun x y y' h1 h2 h3 => huniq x y y' h1 h2 (Fin.ext h3)
+  let T : Fin (2 * K) → Fin M → Finset (Fin m) := fun c a => Finset.univ.filter (fun i =>
+      if c.val < 2 * K - 1 then (∃ b, Ed c a b) ∧ (grp i = a ∨ ∃ b, Ed c a b ∧ grp i = b)
+      else grp i = a)
+  have hRT : ∀ c a i j, R c a (grp i) (grp j) → i ∈ T c a ∧ j ∈ T c a := by
+    intro c a i j hR
+    simp only [R, T, Finset.mem_filter, Finset.mem_univ, true_and] at hR ⊢
+    split_ifs at hR ⊢ with hc
+    · rcases hR with ⟨hb, hg⟩ | ⟨hb, hg⟩
+      · exact ⟨⟨⟨_, hb⟩, Or.inl hg⟩, ⟨_, hb⟩, Or.inr ⟨_, hb, rfl⟩⟩
+      · exact ⟨⟨⟨_, hb⟩, Or.inr ⟨_, hb, rfl⟩⟩, ⟨_, hb⟩, Or.inl hg⟩
+    · exact hR
+  have hcs : ∀ x y, (col x y).val = (col y x).val := fun x y => by rw [hsymm x y]
+  have hcross : ∀ c a a' b b', Ed c a b → Ed c a' b' → a ≠ a' →
+      a ≠ b' ∧ b ≠ a' ∧ b ≠ b' := by
+    intro c a a' b b' ⟨hlt, hadj, hcv1⟩ ⟨hlt', hadj', hcv2⟩ hne
+    refine ⟨?_, ?_, ?_⟩
+    · rintro rfl
+      have h3 : a' = b := hcv a a' b hadj'.symm hadj (by rw [← hcs, hcv2, hcv1])
+      subst h3
+      exact lt_asymm hlt hlt'
+    · rintro rfl
+      have h3 : a = b' := hcv b a b' hadj.symm hadj' (by rw [← hcs, hcv1, hcv2])
+      subst h3
+      exact lt_asymm hlt hlt'
+    · rintro rfl
+      exact hne (hcv b a a' hadj.symm hadj'.symm (by rw [← hcs, hcv1, ← hcs, hcv2]))
+  have hdis : ∀ c a a', a ≠ a' → Disjoint (T c a) (T c a') := by
+    intro c a a' hne
+    rw [Finset.disjoint_left]
+    intro i hi hi'
+    simp only [T, Finset.mem_filter, Finset.mem_univ, true_and] at hi hi'
+    split_ifs at hi hi' with hc
+    · obtain ⟨⟨b1, hb1⟩, hi1⟩ := hi
+      obtain ⟨⟨b2, hb2⟩, hi2⟩ := hi'
+      rcases hi1 with h1 | ⟨b, hb, h1⟩ <;> rcases hi2 with h2 | ⟨b', hb', h2⟩
+      · exact hne (h1.symm.trans h2)
+      · exact (hcross c a a' b1 b' hb1 hb' hne).1 (h1.symm.trans h2)
+      · exact (hcross c a a' b b2 hb hb2 hne).2.1 (h1.symm.trans h2)
+      · exact (hcross c a a' b b' hb hb' hne).2.2 (h1.symm.trans h2)
+    · exact hne (hi.symm.trans hi')
+  have hcard : ∀ c a, (T c a).card ≤ 2 * mstar := by
+    intro c a
+    by_cases hc : c.val < 2 * K - 1
+    · by_cases hex : ∃ b, Ed c a b
+      · obtain ⟨b0, hb0⟩ := hex
+        have hsub : T c a ⊆ Finset.univ.filter (fun i => grp i = a) ∪
+            Finset.univ.filter (fun i => grp i = b0) := by
+          intro i hi
+          simp only [T, Finset.mem_filter, Finset.mem_univ, true_and, if_pos hc,
+            Finset.mem_union] at hi ⊢
+          rcases hi.2 with h | ⟨b, ⟨hl, ha, hv⟩, h⟩
+          · exact Or.inl h
+          · right
+            have : b = b0 := hcv a b b0 ha hb0.2.1 (by rw [hv, hb0.2.2])
+            rw [h, this]
+        calc (T c a).card ≤ _ := Finset.card_le_card hsub
+          _ ≤ _ := Finset.card_union_le _ _
+          _ ≤ mstar + mstar := Nat.add_le_add (hsize a) (hsize b0)
+          _ = 2 * mstar := by ring
+      · have : T c a = ∅ := by
+          ext i
+          simp only [T, Finset.mem_filter, Finset.mem_univ, true_and, if_pos hc,
+            Finset.notMem_empty, iff_false]
+          exact fun h => hex h.1
+        rw [this]; simp
+    · calc (T c a).card ≤ mstar := by
+            have := hsize a
+            simpa only [T, if_neg hc] using this
+        _ ≤ 2 * mstar := by omega
+  have hpt : ∀ g g' (v : ℝ), (g ≠ g' → ¬ G.Adj g g' → v = 0) →
+      ∑ c, ∑ a, (if R c a g g' then v else 0) = v := by
+    intro g g' v hv
+    have hsingle : ∀ c0 a0, R c0 a0 g g' → (∀ c a, R c a g g' → c = c0 ∧ a = a0) →
+        ∑ c, ∑ a, (if R c a g g' then v else 0) = v := by
+      intro c0 a0 hR hu
+      rw [Finset.sum_eq_single c0, Finset.sum_eq_single a0]
+      · rw [if_pos hR]
+      · intro a _ ha
+        rw [if_neg]
+        exact fun hr => ha (hu c0 a hr).2
+      · simp
+      · intro c _ hc
+        apply Finset.sum_eq_zero
+        intro a _
+        rw [if_neg]
+        exact fun hr => hc (hu c a hr).1
+      · simp
+    have hKpos : 0 < 2 * K - 1 := by omega
+    by_cases hg : g = g'
+    · subst hg
+      have hlast : (2 * K - 1 : ℕ) < 2 * K := by omega
+      refine hsingle ⟨2 * K - 1, hlast⟩ g ?_ ?_
+      · simp [R]
+      · intro c a hR
+        simp only [R] at hR
+        split_ifs at hR with hc
+        · rcases hR with ⟨⟨hl, _⟩, h2⟩ | ⟨⟨hl, _⟩, h2⟩ <;> subst h2 <;> exact absurd hl (lt_irrefl _)
+        · exact ⟨Fin.ext (by have := c.isLt; simp only; omega), hR.1.symm⟩
+    · by_cases hadj : G.Adj g g'
+      · rcases lt_or_gt_of_ne hg with hlt | hlt
+        · refine hsingle (Fin.castLE (by omega) (col g g')) g ?_ ?_
+          · have := (col g g').isLt
+            simp only [R, Fin.coe_castLE]
+            rw [if_pos this]
+            exact Or.inl ⟨⟨hlt, hadj, rfl⟩, trivial⟩
+          · intro c a hR
+            simp only [R] at hR
+            split_ifs at hR with hc
+            · rcases hR with ⟨⟨hl, ha, hcv⟩, h2⟩ | ⟨⟨hl, ha, hcv⟩, h2⟩
+              · subst h2
+                exact ⟨Fin.ext (by simp [hcv]), rfl⟩
+              · subst h2
+                exact absurd (lt_trans hl hlt) (lt_irrefl _)
+            · exact absurd (hR.1.trans hR.2.symm) hg
+        · refine hsingle (Fin.castLE (by omega) (col g' g)) g' ?_ ?_
+          · have := (col g' g).isLt
+            simp only [R, Fin.coe_castLE]
+            rw [if_pos this]
+            exact Or.inr ⟨⟨hlt, hadj.symm, rfl⟩, trivial⟩
+          · intro c a hR
+            simp only [R] at hR
+            split_ifs at hR with hc
+            · rcases hR with ⟨⟨hl, ha, hcv⟩, h2⟩ | ⟨⟨hl, ha, hcv⟩, h2⟩
+              · subst h2
+                exact absurd (lt_trans hl hlt) (lt_irrefl _)
+              · subst h2
+                exact ⟨Fin.ext (by simp [hcv]), rfl⟩
+            · exact absurd (hR.1.trans hR.2.symm) hg
+      · have := hv hg hadj
+        subst this
+        simp
+  refine ⟨T, fun c a => restrict h (fun i j => R c a (grp i) (grp j)), ?_, hcard, ?_, ?_, ?_⟩
+  · intro c a a' hne
+    exact hdis c a a' hne
+  · intro c a
+    exact LogGas.Grouped.Hyp.restrict H _
+  · intro c a i j hij x y
+    show (if R c a (grp i) (grp j) then h i j x y else 0) = 0
+    rw [if_neg]
+    intro hR
+    have := hRT c a i j hR
+    tauto
+  · intro ω
+    have hF : ∀ (F : Fin (2 * K) → Fin M → Fin m → Fin m → ℝ),
+        ∑ c, ∑ a, ∑ i, ∑ j ∈ Ioi i, F c a i j = ∑ i, ∑ j ∈ Ioi i, ∑ c, ∑ a, F c a i j := by
+      intro F
+      calc _ = ∑ c, ∑ i, ∑ a, ∑ j ∈ Ioi i, F c a i j :=
+            Finset.sum_congr rfl fun c _ => Finset.sum_comm
+        _ = ∑ i, ∑ c, ∑ a, ∑ j ∈ Ioi i, F c a i j := Finset.sum_comm
+        _ = ∑ i, ∑ c, ∑ j ∈ Ioi i, ∑ a, F c a i j :=
+            Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun c _ => Finset.sum_comm
+        _ = _ := Finset.sum_congr rfl fun i _ => Finset.sum_comm
+    simp only [S]
+    rw [hF (fun c a i j => restrict h (fun i j => R c a (grp i) (grp j)) i j (Y i ω) (Y j ω))]
+    refine Finset.sum_congr rfl fun i _ => Finset.sum_congr rfl fun j _ => ?_
+    symm
+    refine hpt (grp i) (grp j) _ ?_
+    intro hne hnadj
+    exact hvan i j hne hnadj _ _
+
+-- SKETCH (G3): obtain `T, h'` from `class_decomposition`.  Put
+-- `f c ω := u * (∑ a, S (h' c a) Y ω) / m`, so `u * S h Y ω / m = ∑ c, f c ω`
+-- (`Finset.mul_sum`, `Finset.sum_div`) and `(2K : ℝ) * f c ω = (2K u) * (∑ a, S …) / m`.
+-- `holder_classes μ (n := 2K)`: measurability from `measurable_S`, integrability from
+-- finite exponential moments at the required coupling, proved via the nonnegative
+-- exponential series and `moment_bound`. No boundedness premise is available.  Each factor is
+-- `≤ ((8/3)^M) ^ (1/(2K))` by `class_bound` with `t = 2 K u`, since
+-- `Cu κ |2Ku| (2 m*)/m = 4 K Cu κ |u| m*/m ≤ 1/2` (`abs_mul`, `Nat.abs_cast`, `ring_nf`)
+-- and `Real.rpow_le_rpow` (bases nonnegative by `integral_nonneg`).  Finally
+-- `Finset.prod_const`, `Finset.card_univ`, `Fintype.card_fin`, `← Real.rpow_natCast`,
+-- `← Real.rpow_mul`, `one_div_mul_cancel` give `(((8/3)^M)^(1/(2K)))^(2K) = (8/3)^M`.
+/-- Eq. `eq:canonical-grouped-exponential` (6.4): with `M` groups of size `≤ m_*`, each
+interacting with at most `K - 1` others, `𝔼[e^{uS/m}] ≤ (8/3)^M` whenever
+`4 K C_u κ |u| m_*/m ≤ 1/2`. -/
+theorem grouped_exp_bound (H : Hyp μ ν Y h κ) (hm : 1 ≤ m) {M : ℕ} (grp : Fin m → Fin M)
+    (mstar : ℕ) (hsize : ∀ a, (univ.filter (fun i => grp i = a)).card ≤ mstar)
+    (G : SimpleGraph (Fin M)) [DecidableRel G.Adj] (K : ℕ) (hK : 1 ≤ K)
+    (hdeg : ∀ a, G.degree a ≤ K - 1)
+    (hvan : ∀ i j, grp i ≠ grp j → ¬ G.Adj (grp i) (grp j) → ∀ x y, h i j x y = 0)
+    (u : ℝ) (hu : 4 * K * Cu * κ * |u| * mstar / m ≤ 1 / 2) :
+    ∫ ω, Real.exp (u * S h Y ω / m) ∂μ ≤ (8 / 3) ^ M := by
+  classical
+  have E : ∀ {n : ℕ} {ν' : Fin n → Measure E} [∀ i, IsProbabilityMeasure (ν' i)]
+      {Y' : Fin n → Ω → E} {h2 : Fin n → Fin n → E → E → ℝ}, Hyp μ ν' Y' h2 κ → 1 ≤ n →
+      ∀ θ : ℝ, Cu * κ * |θ| < 1 →
+      Integrable (fun ω => Real.exp (θ * S h2 Y' ω / n)) μ := by
+    intro n ν' _ Y' h2 H2 hn θ hθ
+    have hSm : Measurable (S h2 Y') := measurable_S H2.Y_meas H2.h_meas
+    have hnpos : (0:ℝ) < n := by exact_mod_cast hn
+    set a : ℕ → Ω → ℝ := fun k ω => 2 * ((|θ| / n) ^ (2 * k) * |S h2 Y' ω| ^ (2 * k)
+      / ((2 * k).factorial : ℝ)) with ha
+    have ha0 : ∀ k ω, 0 ≤ a k ω := fun k ω => by simp only [ha]; positivity
+    have ham : ∀ k, Measurable (a k) := fun k => by
+      simp only [ha]; fun_prop
+    have hai : ∀ k, Integrable (a k) μ := fun k => by
+      simp only [ha]
+      exact (((integrable_S_pow H2 (2 * k)).const_mul _).div_const _).const_mul _
+    have hint : ∀ k, ∫ ω, a k ω ∂μ ≤ 2 * (Cu * κ * |θ|) ^ (2 * k) := by
+      intro k
+      have h1 : ∫ ω, a k ω ∂μ = 2 * ((|θ| / n) ^ (2 * k) * (∫ ω, |S h2 Y' ω| ^ (2 * k) ∂μ)
+          / ((2 * k).factorial : ℝ)) := by
+        simp only [ha]
+        rw [integral_const_mul, integral_div, integral_const_mul]
+      rw [h1]
+      have hf : (0:ℝ) < ((2 * k).factorial : ℝ) := by exact_mod_cast Nat.factorial_pos _
+      rcases Nat.eq_zero_or_pos k with rfl | hk
+      · simp
+      · have hmb := moment_bound H2 k hk
+        have : (|θ| / n) ^ (2 * k) * (∫ ω, |S h2 Y' ω| ^ (2 * k) ∂μ) / ((2 * k).factorial : ℝ)
+            ≤ (Cu * κ * |θ|) ^ (2 * k) := by
+          rw [div_le_iff₀ hf]
+          calc (|θ| / n) ^ (2 * k) * (∫ ω, |S h2 Y' ω| ^ (2 * k) ∂μ)
+              ≤ (|θ| / n) ^ (2 * k) * ((Cu * κ * n) ^ (2 * k) * ((2 * k).factorial : ℝ)) := by
+                gcongr
+            _ = (Cu * κ * |θ|) ^ (2 * k) * ((2 * k).factorial : ℝ) := by
+                rw [← mul_assoc, ← mul_pow]
+                congr 2
+                field_simp
+        linarith
+    have hr0 : 0 ≤ Cu * κ * |θ| := by
+      have := H2.κ_pos; unfold Cu; positivity
+    have hgeo : Summable (fun k : ℕ => 2 * (Cu * κ * |θ|) ^ (2 * k)) := by
+      apply Summable.mul_left
+      have : (Cu * κ * |θ|) ^ 2 < 1 := by nlinarith
+      simpa [pow_mul] using summable_geometric_of_lt_one (by positivity) this
+    have hpt : ∀ ω, Real.exp (θ * S h2 Y' ω / n) ≤ ∑' k, a k ω := by
+      intro ω
+      have hs : HasSum (fun k => a k ω) (2 * Real.cosh (θ * S h2 Y' ω / n)) := by
+        have := (Real.hasSum_cosh (θ * S h2 Y' ω / n)).mul_left 2
+        convert this using 2 with k
+        simp only [ha]
+        rw [← pow_abs_two_mul (θ * S h2 Y' ω / n), abs_div, abs_mul, Nat.abs_cast]
+        ring
+      rw [hs.tsum_eq, Real.cosh_eq]
+      have := Real.exp_pos (-(θ * S h2 Y' ω / n))
+      linarith
+    refine ⟨(by fun_prop : Measurable fun ω => Real.exp (θ * S h2 Y' ω / n)).aestronglyMeasurable,
+      ?_⟩
+    unfold HasFiniteIntegral
+    calc ∫⁻ ω, ‖Real.exp (θ * S h2 Y' ω / n)‖ₑ ∂μ
+        ≤ ∫⁻ ω, ∑' k, ENNReal.ofReal (a k ω) ∂μ := by
+          apply lintegral_mono
+          intro ω
+          beta_reduce
+          rw [← ENNReal.ofReal_tsum_of_nonneg (fun k => ha0 k ω)
+            (by
+              have hs : HasSum (fun k => a k ω) (2 * Real.cosh (θ * S h2 Y' ω / n)) := by
+                have := (Real.hasSum_cosh (θ * S h2 Y' ω / n)).mul_left 2
+                convert this using 2 with k
+                simp only [ha]
+                rw [← pow_abs_two_mul (θ * S h2 Y' ω / n), abs_div, abs_mul, Nat.abs_cast]
+                ring
+              exact hs.summable)]
+          rw [Real.enorm_of_nonneg (Real.exp_pos _).le]
+          exact ENNReal.ofReal_le_ofReal (hpt ω)
+      _ = ∑' k, ∫⁻ ω, ENNReal.ofReal (a k ω) ∂μ := by
+          rw [lintegral_tsum]
+          intro k
+          exact (ENNReal.measurable_ofReal.comp (ham k)).aemeasurable
+      _ = ∑' k, ENNReal.ofReal (∫ ω, a k ω ∂μ) := by
+          congr 1; ext k
+          rw [ofReal_integral_eq_lintegral_ofReal (hai k) (Filter.Eventually.of_forall (ha0 k))]
+      _ ≤ ∑' k, ENNReal.ofReal (2 * (Cu * κ * |θ|) ^ (2 * k)) := by
+          gcongr with k
+          exact hint k
+      _ < ⊤ := by
+          rw [← ENNReal.ofReal_tsum_of_nonneg (fun k => by positivity) hgeo]
+          exact ENNReal.ofReal_lt_top
+  have hκ := H.κ_pos
+  obtain ⟨T, h', hT, hsz, hH, hv, hsum⟩ :=
+    class_decomposition H grp mstar hsize G K hK hdeg hvan
+  have hm0 : (0:ℝ) < m := by exact_mod_cast hm
+  have hK0 : (1:ℝ) ≤ K := by exact_mod_cast hK
+  have hCu : (0:ℝ) < Cu := by unfold Cu; norm_num
+  set f : Fin (2 * K) → Ω → ℝ := fun c ω => u * (∑ a, S (h' c a) Y ω) / m with hf
+  have hcard : ∀ c a, Cu * κ * |2 * K * u / m * ((T c a).card : ℝ)| ≤ 1 / 2 := by
+    intro c a
+    have h1 : |2 * (K:ℝ) * u / m * ((T c a).card : ℝ)| = 2 * K * |u| / m * (T c a).card := by
+      rw [abs_mul, abs_div, abs_mul, abs_mul, Nat.abs_cast, Nat.abs_cast, Nat.abs_cast]
+      norm_num
+    have h2 : ((T c a).card : ℝ) ≤ 2 * mstar := by exact_mod_cast hsz c a
+    calc Cu * κ * |2 * K * u / m * ((T c a).card : ℝ)|
+        = Cu * κ * (2 * K * |u| / m * (T c a).card) := by rw [h1]
+      _ ≤ Cu * κ * (2 * K * |u| / m * (2 * mstar)) := by gcongr
+      _ = 4 * K * Cu * κ * |u| * mstar / m := by ring
+      _ ≤ 1 / 2 := hu
+  have hblock : ∀ c a, Integrable (fun ω => Real.exp (2 * K * u / m * S (h' c a) Y ω)) μ := by
+    intro c a
+    by_cases h0 : (T c a).card = 0
+    · have hE : T c a = ∅ := Finset.card_eq_zero.mp h0
+      have hS : ∀ ω, S (h' c a) Y ω = 0 := by
+        intro ω
+        unfold S
+        exact Finset.sum_eq_zero fun i _ => Finset.sum_eq_zero fun j _ =>
+          hv c a i j (Or.inl (by simp [hE])) _ _
+      simp only [hS, mul_zero, Real.exp_zero]
+      exact integrable_const _
+    · have hpos : 1 ≤ (T c a).card := Nat.one_le_iff_ne_zero.mpr h0
+      have hnpos : (0:ℝ) < (T c a).card := by exact_mod_cast hpos
+      have hI := E (Hyp.reindex (hH c a) ((T c a).orderEmbOfFin rfl)) hpos
+        (2 * K * u / m * (T c a).card) (by linarith [hcard c a])
+      refine hI.congr (Filter.Eventually.of_forall fun ω => ?_)
+      beta_reduce
+      rw [S_reindex (h' c a) Y (T c a) rfl (fun i j hij x y => hv c a i j hij x y) ω]
+      congr 1
+      field_simp
+  have hint : ∀ c, Integrable (fun ω => Real.exp (((2 * K : ℕ) : ℝ) * f c ω)) μ := by
+    intro c
+    have hind := blocks_indep H.Y_meas H.Y_indep (T c) (hT c) (h' c)
+      (fun a i j => (hH c a).h_meas i j) (hv c)
+    have := hind.integrable_exp_mul_sum (t := 2 * K * u / m)
+      (fun a => measurable_S H.Y_meas (hH c a).h_meas) (s := Finset.univ)
+      (fun a _ => hblock c a)
+    refine this.congr (Filter.Eventually.of_forall fun ω => ?_)
+    beta_reduce
+    simp only [hf, Finset.sum_apply]
+    congr 1
+    push_cast
+    ring
+  have hfm : ∀ c, Measurable (f c) := fun c => by
+    simp only [hf]
+    have : ∀ a, Measurable (S (h' c a) Y) := fun a => measurable_S H.Y_meas (hH c a).h_meas
+    fun_prop
+  have heq : ∀ ω, u * S h Y ω / m = ∑ c, f c ω := by
+    intro ω
+    simp only [hf, hsum ω, ← Finset.sum_div, ← Finset.mul_sum]
+  have ht : Cu * κ * |((2 * K : ℕ) : ℝ) * u| * (2 * mstar) / m ≤ 1 / 2 := by
+    have : Cu * κ * |((2 * K : ℕ) : ℝ) * u| * (2 * mstar) / m
+        = 4 * K * Cu * κ * |u| * mstar / m := by
+      push_cast
+      rw [abs_mul, abs_of_nonneg (by positivity : (0:ℝ) ≤ 2 * K)]
+      ring
+    rw [this]; exact hu
+  have hbd := holder_classes μ (n := 2 * K) (by omega) f hfm hint
+  simp_rw [heq]
+  refine hbd.trans ?_
+  have hfac : ∀ c : Fin (2 * K), (∫ ω, Real.exp (((2 * K : ℕ) : ℝ) * f c ω) ∂μ)
+      ^ (1 / ((2 * K : ℕ) : ℝ)) ≤ ((8 / 3 : ℝ) ^ M) ^ (1 / ((2 * K : ℕ) : ℝ)) := by
+    intro c
+    apply Real.rpow_le_rpow (integral_nonneg fun ω => (Real.exp_pos _).le) _
+      (by positivity)
+    have := class_bound hm (T c) (hT c) (h' c) (hH c) (hv c) mstar (hsz c)
+      (((2 * K : ℕ) : ℝ) * u) ht
+    refine le_of_eq_of_le (integral_congr_ae (Filter.Eventually.of_forall fun ω => ?_)) this
+    beta_reduce
+    simp only [hf]
+    congr 1
+    ring
+  calc ∏ c : Fin (2 * K), (∫ ω, Real.exp (((2 * K : ℕ) : ℝ) * f c ω) ∂μ) ^ (1 / ((2 * K : ℕ) : ℝ))
+      ≤ ∏ c : Fin (2 * K), ((8 / 3 : ℝ) ^ M) ^ (1 / ((2 * K : ℕ) : ℝ)) :=
+        Finset.prod_le_prod₀ (fun c _ => Real.rpow_nonneg
+          (integral_nonneg fun ω => (Real.exp_pos _).le) _) (fun c _ => hfac c)
+    _ = (8 / 3 : ℝ) ^ M := by
+        rw [Finset.prod_const, Finset.card_univ, Fintype.card_fin, ← Real.rpow_natCast,
+          ← Real.rpow_mul (by positivity), one_div_mul_cancel (by positivity), Real.rpow_one]
+
+end Grouped
+
+end LogGas.Grouped
